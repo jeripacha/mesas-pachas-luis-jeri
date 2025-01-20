@@ -1,112 +1,116 @@
 // Definición de stickers con nombre y cantidad
 const areas = {
   pacha: [
-    { name: "pedro", quantity: "980", drinks: "tequila,tequila",combos: "pachamama" },// pacha 1
-    { name: "pedro", quantity: "900", drinks: "fernet,ron",combos:"tequila"},
-    { name: "pedro", quantity: "40" , drinks: "jager",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila," },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"jager" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,ron",combos:"tequila" },
-    { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"jager" },
-    { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"jager"},
+    { name: "Ignacio aguilar", quantity: "900", drinks: "viuda descalza,fernet", combos: "pacha" },// pacha 1
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 2
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager", combos: "jager" },// pacha 3
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 4
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 7 años", combos: "parrales" },// pacha 5
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 7 años", combos: "parrales" },// pacha 6
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 7
+    { name: "Ignacio aguilar", quantity: "1100", drinks: "singani parrales,", combos: "pachamama" },// pacha 8
+    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama" },// pacha 9
   ],
 
   lounge: [
-    { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "900", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-    { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-    { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"jager," },
-    { name: "pedro", quantity: "900", drinks: "fernet,ron", combos:"ron"},
-    { name: "pedro", quantity: "900", drinks: "fernet,ron", combos:"ron"},
-
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 1
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 2
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 3
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 4
+      { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // lounge 5
+      { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // lounge 6
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 7
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 8
+      { name: "", quantity: "", drinks: ",", combos: "," }, // lounge 9
+      { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // lounge 10
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 11
   ],
+
+
   parrales: [
-    { name: "", quantity: "", drinks: "",combos:"" },
-    { name: "pedro", quantity: "900", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "fernet,ron" ,combos:"tequila"},
-    { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"pachamama" },
-    { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"pachamama"},
-    { name: "pedro", quantity: "980", drinks: "fernet,ron",combos:"pachamama" },
-    { name: "pedro", quantity: "900", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-    { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 1
+    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,flor de caña 5 años", combos: "pacha" }, // parrales 2
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,", combos: "parrales" }, // parrales 3
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 4
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 5
+    { name: "Ignacio aguilar", quantity: "900", drinks: "flor de caña 5 años,flor de caña 5 años", combos: "pacha" }, // parrales 6
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 7
+    { name: "Ignacio aguilar", quantity: "760", drinks: "jager,", combos: "jager" }, // parrales 8
+    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,flor de caña 5 años", combos: "pacha" }, // parrales 9
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,fernet", combos: "" }, // parrales 10
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,", combos: "parrales" }, // parrales 11
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 12
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 13
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,", combos: "parrales" }, // parrales 14
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 15
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 5 años", combos: "" }, // parrales 16
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 17
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 18
   ],
-    cholet: [ // Nueva área
-      { name: "pedro", quantity: "900", drinks: "ron,gin", combos: "tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"jager," },
-      { name: "pedro", quantity: "900", drinks: "fernet,ron", combos:"ron"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"pachamama" },
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"jager"},
 
-    ],
-    camel: [ // Nueva área
-      { name: "pedro", quantity: "700", drinks: "singani,gin", combos: "ron" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-    ],
-    extras: [ // Nueva área
-      { name: "pedro", quantity: "500", drinks: "fernet,ron", combos: "singani" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"jager," },
-      { name: "pedro", quantity: "900", drinks: "fernet,ron", combos:"ron"},
-    ],
-    Vip: [ // Nueva área
-      { name: "pedro", quantity: "600", drinks: "ron,gin", combos: "tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "fernet,ron",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "600", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,gin",combos:"tequila" },
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron" ,combos:"tequila"},
-      { name: "pedro", quantity: "900", drinks: "singani,ron",combos:"cumpleañero," },
-      { name: "pedro", quantity: "900", drinks: "fernet,ron", combos:"cumpleañero"},
-    ]
-  };
+  cholet: [ // Nueva área
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 1
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 2
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 3
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 4
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 5
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 6
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 7
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 8
+      { name: "", quantity: "", drinks: ",", combos: "," }, // cholet 9
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 10
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 11
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 12
+  ],
+
+  camel: [ // Nueva área
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,singani parrales", combos: "parrales" },// camel 1
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" },// camel 2
+    { name: "", quantity: "", drinks: ",", combos: "" },// camel 3
+  ],
+  extras: [ // Nueva área
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 1
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 2
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 3
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 4
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 5
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 6
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 7
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 8
+    { name: "", quantity: "", drinks: ",", combos: "," }, // extras 9
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 10
+  ],
+
+  Vip: [ // Nueva área
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,viuda descalza", combos: "parrales" }, // Vip 1
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 2
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 3
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 4
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 5
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 6
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 7
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 8
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 9
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 10
+  ]
+
+};
 
 // Lista de stickers
 const stickers = {
   pacha: "icons8-table-top-view-96 (2) (1).png",
   parrales: "icons8-table-top-view-96 (2) (1).png",
   lounge: "icons8-table-top-view-96 (2) (1).png",
-  cholet:"icons8-table-top-view-96 (2) (1).png",
-  camel:"icons8-table-top-view-96 (2) (1).png",
-  extras:"icons8-table-top-view-96 (2) (1).png",
-  Vip:"icons8-table-top-view-96 (2) (1).png"
+  cholet: "icons8-table-top-view-96 (2) (1).png",
+  camel: "icons8-table-top-view-96 (2) (1).png",
+  extras: "icons8-table-top-view-96 (2) (1).png",
+  Vip: "icons8-table-top-view-96 (2) (1).png"
 };
 
 // Definición de números de cuenta
 const accountNumbers = {
   "pedro": "190*****817",
-  "jose": "150*****407",
+  "Ignacio aguilar": "150*****327",
 };
 
 // Seleccionar los contenedores para cada área
@@ -188,36 +192,36 @@ function calcularTotal() {
     }
     return acc;
   }, 0);
-let totalCholet = areas.cholet.reduce((acc, sticker) => {
+  let totalCholet = areas.cholet.reduce((acc, sticker) => {
     if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
       return acc + (Number(sticker.quantity) || 0);
     }
-  return acc;
+    return acc;
   }, 0);
-  let totalCamel = areas.camel.reduce((acc, sticker) =>  {
+  let totalCamel = areas.camel.reduce((acc, sticker) => {
     if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
       return acc + (Number(sticker.quantity) || 0);
-  }
-  return acc;
-   }, 0);
-  let totalExtras = areas.extras.reduce((acc, sticker) =>  {
+    }
+    return acc;
+  }, 0);
+  let totalExtras = areas.extras.reduce((acc, sticker) => {
     if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
       return acc + (Number(sticker.quantity) || 0);
-  }
+    }
     return acc;
-     }, 0);
+  }, 0);
   let totalVip = areas.Vip.reduce((acc, sticker) => {
     if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
       return acc + (Number(sticker.quantity) || 0);
-      }
-      return acc;
-       }, 0);
+    }
+    return acc;
+  }, 0);
 
   const totalGeneral = totalPacha + totalParrales + totalLounge + totalCholet + totalCamel + totalExtras + totalVip;
 
   const totalPorNombre = {};
 
-  [...areas.pacha, ...areas.parrales, ...areas.lounge,...areas.cholet,...areas.camel,...areas.extras,...areas.Vip].forEach(sticker => {
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const name = sticker.name;
     if (name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
       totalPorNombre[name] = (totalPorNombre[name] || 0) + (Number(sticker.quantity) || 0);
@@ -236,7 +240,7 @@ function contarCombos() {
   let totalCombosCount = 0;
 
   // Recorremos las áreas para contar los combos
-  [...areas.pacha, ...areas.parrales, ...areas.lounge,...areas.cholet,...areas.camel,...areas.extras,...areas.Vip].forEach(sticker => {
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const combosList = sticker.combos ? sticker.combos.split(",").map(c => c.trim()).filter(c => c) : []; // Filtramos entradas vacías
 
     combosList.forEach(combo => {
@@ -261,7 +265,7 @@ function contarDrinks() {
   let totalCount = 0;
 
   // Recorremos las áreas para contar las bebidas
-  [...areas.pacha, ...areas.parrales, ...areas.lounge,...areas.cholet,...areas.camel,...areas.extras,...areas.Vip].forEach(sticker => {
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const drinksList = sticker.drinks ? sticker.drinks.split(",").map(d => d.trim()).filter(d => d) : []; // Filtramos entradas vacías
 
     drinksList.forEach(drink => {
@@ -297,7 +301,7 @@ function calcularExtraidoPachamama() {
   let detallesExtraidos = [];
 
   // Recorremos todas las áreas y buscamos los stickers con "pachamama" en combos
-   [...areas.pacha, ...areas.parrales, ...areas.lounge,...areas.cholet,...areas.camel,...areas.extras,...areas.Vip].forEach(sticker => {
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     if (sticker.combos && sticker.combos.includes("pachamama")) {
       const cantidad = Number(sticker.quantity);
       if (cantidad >= 400) {
@@ -314,17 +318,19 @@ function calcularExtraidoPachamama() {
 
   return { totalExtraido, detallesExtraidos };
 }
-function calcularGanancias(areas, cocaColaCantidad = 0, spriteCantidad = 0) {
+function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, mamboBotanicoCantidad = 0, mamboUvaCantidad = 0, monsterCantidad = 0) {
   const precios = {
-    tequila: 70,
-    singani: 62,
-    fernet: 50,
-    ron: 55,
-    gin: 60,
-    jager: 80,
-    havana: 75,
-    cocaCola: 15,
-    sprite: 15,
+    "viuda descalza": 84,
+    "singani parrales": 62,
+    fernet: 80,
+    "flor de caña 7 años": 73,
+    "gin republica": 120,
+    jager: 152,
+    cocaCola: 9,
+    "Schweppes Ginger Ale 1.5": 15, 
+    "Mambo Botanico": 12, // Añadido precio para Mambo Botánico
+    "Mambo Uva": 12, // Añadido precio para Mambo Uva
+    monster: 15, // Añadido precio para Monster
   };
 
   let totalesDrinks = {}; // Acumular cantidades por tipo de drink
@@ -338,10 +344,14 @@ function calcularGanancias(areas, cocaColaCantidad = 0, spriteCantidad = 0) {
       if (drinks) {
         drinks.split(",").forEach((drink) => {
           drink = drink.trim();
-          if (!totalesDrinks[drink]) {
-            totalesDrinks[drink] = 0;
+
+          // Solo contar si el drink tiene un nombre válido
+          if (drink && precios[drink]) { 
+            if (!totalesDrinks[drink]) {
+              totalesDrinks[drink] = 0;
+            }
+            totalesDrinks[drink] += 1; // Contamos cada ocurrencia del drink
           }
-          totalesDrinks[drink] += 1; // Contamos cada ocurrencia del drink
         });
       }
     });
@@ -357,18 +367,24 @@ function calcularGanancias(areas, cocaColaCantidad = 0, spriteCantidad = 0) {
     detalleVentas.push({ producto: drink, cantidad, ingreso });
   }
 
-  // Calcular ingresos por Coca-Cola y Sprite
+  // Calcular ingresos por Coca-Cola, SCHWEPPES GINGER ALE, MAMBO BOTANICO, MAMBO UVA y MONSTER
   const ingresoCocaCola = cocaColaCantidad * precios.cocaCola;
-  const ingresoSprite = spriteCantidad * precios.sprite;
-  totalGanadoDrinks += ingresoCocaCola + ingresoSprite;
+  const ingresoSchweppes = schweppesCantidad * precios["Schweppes Ginger Ale 1.5"];
+  const ingresoMamboBotanico = mamboBotanicoCantidad * precios["Mambo Botanico"];
+  const ingresoMamboUva = mamboUvaCantidad * precios["Mambo Uva"];
+  const ingresoMonster = monsterCantidad * precios.monster;
 
-  // Agregar detalles de Coca-Cola y Sprite
+  totalGanadoDrinks += ingresoCocaCola + ingresoSchweppes + ingresoMamboBotanico + ingresoMamboUva + ingresoMonster;
+
+  // Agregar detalles de Coca-Cola, SCHWEPPES GINGER ALE, MAMBO BOTANICO, MAMBO UVA y MONSTER
   detalleVentas.push({ producto: "Coca-Cola", cantidad: cocaColaCantidad, ingreso: ingresoCocaCola });
-  detalleVentas.push({ producto: "Sprite", cantidad: spriteCantidad, ingreso: ingresoSprite });
+  detalleVentas.push({ producto: "Schweppes Ginger Ale 1.5", cantidad: schweppesCantidad, ingreso: ingresoSchweppes });
+  detalleVentas.push({ producto: "Mambo Botanico", cantidad: mamboBotanicoCantidad, ingreso: ingresoMamboBotanico });
+  detalleVentas.push({ producto: "Mambo Uva", cantidad: mamboUvaCantidad, ingreso: ingresoMamboUva });
+  detalleVentas.push({ producto: "Monster", cantidad: monsterCantidad, ingreso: ingresoMonster });
 
   // Calcular resultado final
   const resultado = Math.abs(totalGanadoDrinks - totalQuantity);
-
 
   return {
     totalQuantity,
@@ -377,6 +393,7 @@ function calcularGanancias(areas, cocaColaCantidad = 0, spriteCantidad = 0) {
     detalleVentas,
   };
 }
+
 
 // Función para mostrar el total y detalles en el modal
 function mostrarDetalles() {
@@ -388,7 +405,7 @@ function mostrarDetalles() {
   const totalNombreTitle = document.getElementById("total-nombre-title");
   const totalContainer = document.getElementById("total-container");
 
-   totalContainer.innerHTML = "";
+  totalContainer.innerHTML = "";
 
 
   if (totalNames.length === 1) {
@@ -451,7 +468,7 @@ function mostrarDetalles() {
       <thead>
         <tr>
           <th style="border: 1px solid #ddd; background-color: white; padding: 4px; width: 70%; color: black;">Combo</th>
-          <th style="border: 1px solid #ddd; background-color: #3498db; padding: 4px; width: 30%; color: black;">Cantidad</th>
+          <th style="border: 1px solid #ddd; background-color: white; padding: 4px; width: 30%; color: black;">Cantidad</th>
         </tr>
       </thead>
       <tbody>`;
@@ -467,7 +484,7 @@ function mostrarDetalles() {
   }
 
   combosTable += `
-      <tr style="font-weight: bold; color: green;">
+      <tr style="font-weight: bold; color: black;">
         <td style="border: 1px solid #ddd; padding: 4px;">Total:</td>
         <td style="border: 1px solid #ddd; padding: 4px;">${totalCombosCount}</td>
       </tr>
@@ -479,13 +496,13 @@ function mostrarDetalles() {
   const { totalExtraido, detallesExtraidos } = calcularExtraidoPachamama();
 
   // Crear una tabla para mostrar los detalles de Pachamama extraída
-  let pachamamaTable = `<div><h3>Total Depósito Pachamama</h3>
+  let pachamamaTable = `<div><h3>GANANCIAS DE MAMA</h3>
     <div style="display: flex; justify-content: center;">
       <table style="width: 100%; border-collapse: collapse; font-size: 19px;">
         <thead>
           <tr>
-            <th style="border: 1px solid #ddd; background-color: #3498db; padding: 4px; color: black;">Cantidad Extraída</th>
-            <th style="border: 1px solid #ddd; background-color: #3498db; padding: 4px; color: black;">Cantidad Restante</th>
+            <th style="border: 1px solid #ddd; background-color: white; padding: 4px; color: black;">Cantidad</th>
+
           </tr>
         </thead>
         <tbody>`;
@@ -494,13 +511,12 @@ function mostrarDetalles() {
     pachamamaTable += `
         <tr>
           <td style="border: 1px solid #ddd; padding: 4px;">${detalle.cantidadExtraida}</td>
-          <td style="border: 1px solid #ddd; padding: 4px;">${detalle.cantidadRestante}</td>
         </tr>`;
   });
 
   pachamamaTable += `
-        <tr style="font-weight: bold; color: green;">
-          <td style="border: 1px solid #ddd; padding: 4px;" colspan="2">Total Extraído: ${totalExtraido}</td>
+        <tr style="font-weight: bold; color:black;">
+          <td style="border: 1px solid #ddd; padding: 4px;" colspan="2">Depositar a MAMA: ${totalExtraido} bs</td>
         </tr>
       </tbody>
     </table>
@@ -509,35 +525,36 @@ function mostrarDetalles() {
 
   // Muestra los totales de bebidas en una tabla
   let drinksTable = `<div><h3>Total de Bebidas</h3>
-  <div style="display: flex; justify-content: center;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 19px;">
-      <thead>
-        <tr>
-          <th style="border: 1px solid #ddd; border-top: 1px solid #ddd; border-left: 1px solid #ddd; background-color: white; padding: 4px; width: 70%; color: black;">Bebida</th>
-          <th style="border: 1px solid #ddd; border-top: 1px solid #ddd; border-right: 1px solid #ddd; background-color: #e67e22; padding: 4px; width: 30%;color:black;">Cantidad</th>
-        </tr>
-      </thead>
-      <tbody>`;
+    <div style="display: flex; justify-content: center;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 19px; border-left: 1px solid #ddd; border-right: 1px solid #ddd;">
+        <thead>
+          <tr>
+            <th style="border: 1px solid #ddd; border-top: 1px solid #ddd; background-color: white; padding: 4px; width: 70%; color: black;">Bebida</th>
+            <th style="border: 1px solid #ddd; border-top: 1px solid #ddd; background-color: white; padding: 4px; width: 30%; color: black;">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>`;
 
   let totalDrinksCount = 0; // Para el total general
 
   for (const [drink, count] of Object.entries(totalDrinks)) {
     drinksTable += `
-      <tr>
-        <td style="border: 1px solid #ddd;border-left: none; padding: 4px;">${drink}</td>
-        <td style="border: 1px solid #ddd;border-right: none; padding: 4px;">${count}</td>
-      </tr>`;
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 4px; border-left: none;">${drink}</td>
+          <td style="border: 1px solid #ddd; padding: 4px; border-right: none;">${count}</td>
+        </tr>`;
     totalDrinksCount += count; // Sumar al total general
   }
 
   drinksTable += `
-      <tr style="font-weight: bold; color: green;">
-        <td style="border: 1px solid #ddd; padding: 4px;">Total:</td>
-        <td style="border: 1px solid #ddd; padding: 4px;">${totalDrinksCount}</td>
-      </tr>
-    </tbody>
-  </table>
-  </div></div>`;
+        <tr style="font-weight: bold; color: black;">
+          <td style="border: 1px solid #ddd; padding: 4px;">Total:</td>
+          <td style="border: 1px solid #ddd; padding: 4px;">${totalDrinksCount}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div></div>`;
+
 
   // Agregamos todas las tablas al contenedor
   totalContainer.innerHTML += containerStyle + combosTable + pachamamaTable + drinksTable + '</div>';
@@ -548,21 +565,29 @@ function mostrarDetalles() {
 
   let count900 = 0;
   let count980 = 0;
+  let count680 = 0; // Nueva variable para contar mesas de 680 bs
+  let count750 = 0; // Nueva variable para contar mesas de 750 bs
   let countOthers = 0;
 
   const otrosMontos = []; // Para almacenar los montos de otras mesas
 
-   [...areas.pacha, ...areas.parrales, ...areas.lounge,...areas.cholet,...areas.camel,...areas.extras,...areas.Vip].forEach(sticker => {
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const quantity = Number(sticker.quantity);
+
     if (quantity === 900) {
       count900++;
     } else if (quantity === 980) {
       count980++;
+    } else if (quantity === 680) { // Condición para mesas de 680 bs
+      count680++;
+    } else if (quantity === 750) { // Condición para mesas de 750 bs
+      count750++;
     } else if (quantity) {
       countOthers++;
       otrosMontos.push(`${sticker.name}: ${quantity} bs`); // Agregar a la lista de otros montos
     }
   });
+
 
   const countContainer = document.getElementById("count-container");
   countContainer.innerHTML = `
@@ -577,6 +602,18 @@ function mostrarDetalles() {
         <div class="card-content">
           <div class="card-title">Mesas de 900 bs:</div>
           <div class="card-value">${count900}</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="card-title">Mesas de 680 bs:</div>
+          <div class="card-value">${count680}</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <div class="card-title">Mesas de 750 bs:</div>
+          <div class="card-value">${count750}</div>
         </div>
       </div>
       <div class="card" id="otros-montos-card">
@@ -699,19 +736,21 @@ document.addEventListener("click", (event) => {
 });
 
 function mostrarGanancias() {
-  // Puedes cambiar los valores de Coca-Cola y Sprite aquí
-  const cocaColaCantidad = 20;
-  const spriteCantidad = 15;
+  // Puedes cambiar los valores de Coca-Cola, Schweppes, Mambo Botánico, Mambo Uva y Monster aquí
+  const cocaColaCantidad = 10;
+  const schweppesCantidad = 23;
+  const mamboBotanicoCantidad = 12; 
+  const mamboUvaCantidad = 6; 
+  const monsterCantidad = 14; // Cantidad de Monster
 
-  const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, spriteCantidad);
+  const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, mamboBotanicoCantidad, mamboUvaCantidad, monsterCantidad);
 
   const gananciasContainer = document.getElementById("ganancias-container");
 
   // Limpiar contenido previo del modal
   gananciasContainer.innerHTML = "";
-
   // URLs de los íconos personalizados para cada tarjeta
-  const iconoQuantityUrl = "https://img.icons8.com/?size=100&id=63196&format=png&color=000000"; 
+  const iconoQuantityUrl = "https://img.icons8.com/?size=100&id=63196&format=png&color=000000";
   const iconoGanadoUrl = "https://img.icons8.com/?size=100&id=13013&format=png&color=000000";
   const iconoResultadoUrl = "https://img.icons8.com/?size=100&id=AyHHKGHt204t&format=png&color=000000";
 
@@ -720,33 +759,50 @@ function mostrarGanancias() {
     <div class="tarjeta">
       <img src="${iconoQuantityUrl}" alt="Total Quantity Icon" class="icono-quantity">
       <h3>Total De Ingresos</h3>
-      <p>${totalQuantity} unidades</p>
+      <p>${totalQuantity.toLocaleString()} Bs</p> <!-- Formato con comas -->
     </div>
     <div class="tarjeta">
       <img src="${iconoGanadoUrl}" alt="Total Ganado Icon" class="icono-ganado">
-      <h3>inversion</h3>
-      <p>${totalGanado} Bs</p>
+      <h3>Inversión</h3>
+      <p>${totalGanado.toLocaleString()} Bs</p> <!-- Formato con comas -->
     </div>
     <div class="tarjeta">
       <img src="${iconoResultadoUrl}" alt="Ganancias Neta Icon" class="icono-resultado">
       <h3>Ganancias Neta</h3>
-      <p>${resultado} Bs</p>
+      <p>${resultado.toLocaleString()} Bs</p> <!-- Formato con comas -->
     </div>
   `;
 
   gananciasContainer.innerHTML += tarjetasHtml;
 
 
+  // Estilo para dispositivos pequeños
+  let style = `
+    <style>
+      @media (max-width: 768px) {
+        .detalle-ventas table {
+          font-size: 14px; /* Reducir el tamaño de la fuente */
+        }
+        .detalle-ventas th, .detalle-ventas td {
+          padding: 6px; /* Reducir el padding */
+        }
+        .detalle-ventas h3 {
+          font-size: 18px; /* Reducir el tamaño del título */
+        }
+      }
+    </style>
+  `;
+
   // Mostrar detalles de ventas
   let detalleVentasHtml = `
     <div class="detalle-ventas">
       <h3>DetalleS De Inversion</h3>
-      <table class="ventas-table">
+      <table class="ventas-table" style="width: 100%; border-collapse: collapse;">
         <thead>
           <tr>
-            <th>Producto</th>
-            <th>Cantidad Usada</th>
-            <th>Costo Invertido</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Producto</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Cantidad Usada</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Costo Invertido</th>
           </tr>
         </thead>
         <tbody>
@@ -755,9 +811,9 @@ function mostrarGanancias() {
   detalleVentas.forEach((venta) => {
     detalleVentasHtml += `
       <tr>
-        <td>${venta.producto}</td>
-        <td>${venta.cantidad}</td>
-        <td>${venta.ingreso} Bs</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${venta.producto}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${venta.cantidad}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${venta.ingreso} Bs</td>
       </tr>
     `;
   });
@@ -768,7 +824,11 @@ function mostrarGanancias() {
     </div>
   `;
 
+  // Agregar el HTML generado al contenedor
   gananciasContainer.innerHTML += detalleVentasHtml;
+
+
+
 
   // Mostrar el modal
   const modal = document.getElementById("modal-ganancias");
