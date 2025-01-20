@@ -5,8 +5,8 @@ const areas = {
     { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 2
     { name: "Ignacio aguilar", quantity: "680", drinks: "jager", combos: "jager" },// pacha 3
     { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 4
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 7 años", combos: "parrales" },// pacha 5
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 7 años", combos: "parrales" },// pacha 6
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 5 años", combos: "parrales" },// pacha 5
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 5 años", combos: "parrales" },// pacha 6
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 7
     { name: "Ignacio aguilar", quantity: "1100", drinks: "singani parrales,", combos: "pachamama" },// pacha 8
     { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama" },// pacha 9
@@ -323,7 +323,7 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
     "viuda descalza": 84,
     "singani parrales": 62,
     fernet: 80,
-    "flor de caña 7 años": 73,
+    "flor de caña 5 años": 73,
     "gin republica": 120,
     jager: 152,
     cocaCola: 9,
