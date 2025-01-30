@@ -96,16 +96,15 @@ const areas = {
 
 };
 
-
 // Lista de stickers
 const stickers = {
-  pacha: "icons8-table-top-view-96 (2) (1).png",
-  parrales: "icons8-table-top-view-96 (2) (1).png",
-  lounge: "icons8-table-top-view-96 (2) (1).png",
-  cholet: "icons8-table-top-view-96 (2) (1).png",
-  camel: "icons8-table-top-view-96 (2) (1).png",
-  extras: "icons8-table-top-view-96 (2) (1).png",
-  Vip: "icons8-table-top-view-96 (2) (1).png"
+  pacha: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  parrales: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  lounge: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  cholet: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  camel: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  extras: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
+  Vip: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg"
 };
 
 // Definición de números de cuenta
@@ -328,6 +327,7 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
     "gin republica": 120,
     jager: 152,
     cocaCola: 9,
+    vodka: 85,
     "Schweppes Ginger Ale 1.5": 15, 
     "Mambo Botanico": 12, // Añadido precio para Mambo Botánico
     "Mambo Uva": 12, // Añadido precio para Mambo Uva
@@ -735,7 +735,6 @@ document.addEventListener("click", (event) => {
     sideMenu.classList.remove("open");
   }
 });
-
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes, Mambo Botánico, Mambo Uva y Monster aquí
