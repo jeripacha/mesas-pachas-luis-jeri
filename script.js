@@ -1,15 +1,15 @@
 // Definición de stickers con nombre y cantidad
 const areas = {
   pacha: [
-    { name: "Ignacio aguilar", quantity: "900", drinks: "viuda descalza,fernet", combos: "pacha" },// pacha 1
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 2
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager", combos: "jager" },// pacha 3
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,singani parrales", combos: "parrales" },// pacha 4
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 5 años", combos: "parrales" },// pacha 5
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 5 años", combos: "parrales" },// pacha 6
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 1
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" },// pacha 2
+    { name: "", quantity: "", drinks: "", combos: "" },// pacha 3
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 4
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 5
+    { name: "Ignacio aguilar", quantity: "980", drinks: "viuda,", combos: "pachamama" },// pacha 6
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 7
-    { name: "Ignacio aguilar", quantity: "1100", drinks: "singani parrales,", combos: "pachamama" },// pacha 8
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama" },// pacha 9
+    { name: "Ignacio aguilar", quantity: "830", drinks: "viuda,flor de caña 5 años", combos: "parrales" },// pacha 8
+    { name: "Ignacio aguilar", quantity: "900", drinks: "simgami parrales,", combos: "pachamama" },// pacha 9
   ],
 
   lounge: [
@@ -17,35 +17,35 @@ const areas = {
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 2
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 3
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 4
-      { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // lounge 5
+      { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumleañero" }, // lounge 5
       { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // lounge 6
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 7
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 8
-      { name: "", quantity: "", drinks: ",", combos: "," }, // lounge 9
-      { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // lounge 10
+      { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,fernet", combos: "parrales" }, // lounge 9
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 10
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 11
   ],
 
 
   parrales: [
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 1
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,flor de caña 5 años", combos: "pacha" }, // parrales 2
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,", combos: "parrales" }, // parrales 3
-    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 4
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 5
-    { name: "Ignacio aguilar", quantity: "900", drinks: "flor de caña 5 años,flor de caña 5 años", combos: "pacha" }, // parrales 6
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 7
-    { name: "Ignacio aguilar", quantity: "760", drinks: "jager,", combos: "jager" }, // parrales 8
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,flor de caña 5 años", combos: "pacha" }, // parrales 9
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,fernet", combos: "" }, // parrales 10
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,", combos: "parrales" }, // parrales 11
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 12
-    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 13
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,", combos: "parrales" }, // parrales 14
-    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 15
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,flor de caña 5 años", combos: "" }, // parrales 16
-    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 17
-    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 18
+    { name: "Ignacio aguilar", quantity: "760", drinks: "singani parrales,", combos: "jager" }, // parrales 1
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,singani parrales", combos: "cumpleañero" }, // parrales 2
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,viuda", combos: "parrales" }, // parrales 3
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,fernet", combos: "cumpleañero" }, // parrales 4
+    { name: "Ignacio aguilar", quantity: "980", drinks: "flor de caña 5 años,singani parrales", combos: "cumpleañero" }, // parrales 5
+    { name: "natalia rodriguez", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // parrales 6
+    { name: "natalia rodriguez", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // parrales 7
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 8
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 9
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 7 años", combos: "cumpleañero" }, // parrales 10
+    { name: "Ignacio aguilar", quantity: "680", drinks: "flor de caña 5 años,viuda", combos: "parrales" }, // parrales 11
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,", combos: "pachamama" }, // parrales 12
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 13
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 14
+    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,", combos: "parrales" }, // parrales 15
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,vodka", combos: "cumpleañero" }, // parrales 16
+    { name: "Ignacio aguilar", quantity: "980", drinks: "viuda,flor de caña 5 años", combos: "cumpleañero" }, // parrales 17
+    { name: "Ignacio aguilar", quantity: "830", drinks: "flor de caña 5 años,singani parrales", combos: "parrales" }, // parrales 18
   ],
 
   cholet: [ // Nueva área
@@ -57,16 +57,16 @@ const areas = {
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 6
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 7
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 8
-      { name: "", quantity: "", drinks: ",", combos: "," }, // cholet 9
+      { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 9
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 10
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 11
       { name: "", quantity: "", drinks: ",", combos: "" }, // cholet 12
   ],
 
   camel: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,singani parrales", combos: "parrales" },// camel 1
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" },// camel 2
-    { name: "", quantity: "", drinks: ",", combos: "" },// camel 3
+    { name: "Ignacio aguilar", quantity: "830", drinks: "flor de caña 5 años,singani parrales", combos: "parrales" },// camel 1
+    { name: "", quantity: "", drinks: ",", combos: "" },// camel 2
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,singani parrales", combos: "parrales" },// camel 3
   ],
   extras: [ // Nueva área
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 1
@@ -77,12 +77,12 @@ const areas = {
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 6
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 7
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 8
-    { name: "", quantity: "", drinks: ",", combos: "," }, // extras 9
+    { name: "", quantity: "", drinks: ",", combos: "" }, // extras 9
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 10
   ],
 
   Vip: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,viuda descalza", combos: "parrales" }, // Vip 1
+    { name: "Ignacio aguilar", quantity: "830", drinks: "viuda,flor de caña 5 años", combos: "parrales" }, // Vip 1
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 2
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 3
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 4
@@ -95,6 +95,7 @@ const areas = {
   ]
 
 };
+
 
 // Lista de stickers
 const stickers = {
@@ -735,13 +736,14 @@ document.addEventListener("click", (event) => {
   }
 });
 
+
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes, Mambo Botánico, Mambo Uva y Monster aquí
-  const cocaColaCantidad = 10;
-  const schweppesCantidad = 23;
-  const mamboBotanicoCantidad = 12; 
-  const mamboUvaCantidad = 6; 
-  const monsterCantidad = 14; // Cantidad de Monster
+  const cocaColaCantidad = 15;
+  const schweppesCantidad = 24;
+  const mamboBotanicoCantidad = 20; 
+  const mamboUvaCantidad = 10; 
+  const monsterCantidad = 8; // Cantidad de Monster
 
   const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, mamboBotanicoCantidad, mamboUvaCantidad, monsterCantidad);
 
