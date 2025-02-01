@@ -98,13 +98,13 @@ const areas = {
 
 // Lista de stickers
 const stickers = {
-  pacha: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  parrales: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  lounge: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  cholet: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  camel: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  extras: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg",
-  Vip: "WhatsApp Image 2025-01-30 at 4.07.35 PM.jpeg"
+  pacha: "icons8-table-top-view-96 (2).png",
+  parrales: "icons8-table-top-view-96 (2).png",
+  lounge: "icons8-table-top-view-96 (2).png",
+  cholet: "icons8-table-top-view-96 (2).png",
+  camel: "icons8-table-top-view-96 (2).png",
+  extras: "icons8-table-top-view-96 (2).png",
+  Vip: "icons8-table-top-view-96 (2).png"
 };
 
 // Definición de números de cuenta
