@@ -2,7 +2,7 @@ body {
   font-family: 'Walter Turncoat', cursive;
   text-align: center;
   background-color: black;
-  background: linear-gradient(to right, #030303, #53778d, #53778d, #53778d, #53778d,#53778d, #050505);
+  background: linear-gradient(to right, #272525, #816641, #718d34 , #718d34,#539771, #272525);
   /* Degradado */
   color: #39FF14;
   /* Texto verde neón */
@@ -47,7 +47,7 @@ h1 {
 .area.lounge .label,
 .area.parrales .label,
 .area.cholet .label,
-.area.vipsocios .label,
+.area.Vip .label,
 .area.extras .label,
 .area.camel .label {
   font-size: 1.5em;
@@ -64,8 +64,8 @@ h1 {
 }
 .area {
   max-width: 520px;  /* Ajusta el tamaño máximo para que no se estire demasiado */
-  border: 1px solid gray;
-  border-radius: 8px;
+  border: 1px solid #6b6666;
+  border-radius: 30px;
   padding: 19px;
   outline: 2px solid black;
   box-sizing: border-box;
@@ -152,28 +152,20 @@ h1 {
 .side-menu {
   position: fixed;
   top: 0;
-  left: 0;
-  /* Puedes ajustar esto según sea necesario */
+  left: -400px; /* Inicialmente fuera de la vista */
   width: 250px;
-  height: 90%;
-  background-color: rgb(0, 0, 0, 0.9);
-  /* Color atractivo */
+  height: 200px;
+  background-color: black;
   color: white;
   padding: 20px;
-  transition: transform 0.9s ease;
-  /* Transición suave */
+  transition: left 0.9s ease; /* Deslizar horizontalmente */
   z-index: 1001;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-  /* Sombra */
-  border-radius: 10px;
-  /* Esquinas redondeadas en todas las esquinas */
-  transform: translateY(-100%);
-  /* Inicialmente fuera de la vista hacia arriba */
+  box-shadow: 2px 0 10px rgb(245, 245, 245, 0.5);
+  border-radius: 7px;
 }
 
 .side-menu.open {
-  transform: translateY(0);
-  /* Mover hacia abajo a su posición original */
+  left: 0; /* Posición visible */
 }
 
 .side-menu h2 {
@@ -209,7 +201,7 @@ h1 {
 
 /* Contenedor del modal con contenido desplazable */
 .modal-content {
-  background: linear-gradient(to right, #030303, #53778d, #53778d, #53778d, #53778d,#53778d, #050505);
+  background: linear-gradient(to right, #896e24, #34894d);
   /* Degradado */
   margin: 4% auto;
   /* Margen para centrar */
@@ -296,7 +288,7 @@ h1 {
   /* Colapsar bordes */
   margin: 10px auto;
   /* Espacio superior y centrar horizontalmente */
-  background-color: black;
+  background-color: transparent;
   /* Color de fondo general */
   border-radius: 19px;
   /* Esquinas redondeadas */
@@ -312,7 +304,7 @@ h1 {
   /* Bordes de las celdas en blanco */
   padding: 8px;
   /* Espaciado interno */
-  background-color: black;
+  background-color: transparent;
   /* Color de fondo negro para celdas */
   color: white;
   /* Color de texto blanco */
@@ -321,7 +313,7 @@ h1 {
 
 /* Estilo para encabezados */
 .table th {
-  background-color: black;
+  background-color: transparent;
   /* Fondo de encabezado negro */
   color: white;
   /* Color de texto blanco */
@@ -551,35 +543,37 @@ h1 {
   animation: flipVerticalOut 1s ease-in forwards;
 }
 
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  /* Espaciado entre tarjetas */
+  margin-top: 20px;
+}
+
 .card {
   background: linear-gradient(135deg, white 50%, #d7d1d1 50%);
-  border-radius: 10px;
-  /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Sombra para dar efecto de elevación */
-  padding: 20px;
-  /* Espaciado interno */
-  position: relative;
-  /* Asegúrate de que el elemento tenga posición relativa */
-  top: -4px;
-  /* Ajusta este valor para subir el card */
+  border-radius: 12px;
+  /* Bordes más suaves */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  /* Elevación al pasar el cursor */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
 }
 
 .otros-montos-list {
   display: none;
-  /* Ocultar por defecto */
   overflow: hidden;
-  /* Evitar que el contenido sobresalga */
   transition: max-height 1.3s ease;
-  /* Transición suave */
   max-height: 0;
-  /* Altura máxima inicial */
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  /* Efecto de elevación al pasar el mouse */
-}
 
 .card-content {
   display: flex;
