@@ -739,8 +739,8 @@ document.addEventListener("click", (event) => {
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 13;
-  const schweppesCantidad = 15;
+  const cocaColaCantidad = 16;
+  const schweppesCantidad = 20;
   const monsterCantidad = 2; // Cantidad de Monster
 
   const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, monsterCantidad);
