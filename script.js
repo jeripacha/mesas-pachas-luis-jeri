@@ -2,14 +2,14 @@
 const areas = {
   pacha: [
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 1
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" },// pacha 2
-    { name: "", quantity: "", drinks: "", combos: "" },// pacha 3
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 2
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 3
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 4
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 5
-    { name: "Ignacio aguilar", quantity: "980", drinks: "viuda,", combos: "pachamama" },// pacha 6
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 6
     { name: "", quantity: "", drinks: ",", combos: "" },// pacha 7
-    { name: "Ignacio aguilar", quantity: "830", drinks: "viuda,flor de caña 5 años", combos: "parrales" },// pacha 8
-    { name: "Ignacio aguilar", quantity: "900", drinks: "simgami parrales,", combos: "pachamama" },// pacha 9
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 8
+    { name: "", quantity: "", drinks: ",", combos: "" },// pacha 9
   ],
 
   lounge: [
@@ -17,35 +17,35 @@ const areas = {
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 2
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 3
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 4
-      { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumleañero" }, // lounge 5
-      { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // lounge 6
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 5
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 6
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 7
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 8
-      { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,fernet", combos: "parrales" }, // lounge 9
+      { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 9
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 10
       { name: "", quantity: "", drinks: ",", combos: "" }, // lounge 11
   ],
 
 
   parrales: [
-    { name: "Ignacio aguilar", quantity: "760", drinks: "singani parrales,", combos: "jager" }, // parrales 1
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,singani parrales", combos: "cumpleañero" }, // parrales 2
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,viuda", combos: "parrales" }, // parrales 3
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,fernet", combos: "cumpleañero" }, // parrales 4
-    { name: "Ignacio aguilar", quantity: "980", drinks: "flor de caña 5 años,singani parrales", combos: "cumpleañero" }, // parrales 5
-    { name: "natalia rodriguez", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // parrales 6
-    { name: "natalia rodriguez", quantity: "900", drinks: "singani parrales,", combos: "pachamama" }, // parrales 7
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 8
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 9
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 7 años", combos: "cumpleañero" }, // parrales 10
-    { name: "Ignacio aguilar", quantity: "680", drinks: "flor de caña 5 años,viuda", combos: "parrales" }, // parrales 11
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,", combos: "pachamama" }, // parrales 12
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager" }, // parrales 13
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero" }, // parrales 14
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,", combos: "parrales" }, // parrales 15
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,vodka", combos: "cumpleañero" }, // parrales 16
-    { name: "Ignacio aguilar", quantity: "980", drinks: "viuda,flor de caña 5 años", combos: "cumpleañero" }, // parrales 17
-    { name: "Ignacio aguilar", quantity: "830", drinks: "flor de caña 5 años,singani parrales", combos: "parrales" }, // parrales 18
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 1
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 2
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 3
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 4
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 5
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 6
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 7
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 8
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 9
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 10
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 11
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 12
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 13
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 14
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 15
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 16
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 17
+    { name: "", quantity: "", drinks: ",", combos: "" }, // parrales 18
   ],
 
   cholet: [ // Nueva área
@@ -64,9 +64,9 @@ const areas = {
   ],
 
   camel: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "830", drinks: "flor de caña 5 años,singani parrales", combos: "parrales" },// camel 1
+    { name: "", quantity: "", drinks: ",", combos: "" },// camel 1
     { name: "", quantity: "", drinks: ",", combos: "" },// camel 2
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,singani parrales", combos: "parrales" },// camel 3
+    { name: "", quantity: "", drinks: ",", combos: "" },// camel 3
   ],
   extras: [ // Nueva área
     { name: "", quantity: "", drinks: ",", combos: "" }, // extras 1
@@ -82,7 +82,7 @@ const areas = {
   ],
 
   Vip: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "830", drinks: "viuda,flor de caña 5 años", combos: "parrales" }, // Vip 1
+    { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 1
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 2
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 3
     { name: "", quantity: "", drinks: ",", combos: "" }, // Vip 4
@@ -743,10 +743,13 @@ function mostrarGanancias() {
   const mamboBotanicoCantidad = 20; 
   const mamboUvaCantidad = 10; 
   const monsterCantidad = 8; // Cantidad de Monster
+  // Estilo para dispositivos pequeños
+ 
 
   const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, mamboBotanicoCantidad, mamboUvaCantidad, monsterCantidad);
 
   const gananciasContainer = document.getElementById("ganancias-container");
+ 
 
   // Limpiar contenido previo del modal
   gananciasContainer.innerHTML = "";
@@ -775,25 +778,6 @@ function mostrarGanancias() {
   `;
 
   gananciasContainer.innerHTML += tarjetasHtml;
-
-
-  // Estilo para dispositivos pequeños
-  let style = `
-    <style>
-      @media (max-width: 768px) {
-        .detalle-ventas table {
-          font-size: 14px; /* Reducir el tamaño de la fuente */
-        }
-        .detalle-ventas th, .detalle-ventas td {
-          padding: 6px; /* Reducir el padding */
-        }
-        .detalle-ventas h3 {
-          font-size: 18px; /* Reducir el tamaño del título */
-        }
-      }
-    </style>
-  `;
-
   // Mostrar detalles de ventas
   let detalleVentasHtml = `
     <div class="detalle-ventas">
@@ -801,9 +785,9 @@ function mostrarGanancias() {
       <table class="ventas-table" style="width: 100%; border-collapse: collapse;">
         <thead>
           <tr>
-            <th style="padding: 8px; border: 1px solid #ddd;">Producto</th>
-            <th style="padding: 8px; border: 1px solid #ddd;">Cantidad Usada</th>
-            <th style="padding: 8px; border: 1px solid #ddd;">Costo Invertido</th>
+            <th style="padding: 8px; border: 1px solid #000;">Producto</th>
+            <th style="padding: 8px; border: 1px solid #000;">Cantidad Usada</th>
+            <th style="padding: 8px; border: 1px solid #000;">Costo Invertido</th>
           </tr>
         </thead>
         <tbody>
@@ -812,9 +796,9 @@ function mostrarGanancias() {
   detalleVentas.forEach((venta) => {
     detalleVentasHtml += `
       <tr>
-        <td style="padding: 8px; border: 1px solid #ddd;">${venta.producto}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${venta.cantidad}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${venta.ingreso} Bs</td>
+        <td style="padding: 8px; border: 1px solid #000;">${venta.producto}</td>
+        <td style="padding: 8px; border: 1px solid #000;">${venta.cantidad}</td>
+        <td style="padding: 8px; border: 1px solid #000;">${venta.ingreso} Bs</td>
       </tr>
     `;
   });
