@@ -34,21 +34,44 @@ h1 {
   gap: 30px;
   /* Reduce aún más el espacio entre las áreas */
 }
+/* Estilo para los nombres de las áreas */
+.area .label {
+  font-size: 1.9em;
+  /* Ajusta este valor según el tamaño deseado */
+  font-weight: bold;
+  /* Opcional, si deseas que el texto sea más grueso */
+}
 
+/* Si deseas que cada área tenga un tamaño diferente de fuente */
+.area.pacha .label,
+.area.lounge .label,
+.area.parrales .label,
+.area.cholet .label,
+.area.vipsocios .label,
+.area.extras .label,
+.area.camel .label {
+  font-size: 1.5em;
+  /* Aquí puedes poner el tamaño que prefieras */
+  color: white;
+}
+
+/* También puedes agregar otros estilos como color o letra */
+.area .label {
+  color: black;
+  /* Ejemplo: Cambiar el color de las etiquetas */
+  text-transform: uppercase;
+  /* Cambiar el texto a mayúsculas */
+}
 .area {
-  width: 35%;
-  /* Ajusta el tamaño para que quepan dos áreas por fila */
+  max-width: 520px;  /* Ajusta el tamaño máximo para que no se estire demasiado */
   border: 1px solid gray;
   border-radius: 8px;
-  /* Border-radius más pequeño */
-  padding: 5px;
-  /* Menos padding para que todo sea más pequeño */
+  padding: 19px;
   outline: 2px solid black;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte el tamaño total */
   font-size: 0.9em;
-  /* Reduce el tamaño del texto */
 }
+
 
 .stickers {
   display: flex;
@@ -598,7 +621,7 @@ h1 {
 
 .porcentaje-container {
 
-  border-radius: 10px;
+  border-radius: 20px;
   /* Bordes redondeados */
   padding: 20px;
   /* Espaciado interno */
@@ -621,20 +644,19 @@ h1 {
 
 
 .porcentaje-circle {
-  width: 50px;
-  /* Ajusta el tamaño del círculo */
-  height: 50px;
-  /* Ajusta el tamaño del círculo */
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   border: 7px solid #2f1313;
-  /* Color de fondo del círculo */
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2em;
-  /* Reduce el tamaño del texto */
   color: #333;
+  flex-shrink: 0; /* Fija el tamaño del círculo */
+  min-width: 50px;
+  min-height: 50px;
 }
 
 .porcentaje-circle::before {
@@ -833,44 +855,40 @@ h1 {
 .tarjeta:hover {
   transform: scale(1.05);
 }
-
 .detalle-ventas {
-  width: 100%;
+  width: 100%; /* Usa el 100% del ancho disponible */
+  max-width: 100%; /* Asegura que no se desborde */
   margin-top: 20px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  /* Degradado */
   font-weight: bold;
-  /* Letras más gruesas */
+  overflow: hidden; /* Evita cualquier desbordamiento */
 }
 
 .ventas-table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%; /* Asegura que la tabla se ajuste al contenedor */
+  table-layout: auto; /* Permite que las columnas se ajusten según el contenido */
+  border-collapse: collapse; /* Elimina el espacio entre celdas */
 }
 
-.ventas-table th,
-.ventas-table td {
+.ventas-table th, .ventas-table td {
   border: 1px solid #ddd;
   padding: 12px;
-  /* Más espacio entre texto y bordes */
   text-align: left;
   font-weight: bold;
-  /* Letras más gruesas */
-  font-size: 20px;
-  /* Tamaño de letra aumentado */
+  font-size: 18px; /* Reduce el tamaño de la fuente para dispositivos móviles */
   color: #080808;
   background-color: #fafafa;
+  word-wrap: break-word; /* Permite que las palabras largas se ajusten a la celda */
+  overflow-wrap: break-word; /* Para asegurar que el contenido largo no se desborde */
 }
 
 .ventas-table th {
   background-color: #000000;
   color: #f6f4f4;
   font-weight: bold;
-  /* Letras más gruesas */
-  font-size: 22px;
-  /* Tamaño de letra aún más grande */
+  font-size: 20px;
 }
 
 .ventas-table tr:nth-child(even) {
@@ -878,8 +896,18 @@ h1 {
 }
 
 .ventas-table tr:hover {
-  background-color: #c8a2c8;
-  /* Lila al pasar el mouse */
+  background-color: #c8a2c8; /* Lila al pasar el mouse */
+}
+
+/* Estilos específicos para dispositivos pequeños */
+@media (max-width: 768px) {
+  .ventas-table th, .ventas-table td {
+    font-size: 18px; /* Reducir el tamaño de la fuente en pantallas pequeñas */
+    padding: 8px; /* Menos padding para mejor ajuste */
+  }
+  .detalle-ventas {
+    padding: 10px; /* Reducir el padding del contenedor en pantallas pequeñas */
+  }
 }
 
 /* Estilos generales de los íconos */
@@ -921,4 +949,20 @@ h1 {
   background-color: #d08691;
   padding: 5px;
   border-radius: 50%;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .icono-tarjeta {
+    width: 40px; /* Reducir tamaño de los íconos */
+    height: 40px;
+    margin-right: 8px; /* Reducir margen */
+    margin-top: 8px;
+  }
+
+  .icono-quantity, .icono-ganado, .icono-resultado {
+    width: 40px; /* Ajustar el tamaño de los íconos */
+    height: 40px;
+    padding: 4px; /* Reducir el padding para ajustarse mejor */
+  }
 }
