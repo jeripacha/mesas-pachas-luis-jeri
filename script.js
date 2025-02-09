@@ -1,96 +1,93 @@
-// Definición de stickers con nombre y cantidad
+// Definición de stickers con los campos vacíos
 const areas = {
   pacha: [
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "pacha 1" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "pacha 2" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "pacha 3" },
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "pacha 4" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "pacha 5" },
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,fernet branca", combos: "parrales", mesa: "pacha 6" },
-    { name: "Ignacio aguilar", quantity: "900", drinks: "viuda descalza,fernet branca", combos: "pacha", mesa: "pacha 7" },
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,fernet branca", combos: "cumpleañero", mesa: "pacha 8" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "pacha 9" },
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager", mesa: "pacha 1" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,vodka", combos: "cumpleañero", mesa: "pacha 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 3" },
+    { name: "Ignacio aguilar", quantity: "650", drinks: "singani parrales,", combos: "singani", mesa: "pacha 4" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 5" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 6" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 7" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 8" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 9" },
   ],
 
   lounge: [
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 1" },
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 5 años", combos: "parrales", mesa: "lounge 2" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 3" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 4" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 5" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 6" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 7" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 8" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 9" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 10" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "lounge 11" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 3" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 4" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "lounge 5" },
+    { name: "Ignacio aguilar", quantity: "800", drinks: "singani parrales,flor de caña 5 años", combos: "cascabel", mesa: "lounge 6" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 7" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 8" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 9" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 10" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 11" },
   ],
 
   parrales: [
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 1" },
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,fernet branca", combos: "pacha", mesa: "parrales 2" },
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,fernet branca", combos: "parrales", mesa: "parrales 3" },
-    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,fernet branca", combos: "parrales", mesa: "parrales 4" },
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 5" },
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama", mesa: "parrales 6" },
-    { name: "Ignacio aguilar", quantity: "1130", drinks: "singani parrales,fernet branca", combos: "cumpleañero", mesa: "parrales 7" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "parrales 8" },
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager", mesa: "parrales 9" },
-    { name: "Ignacio aguilar", quantity: "900", drinks: "singani parrales,", combos: "pachamama", mesa: "parrales 10" },
-    { name: "Ignacio aguilar", quantity: "760", drinks: "singani parrales,flor de caña 5 años", combos: "parrales", mesa: "parrales 11" },
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 12" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "parrales 13" },
-    { name: "Ignacio aguilar", quantity: "200", drinks: ",", combos: "", mesa: "parrales 14" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "parrales 15" },
-    { name: "Ignacio aguilar", quantity: "200", drinks: ",", combos: "", mesa: "parrales 16" },
-    { name: "Ignacio aguilar", quantity: "920", drinks: "singani parrales,flor de caña 5 años", combos: "pacha", mesa: "parrales 17" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "parrales 18" },
+    { name: "Ignacio aguilar", quantity: "800", drinks: "singani parrales,singani parrales", combos: "cascabel", mesa: "parrales 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 2" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "gin republica,singani parrales", combos: "cumpleañero", mesa: "parrales 3" },
+    { name: "Ignacio aguilar", quantity: "700", drinks: "jager,", combos: "jager", mesa: "parrales 4" },
+    { name: "Ignacio aguilar", quantity: "1000", drinks: "singani parrales,", combos: "pachamama", mesa: "parrales 5" },
+    { name: "MAMA", quantity: "780", drinks: "singani parrales,", combos: "singani", mesa: "parrales 6" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,", combos: "pachamama", mesa: "parrales 7" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 8" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 9" },
+    { name: "Ignacio aguilar", quantity: "760", drinks: "jager,", combos: "jager", mesa: "parrales 10" },
+    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager", mesa: "parrales 11" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 12" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 13" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 14" },
+    { name: "Ignacio aguilar", quantity: "800", drinks: "singani parrales,flor de caña 5 años", combos: "cascabel", mesa: "parrales 15" },
+    { name: "MAMA", quantity: "900", drinks: "singani parrales", combos: "singani", mesa: "parrales 16" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 17" },
+    { name: "Ignacio aguilar", quantity: "830", drinks: "singani parrales,flor de caña 5 años", combos: "cascabel", mesa: "parrales 18" },
   ],
 
-  cholet: [ // Nueva área
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 1" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 2" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 3" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 4" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 5" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 6" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 7" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 8" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 9" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 10" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 11" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "cholet 12" },
+  cholet: [
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 3" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 4" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 5" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 6" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 7" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 8" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 9" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 10" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 11" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 12" },
   ],
 
-  camel: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,singani parrales", combos: "cumpleañero", mesa: "camel 1" },
-    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "camel 2" },
-    { name: "Rosario Zabala", quantity: "500", drinks: "jager,", combos: "jager", mesa: "camel 3" },
-  ],
-  extras: [ // Nueva área
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 1" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 2" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 3" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 4" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 5" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 6" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 7" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 8" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 9" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "extras 10" },
+  camel: [
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "camel 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "camel 2" },
+    { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,singani parrales", combos: "cumpleañero", mesa: "camel 3" },
   ],
 
-  Vip: [ // Nueva área
-    { name: "Ignacio aguilar", quantity: "750", drinks: "singani parrales,vodka", combos: "", mesa: "Vip 1" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 2" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 3" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 4" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 5" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 6" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 7" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 8" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 9" },
-    { name: "", quantity: "", drinks: ",", combos: "", mesa: "Vip 10" },
+  extras: [
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 3" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 4" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 5" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 6" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 7" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 8" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 9" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 10" },
+  ],
+
+  Vip: [
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 3" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 4" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 5" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 6" },
   ]
 };
 
@@ -168,52 +165,23 @@ createSticker(extrasContainer, areas.extras, stickers.extras);
 createSticker(VipContainer, areas.Vip, stickers.Vip);
 
 
-// Función para calcular el total de cada área
 function calcularTotal() {
-  let totalPacha = areas.pacha.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
+  const ignorarNombre = "MAMA";
+
+  const calcularAreaTotal = (area) => area.reduce((acc, sticker) => {
+    if (sticker.name && sticker.quantity && !sticker.name.toUpperCase().includes(ignorarNombre)) {
       return acc + (Number(sticker.quantity) || 0);
     }
     return acc;
   }, 0);
 
-  let totalParrales = areas.parrales.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
-
-  let totalLounge = areas.lounge.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
-  let totalCholet = areas.cholet.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
-  let totalCamel = areas.camel.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
-  let totalExtras = areas.extras.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
-  let totalVip = areas.Vip.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity) { // Filtrar solo si hay nombre y cant
-      return acc + (Number(sticker.quantity) || 0);
-    }
-    return acc;
-  }, 0);
+  let totalPacha = calcularAreaTotal(areas.pacha);
+  let totalParrales = calcularAreaTotal(areas.parrales);
+  let totalLounge = calcularAreaTotal(areas.lounge);
+  let totalCholet = calcularAreaTotal(areas.cholet);
+  let totalCamel = calcularAreaTotal(areas.camel);
+  let totalExtras = calcularAreaTotal(areas.extras);
+  let totalVip = calcularAreaTotal(areas.Vip);
 
   const totalGeneral = totalPacha + totalParrales + totalLounge + totalCholet + totalCamel + totalExtras + totalVip;
 
@@ -221,7 +189,7 @@ function calcularTotal() {
 
   [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const name = sticker.name;
-    if (name && sticker.quantity) { // Filtrar solo si hay nombre y cantidad
+    if (name && sticker.quantity && !name.toUpperCase().includes(ignorarNombre)) {
       totalPorNombre[name] = (totalPorNombre[name] || 0) + (Number(sticker.quantity) || 0);
     }
   });
@@ -317,7 +285,31 @@ function calcularExtraidoPachamama() {
 
   return { totalExtraido, detallesExtraidos };
 }
-function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, monsterCantidad = 0) {
+// Función para calcular el total extraído para MAMA
+function calcularDepositoMama() {
+  let totalDepositoMama = 0;
+  let detallesMama = [];
+
+  // Recorremos todas las áreas y buscamos los stickers con el nombre "MAMA"
+  [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
+    if (sticker.name === "MAMA") {
+      const cantidad = Number(sticker.quantity);
+      if (cantidad >= 500) {
+        // Extraemos 500 de la cantidad
+        totalDepositoMama += 500;
+        detallesMama.push({
+          name: sticker.name,
+          cantidadExtraida: 500,
+          cantidadRestante: cantidad - 500,
+          mesa: sticker.mesa // Incluimos la mesa de donde se extrajo la cantidad
+        });
+      }
+    }
+  });
+
+  return { totalDepositoMama, detallesMama };
+}
+function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, monsterCantidad = 0, aguaTonicaCantidad = 0, simbaPomeloCantidad = 0, spriteCantidad = 0) {
   const precios = {
     "viuda descalza": 84,
     "singani parrales": 62,
@@ -328,7 +320,10 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
     cocaCola: 9,
     vodka: 85,
     "Schweppes Ginger Ale 1.5": 15,
-    monster: 15
+    monster: 15,
+    aguaTonica: 6,  // Precio de Agua Tónica
+    simbaPomelo: 9, // Precio de Simba Pomelo
+    sprite: 9,      // Precio de Sprite
   };
 
   let totalesDrinks = {}; // Acumular cantidades por tipo de drink
@@ -336,8 +331,11 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
 
   // Calcular totales por drink y sumar los quantity
   for (const area in areas) {
-    areas[area].forEach(({ quantity, drinks }) => {
-      totalQuantity += parseInt(quantity) || 0;
+    areas[area].forEach(({ quantity, drinks, name }) => {
+      // Verificar si el nombre no es "MAMA" antes de sumar la cantidad
+      if (name !== "MAMA") {
+        totalQuantity += parseInt(quantity) || 0;
+      }
 
       if (drinks) {
         drinks.split(",").forEach((drink) => {
@@ -365,17 +363,23 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
     detalleVentas.push({ producto: drink, cantidad, ingreso });
   }
 
-  // Calcular ingresos por Coca-Cola, Schweppes y Monster
+  // Calcular ingresos por Coca-Cola, Schweppes, Monster, Agua Tónica, Simba Pomelo, Sprite
   const ingresoCocaCola = cocaColaCantidad * precios.cocaCola;
   const ingresoSchweppes = schweppesCantidad * precios["Schweppes Ginger Ale 1.5"];
   const ingresoMonster = monsterCantidad * precios.monster;
+  const ingresoAguaTonica = aguaTonicaCantidad * precios.aguaTonica;
+  const ingresoSimbaPomelo = simbaPomeloCantidad * precios.simbaPomelo;
+  const ingresoSprite = spriteCantidad * precios.sprite;
 
-  totalGanadoDrinks += ingresoCocaCola + ingresoSchweppes + ingresoMonster;
+  totalGanadoDrinks += ingresoCocaCola + ingresoSchweppes + ingresoMonster + ingresoAguaTonica + ingresoSimbaPomelo + ingresoSprite;
 
-  // Agregar detalles de Coca-Cola, Schweppes y Monster
+  // Agregar detalles de Coca-Cola, Schweppes, Monster, Agua Tónica, Simba Pomelo, Sprite
   detalleVentas.push({ producto: "Coca-Cola", cantidad: cocaColaCantidad, ingreso: ingresoCocaCola });
   detalleVentas.push({ producto: "Schweppes Ginger Ale 1.5", cantidad: schweppesCantidad, ingreso: ingresoSchweppes });
   detalleVentas.push({ producto: "Monster", cantidad: monsterCantidad, ingreso: ingresoMonster });
+  detalleVentas.push({ producto: "Agua Tónica", cantidad: aguaTonicaCantidad, ingreso: ingresoAguaTonica });
+  detalleVentas.push({ producto: "Simba Pomelo", cantidad: simbaPomeloCantidad, ingreso: ingresoSimbaPomelo });
+  detalleVentas.push({ producto: "Sprite", cantidad: spriteCantidad, ingreso: ingresoSprite });
 
   // Calcular resultado final
   const resultado = Math.abs(totalGanadoDrinks - totalQuantity);
@@ -387,8 +391,6 @@ function calcularGanancias(areas, cocaColaCantidad = 0, schweppesCantidad = 0, m
     detalleVentas,
   };
 }
-
-
 
 // Función para mostrar el total y detalles en el modal
 function mostrarDetalles() {
@@ -524,6 +526,39 @@ function mostrarDetalles() {
         </tbody>
       </table>
     </div></div>`;
+  
+  // Llamada a la función calcularDepositoMama antes de usar 'detallesMama'
+  const { totalDepositoMama, detallesMama } = calcularDepositoMama();
+
+  // Generación de la tabla de MAMA
+  let mamaTable = `<div><h3 style="color: white;">DEPOSITOS QUE MAMA DEBE REALIZAR A PACHA</h3>
+      <div style="display: flex; justify-content: center;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Mesa</th>
+              <th>Cantidad Extraída</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+  detallesMama.forEach(detalle => {
+    mamaTable += `
+          <tr>
+            <td>${detalle.mesa}</td>
+            <td>${detalle.cantidadExtraida}</td>
+          </tr>`;
+  });
+
+  mamaTable += `
+          <tr style="font-weight: bold; color: white;">
+            <td style="color: black;">Total que deben depositar a PACHA:</td>
+            <td style="color: black;">${totalDepositoMama} bs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></div>`;
+
 
   let drinksTable = `<div><h3>BEBIDAS </h3>
     <div style="display: flex; justify-content: center;">
@@ -559,7 +594,7 @@ function mostrarDetalles() {
 
 
   // Agregamos todas las tablas al contenedor
-  totalContainer.innerHTML += containerStyle + combosTable + pachamamaTable + drinksTable + '</div>';
+  totalContainer.innerHTML += containerStyle + combosTable + pachamamaTable + mamaTable + drinksTable + '</div>';
 
 
 
@@ -739,11 +774,14 @@ document.addEventListener("click", (event) => {
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 16;
-  const schweppesCantidad = 20;
-  const monsterCantidad = 2; // Cantidad de Monster
+  const cocaColaCantidad = 6;
+  const schweppesCantidad = 17;
+  const monsterCantidad = 8; // Cantidad de Monster
+  const aguaTonicaCantidad = 2; // Cantidad de Agua Tónica
+  const simbaPomeloCantidad = 1; // Cantidad de Simba Pomelo
+  const spriteCantidad = 0; // Cantidad de Sprite
 
-  const { totalQuantity, totalGanado, resultado, detalleVentas } = calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, monsterCantidad);
+  const { totalQuantity, totalGanado, resultado, detalleVentas } =calcularGanancias(areas, cocaColaCantidad, schweppesCantidad, monsterCantidad, aguaTonicaCantidad, simbaPomeloCantidad, spriteCantidad);
 
   const gananciasContainer = document.getElementById("ganancias-container");
 
@@ -777,7 +815,6 @@ function mostrarGanancias() {
   gananciasContainer.innerHTML += tarjetasHtml;
 
   // Mostrar mensaje o tabla según las cantidades
-  // Mostrar mensaje o tabla según las cantidades
   let detalleVentasHtml = `
     <div class="detalle-ventas">
       <h3>Detalles De Inversión</h3>
@@ -792,7 +829,6 @@ function mostrarGanancias() {
         }
       </style>
   `;
-
 
   if (cocaColaCantidad === 0 && schweppesCantidad === 0 && monsterCantidad === 0) {
     detalleVentasHtml += `<p>No hay productos añadidos.</p>`;
@@ -809,14 +845,17 @@ function mostrarGanancias() {
         <tbody>
     `;
 
+    // Filtrar las ventas donde la cantidad es mayor que 0
     detalleVentas.forEach((venta) => {
-      detalleVentasHtml += `
-        <tr>
-          <td>${venta.producto}</td>
-          <td>${venta.cantidad}</td>
-          <td>${venta.ingreso} Bs</td>
-        </tr>
-      `;
+      if (venta.cantidad > 0) {
+        detalleVentasHtml += `
+          <tr>
+            <td>${venta.producto}</td>
+            <td>${venta.cantidad}</td>
+            <td>${venta.ingreso} Bs</td>
+          </tr>
+        `;
+      }
     });
 
     detalleVentasHtml += `
