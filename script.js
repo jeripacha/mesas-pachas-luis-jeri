@@ -37,7 +37,7 @@ const areas = {
     { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 8" },
     { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 9" },
     { name: "Ignacio aguilar", quantity: "760", drinks: "jager,", combos: "jager", mesa: "parrales 10" },
-    { name: "Ignacio aguilar", quantity: "680", drinks: "jager,", combos: "jager", mesa: "parrales 11" },
+    { name: "", quantity: "", drinks: ",", combos: "", mesa: "parrales 11" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 12" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 13" },
     { name: "Ignacio aguilar", quantity: "980", drinks: "singani parrales,flor de caña 5 años", combos: "cumpleañero", mesa: "parrales 14" },
