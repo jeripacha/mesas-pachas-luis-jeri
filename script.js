@@ -166,10 +166,8 @@ createSticker(VipContainer, areas.Vip, stickers.Vip);
 
 
 function calcularTotal() {
-  const ignorarNombre = "MAMA";
-
   const calcularAreaTotal = (area) => area.reduce((acc, sticker) => {
-    if (sticker.name && sticker.quantity && !sticker.name.toUpperCase().includes(ignorarNombre)) {
+    if (sticker.name && sticker.quantity) {
       return acc + (Number(sticker.quantity) || 0);
     }
     return acc;
@@ -189,7 +187,7 @@ function calcularTotal() {
 
   [...areas.pacha, ...areas.parrales, ...areas.lounge, ...areas.cholet, ...areas.camel, ...areas.extras, ...areas.Vip].forEach(sticker => {
     const name = sticker.name;
-    if (name && sticker.quantity && !name.toUpperCase().includes(ignorarNombre)) {
+    if (name && sticker.quantity) {
       totalPorNombre[name] = (totalPorNombre[name] || 0) + (Number(sticker.quantity) || 0);
     }
   });
@@ -199,6 +197,7 @@ function calcularTotal() {
     totalPorNombre,
   };
 }
+
 
 // Función para contar total de combos y cuántos de cada tipo
 function contarCombos() {
@@ -477,7 +476,10 @@ function mostrarDetalles() {
 
   let totalCombosCount = 0;
 
-  for (const [combo, count] of Object.entries(totalCombos)) {
+  // Ordenar por cantidad de mayor a menor
+  const sortedCombos = Object.entries(totalCombos).sort(([, a], [, b]) => b - a);
+
+  for (const [combo, count] of sortedCombos) {
     combosTable += `
         <tr>
           <td>${combo}</td>
@@ -494,7 +496,6 @@ function mostrarDetalles() {
   </tbody>
   </table>
   </div></div>`;
-
 
   // Obtener los detalles extraídos
   const { totalExtraido, detallesExtraidos } = calcularExtraidoPachamama();
@@ -559,8 +560,7 @@ function mostrarDetalles() {
       </table>
     </div></div>`;
 
-
-  let drinksTable = `<div><h3>BEBIDAS </h3>
+  let drinksTable = `<div><h3>BEBIDAS</h3>
     <div style="display: flex; justify-content: center;">
       <table class="table">
         <thead>
@@ -573,7 +573,10 @@ function mostrarDetalles() {
 
   let totalDrinksCount = 0;
 
-  for (const [drink, count] of Object.entries(totalDrinks)) {
+  // Ordenar por cantidad de mayor a menor
+  const sortedDrinks = Object.entries(totalDrinks).sort(([, a], [, b]) => b - a);
+
+  for (const [drink, count] of sortedDrinks) {
     drinksTable += `
           <tr>
             <td>${drink}</td>
@@ -584,12 +587,13 @@ function mostrarDetalles() {
 
   drinksTable += `
           <tr style="font-weight: bold; color: white;">
-             <td style="color: black;">Total:</td>
-           <td style="color: black;">${totalDrinksCount}</td>
+            <td style="color: black;">Total:</td>
+            <td style="color: black;">${totalDrinksCount}</td>
           </tr>
         </tbody>
       </table>
-    </div></div>`;
+    </div>
+  </div>`;
 
 
 
@@ -701,7 +705,7 @@ function mostrarDetalles() {
   const porcentajeContainer = document.createElement("div");
   porcentajeContainer.className = "porcentaje-container"; // Clase para CSS
   porcentajeContainer.innerHTML = `
-    <h3>Porcentaje de áreas Ocupadas</h3>
+    <h3>Porcentaje de áreas Vendidas</h3>
     <div class="porcentaje-area">
       <div class="area pacha">
         <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.pacha.toFixed(2)}%;"></div>

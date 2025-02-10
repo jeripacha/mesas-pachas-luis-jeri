@@ -2,7 +2,7 @@ body {
   font-family: 'Walter Turncoat', cursive;
   text-align: center;
   background-color: black;
-  background: linear-gradient(to right, #272525, #816641, #718d34 , #718d34,#539771, #272525);
+  background: linear-gradient(to right, #272525, #816641,  #893438 , #893438,  #893438, #893438, #893438,#816641,#272525);
   /* Degradado */
   color: #39FF14;
   /* Texto verde neón */
@@ -13,6 +13,11 @@ body {
   /* Cambia a verde neón al pasar el ratón */
 }
 
+
+/* Bloquea el scroll en el body */
+.no-scroll {
+  overflow: hidden;
+}
 
 .header-image {
   width: 25%;
@@ -201,30 +206,40 @@ h1 {
 
 /* Contenedor del modal con contenido desplazable */
 .modal-content {
-  background: linear-gradient(to right, #896e24, #34894d);
+  background: linear-gradient(to right, #893438, #896e24,#896e24, #893438);
   /* Degradado */
-  margin: 4% auto;
+  top: 7px; /* Ajusta el valor para mover el modal hacia arriba */
   /* Margen para centrar */
-  padding: 20px;
+  padding: 8px;
   /* Espaciado interno */
   color: white;
   /* Color de texto blanco */
-  width: 80%;
+  width: 1321px;
   /* Ancho del modal */
-  border-radius: 8px;
+  border-radius: 3px;
   /* Bordes redondeados */
   border: 2px solid white;
   /* Borde blanco */
   text-align: center;
   /* Centrar el contenido */
-  max-height: 80vh;
+  max-height: 637px;
   /* Establece una altura máxima */
   overflow-y: auto;
   /* Permite el desplazamiento vertical dentro del modal */
   padding-right: 15px;
   /* Espacio extra para la barra de desplazamiento */
+  
 }
 
+@media (max-width: 480px) {
+  .modal-content {
+    width: 396px;
+    max-height: 803px;
+    padding: 5px; /* Reducimos el padding para más espacio */
+
+    
+  }
+}
 /* Estilo para la X de cierre del modal */
 .close {
   color: #aaa;
