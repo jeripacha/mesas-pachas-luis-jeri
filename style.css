@@ -1,11 +1,46 @@
 body {
   font-family: 'Walter Turncoat', cursive;
   text-align: center;
-  background-color: black;
-  background: linear-gradient(to right, #272525, #816641,  #893438 , #893438,  #893438, #893438, #893438,#816641,#272525);
-  /* Degradado */
+  background: linear-gradient(to right, 
+  #e91e63, #9c27b0, 
+    #2196f3, #00bcd4, #4caf50, #ff9800);
+  /* Degradado multicolor con 9 colores para un estilo vibrante */
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  /* Animación para mover el fondo */
+  color: #e0b3ff;
+  /* Texto violeta claro neón */
+  font-weight: bold;
+  text-shadow: 0 0 6px #b266ff;
+  /* Brillo sutil al texto */
+}
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1, h2, h3, p {
+  color: #e0b3ff;
+  /* Texto con el mismo tono de violeta claro neón */
+  text-shadow: 0 0 6px #b266ff, 0 0 10px #b266ff;
+  /* Sombra sutil para hacer resaltar el texto */
+}
+
+a {
   color: #39FF14;
-  /* Texto verde neón */
+  /* Enlaces de color verde neón */
+  text-decoration: none;
+  /* Sin subrayado en los enlaces */
+}
+
+a:hover {
+  color: #ff00ff;
+  /* Cambio de color en hover a un tono fucsia vibrante */
+  text-shadow: 0 0 8px #ff00ff;
+  /* Efecto de resplandor al pasar el ratón sobre el enlace */
 }
 
 .button:hover {
@@ -135,7 +170,7 @@ h1 {
   transform: translateX(-50%);
   color: white;
   font-weight: bold;
-  background-image: linear-gradient(to bottom, rgba(18, 18, 18, 1), rgb(142, 47, 47, 0.8));
+  background-image: linear-gradient(to bottom, rgba(18, 18, 18, 1), rgb(47, 110, 142, 0.8));
   padding: 2px 5px;
   border-radius: 5px;
   display: none;
@@ -160,7 +195,12 @@ h1 {
   left: -400px; /* Inicialmente fuera de la vista */
   width: 250px;
   height: 200px;
-  background-color: black;
+   background: linear-gradient(to right, 
+    #e91e63, #9c27b0, 
+      #2196f3, #00bcd4, #4caf50, #ff9800);
+  /* Degradado de 9 colores vibrantes al estilo discoteca */
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite; /* Animación para mover el fondo */
   color: white;
   padding: 20px;
   transition: left 0.9s ease; /* Deslizar horizontalmente */
@@ -168,6 +208,14 @@ h1 {
   box-shadow: 2px 0 10px rgb(245, 245, 245, 0.5);
   border-radius: 7px;
 }
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 .side-menu.open {
   left: 0; /* Posición visible */
@@ -206,30 +254,32 @@ h1 {
 
 /* Contenedor del modal con contenido desplazable */
 .modal-content {
-  background: linear-gradient(to right, #893438, #896e24,#896e24, #893438);
-  /* Degradado */
+   background: linear-gradient(to right, 
+    #e91e63, #9c27b0, 
+      #2196f3, #00bcd4, #4caf50, #ff9800);
+  /* Degradado multicolor con 9 colores al estilo discoteca */
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  /* Animación para mover el fondo */
   top: 7px; /* Ajusta el valor para mover el modal hacia arriba */
-  /* Margen para centrar */
-  padding: 8px;
-  /* Espaciado interno */
-  color: white;
-  /* Color de texto blanco */
-  width: 1321px;
-  /* Ancho del modal */
-  border-radius: 3px;
-  /* Bordes redondeados */
-  border: 2px solid white;
-  /* Borde blanco */
-  text-align: center;
-  /* Centrar el contenido */
-  max-height: 637px;
-  /* Establece una altura máxima */
-  overflow-y: auto;
-  /* Permite el desplazamiento vertical dentro del modal */
-  padding-right: 15px;
-  /* Espacio extra para la barra de desplazamiento */
-  
+  padding: 8px; /* Espaciado interno */
+  color: #e0b3ff; /* Color de texto violeta claro neón */
+  width: 1321px; /* Ancho del modal */
+  border-radius: 3px; /* Bordes redondeados */
+  border: 2px solid #4c0070; /* Borde violeta oscuro */
+  text-align: center; /* Centrar el contenido */
+  max-height: 637px; /* Establece una altura máxima */
+  overflow-y: auto; /* Permite el desplazamiento vertical dentro del modal */
+  padding-right: 15px; /* Espacio extra para la barra de desplazamiento */
 }
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 @media (max-width: 480px) {
   .modal-content {
@@ -237,7 +287,7 @@ h1 {
     max-height: 803px;
     padding: 5px; /* Reducimos el padding para más espacio */
 
-    
+
   }
 }
 /* Estilo para la X de cierre del modal */
@@ -311,49 +361,51 @@ h1 {
   /* Para asegurar que el borde redondeado se aplique correctamente */
 }
 
-
-
 .table th,
 .table td {
-  border: 5px solid white;
-  /* Bordes de las celdas en blanco */
+  border: 1px solid #4c0070;
   padding: 8px;
-  /* Espaciado interno */
-  background-color: transparent;
-  /* Color de fondo negro para celdas */
-  color: white;
-  /* Color de texto blanco */
-
+  background: linear-gradient(135deg, #1a1a2e, #3f0d3e);
+  color: #e0b3ff;
+  font-weight: bold;
+  text-shadow: 0 0 4px #b266ff;
 }
 
-/* Estilo para encabezados */
 .table th {
   background-color: transparent;
-  /* Fondo de encabezado negro */
   color: white;
-  /* Color de texto blanco */
+  text-align: center;
 }
 
-/* Alinear encabezados */
 .table th:nth-child(1) {
   text-align: left;
-  /* Alinear "Cuenta" a la izquierda */
 }
 
 .table th:nth-child(2) {
   text-align: right;
-  /* Alinear "Monto Depositado" a la derecha */
 }
 
-/* Alinear celdas */
 .table td:nth-child(1) {
   text-align: left;
-  /* Alinear nombres a la izquierda */
 }
 
 .table td:nth-child(2) {
   text-align: right;
-  /* Alinear montos a la derecha */
+
+
+}
+
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .table th, .table td {
+    font-size: 14px;
+  }
 }
 
 #side-menu ul li img {
@@ -567,13 +619,21 @@ h1 {
 }
 
 .card {
-  background: linear-gradient(135deg, white 50%, #d7d1d1 50%);
+   background: linear-gradient(to right, 
+     #9c27b0, 
+      #2196f3, #00bcd4, #ff9800);
+    /* Degradado multicolor con 9 colores para un estilo vibrante */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    /* Animación para mover el fondo */
+    color: #e0b3ff;
   border-radius: 12px;
   /* Bordes más suaves */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgb(170, 19, 19, 0.15);
   padding: 18px;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
+ 
 }
 
 .card:hover {
@@ -604,14 +664,14 @@ h1 {
   /* Negrita para el título */
   font-size: 1.2em;
   /* Tamaño de fuente más grande */
-  color: #333;
+  color: #ffffff;
   /* Color del texto */
 }
 
 .card-value {
   font-size: 1.5em;
   /* Tamaño de fuente más grande para el valor */
-  color: #007bff;
+  color: #f2f2f2;
   /* Color del texto para el valor */
   margin-top: 5px;
   /* Espaciado superior */
@@ -656,7 +716,7 @@ h1 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  border: 7px solid #2f1313;
+  border: 7px solid #f1f2ed;
   position: relative;
   display: flex;
   justify-content: center;
@@ -677,9 +737,9 @@ h1 {
   height: 100%;
   border-radius: 50%;
   clip-path: inset(0 50% auto 0);
-  background: conic-gradient(#edebe8 var(--porcentaje),
+  background: conic-gradient(#00bcd4 var(--porcentaje),
       /* Color ocupado */
-      #0a0a0a var(--porcentaje) 100%
+      transparent var(--porcentaje) 100%
       /* Color no ocupado */
     );
 }
