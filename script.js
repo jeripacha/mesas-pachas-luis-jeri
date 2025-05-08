@@ -578,7 +578,7 @@ function calcularDepositoMama() {
     ...areas.Vip,
   ].forEach((sticker) => {
     if (
-      (sticker.name === "MAMA" || sticker.name === "natalia rodriguez") &&
+      (sticker.name === "20151933491352" || sticker.name === "natalia rodriguez") &&
       sticker.combos === "pachamama"
     ) {
       const cantidad = Number(sticker.quantity);
