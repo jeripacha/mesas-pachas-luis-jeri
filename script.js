@@ -4,7 +4,7 @@ const areas = {
       name: "pacha sunset",
       quantity: "980",
       drinks: "parrales,gin republica",
-      combos: "cumpleañero",
+      combos: "cumpleañer",
       mesa: "pacha 1",
     },
     { name: "ignacio aguilar", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "pacha 2" },
