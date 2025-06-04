@@ -266,7 +266,7 @@ const areas = {
       mesa: "parrales 16",
     },
     {
-      name: "",
+      name: "fernando sejas",
       quantity: "980",
       drinks: "parrales,FDC5",
       combos: "cumpleañero",
