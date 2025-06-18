@@ -737,17 +737,22 @@ function mostrarDetalles() {
     pachamama: 0,
   };
 
-  // Contar las mesas por combo en todas las áreas especificadas
-  areas.pacha
-    .concat(areas.lounge, areas.parrales, areas.cholet, areas.camel, areas.Vip)
-    .forEach((sticker) => {
-      const combo = sticker.combos; // Obtener el combo
-      // Solo contar los combos mencionados
-      if (comboCounts.hasOwnProperty(combo)) {
-        comboCounts[combo]++;
-      }
-    });
-
+ // Contar las mesas por combo en todas las áreas especificadas (ahora con extras)
+areas.pacha
+  .concat(
+    areas.lounge,
+    areas.parrales,
+    areas.cholet,
+    areas.camel,
+    areas.Vip,
+    areas.extras // 
+  )
+  .forEach((sticker) => {
+    const combo = sticker.combos?.toLowerCase().trim(); // Normalizamos por si acaso
+    if (combo && comboCounts.hasOwnProperty(combo)) {
+      comboCounts[combo]++;
+    }
+  });
   // Mostrar el conteo de las mesas por combo
   const countContainer = document.getElementById("count-container");
   countContainer.innerHTML = `
