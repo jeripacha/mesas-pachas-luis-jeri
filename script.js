@@ -65,7 +65,7 @@ const areas = {
   camel: [
     { name: "pacha sunset", quantity: "980", drinks: "parrales, gin republica", combos: "cumpleañero", mesa: "camel 1" },
     { name: "pacha sunset", quantity: "800", drinks: "parrales,FDC5", combos: "cascabel", mesa: "camel 2" },
-    { name: "pacha sunset", quantity: "930", drinks: "parrales, viusa descalza", combos: "cumpleañero", mesa: "camel 3" },
+    { name: "pacha sunset", quantity: "930", drinks: "parrales, viuda descalza", combos: "cumpleañero", mesa: "camel 3" },
   ],
 
   extras: [
@@ -857,10 +857,10 @@ document.addEventListener("click", (event) => {
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 36;
-  const schweppesCantidad = 50;
-  const monsterCantidad = 6; // Cantidad de Monster
-  const aguaTonicaCantidad = 0; // Cantidad de Agua Tónica
+  const cocaColaCantidad = 37;
+  const schweppesCantidad = 63;
+  const monsterCantidad = 4; // Cantidad de Monster
+  const aguaTonicaCantidad = 8; // Cantidad de Agua Tónica
   const simbaPomeloCantidad = 3; // Cantidad de Simba Pomelo
   const spriteCantidad = 0; // Cantidad de Sprite
 
