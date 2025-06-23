@@ -95,13 +95,13 @@ const areas = {
 
 // Lista de stickers
 const stickers = {
-  pacha: "icons8-table-top-view-96 (2).png",
-  parrales: "icons8-table-top-view-96 (2).png",
-  lounge: "icons8-table-top-view-96 (2).png",
-  cholet: "icons8-table-top-view-96 (2).png",
-  camel: "icons8-table-top-view-96 (2).png",
-  extras: "icons8-table-top-view-96 (2).png",
-  Vip: "icons8-table-top-view-96 (2).png",
+  pacha: "1750695438067.png",
+  parrales: "1750695438067.png",
+  lounge: "1750695438067.png",
+  cholet: "1750695438067.png",
+  camel: "1750695438067.png",
+  extras: "1750695438067.png",
+  Vip: "1750695438067.png",
 };
 
 // Definición de números de cuenta
@@ -859,11 +859,11 @@ document.addEventListener("click", (event) => {
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 37;
-  const schweppesCantidad = 63;
+  const cocaColaCantidad = 40;
+  const schweppesCantidad = 56;
   const monsterCantidad = 4; // Cantidad de Monster
-  const aguaTonicaCantidad = 8; // Cantidad de Agua Tónica
-  const simbaPomeloCantidad = 3; // Cantidad de Simba Pomelo
+  const aguaTonicaCantidad = 2; // Cantidad de Agua Tónica
+  const simbaPomeloCantidad = 2; // Cantidad de Simba Pomelo
   const spriteCantidad = 0; // Cantidad de Sprite
 
   const { totalQuantity, totalGanado, resultado, detalleVentas } =
