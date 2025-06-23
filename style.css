@@ -14,6 +14,61 @@ body {
   text-shadow: 0 0 6px #b266ff;
   /* Brillo sutil al texto */
 }
+.header-image {
+  width: 83px !important;              /* Tamaño */
+  height: auto;
+  display: block;
+  margin: -8px auto 0;      /* Centrado vertical como ya tenías */
+  transform: translateX(-145px); /* Mueve horizontalmente sin afectar altura */
+  position: relative;
+  top: 7px;
+  z-index: 90;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Para body y html */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita scroll horizontal por desbordes */
+}
+h1 {
+  color: black;
+}
+.franja-con-header {
+position: relative;
+width: 100vw;
+height: 90px; /* igual que la franja */
+overflow: visible;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.franja-inferior {
+  position: absolute;
+  top: 20px; /* Mueve hacia abajo para crear espacio arriba */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajuste para que quede exactamente al centro */
+  width: 92%; /* Espacio a los costados */
+  height: 70px;
+  z-index: 1;
+
+  background: linear-gradient(135deg, #e6f2ec88, #f2e6f588, #ffe6f288); /* Colores pastel con transparencia */
+  backdrop-filter: blur(12px); /* El truco: desenfoque detrás */
+  -webkit-backdrop-filter: blur(12px); /* Soporte en Safari/iOS */
+
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
 
 /* Animación del degradado */
 @keyframes gradientAnimation {
@@ -64,51 +119,7 @@ a:hover {
 h1 {
   color: black;
 }
-.franja-con-header {
-    position: relative;
-    width: 100vw;
-    height: 70px; /* igual que la franja */
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.franja-inferior {
-    position: absolute;
-    width: 100%;
-    height: 70px;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    background: linear-gradient(135deg, #e6f2ec, #f2e6f5, #ffe6f2);
-  
-}
-.header-image {
-  width: 85px !important;              /* Tamaño */
-  height: auto;
-  display: block;
-  margin: -3px auto 0;      /* Centrado vertical como ya tenías */
-  transform: translateX(100px); /* Mueve horizontalmente sin afectar altura */
-  position: relative;
-  z-index: 20;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Para body y html */
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Evita scroll horizontal por desbordes */
-}
-h1 {
-  color: black;
-}
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -222,10 +233,11 @@ h1 {
 
 #top-left-sticker {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 29px;
+  left: 340px;
   z-index: 1000;
   width: 50px;
+  
 }
 
 #top-left-sticker img {
@@ -625,7 +637,7 @@ h1 {
   /* Cambia el cursor al pasar sobre el "botón" */
   transition: background-color 0.3s;
   /* Efecto de transición al pasar el mouse */
-  margin: 10px;
+margin-top: 10px;
   /* Margen blanco alrededor del botón */
 }
 
@@ -653,9 +665,7 @@ h1 {
   cursor: pointer;
   /* Cambia el cursor al pasar sobre el "botón" */
   transition: background-color 0.3s;
-  /* Efecto de transición al pasar el mouse */
-  margin: 10px;
-  /* Margen blanco alrededor del botón */
+  margin-top: 20px;
 }
 
 #opcion-1:hover {
@@ -1123,4 +1133,4 @@ h1 {
     height: 40px;
     padding: 4px; /* Reducir el padding para ajustarse mejor */
   }
-}
+    }
