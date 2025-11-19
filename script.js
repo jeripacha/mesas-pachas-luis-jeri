@@ -105,7 +105,7 @@ const stickers = {
 // Definición de números de cuenta
 const accountNumbers = {
   "pacha sunset": "201*****307",
-  "ignacio aguilar": "150*****327"
+  "ignacio aguilar": "150*****327",
   "mama: "150*****327",
 };
 
