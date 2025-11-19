@@ -64,7 +64,7 @@ const areas = {
 
   camel: [
     { name: "p", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "camel 1" },
-    { name: "", quantity: "600", drinks: "jager", combos: "jager", mesa: "camel 2" },
+    { name: "p", quantity: "600", drinks: "jager", combos: "jager", mesa: "camel 2" },
     { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "camel 3" },
   ],
 
