@@ -106,7 +106,7 @@ const stickers = {
 const accountNumbers = {
   "pacha sunset": "201*****307",
   "ignacio aguilar": "150*****327"
-  mama: "150*****327",
+  "mama: "150*****327",
 };
 
 // Seleccionar los contenedores para cada área
