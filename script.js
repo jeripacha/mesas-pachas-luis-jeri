@@ -1,6 +1,6 @@
 const areas = {
   pacha: [
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 1" },
+    { name: "mm", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 1" },
     { name: "p", quantity: "930", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 2" },
     { name: "p", quantity: "980", drinks: "FDC5,gin republica", combos: "cumpleañero", mesa: "pacha 3" },
     { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 4" },
