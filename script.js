@@ -1,10 +1,10 @@
 const areas = {
   pacha: [
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "", mesa: "pacha 1" },
-    { name: "p", quantity: "930", drinks: "FDC5,parrales", combos: "", mesa: "pacha 2" },
-    { name: "p", quantity: "980", drinks: "FDC5,gin republica", combos: "", mesa: "pacha 3" },
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "", mesa: "pacha 4" },
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "", mesa: "pacha 5" },
+    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 1" },
+    { name: "p", quantity: "930", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 2" },
+    { name: "p", quantity: "980", drinks: "FDC5,gin republica", combos: "cumpleañero", mesa: "pacha 3" },
+    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 4" },
+    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "pacha 5" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 6" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 7" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 8" },
@@ -106,7 +106,7 @@ const stickers = {
 const accountNumbers = {
   "pacha sunset": "201*****307",
   "ignacio aguilar": "150*****327",
-  "mama: "150*****327",
+  mama: "150*****327",
 };
 
 // Seleccionar los contenedores para cada área
