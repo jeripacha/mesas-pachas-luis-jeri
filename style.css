@@ -1,19 +1,27 @@
 body {
   font-family: 'Walter Turncoat', cursive;
   text-align: center;
-  background: linear-gradient(to right, 
-  #e91e63, #9c27b0, 
-    #2196f3, #00bcd4, #4caf50, #ff9800);
-  /* Degradado multicolor con 9 colores para un estilo vibrante */
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
-  /* Animación para mover el fondo */
-  color: #e0b3ff;
-  /* Texto violeta claro neón */
+
+  /* ... estilos de texto ... */
+  background: linear-gradient(45deg, 
+    #884EA0,    /* Violeta Púrpura Intenso */
+    #D35400,    /* Naranja Cobre/Teja */
+    #C0392B,    /* Rojo Vibrante */
+    #F39C12     /* Amarillo Brillante/Azafrán */
+  );
+
+  /* Eliminamos la animación de movimiento para un estilo más estable y tradicional */
+  background-size: auto; 
+  animation: none; 
+
+  /* Mantenemos el estilo de texto, pero puedes ajustarlo */
+  color: #F8F8F8; /* Cambiado a blanco casi puro para mayor contraste */
   font-weight: bold;
-  text-shadow: 0 0 6px #b266ff;
-  /* Brillo sutil al texto */
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5); /* Sombra oscura para destacar */
 }
+
+/* 🛑 IMPORTANTE: Si mantienes la animación anterior, elimínala o el degradado fallará: */
+/* @keyframes gradientAnimation { ... } */
 .header-image {
   width: 83px !important;              /* Tamaño */
   height: auto;
@@ -52,27 +60,35 @@ align-items: center;
 
 .franja-inferior {
   position: absolute;
-  top: 20px; /* Mueve hacia abajo para crear espacio arriba */
-  left: 50%; /* Centra horizontalmente */
-  transform: translateX(-50%); /* Ajuste para que quede exactamente al centro */
-  width: 92%; /* Espacio a los costados */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   height: 70px;
   z-index: 1;
 
-  background: linear-gradient(135deg, #e6f2ec88, #f2e6f588, #ffe6f288); /* Colores pastel con transparencia */
-  backdrop-filter: blur(12px); /* El truco: desenfoque detrás */
-  -webkit-backdrop-filter: blur(12px); /* Soporte en Safari/iOS */
+  /* --- CAMBIOS AQUÍ --- */
+  background-image: url('aguayo.jpg'); /* Reemplaza 'mi-imagen-de-fondo.jpg' con la ruta real de tu imagen */
+  background-size: 120%; /* Ajusta la imagen para que cubra todo el área */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  /*
+  IMPORTANTE: Se mantiene el 'backdrop-filter: blur(12px);' 
+  para crear el efecto "Glassmorphism" (vidrio esmerilado)
+  sobre lo que haya detrás de la franja.
+  */
+
+
 
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgb(0, 255, 110, 0.3);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
-
 /* Animación del degradado */
 @keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
+  0% { background-position: 0% 40%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
@@ -237,7 +253,7 @@ h1 {
   left: 340px;
   z-index: 1000;
   width: 50px;
-  
+
 }
 
 #top-left-sticker img {
@@ -537,16 +553,19 @@ h1 {
     margin-top: 12px;
     /* Ajusta el margen superior para bajar la imagen */
   }
-
-  .sticker {
-    position: relative;
-    /* Asegúrate de que el sticker tenga posición relativa */
-    width: 80px;
-    height: 80px;
-    overflow: visible;
-    /* Permite que el contenido sobresalga */
+  .contenedor-stickers {
+    display: grid; /* Habilita CSS Grid */
+    /* Define explícitamente 3 columnas con un ancho de 110px cada una */
+    grid-template-columns: 110px 110px 110px; 
   }
 
+  /* Y mantienes el código de tu sticker */
+  .sticker {
+    position: relative;
+    width: 85px; 
+    height: 85px;
+    overflow: visible; 
+  }
   .sticker-number {
     top: 0;
     /* Ajusta a 0 para evitar corte */
@@ -556,11 +575,11 @@ h1 {
   }
 
   .sticker-quantity {
-    top: 30px;
+    top: 68px;
     /* Ajusta la posición del número de cantidad */
-    color: #30d614;
+    color: #000000;
     /* Color amarillo */
-    font-size: 12px;
+    font-size: 18px;
     /* Ajusta este valor para cambiar el tamaño del número */
   }
 
@@ -732,7 +751,7 @@ margin-top: 10px;
   padding: 18px;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
- 
+
 }
 
 .card:hover {
