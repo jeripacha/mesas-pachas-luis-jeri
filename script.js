@@ -1,23 +1,23 @@
 const areas = {
   pacha: [
-    { name: "p", quantity: "930", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "pacha 1" },
-    { name: "m", quantity: "880", drinks: "parrales", combos: "cascabel", mesa: "pacha 2" },
-    { name: "", quantity: "600", drinks: "jager", combos: "jager", mesa: "pacha 3" },
-    { name: "", quantity: "1300", drinks: "FDC5,FDC5", combos: "pachamam", mesa: "pacha 4" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 5" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 6" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 7" },
+    { name: "pacha sunset", quantity: "450", drinks: "parrales,", combos: "banx", mesa: "pacha 1" },
+    { name: "pacha sunset", quantity: "980", drinks: "parrales,viuda", combos: "cumpleañero", mesa: "pacha 2" },
+    { name: "pacha sunset", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "pacha 3" },
+    { name: "pacha sunset", quantity: "800", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 4" },
+    { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 5" },
+    { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 6" },
+    { name: "mama", quantity: "700", drinks: "parrales,parrales", combos: "cascabel", mesa: "pacha 7" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 8" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 9" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 10" },
   ],
 
   lounge: [
-    { name: "p", quantity: "700", drinks: "jager", combos: "jager", mesa: "lounge 1" },
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 2" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "lounge 3" },
-    { name: "p", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 4" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 5" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 1" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 2" },
+    { name: "pendiente pago", quantity: "1300", drinks: "parrales", combos: "pachamama", mesa: "lounge 3" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "lounge 4" },
+    { name: "pacha sunset", quantity: "500", drinks: "parrales,", combos: "banx", mesa: "lounge 5" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 6" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 7" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 8" },
@@ -27,32 +27,32 @@ const areas = {
   ],
 
   parrales: [
-    { name: "p", quantity: "880", drinks: "parrales,gin republica", combos: "cascabel", mesa: "parrales 1" },
-    { name: "p", quantity: "700", drinks: "jager,", combos: "jager", mesa: "parrales 2" },
-    { name: "p", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "parrales 3" },
-    { name: "p", quantity: "880", drinks: "parrales,FDC5", combos: "cascabel", mesa: "parrales 4" },
-    { name: "p", quantity: "780", drinks: "parrales,FDC5", combos: "cascabel", mesa: "parrales 5" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 6" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 7" },
-    { name: "p", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "parrales 8" },
-    { name: "p", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "parrales 9" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 10" },
-    { name: "p", quantity: "1240", drinks: "parrales,", combos: "pachamama", mesa: "parrales 11" },
-    { name: "p", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "parrales 12" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 13" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 14" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 15" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 16" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 17" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 18" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 1" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 2" },
+    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 3" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 4" },
+    { name: "pacha sunset", quantity: "1100", drinks: "parrales,", combos: "pachamama", mesa: "parrales 5" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 6" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 7" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 8" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 9" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 10" },
+    { name: "pacha sunset", quantity: "800", drinks: "FDC5,parrales", combos: "cascabel", mesa: "parrales 11" },
+    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 12" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 13" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 14" },
+    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 15" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 16" },
+    { name: "pacha sunset", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "parrales 17" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 18" },
   ],
 
   cholet: [
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "cholet 1" },
-    { name: "p", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "cholet 2" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 3" },
-    { name: "p", quantity: "800", drinks: "parrales,parrales", combos: "cascabel", mesa: "cholet 4" },
-    { name: "p", quantity: "980", drinks: "parrales,FDC5", combos: "cumpleañero", mesa: "cholet 5" },
+    { name: "pacha sunset", quantity: "950", drinks: "parrales,", combos: "pachamama", mesa: "cholet 1" },
+    { name: "pacha sunset", quantity: "950", drinks: "parrales,", combos: "pachamama", mesa: "cholet 2" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "cholet 3" },
+    { name: "pacha sunset", quantity: "980", drinks: "gin republica,parrales", combos: "cumpleañero", mesa: "cholet 4" },
+    { name: "pacha sunset", quantity: "800", drinks: "parrales,parrales", combos: "cascabel", mesa: "cholet 5" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 6" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 7" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 8" },
@@ -63,9 +63,9 @@ const areas = {
   ],
 
   camel: [
-    { name: "p", quantity: "800", drinks: "parrales,parrales", combos: "cascabel", mesa: "camel 1" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "camel 2" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "camel 3" },
+    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "camel 1" },
+    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "camel 2" },
+    { name: "pacha sunset", quantity: "980", drinks: "parrales,vodka", combos: "cumpleañero", mesa: "camel 3" },
   ],
 
   extras: [
@@ -82,14 +82,15 @@ const areas = {
   ],
 
   Vip: [
-    { name: "p", quantity: "850", drinks: "FDC5,parrales", combos: "cascabel", mesa: "Vip 1" },
-    { name: "p", quantity: "850", drinks: "FDC5,parrales", combos: "cascabel", mesa: "Vip 2" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 1" },
+    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 2" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 3" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 4" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 5" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 6" },
   ]
 };
+
 
 // Lista de stickers
 const stickers = {
@@ -383,19 +384,19 @@ function calcularGanancias(
   spriteCantidad = 0,
 ) {
   const precios = {
-    "viuda descalza": 84.14,
-    parrales: 65,
+    "viuda descalza": 119,
+    parrales: 65.,
     "fernet branca": 98,
     "fernet buhero": 84.8,
-    FDC5: 106,
-    "gin republica": 103.4,
-    jager: 190,
-    cocaCola: 12.3,
-    vodka: 96,
-    "Schweppes Ginger Ale 1.5": 9.5,
+    FDC5: 110,
+    "gin republica": 164,
+    jager: 210,
+    cocaCola: 12.7,
+    vodka: 98,
+    "Schweppes Ginger Ale 1.5": 10.5,
     monster: 21,
-    aguaTonica: 6.6,
-    simbaPomelo: 9,
+    aguaTonica: 7.5,
+    simbaPomelo: 9.9,
     sprite: 12.3,
   };
 
@@ -856,11 +857,11 @@ document.addEventListener("click", (event) => {
 
 function mostrarGanancias() {
   // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 40;
-  const schweppesCantidad = 56;
-  const monsterCantidad = 4; // Cantidad de Monster
+  const cocaColaCantidad = 14;
+  const schweppesCantidad = 38;
+  const monsterCantidad = 8; // Cantidad de Monster
   const aguaTonicaCantidad = 2; // Cantidad de Agua Tónica
-  const simbaPomeloCantidad = 2; // Cantidad de Simba Pomelo
+  const simbaPomeloCantidad = 1; // Cantidad de Simba Pomelo
   const spriteCantidad = 0; // Cantidad de Sprite
 
   const { totalQuantity, totalGanado, resultado, detalleVentas } =
@@ -996,3 +997,32 @@ document
       { once: true },
     );
   });
+function agregarMesa() {
+    const area = document.getElementById("select-area").value;
+    const name = document.getElementById("select-name").value;
+    const quantity = document.getElementById("quantity").value;
+
+    const drinks = Array.from(
+        document.getElementById("select-drinks").selectedOptions
+    ).map(opt => opt.value).join(", ");
+
+    const combos = document.getElementById("select-combo").value;
+
+    // Se genera el número de mesa automáticamente
+    const mesaNumber = areas[area].length + 1;
+
+    const nuevaMesa = {
+        name,
+        quantity,
+        drinks,
+        combos,
+        mesa: `${area} ${mesaNumber}`
+    };
+
+    areas[area].push(nuevaMesa);
+
+    alert(`Mesa agregada correctamente a ${area.toUpperCase()} ✔`);
+
+    // Aquí redibujas las mesas (ya tienes funciones para esto)
+    renderAllMesas();
+}
