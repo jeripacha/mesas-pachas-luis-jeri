@@ -15,7 +15,7 @@ const areas = {
   lounge: [
     { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 1" },
     { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 2" },
-    { name: "pendiente pago", quantity: "1300", drinks: "parrales", combos: "pachamama", mesa: "lounge 3" },
+    { name: "pacha sunset", quantity: "1300", drinks: "parrales", combos: "pachamama", mesa: "lounge 3" },
     { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "lounge 4" },
     { name: "pacha sunset", quantity: "500", drinks: "parrales,", combos: "banx", mesa: "lounge 5" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 6" },
@@ -94,13 +94,13 @@ const areas = {
 
 // Lista de stickers
 const stickers = {
-  pacha: "1750695438067.png",
-  parrales: "1750695438067.png",
-  lounge: "1750695438067.png",
-  cholet: "1750695438067.png",
-  camel: "1750695438067.png",
-  extras: "1750695438067.png",
-  Vip: "1750695438067.png",
+  pacha: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  parrales: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  lounge: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  cholet: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  camel: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  extras: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
+  Vip: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
 };
 
 // Definición de números de cuenta
