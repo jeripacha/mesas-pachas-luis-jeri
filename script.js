@@ -5,8 +5,8 @@ const areas = {
     { name: "pacha sunset", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "pacha 3" },
     { name: "pacha sunset", quantity: "800", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 4" },
     { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 5" },
-    { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 6" },
-    { name: "mama", quantity: "700", drinks: "parrales,parrales", combos: "cascabel", mesa: "pacha 7" },
+    { name: "pacha sunset", quantity: "600", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 6" },
+    { name: "mama", quantity: "800", drinks: "parrales,parrales", combos: "cascabel", mesa: "pacha 7" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 8" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 9" },
     { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 10" },
@@ -106,7 +106,7 @@ const stickers = {
 // Definición de números de cuenta
 const accountNumbers = {
   "pacha sunset": "201*****307",
-  "ignacio aguilar": "150*****327",
+  "MAMA": "150*****327",
   mama: "150*****327",
 };
 
@@ -324,12 +324,12 @@ function calcularExtraidoPachamama() {
       cuentasPacha.includes(sticker.name)
     ) {
       const cantidad = Number(sticker.quantity);
-      if (cantidad >= 500) {
-        totalExtraido += 500;
+      if (cantidad >= 650) {
+        totalExtraido += 650;
         detallesExtraidos.push({
           name: sticker.name,
-          cantidadExtraida: 500,
-          cantidadRestante: cantidad - 500,
+          cantidadExtraida: 650,
+          cantidadRestante: cantidad - 650,
           mesa: sticker.mesa,
           depositadoA: sticker.name,
         });
@@ -359,12 +359,12 @@ function calcularDepositoMama() {
       sticker.combos === "pachamama"
     ) {
       const cantidad = Number(sticker.quantity);
-      if (cantidad >= 500) {
-        totalDepositoMama += 500;
+      if (cantidad >= 650) {
+        totalDepositoMama += 650;
         detallesMama.push({
           name: sticker.name,
-          cantidadExtraida: 500,
-          cantidadRestante: cantidad - 500,
+          cantidadExtraida: 650,
+          cantidadRestante: cantidad - 650,
           mesa: sticker.mesa,
         });
       }
