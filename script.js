@@ -1,1028 +1,932 @@
-const areas = {
-  pacha: [
-    { name: "pacha sunset", quantity: "450", drinks: "parrales,", combos: "banx", mesa: "pacha 1" },
-    { name: "pacha sunset", quantity: "980", drinks: "parrales,viuda", combos: "cumpleañero", mesa: "pacha 2" },
-    { name: "pacha sunset", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "pacha 3" },
-    { name: "pacha sunset", quantity: "800", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 4" },
-    { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 5" },
-    { name: "pacha sunset", quantity: "700", drinks: "FDC5,parrales", combos: "cascabel", mesa: "pacha 6" },
-    { name: "mama", quantity: "700", drinks: "parrales,parrales", combos: "cascabel", mesa: "pacha 7" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 8" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 9" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "pacha 10" },
-  ],
-
-  lounge: [
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 1" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "lounge 2" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales", combos: "pachamama", mesa: "lounge 3" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "lounge 4" },
-    { name: "pacha sunset", quantity: "500", drinks: "parrales,", combos: "banx", mesa: "lounge 5" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 6" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 7" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 8" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 9" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 10" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "lounge 11" },
-  ],
-
-  parrales: [
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 1" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 2" },
-    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 3" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 4" },
-    { name: "pacha sunset", quantity: "1100", drinks: "parrales,", combos: "pachamama", mesa: "parrales 5" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 6" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 7" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 8" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "parrales 9" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 10" },
-    { name: "pacha sunset", quantity: "800", drinks: "FDC5,parrales", combos: "cascabel", mesa: "parrales 11" },
-    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 12" },
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "parrales 13" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 14" },
-    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "parrales 15" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 16" },
-    { name: "pacha sunset", quantity: "980", drinks: "parrales,parrales", combos: "cumpleañero", mesa: "parrales 17" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "parrales 18" },
-  ],
-
-  cholet: [
-    { name: "pacha sunset", quantity: "950", drinks: "parrales,", combos: "pachamama", mesa: "cholet 1" },
-    { name: "pacha sunset", quantity: "950", drinks: "parrales,", combos: "pachamama", mesa: "cholet 2" },
-    { name: "pacha sunset", quantity: "1300", drinks: "parrales,", combos: "pachamama", mesa: "cholet 3" },
-    { name: "pacha sunset", quantity: "980", drinks: "gin republica,parrales", combos: "cumpleañero", mesa: "cholet 4" },
-    { name: "pacha sunset", quantity: "800", drinks: "parrales,parrales", combos: "cascabel", mesa: "cholet 5" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 6" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 7" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 8" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 9" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 10" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 11" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "cholet 12" },
-  ],
-
-  camel: [
-    { name: "pacha sunset", quantity: "980", drinks: "FDC5,parrales", combos: "cumpleañero", mesa: "camel 1" },
-    { name: "pacha sunset", quantity: "700", drinks: "jager", combos: "jager", mesa: "camel 2" },
-    { name: "pacha sunset", quantity: "980", drinks: "parrales,vodka", combos: "cumpleañero", mesa: "camel 3" },
-  ],
-
-  extras: [
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 1" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 2" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 3" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 4" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 5" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 6" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 7" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 8" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 9" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "extras 10" },
-  ],
-
-  Vip: [
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 1" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 2" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 3" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 4" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 5" },
-    { name: "", quantity: "", drinks: "", combos: "", mesa: "Vip 6" },
-  ]
-};
-
-
-// Lista de stickers
-const stickers = {
-  pacha: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  parrales: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  lounge: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  cholet: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  camel: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  extras: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-  Vip: "Gemini_Generated_Image_pazkt4pazkt4pazk-removebg-preview.png",
-};
-
-// Definición de números de cuenta
-const accountNumbers = {
-  "pacha sunset": "201*****307",
-  "MAMA": "150*****327",
-  mama: "150*****327",
-};
-
-// Seleccionar los contenedores para cada área
-const pachaContainer = document.getElementById("pacha-container");
-const parralesContainer = document.getElementById("parrales-container");
-const loungeContainer = document.getElementById("lounge-container");
-const choletContainer = document.getElementById("cholet-container");
-const camelContainer = document.getElementById("camel-container");
-const extrasContainer = document.getElementById("extras-container");
-const VipContainer = document.getElementById("Vip-container");
-
-// Función para generar stickers
-function createSticker(container, area, stickerUrl) {
-  area.forEach((sticker, index) => {
-    const stickerDiv = document.createElement("div");
-    stickerDiv.className = "sticker";
-
-    const img = document.createElement("img");
-    img.src = stickerUrl;
-    img.alt = `Sticker ${index + 1}`;
-
-    const numberLabel = document.createElement("span");
-    numberLabel.className = "sticker-number";
-    numberLabel.textContent = (index + 1).toString();
-
-    const quantityLabel = document.createElement("span");
-    quantityLabel.className = "sticker-quantity";
-    quantityLabel.textContent = sticker.quantity;
-
-    const nameLabel = document.createElement("span");
-    nameLabel.className = "sticker-name";
-    nameLabel.textContent = sticker.name;
-    nameLabel.style.display = "none";
-
-    stickerDiv.addEventListener("mouseover", () => {
-      nameLabel.style.display = "block";
-    });
-    stickerDiv.addEventListener("mouseout", () => {
-      nameLabel.style.display = "none";
-    });
-
-    stickerDiv.appendChild(img);
-    stickerDiv.appendChild(numberLabel);
-    stickerDiv.appendChild(quantityLabel);
-    stickerDiv.appendChild(nameLabel);
-    container.appendChild(stickerDiv);
-  });
-}
-
-// Generar los stickers para cada área
-createSticker(pachaContainer, areas.pacha, stickers.pacha);
-createSticker(parralesContainer, areas.parrales, stickers.parrales);
-createSticker(loungeContainer, areas.lounge, stickers.lounge);
-createSticker(choletContainer, areas.cholet, stickers.cholet);
-createSticker(camelContainer, areas.camel, stickers.camel);
-createSticker(extrasContainer, areas.extras, stickers.extras);
-createSticker(VipContainer, areas.Vip, stickers.Vip);
-
-function calcularTotal() {
-  const calcularAreaTotal = (area) =>
-    area.reduce((acc, sticker) => {
-      if (sticker.name && sticker.quantity) {
-        return acc + (Number(sticker.quantity) || 0);
-      }
-      return acc;
-    }, 0);
-
-  let totalPacha = calcularAreaTotal(areas.pacha);
-  let totalParrales = calcularAreaTotal(areas.parrales);
-  let totalLounge = calcularAreaTotal(areas.lounge);
-  let totalCholet = calcularAreaTotal(areas.cholet);
-  let totalCamel = calcularAreaTotal(areas.camel);
-  let totalExtras = calcularAreaTotal(areas.extras);
-  let totalVip = calcularAreaTotal(areas.Vip);
-
-  const totalGeneral =
-    totalPacha +
-    totalParrales +
-    totalLounge +
-    totalCholet +
-    totalCamel +
-    totalExtras +
-    totalVip;
-
-  const totalPorNombre = {};
-
-  [
-    ...areas.pacha,
-    ...areas.parrales,
-    ...areas.lounge,
-    ...areas.cholet,
-    ...areas.camel,
-    ...areas.extras,
-    ...areas.Vip,
-  ].forEach((sticker) => {
-    const name = sticker.name;
-    if (name && sticker.quantity) {
-      totalPorNombre[name] =
-        (totalPorNombre[name] || 0) + (Number(sticker.quantity) || 0);
-    }
-  });
-
-  return {
-    totalGeneral,
-    totalPorNombre,
-  };
-}
-
-// Función para contar total de combos y cuántos de cada tipo
-function contarCombos() {
-  const totalCombos = {};
-  let totalCombosCount = 0;
-
-  // Recorremos las áreas para contar los combos
-  [
-    ...areas.pacha,
-    ...areas.parrales,
-    ...areas.lounge,
-    ...areas.cholet,
-    ...areas.camel,
-    ...areas.extras,
-    ...areas.Vip,
-  ].forEach((sticker) => {
-    const combosList = sticker.combos
-      ? sticker.combos
-          .split(",")
-          .map((c) => c.trim())
-          .filter((c) => c)
-      : []; // Filtramos entradas vacías
-
-    combosList.forEach((combo) => {
-      totalCombos[combo] = (totalCombos[combo] || 0) + 1; // Contamos cada tipo de combo
-    });
-
-    // Acumulamos el total de combos solo si hay alguno registrado
-    totalCombosCount += combosList.length;
-  });
-
-  return { totalCombos, totalCombosCount };
-}
-
-// Ejemplo de uso
-const { totalCombos, totalCombosCount } = contarCombos();
-console.log("Total de combos:", totalCombosCount);
-console.log("Cantidad por tipo de combo:", totalCombos);
-
-// Función para contar total de bebidas y cuántas de cada tipo
-function contarDrinks() {
-  const totalDrinks = {};
-  let totalCount = 0;
-
-  // Recorremos las áreas para contar las bebidas
-  [
-    ...areas.pacha,
-    ...areas.parrales,
-    ...areas.lounge,
-    ...areas.cholet,
-    ...areas.camel,
-    ...areas.extras,
-    ...areas.Vip,
-  ].forEach((sticker) => {
-    const drinksList = sticker.drinks
-      ? sticker.drinks
-          .split(",")
-          .map((d) => d.trim())
-          .filter((d) => d)
-      : []; // Filtramos entradas vacías
-
-    drinksList.forEach((drink) => {
-      totalDrinks[drink] = (totalDrinks[drink] || 0) + 1; // Contamos cada tipo de bebida
-    });
-
-    // Acumulamos el total de bebidas solo si hay alguna bebida
-    totalCount += drinksList.length;
-  });
-
-  return { totalDrinks, totalCount };
-}
-
-// Función para calcular el porcentaje de ocupación de cada área
-function calcularPorcentajeOcupacion() {
-  const porcentajes = {};
-
-  for (const area in areas) {
-    const totalStickers = areas[area].length; // Número total de stickers en el área
-    const ocupados = areas[area].filter(
-      (sticker) => sticker.name && sticker.quantity,
-    ).length; // Contar cuántos stickers están ocupados
-
-    // Calculamos el porcentaje de ocupación en base a la cantidad de stickers ocupados
-    porcentajes[area] = (ocupados / totalStickers) * 100;
-  }
-
-  return porcentajes;
-}
-
-function calcularExtraidoPachamama() {
-  const cuentasPacha = ["ignacio aguilar", "pacha sunset"];
-  let totalExtraido = 0;
-  let detallesExtraidos = [];
-
-  [
-    ...areas.pacha,
-    ...areas.parrales,
-    ...areas.lounge,
-    ...areas.cholet,
-    ...areas.camel,
-    ...areas.extras,
-    ...areas.Vip,
-  ].forEach((sticker) => {
-    if (
-      sticker.combos &&
-      sticker.combos.includes("pachamama") &&
-      cuentasPacha.includes(sticker.name)
-    ) {
-      const cantidad = Number(sticker.quantity);
-      if (cantidad >= 650) {
-        totalExtraido += 650;
-        detallesExtraidos.push({
-          name: sticker.name,
-          cantidadExtraida: 650,
-          cantidadRestante: cantidad - 650,
-          mesa: sticker.mesa,
-          depositadoA: sticker.name,
-        });
-      }
-    }
-  });
-
-  return { totalExtraido, detallesExtraidos };
-}
-
-function calcularDepositoMama() {
-  let totalDepositoMama = 0;
-  let detallesMama = [];
-
-  [
-    ...areas.pacha,
-    ...areas.parrales,
-    ...areas.lounge,
-    ...areas.cholet,
-    ...areas.camel,
-    ...areas.extras,
-    ...areas.Vip,
-  ].forEach((sticker) => {
-    if (
-      (sticker.name === "mama" ||
-        sticker.name === "natalia rodriguez") &&
-      sticker.combos === "pachamama"
-    ) {
-      const cantidad = Number(sticker.quantity);
-      if (cantidad >= 650) {
-        totalDepositoMama += 650;
-        detallesMama.push({
-          name: sticker.name,
-          cantidadExtraida: 650,
-          cantidadRestante: cantidad - 650,
-          mesa: sticker.mesa,
-        });
-      }
-    }
-  });
-
-  return { totalDepositoMama, detallesMama };
-}
-
-function calcularGanancias(
-  areas,
-  cocaColaCantidad = 0,
-  schweppesCantidad = 0,
-  monsterCantidad = 0,
-  aguaTonicaCantidad = 0,
-  simbaPomeloCantidad = 0,
-  spriteCantidad = 0,
-) {
-  const precios = {
-    "viuda descalza": 119,
-    parrales: 65.,
-    "fernet branca": 98,
-    "fernet buhero": 84.8,
-    FDC5: 110,
-    "gin republica": 164,
-    jager: 210,
-    cocaCola: 12.7,
-    vodka: 98,
-    "Schweppes Ginger Ale 1.5": 10.5,
-    monster: 21,
-    aguaTonica: 7.5,
-    simbaPomelo: 9.9,
-    sprite: 12.3,
-  };
-
-  let totalesDrinks = {}; // Acumular cantidades por tipo de drink
-  let totalQuantity = 0; // Suma de todas las cantidades
-
-  // Calcular totales por drink y sumar los quantity
-  for (const area in areas) {
-    areas[area].forEach(({ quantity, drinks, name }) => {
-      // Verificar si el nombre no es "MAMA" antes de sumar la cantidad
-      if (name !== "MAMA") {
-        totalQuantity += parseInt(quantity) || 0;
-      }
-
-      if (drinks) {
-        drinks.split(",").forEach((drink) => {
-          drink = drink.trim();
-
-          // Solo contar si el drink tiene un nombre válido
-          if (drink && precios[drink]) {
-            if (!totalesDrinks[drink]) {
-              totalesDrinks[drink] = 0;
-            }
-            totalesDrinks[drink] += 1; // Contamos cada ocurrencia del drink
-          }
-        });
-      }
-    });
-  }
-
-  // Calcular ingresos por tipo de drink
-  let totalGanadoDrinks = 0;
-  const detalleVentas = [];
-  for (const [drink, cantidad] of Object.entries(totalesDrinks)) {
-    const precio = precios[drink] || 0;
-    const ingreso = cantidad * precio;
-    totalGanadoDrinks += ingreso;
-    detalleVentas.push({ producto: drink, cantidad, ingreso });
-  }
-
-  // Calcular ingresos por Coca-Cola, Schweppes, Monster, Agua Tónica, Simba Pomelo, Sprite
-  const ingresoCocaCola = cocaColaCantidad * precios.cocaCola;
-  const ingresoSchweppes =
-    schweppesCantidad * precios["Schweppes Ginger Ale 1.5"];
-  const ingresoMonster = monsterCantidad * precios.monster;
-  const ingresoAguaTonica = aguaTonicaCantidad * precios.aguaTonica;
-  const ingresoSimbaPomelo = simbaPomeloCantidad * precios.simbaPomelo;
-  const ingresoSprite = spriteCantidad * precios.sprite;
-
-  totalGanadoDrinks +=
-    ingresoCocaCola +
-    ingresoSchweppes +
-    ingresoMonster +
-    ingresoAguaTonica +
-    ingresoSimbaPomelo +
-    ingresoSprite;
-
-  // Agregar detalles de Coca-Cola, Schweppes, Monster, Agua Tónica, Simba Pomelo, Sprite
-  detalleVentas.push({
-    producto: "Coca-Cola",
-    cantidad: cocaColaCantidad,
-    ingreso: ingresoCocaCola,
-  });
-  detalleVentas.push({
-    producto: "Schweppes Ginger Ale 1.5",
-    cantidad: schweppesCantidad,
-    ingreso: ingresoSchweppes,
-  });
-  detalleVentas.push({
-    producto: "Monster",
-    cantidad: monsterCantidad,
-    ingreso: ingresoMonster,
-  });
-  detalleVentas.push({
-    producto: "Agua Tónica",
-    cantidad: aguaTonicaCantidad,
-    ingreso: ingresoAguaTonica,
-  });
-  detalleVentas.push({
-    producto: "Simba Pomelo",
-    cantidad: simbaPomeloCantidad,
-    ingreso: ingresoSimbaPomelo,
-  });
-  detalleVentas.push({
-    producto: "Sprite",
-    cantidad: spriteCantidad,
-    ingreso: ingresoSprite,
-  });
-
-  // Calcular resultado final
-  const resultado = Math.abs(totalGanadoDrinks - totalQuantity);
-
-  return {
-    totalQuantity,
-    totalGanado: totalGanadoDrinks,
-    resultado,
-    detalleVentas,
-  };
-}
-
-// Función para mostrar el total y detalles en el modal
-function mostrarDetalles() {
-  const totals = calcularTotal();
-  const { totalDrinks } = contarDrinks();
-  const { totalCombos } = contarCombos(); // Llamamos a la nueva función
-  const porcentajes = calcularPorcentajeOcupacion();
-  const totalNames = Object.keys(totals.totalPorNombre);
-  const totalNombreTitle = document.getElementById("total-nombre-title");
-  const totalContainer = document.getElementById("total-container");
-
-  totalContainer.innerHTML = "";
-
-  if (totalNames.length === 1) {
-    const name = totalNames[0];
-    const accountNumber = accountNumbers[name] || "N/A";
-    const totalAmount = totals.totalGeneral;
-
-    totalContainer.innerHTML = `
-      <div class="card-credit">
-        <div class="total-label">Total Registrado</div>
-        <h2>${name}</h2>
-       <div class="amount">${totalAmount.toLocaleString("es-ES")} bs</div>
-
-        <div class="account-number">Cuenta: ${accountNumber}</div>
-      </div>
-    `;
-
-    document.getElementById("total-nombre-container").innerHTML = "";
-    document.getElementById("nombre-table").style.display = "none";
-    totalNombreTitle.style.display = "none";
-  } else {
-    const totalPorNombreContainer = document.getElementById(
-      "total-nombre-container",
-    );
-    totalPorNombreContainer.innerHTML = "";
-    document.getElementById("nombre-table").style.display = "";
-    totalNombreTitle.style.display = "";
-
-    let totalMonto = 0;
-
-    for (const [nombre, total] of Object.entries(totals.totalPorNombre)) {
-      const accountNumber = accountNumbers[nombre] || "N/A";
-      const row = document.createElement("tr");
-      row.innerHTML = `<td>${nombre} (${accountNumber})</td><td>${total.toLocaleString("es-ES")} bs</td>`;
-      totalPorNombreContainer.appendChild(row);
-      totalMonto += total;
-    }
-
-    const totalRow = document.createElement("tr");
-    totalRow.innerHTML = `<td style="font-weight: bold; color:white;">Total:</td><td style="font-weight: bold;color:white;">${totalMonto.toLocaleString("es-ES")} bs</td>`;
-    totalPorNombreContainer.appendChild(totalRow);
-  }
-
-  // Contenedor para las tablas
-  let containerStyle = `
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-      <style>
-        /* Estilo para las celdas con un fondo elegante tipo discoteca de noche */
-        #nombre-table td {
-          background: linear-gradient(135deg, #1a1a2e, #3f0d3e); /* Degradado oscuro-violeta */
-          color: #e0b3ff; /* Letra en violeta claro neón */
-          font-weight: bold;
-          text-shadow: 0 0 4px #b266ff; /* Brillito sutil al texto */
-          border: 1px solid #4c0070; /* Borde fino para que resalte cada celda */
-        }
-
-        /* Responsive para pantallas pequeñas */
-        @media (max-width: 768px) {
-          div {
-            grid-template-columns: 1fr !important;
-          }
-
-          .table {
-            width: 100% !important;
-            margin: 0 auto;
-          }
-        }
-      </style>
-  `;
-
-  let combosTable = `<div><h3>Combos estrella</h3>
-    <div style="display: flex; justify-content: center;">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Combo</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>`;
-
-  let totalCombosCount = 0;
-
-  // Ordenar por cantidad de mayor a menor
-  const sortedCombos = Object.entries(totalCombos).sort(
-    ([, a], [, b]) => b - a,
-  );
-
-  for (const [combo, count] of sortedCombos) {
-    combosTable += `
-        <tr>
-          <td>${combo}</td>
-          <td>${count}</td>
-        </tr>`;
-    totalCombosCount += count;
-  }
-
-  combosTable += `
-    <tr style="font-weight: bold; color: black;">
-      <td style="color: white;">Total:</td>
-      <td style="color: white;">${totalCombosCount}</td>
-    </tr>
-  </tbody>
-  </table>
-  </div></div>`;
-
-  // Obtener los detalles extraídos
-  const { totalExtraido, detallesExtraidos } = calcularExtraidoPachamama();
-
-  let pachamamaTable = `<div><h3 style="color: white;">GANANCIAS MAMA</h3>
-    <div style="display: flex; justify-content: center;">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Mesa</th>
-            <th>Acuerdo PachaMama</th>
-            <th>Cuenta de destino</th>
-          </tr>
-        </thead>
-        <tbody>`;
-
-  detallesExtraidos.forEach((detalle) => {
-    pachamamaTable += `
-          <tr>
-            <td>${detalle.mesa}</td>
-            <td>${detalle.cantidadExtraida}</td>
-            <td>${detalle.depositadoA}</td>
-          </tr>`;
-  });
-
-  pachamamaTable += `
-          <tr style="font-weight: bold; color: white;">
-            <td style="color: white;">Total depositar a MAMA:</td>
-            <td style="color: white;">${totalExtraido} bs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div></div>`;
-
-  // Llamada a la función calcularDepositoMama antes de usar 'detallesMama'
-  const { totalDepositoMama, detallesMama } = calcularDepositoMama();
-
-  let mamaTable = `<div><h3 style="color: white;">DEPOSITOS QUE MAMA DEBE REALIZAR A PACHA</h3>
-    <div style="display: flex; justify-content: center;">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Mesa</th>
-            <th>Acuerdo PachaMama</th>
-            <th>Cuenta</th>
-          </tr>
-        </thead>
-        <tbody>`;
-
-  detallesMama.forEach((detalle) => {
-    mamaTable += `
-          <tr>
-            <td>${detalle.mesa}</td>
-            <td>${detalle.cantidadExtraida}</td>
-            <td>${detalle.name}</td>
-          </tr>`;
-  });
-
-  mamaTable += `
-          <tr style="font-weight: bold; color: white;">
-            <td style="color: white;">Total que deben depositar a PACHA:</td>
-            <td style="color: white;">${totalDepositoMama} bs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div></div>`;
-
-  let drinksTable = `<div><h3>BEBIDAS</h3>
-    <div style="display: flex; justify-content: center;">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Bebida</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>`;
-
-  let totalDrinksCount = 0;
-
-  // Ordenar por cantidad de mayor a menor
-  const sortedDrinks = Object.entries(totalDrinks).sort(
-    ([, a], [, b]) => b - a,
-  );
-
-  for (const [drink, count] of sortedDrinks) {
-    drinksTable += `
-          <tr>
-            <td>${drink}</td>
-            <td>${count}</td>
-          </tr>`;
-    totalDrinksCount += count;
-  }
-
-  drinksTable += `
-          <tr style="font-weight: bold; color: white;">
-            <td style="color: white;">Total:</td>
-            <td style="color: white;">${totalDrinksCount}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>`;
-
-  // Agregamos todas las tablas al contenedor
-  totalContainer.innerHTML +=
-    containerStyle +
-    combosTable +
-    pachamamaTable +
-    mamaTable +
-    drinksTable +
-    "</div>";
-
-  // Crear un objeto para contar las mesas por combo
-  const comboCounts = {
-    cumpleañero: 0,
-    pacha: 0,
-    cascabel: 0,
-    banx: 0,
-    jager: 0,
-    pachamama: 0,
-  };
-
- // Contar las mesas por combo en todas las áreas especificadas (ahora con extras)
-areas.pacha
-  .concat(
-    areas.lounge,
-    areas.parrales,
-    areas.cholet,
-    areas.camel,
-    areas.Vip,
-    areas.extras // 
-  )
-  .forEach((sticker) => {
-    const combo = sticker.combos?.toLowerCase().trim(); // Normalizamos por si acaso
-    if (combo && comboCounts.hasOwnProperty(combo)) {
-      comboCounts[combo]++;
-    }
-  });
-  // Mostrar el conteo de las mesas por combo
-  const countContainer = document.getElementById("count-container");
-  countContainer.innerHTML = `
-    <div class="card-container">
-      ${Object.keys(comboCounts)
-        .map(
-          (combo) => `
-        <div class="card">
-          <div class="card-content">
-            <div class="card-title">Mesas ${combo}:</div>
-            <div class="card-value">${comboCounts[combo]}</div>
-          </div>
-        </div>
-      `,
-        )
-        .join("")}
-    </div>
-  `;
-
-  // Mostrar porcentajes de ocupación
-  const porcentajeContainer = document.createElement("div");
-  porcentajeContainer.className = "porcentaje-container"; // Clase para CSS
-  porcentajeContainer.innerHTML = `
-    <h3>Porcentaje de áreas Vendidas</h3>
-    <div class="porcentaje-area">
-      <div class="area pacha">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.pacha.toFixed(2)}%;"></div>
-        <p>Pacha: ${porcentajes.pacha.toFixed(2)}%</p>
-      </div>
-      <div class="area parrales">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.parrales.toFixed(2)}%;"></div>
-        <p>Parrales: ${porcentajes.parrales.toFixed(2)}%</p>
-      </div>
-      <div class="area lounge">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.lounge.toFixed(2)}%;"></div>
-        <p>lounge: ${porcentajes.lounge.toFixed(2)}%</p>
-         </div>
-       <div class="area cholet">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.cholet.toFixed(2)}%;"></div>
-        <p>Cholet: ${porcentajes.cholet.toFixed(2)}%</p>
-      </div>
-      <div class="area camel">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.camel.toFixed(2)}%;"></div>
-        <p>Camel: ${porcentajes.camel.toFixed(2)}%</p>
-      </div>
-      <div class="area extras">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.extras.toFixed(2)}%;"></div>
-        <p>Extras: ${porcentajes.extras.toFixed(2)}%</p>
-      </div>
-      <div class="area Vip">
-        <div class="porcentaje-circle" style="--porcentaje: ${porcentajes.Vip.toFixed(2)}%;"></div>
-        <p>Vip:     ${porcentajes.Vip.toFixed(2)}%</p>
-      </div>
-    </div>
-  `;
-
-  countContainer.appendChild(porcentajeContainer);
-  document.getElementById("modal").style.display = "block";
-  modal.classList.add("show");
-}
-
-// Cerrar el modal al hacer clic en la X
-document.getElementById("close-modal").addEventListener("click", () => {
-  modal.classList.remove("show");
-  modal.classList.add("hide");
-
-  modal.addEventListener(
-    "animationend",
-    () => {
-      document.getElementById("modal").style.display = "none";
-      modal.classList.remove("hide");
+/* =====================================================
+    DATOS COMPLETOS DE TODAS LAS ÁREAS Y MESAS
+    ===================================================== */
+
+const mesaData = {
+    "Pacha": {
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
     },
-    { once: true },
-  );
-});
 
-// Opción 1 del menú
-document.getElementById("opcion-1").addEventListener("click", () => {
-  mostrarDetalles();
-  sideMenu.classList.remove("open");
-});
+    "Lounge": {
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]}
+    },
 
-// Función para mostrar/ocultar el menú
-const menuSticker = document.getElementById("top-left-sticker");
-const sideMenu = document.getElementById("side-menu");
+    "Cholet": {
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["30-11-25", ""], horas:["12:29", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["05-12-25", ""], horas:["19:32", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["650", ""], tragos:["jager"], combo:"jager", fechas:["06-12-25", ""], horas:["11:11", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+        12:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]}
+    },
 
-menuSticker.addEventListener("click", (event) => {
-  sideMenu.classList.toggle("open");
-  event.stopPropagation();
-});
+    "Parrales": {
+        1:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["04-12-25", ""], horas:["10:56", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", "pacha sunset"], montos:["780", "100"], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["05-12-25", "03-12-25"], horas:["14:01", "10:22"], operaciones:["2", "1"], cuentas:["20151595559307", "20151595559307"]},
+        3:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,vodka"], combo:"cumpleañero", fechas:["03-12-25", ""], horas:["16:15", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["mama", ""], montos:["1400", ""], tragos:["parrales"], combo:"pachamama", fechas:["20-11-25", ""], horas:["20:20", ""], operaciones:["4", ""], cuentas:["20152209296343", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["04-12-25", ""], horas:["16:32", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", "pacha sunset"], montos:["100", "700"], tragos:["parrales,FD5"], combo:"cascabel", fechas:["03-12-25", "04-12-25"], horas:["11:57", "10:38"], operaciones:["6", "6"], cuentas:["20151595559307", "20151595559307"]},
+        7:{nombres:["pacha sunset", ""], montos:["750", ""], tragos:["parrales,fernet buhero"], combo:"cascabel", fechas:["02-12-25", ""], horas:["20:56", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["mama", ""], montos:["1000", ""], tragos:["parrales"], combo:"pachamama", fechas:["03-12-25", ""], horas:["14:27", ""], operaciones:["8", ""], cuentas:["20152209296343", ""]},
+        9:{nombres:["pacha sunset", "pacha sunset"], montos:["100", "880"], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["03-12-25", "05-12-25"], horas:["19:00", "00:37"], operaciones:["9", ""], cuentas:["20151595559307", "20151595559307"]},
+        10:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["04-12-25", ""], horas:["12:10", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["05-12-25", ""], horas:["12:12", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+        12:{nombres:["pacha sunset", "pacha sunset"], montos:["100", "880"], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-12-25", "05-12-25"], horas:["12:30", "12:50"], operaciones:["12", ""], cuentas:["20151595559307", "20151595559307"]},
+        13:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["02-12-25", ""], horas:["14:32", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
+        14:{nombres:["pacha sunset", "pacha sunset"], montos:["600", "700"], tragos:["parrales"], combo:"pachamama", fechas:["04-12-25", "05-12-25"], horas:["11:03", "16:10"], operaciones:["14", ""], cuentas:["20151595559307", "20151595559307"]},
+        15:{nombres:["pacha sunset", "pacha sunset"], montos:["200", "1100"], tragos:["parrales"], combo:"pachamama", fechas:["02-12-25", "05-12-25"], horas:["12:03", "8:20"], operaciones:["15", ""], cuentas:["20151595559307", "20151595559307"]},
+        16:{nombres:["pacha sunset", "pacha sunset"], montos:["100", "880"], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-12-25", "05-12-25"], horas:["10:34", "16:23"], operaciones:["16", ""], cuentas:["20151595559307", "20151595559307"]},
+        17:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["04-12-25", ""], horas:["14:53", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
+        18:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["03-12-25", ""], horas:["19:05", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
+    },
 
-// Cerrar el menú si se hace clic fuera de él
-document.addEventListener("click", (event) => {
-  if (
-    sideMenu.classList.contains("open") &&
-    !sideMenu.contains(event.target) &&
-    !menuSticker.contains(event.target)
-  ) {
-    sideMenu.classList.remove("open");
-  }
-});
+    "VIP": {
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]}
+    },
 
-function mostrarGanancias() {
-  // Puedes cambiar los valores de Coca-Cola, Schweppes y Monster aquí
-  const cocaColaCantidad = 14;
-  const schweppesCantidad = 38;
-  const monsterCantidad = 8; // Cantidad de Monster
-  const aguaTonicaCantidad = 2; // Cantidad de Agua Tónica
-  const simbaPomeloCantidad = 1; // Cantidad de Simba Pomelo
-  const spriteCantidad = 0; // Cantidad de Sprite
+    "Extra": {
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
+    },
 
-  const { totalQuantity, totalGanado, resultado, detalleVentas } =
-    calcularGanancias(
-      areas,
-      cocaColaCantidad,
-      schweppesCantidad,
-      monsterCantidad,
-      aguaTonicaCantidad,
-      simbaPomeloCantidad,
-      spriteCantidad,
-    );
+    "Camel": {
+        1:{nombres:["pacha sunset", "pacha sunset"], montos:["700", "280"], tragos:["parrales"], combo:"cumpleañero", fechas:["06-12-25", "06-12-25"], horas:["11:12", "13:12"], operaciones:["1", ""], cuentas:["20151595559307", "20151595559307"]},
+        2:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"cascabel", fechas:["06-12-25", ""], horas:["13:37", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", "pacha sunset"], montos:["700", "50"], tragos:["parrales,FD5"], combo:"cascabel", fechas:["05-12-25", "03-12-25"], horas:["10:15", "11:10"], operaciones:["3", ""], cuentas:["20151595559307", "20151595559307"]}
+    }
+};
 
-  const gananciasContainer = document.getElementById("ganancias-container");
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Tu código existente para el sidebar) ...
+    const sidebar = document.getElementById('sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeBtn = document.querySelector('.sidebar .close-btn');
+    const overlay = document.getElementById('overlay');
 
-  // Limpiar contenido previo del modal
-  gananciasContainer.innerHTML = "";
+    const mostrarComprobante = (areaName, mesaNumber) => {
+        const datosMesa = mesaData[areaName][mesaNumber];
+        if (!datosMesa) return;
 
-  // URLs de los íconos personalizados para cada tarjeta
-  const iconoQuantityUrl =
-    "https://img.icons8.com/?size=100&id=63196&format=png&color=000000";
-  const iconoGanadoUrl =
-    "https://img.icons8.com/?size=100&id=13013&format=png&color=000000";
-  const iconoResultadoUrl =
-    "https://img.icons8.com/?size=100&id=AyHHKGHt204t&format=png&color=000000";
+        // Verificar si la mesa está libre: NO hay hora registrada
+        const transaccionesConHora = datosMesa.horas.filter(h => h && h.trim() !== '').length;
+        const mesaLibre = transaccionesConHora === 0;
 
-  // Crear tarjetas con íconos personalizados
-  const tarjetasHtml = `
-    <div class="tarjeta">
-      <img src="${iconoQuantityUrl}" alt="Total Quantity Icon" class="icono-quantity">
-      <h3>Total De Ingresos</h3>
-      <p>${totalQuantity.toLocaleString()} Bs</p>
-    </div>
-    <div class="tarjeta">
-      <img src="${iconoGanadoUrl}" alt="Total Ganado Icon" class="icono-ganado">
-      <h3>Inversión</h3>
-      <p>${totalGanado.toLocaleString()} Bs</p>
-    </div>
-    <div class="tarjeta">
-      <img src="${iconoResultadoUrl}" alt="Ganancias Neta Icon" class="icono-resultado">
-      <h3>Ganancias Neta</h3>
-      <p>${resultado.toLocaleString()} Bs</p>
-    </div>
-  `;
 
-  gananciasContainer.innerHTML += tarjetasHtml;
+        // Crear modal
+        const modal = document.createElement('div');
+        modal.classList.add('comprobante-modal');
 
-  // Mostrar mensaje o tabla según las cantidades
-  let detalleVentasHtml = `
-    <div class="detalle-ventas">
-      <h3>Detalles De Inversión</h3>
-      <style>
-        /* Asegurar que la tabla sea más ancha en dispositivos móviles */
-        @media (max-width: 768px) {
-          .table {
-            width: 103% !important;
-            margin: 0 auto;
-            transform: translateX(-2%); /* Desplaza 10% hacia la izquierda */
-          }
+        if (mesaLibre) {
+            // Mesa Libre
+            modal.innerHTML = `
+                <div class="comprobante-content mesa-libre">
+                    <h2>${areaName} ${mesaNumber} LIBRE</h2>
+                </div>
+            `;
+        } else {
+            // Cálculo del total
+            const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+            const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+            const totalMesa = (monto1 + monto2).toFixed(2);
+
+            const buildTransactionDetail = (index) => {
+                const nombre = datosMesa.nombres[index];
+                const monto = datosMesa.montos[index];
+                const fecha = datosMesa.fechas[index];
+                const hora = datosMesa.horas[index];
+                const operacion = datosMesa.operaciones[index];
+                const cuenta = datosMesa.cuentas[index];
+
+                if (!nombre && !monto && !fecha && !hora && !operacion && !cuenta) return '';
+
+                const tragoComboHTML = index === 0 ? `
+                    <div class="detail-row">
+                        <span>Trago:</span>
+                        <span class="value">${datosMesa.tragos.join(', ') || 'N/A'}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Combo:</span>
+                        <span class="value">${datosMesa.combo || 'N/A'}</span>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="transaction-block">
+                        <h4>Transacción #${index + 1}</h4>
+                        <div class="detail-row"><span>Cuenta Destino:</span><span class="value">${nombre || 'N/A'}</span></div>
+                        <div class="detail-row"><span>Monto:</span><span class="value monto">${monto ? 'Bs. ' + monto : 'N/A'}</span></div>
+                        <div class="detail-row"><span>Fecha y Hora:</span><span class="value">${fecha || 'N/A'} ${hora || 'N/A'}</span></div>
+                        <div class="detail-row"><span>N° de Operación:</span><span class="value">${operacion || 'N/A'}</span></div>
+                        <div class="detail-row"><span>N° de Cuenta:</span><span class="value">${cuenta || 'N/A'}</span></div>
+                        ${tragoComboHTML}
+                        <div class="divider"></div>
+                    </div>
+                `;
+            };
+
+            modal.innerHTML = `
+                <div class="comprobante-content">
+                    <div class="comprobante-header">
+                        <h2>Comprobante de Ingreso</h2>
+                        <p><strong>Área:</strong> ${areaName} | <strong>Mesa:</strong> ${mesaNumber}</p>
+                        <button class="close-comprobante">&times;</button>
+                    </div>
+
+                    <div class="comprobante-body">
+                        ${buildTransactionDetail(0)}
+                        ${buildTransactionDetail(1)}
+                    </div>
+
+                    <div class="total-container">
+                        <div class="total-row">
+                            <span>TOTAL FACTURADO:</span>
+                            <span class="total-value">Bs. ${totalMesa}</span>
+                        </div>
+                    </div>
+
+                    <p class="nota">Estos datos son referenciales a las transacciones registradas en la mesa.</p>
+                </div>
+            `;
+
+            // Si solo hay 1 transacción con hora, hacer modal más estrecho
+            if (transaccionesConHora === 1) {
+                modal.querySelector('.comprobante-content').classList.add('single-transaction-modal');
+            }
+
         }
-      </style>
-  `;
 
-  if (
-    cocaColaCantidad === 0 &&
-    schweppesCantidad === 0 &&
-    monsterCantidad === 0
-  ) {
-    detalleVentasHtml += `<p>No hay productos añadidos.</p>`;
-  } else {
-    detalleVentasHtml += `
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad Usada</th>
-            <th>Costo Invertido</th>
-          </tr>
-        </thead>
-        <tbody>
-    `;
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
 
-    // Filtrar las ventas donde la cantidad es mayor que 0
-    detalleVentas.forEach((venta) => {
-      if (venta.cantidad > 0) {
-        detalleVentasHtml += `
-          <tr>
-            <td>${venta.producto}</td>
-            <td>${venta.cantidad}</td>
-            <td>${venta.ingreso} Bs</td>
-          </tr>
-        `;
-      }
-    });
+        // Cerrar con botón
+        const closeBtn = modal.querySelector('.close-comprobante');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.remove();
+                document.body.style.overflow = '';
+            });
+        }
 
-    detalleVentasHtml += `
-        </tbody>
-      </table>
-    `;
-  }
-
-  detalleVentasHtml += `</div>`;
-
-  // Agregar el HTML generado al contenedor
-  gananciasContainer.innerHTML += detalleVentasHtml;
-
-  // Mostrar el modal
-  const modal = document.getElementById("modal-ganancias");
-  modal.style.display = "block";
-  modal.classList.add("show");
-}
-
-// Asociar el evento al botón "ver ganancias"
-document.getElementById("ver-ganancias").addEventListener("click", () => {
-  mostrarGanancias();
-  sideMenu.classList.remove("open");
-});
-
-// Cerrar el modal de ganancias al hacer clic en la X
-document
-  .getElementById("close-ganancias-modal")
-  .addEventListener("click", () => {
-    const gananciasModal = document.getElementById("modal-ganancias");
-    gananciasModal.classList.remove("show");
-    gananciasModal.classList.add("hide");
-
-    gananciasModal.addEventListener(
-      "animationend",
-      () => {
-        gananciasModal.style.display = "none";
-        gananciasModal.classList.remove("hide");
-      },
-      { once: true },
-    );
-  });
-function agregarMesa() {
-    const area = document.getElementById("select-area").value;
-    const name = document.getElementById("select-name").value;
-    const quantity = document.getElementById("quantity").value;
-
-    const drinks = Array.from(
-        document.getElementById("select-drinks").selectedOptions
-    ).map(opt => opt.value).join(", ");
-
-    const combos = document.getElementById("select-combo").value;
-
-    // Se genera el número de mesa automáticamente
-    const mesaNumber = areas[area].length + 1;
-
-    const nuevaMesa = {
-        name,
-        quantity,
-        drinks,
-        combos,
-        mesa: `${area} ${mesaNumber}`
+        // Cerrar clic fuera
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+                document.body.style.overflow = '';
+            }
+        });
     };
 
-    areas[area].push(nuevaMesa);
 
-    alert(`Mesa agregada correctamente a ${area.toUpperCase()} ✔`);
+    const openMenu = () => {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
 
-    // Aquí redibujas las mesas (ya tienes funciones para esto)
-    renderAllMesas();
-}
+    const closeMenu = () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    if (menuIcon) {
+        menuIcon.addEventListener('click', openMenu);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    const btnInventarios = document.querySelector('a[href="#area-cholet"]');
+
+    if (btnInventarios) {
+        btnInventarios.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu(); // Cierra el menú lateral
+            const resumen = calcularResumenInventario(mesaData); // Llama a la nueva función
+            mostrarModalInventario(resumen); // Muestra el nuevo modal
+        });
+    }
+    const btnPorcentajes = document.querySelector('a[href="#area-lounge"]');
+
+    if (btnPorcentajes) {
+        btnPorcentajes.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu(); // Cierra el menú lateral
+            const resumen = calcularResumenOcupacion(mesaData);
+            mostrarModalOcupacion(resumen);
+        });
+    }
+    
+   
+    /* =====================================================
+      FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
+      ===================================================== */
+    const calcularResumenInventario = (data) => {
+        const resumen = {
+            tragos: {},
+            combos: {}
+        };
+
+        // 1. Recorrer todas las áreas (Pacha, Lounge, etc.)
+        for (const area in data) {
+            // 2. Recorrer todas las mesas dentro del área
+            for (const mesa in data[area]) {
+                const datosMesa = data[area][mesa];
+
+                // A) Procesar Tragos (solo se encuentran en el índice 0)
+                const tragosStr = datosMesa.tragos[0];
+                if (tragosStr) {
+                    // Dividir la cadena de tragos (ej: "parrales,ron")
+                    const tragosArray = tragosStr.split(',').map(t => t.trim().toUpperCase()).filter(t => t);
+                    tragosArray.forEach(trago => {
+                        resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
+                    });
+                }
+
+                // B) Procesar Combo (solo se encuentra en la propiedad combo)
+                const comboStr = datosMesa.combo;
+                if (comboStr) {
+                    const comboKey = comboStr.trim().toUpperCase();
+                    if (comboKey) {
+                        resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
+                    }
+                }
+            }
+        }
+
+        return resumen;
+    };
+    /* =====================================================
+      FUNCIÓN PARA MOSTRAR EL MODAL DE INVENTARIO
+      ===================================================== */
+    const mostrarModalInventario = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal'); // Reutilizamos la clase principal del modal
+
+        // --- Generar HTML de Tragos ---
+        let tragosHTML = '';
+        const tragosOrdenados = Object.entries(resumen.tragos).sort(([, a], [, b]) => b - a);
+        const separador = '<div class="comanda-separator">-----------------------------------------</div>';
+        if (tragosOrdenados.length > 0) {
+            tragosHTML = tragosOrdenados.map(([nombre, cantidad]) => `
+                <li class="inventario-item">
+                    <span class="item-nombre">${nombre}</span>
+                    <span class="item-cantidad">${cantidad} unidades</span>
+                </li>
+            `).join('');
+        } else {
+            tragosHTML = '<p class="sin-registros">No se registraron tragos.</p>';
+        }
+
+        // --- Generar HTML de Combos ---
+        let combosHTML = '';
+        const combosOrdenados = Object.entries(resumen.combos).sort(([, a], [, b]) => b - a);
+
+        if (combosOrdenados.length > 0) {
+            combosHTML = combosOrdenados.map(([nombre, cantidad]) => `
+                <li class="inventario-item">
+                    <span class="item-nombre">${nombre}</span>
+                    <span class="item-cantidad">${cantidad} veces</span>
+                </li>
+            `).join('');
+        } else {
+            combosHTML = '<p class="sin-registros">No se registraron combos.</p>';
+        }
+
+        // --- Estructura Final del Modal ---
+        modal.innerHTML = `
+            <div class="resumen-content inventario-content">
+                <div class="resumen-header">
+                    <h2>📋 Inventario</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+
+                    <h3 class="inventario-titulo">*** TRAGOS POR UNIDAD ***</h3>
+                    ${separador}
+                    <ul class="inventario-lista">
+                        ${tragosHTML}
+                    </ul>
+                    ${separador}
+
+                    <h3 class="inventario-titulo">*** COMBOS VENDIDOS ***</h3>
+                    ${separador}
+                    <ul class="inventario-lista">
+                        ${combosHTML}
+                    </ul>
+                    ${separador}
+
+                </div>
+
+                <p class="nota">Conteo de insumos basado en mesas.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+
+        // Lógica para cerrar
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+            }
+        });
+    };
+    /* =====================================================
+        FUNCIÓN PRINCIPAL: GENERAR RESUMEN GENERAL
+        (CON TRANSFERENCIAS 50% PARA COMBO "PACHAMAMA")
+    ===================================================== */
+    const generarResumenGeneral = (data) => {
+        let totalGlobal = 0;
+
+        // Acumular ingresos por nombre
+        const resumenPorNombre = {};
+
+        // Acumuladores especiales para transferencias
+        let totalTransferenciasMama = 0; // PACHA → MAMA
+        let totalTransferenciasPacha = 0; // MAMA → PACHA
+        const detalleTransferenciasMama = [];
+        const detalleTransferenciasPacha = [];
+
+        for (const area in data) {
+            for (const mesa in data[area]) {
+                const datosMesa = data[area][mesa];
+
+                // Revisar si la mesa tiene combo PACHAMAMA
+                const combo = datosMesa.combo ? datosMesa.combo.toLowerCase() : "";
+
+                for (let i = 0; i < 2; i++) {
+                    const nombre = datosMesa.nombres[i].trim().toUpperCase();
+                    const montoStr = datosMesa.montos[i];
+                    const monto = parseFloat(montoStr) || 0;
+
+                    if (monto > 0) {
+                        // Suma al total global
+                        totalGlobal += monto;
+
+                        // Registrar por cuenta destino
+                        const clave = nombre || "SIN NOMBRE ASIGNADO";
+
+                        if (resumenPorNombre[clave]) {
+                            resumenPorNombre[clave].monto += monto;
+                            resumenPorNombre[clave].transacciones.push({
+                                area: area,
+                                mesa: mesa,
+                                monto: monto.toFixed(2),
+                                fecha: datosMesa.fechas[i],
+                                operacion: datosMesa.operaciones[i]
+                            });
+                        } else {
+                            resumenPorNombre[clave] = {
+                                monto: monto,
+                                transacciones: [{
+                                    area: area,
+                                    mesa: mesa,
+                                    monto: monto.toFixed(2),
+                                    fecha: datosMesa.fechas[i],
+                                    operacion: datosMesa.operaciones[i]
+                                }]
+                            };
+                        }
+
+                        // =====================================================
+                        // TRANSFERENCIA DEL 50% PARA COMBO PACHAMAMA
+                        // =====================================================
+                        if (combo === "pachamama") {
+                            if (nombre === "PACHA SUNSET") {
+                                const porcentaje = monto * 0.50;
+                                totalTransferenciasMama += porcentaje;
+                                detalleTransferenciasMama.push({
+                                    area: area,
+                                    mesa: mesa,
+                                    montoOriginal: monto,
+                                    transferencia: porcentaje
+                                });
+                            } else if (nombre === "MAMA") {
+                                const porcentaje = monto * 0.50;
+                                totalTransferenciasPacha += porcentaje;
+                                detalleTransferenciasPacha.push({
+                                    area: area,
+                                    mesa: mesa,
+                                    montoOriginal: monto,
+                                    transferencia: porcentaje
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return {
+            totalGlobal: totalGlobal.toFixed(2),
+            porNombre: resumenPorNombre,
+            mamaTransferencia: totalTransferenciasMama,
+            mamaDetalle: detalleTransferenciasMama,
+            pachaTransferencia: totalTransferenciasPacha,
+            pachaDetalle: detalleTransferenciasPacha
+        };
+    };
+
+    /* =====================================================
+        MOSTRAR EL MODAL COMPLETO CON RESUMEN + TRANSFERENCIAS + SALDO NETO PACHA
+    ===================================================== */
+    const mostrarModalResumen = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal');
+
+        // Total global sin decimales
+        const totalGlobalSinDecimales = Math.trunc(parseFloat(resumen.totalGlobal)).toLocaleString('es-BO');
+
+        // Ordenar cuentas por monto
+        let detalleHTML = '';
+        const nombresOrdenados = Object.keys(resumen.porNombre)
+            .map(nombre => ({ nombre, datos: resumen.porNombre[nombre] }))
+            .sort((a, b) => b.datos.monto - a.datos.monto);
+
+        nombresOrdenados.forEach(item => {
+            const { nombre, datos } = item;
+
+            let transaccionesDetalle = datos.transacciones.map(t => {
+                const montoIndividualSin = Math.trunc(parseFloat(t.monto)).toLocaleString('es-BO');
+                return `
+                    <li class="resumen-transaccion">
+                        <span>[${t.area} M-${t.mesa}]</span>
+                        <span class="monto-tx">Bs. ${montoIndividualSin}</span>
+                    </li>
+                `;
+            }).join('');
+
+            detalleHTML += `
+                <div class="resumen-bloque-cuenta">
+                    <div class="resumen-cuenta-header">
+                        <h4>Cuenta: ${nombre} (${datos.transacciones.length} transacciones)</h4>
+                        <span class="monto-total-cuenta">Total: Bs. ${datos.monto.toFixed(2)}</span>
+                    </div>
+                    <ul class="resumen-lista-tx">
+                        ${transaccionesDetalle}
+                    </ul>
+                </div>
+            `;
+        });
+
+        /* =====================================================
+           BLOQUE DE TRANSFERENCIAS
+        ===================================================== */
+        let mamaHTML = "";
+        if (resumen.mamaTransferencia > 0) {
+            const totalMamaRedondeado = Math.trunc(resumen.mamaTransferencia).toLocaleString('es-BO');
+
+            const listaMama = resumen.mamaDetalle.map(d => `
+                <li class="resumen-transaccion">
+                    <span>[${d.area} M-${d.mesa} - monto: ${d.montoOriginal} Bs]</span>
+                    <span class="monto-tx">Bs. ${Math.trunc(d.transferencia)}</span>
+                </li>
+            `).join('');
+
+            mamaHTML = `
+                <div class="resumen-bloque-cuenta" style="border-top:2px solid #c0392b; margin-top:15px;">
+                    <div class="resumen-cuenta-header">
+                        <h4>Transferencias a MAMA (50% del combo Pachamama)</h4>
+                        <span class="monto-total-cuenta">Total a transferir: Bs. ${totalMamaRedondeado}</span>
+                    </div>
+                    <ul class="resumen-lista-tx">
+                        ${listaMama}
+                    </ul>
+                </div>
+            `;
+        }
+
+        let pachaHTML = "";
+        if (resumen.pachaTransferencia > 0) {
+            const totalPachaRedondeado = Math.trunc(resumen.pachaTransferencia).toLocaleString('es-BO');
+
+            const listaPacha = resumen.pachaDetalle.map(d => `
+                <li class="resumen-transaccion">
+                    <span>[${d.area} M-${d.mesa} - monto: ${d.montoOriginal} Bs]</span>
+                    <span class="monto-tx">Bs. ${Math.trunc(d.transferencia)}</span>
+                </li>
+            `).join('');
+
+            pachaHTML = `
+                <div class="resumen-bloque-cuenta" style="border-top:2px solid #2980b9; margin-top:15px;">
+                    <div class="resumen-cuenta-header">
+                        <h4>Transferencias a PACHA SUNSET (50% del combo Pachamama)</h4>
+                        <span class="monto-total-cuenta">Total a transferir: Bs. ${totalPachaRedondeado}</span>
+                    </div>
+                    <ul class="resumen-lista-tx">
+                        ${listaPacha}
+                    </ul>
+                </div>
+            `;
+        }
+        /* =====================================================
+           BLOQUE DE SALDO NETO DE PACHA SUNSET (ESTILO TICKET)
+        ===================================================== */
+        let saldoHTML = '';
+        const totalPachaIngresado = resumen.porNombre["PACHA SUNSET"] ? resumen.porNombre["PACHA SUNSET"].monto : 0;
+        const totalPachaTransferir = resumen.mamaTransferencia || 0; // Solo PACHA → MAMA
+
+        if (totalPachaIngresado > 0) {
+            const saldoPacha = totalPachaIngresado - totalPachaTransferir;
+
+            saldoHTML += `
+                <!-- Línea divisoria verde neón -->
+                <hr style="border:2px solid #39ff14; margin-top:20px; margin-bottom:10px;">
+
+                <!-- Título centrado -->
+                <h3 style="text-align:center; color:#c7c7c7; margin-bottom:10px;">
+                    Cuenta PACHA SUNSET - Saldo actual después de transferir el 50% de los combos Pachamama
+                </h3>
+
+                <!-- Bloque tipo ticket -->
+                <div class="resumen-bloque-cuenta" style="
+                    width:300px;
+                    margin:0 auto 20px auto;
+                    padding:15px;
+                    background:#fff;
+                    color:#000;
+                    font-family:monospace;
+                    border-radius:8px;
+                    box-shadow:0 0 5px rgba(0,0,0,0.2);
+                    text-align:center;
+                ">
+                    <!-- Total ingresado -->
+                    <p>Total ingresado de ventas de mesas:<br><span style="color:blue; font-size:16px;">Bs. ${Math.trunc(totalPachaIngresado)}</span></p>
+
+                    <!-- Transferido -->
+                    <p>Transferido a MAMA:<br><span style="color:blue; font-size:16px;">Bs. ${Math.trunc(totalPachaTransferir)}</span></p>
+
+                    <!-- Saldo actual -->
+                    <p><strong>Saldo actual:<br><span style="color:blue; font-size:18px;">Bs. ${Math.trunc(saldoPacha)}</span></strong></p>
+
+                    <!-- Línea separadora antes del banco -->
+                    <hr style="border:1px dashed #000; margin:15px 0;">
+
+                    <!-- Banco, cuenta y referencia en negro -->
+                    <p><strong>Banco:</strong> BCP</p>
+                    <p><strong>Número de cuenta:</strong> <span style="color:blue;">123456</span></p>
+                    <p><strong>Referencia:</strong> Ventas de mesas</p>
+                </div>
+            `;
+        }
+
+
+
+        // Modal final
+        modal.innerHTML = `
+            <div class="resumen-content">
+                <div class="resumen-header">
+                    <h2>Resumen Global de Ingresos</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+                    <h3>Detalle de Ingresos por Cuenta Destino:</h3>
+                    ${detalleHTML}
+                </div>
+
+                <div class="resumen-total-bar">
+                    <span>TOTAL INGRESADO:</span>
+                    <span class="total-final">Bs. ${totalGlobalSinDecimales}</span>
+                </div>
+
+                <!-- Línea divisoria verde neón -->
+                <hr style="border:2px solid #39ff14; margin-top:20px; margin-bottom:10px;">
+
+                <!-- Título centrado -->
+                <h3 style="text-align:center; color:#f0f2f5; margin-bottom:15px;">Transferencias 50% de combos Pachamama</h3>
+
+                <!-- Bloques de transferencias -->
+                ${mamaHTML}
+                ${pachaHTML}
+
+                <!-- Bloque de saldo neto PACHA -->
+                ${saldoHTML}
+
+                <p class="nota">Datos generados automáticamente.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        });
+    };
+
+
+
+
+    // ----------------------------------------------------
+    // Añadir el listener al final de tu DOMContentLoaded
+    // ----------------------------------------------------
+    const btnResumen = document.getElementById('mostrar-resumen');
+
+    if (btnResumen) {
+    btnResumen.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita que la página salte al inicio
+    closeMenu();      // Cierra el menú lateral
+    const resumen = generarResumenGeneral(mesaData);
+    mostrarModalResumen(resumen);
+    });
+    }
+        /* =====================================================
+        FUNCIÓN PARA CALCULAR EL RESUMEN DE OCUPACIÓN
+        ===================================================== */
+
+        const calcularResumenOcupacion = (data) => {
+            let totalMesas = 0;
+            let mesasOcupadas = 0;
+            const resumenPorArea = {};
+
+            // 1. Recorrer todas las áreas en los datos de las mesas
+            for (const area in data) {
+                let mesasArea = 0;
+                let ocupadasArea = 0;
+
+                // 2. Contar mesas y ocupadas por cada área
+                for (const mesa in data[area]) {
+                    mesasArea++;
+                    const datosMesa = data[area][mesa];
+
+                    // Consideramos la mesa "ocupada" si al menos una transacción tiene un monto > 0
+                    const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+                    const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+
+                    if (monto1 > 0 || monto2 > 0) {
+                        ocupadasArea++;
+                    }
+                }
+
+                // Acumular al total global
+                totalMesas += mesasArea;
+                mesasOcupadas += ocupadasArea;
+
+                // Guardar el resumen por área
+                resumenPorArea[area] = {
+                    total: mesasArea,
+                    ocupadas: ocupadasArea,
+                    porcentaje: (mesasArea > 0) ? ((ocupadasArea / mesasArea) * 100).toFixed(1) : 0
+                };
+            }
+
+            // Calcular el total general
+            const porcentajeGlobal = (totalMesas > 0) ? ((mesasOcupadas / totalMesas) * 100).toFixed(1) : 0;
+
+            return {
+                totalMesas: totalMesas,
+                mesasOcupadas: mesasOcupadas,
+                mesasDisponibles: totalMesas - mesasOcupadas,
+                porcentajeGlobal: porcentajeGlobal,
+                porArea: resumenPorArea
+            };
+        };
+
+
+    
+    const determinarColorOcupacion = (porcentaje) => {
+        const p = parseFloat(porcentaje);
+        if (p === 0) {
+            return '#28a745';      // Verde: 0% (Disponible)
+        } else if (p > 0 && p <= 50) {
+            return '#17a2b8';      // Azul/Cian: 1% a 50% (Ocupación Baja)
+        } else if (p > 50 && p < 100) {
+            return '#ffc107';      // Naranja/Amarillo: 51% a 99% (Ocupación Media/Alta)
+        } else if (p === 100) {
+            return '#dc3545';      // Rojo: 100% (Lleno Total)
+        }
+        return '#555';             // Color por defecto
+    };
+    const mostrarModalOcupacion = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal', 'ocupacion-modal');
+
+
+
+        const totalMesasDisponibles = resumen.totalMesas - resumen.mesasOcupadas;
+        const colorGlobal = determinarColorOcupacion(resumen.porcentajeGlobal); // <--- CAMBIO CLAVE AQUÍ
+        // ----------------------------------------------------
+        // CONSTRUCCIÓN DEL ENCABEZADO GLOBAL (Bloque central grande)
+        // ----------------------------------------------------
+        const headerHTML = `
+            <div class="global-summary-block">
+
+                <div class="summary-item">
+                    <span class="summary-value occupied-color">${resumen.mesasOcupadas}</span>
+                    <span class="summary-label">Mesas Ocupadas</span>
+                </div>
+
+                <div class="summary-item total-mesas-gauge" 
+                     data-percent="${resumen.porcentajeGlobal}" 
+                     style="--p:${resumen.porcentajeGlobal}; --c:${colorGlobal};">
+                    <span class="gauge-center-percent">${resumen.porcentajeGlobal}%</span>
+                    <span class="gauge-center-label">Ocupación Total</span>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-value libre-color">${totalMesasDisponibles}</span>
+                    <span class="summary-label">Mesas Libres</span>
+                </div>
+
+            </div>
+            <h3>Detalle de Ocupación por Área:</h3>
+            <div class="ocupacion-grid">
+        `;
+
+        // ----------------------------------------------------
+        // CONSTRUCCIÓN DEL DETALLE POR ÁREA (Medidores pequeños)
+        // ----------------------------------------------------
+        let detalleHTML = '';
+
+        // Ordenar las áreas por porcentaje de ocupación (de mayor a menor)
+        const areasOrdenadas = Object.keys(resumen.porArea)
+            .map(nombre => ({ area: nombre, datos: resumen.porArea[nombre] }))
+            .sort((a, b) => parseFloat(b.datos.porcentaje) - parseFloat(a.datos.porcentaje));
+
+        areasOrdenadas.forEach(item => {
+            const { area, datos } = item;
+            // Colores para cada medidor: Rojo (lleno), Naranja (parcial), Verde (vacío)
+            const color = determinarColorOcupacion(datos.porcentaje); // <--- CAMBIO CLAVE AQUÍ
+            const mesasDisponiblesArea = datos.total - datos.ocupadas;
+
+            detalleHTML += `
+                <div class="area-gauge-block">
+                    <h4>${area}</h4>
+                    <div class="area-gauge" 
+                         data-percent="${datos.porcentaje}" 
+                         style="--p:${datos.porcentaje}; --c:${color};">
+                        <span class="gauge-percent-value">${datos.porcentaje}%</span>
+                    </div>
+                    <p class="gauge-info occupied-color">
+                        Ocupadas: <strong>${datos.ocupadas}</strong>
+                    </p>
+                    <p class="gauge-info libre-color">
+                        Libres: <strong>${mesasDisponiblesArea}</strong>
+                    </p>
+                    <p class="gauge-info">
+                        Total: <strong>${datos.total}</strong>
+                    </p>
+                </div>
+            `;
+        });
+
+        // Cierre del grid
+        detalleHTML += '</div>';
+
+        // Estructura final del Modal
+        modal.innerHTML = `
+            <div class="resumen-content">
+                <div class="resumen-header">
+                    <h2>📈 Porcentaje de Ocupación</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+                    ${headerHTML}
+                    ${detalleHTML}
+                </div>
+
+                <p class="nota">Basado en mesas con al menos una transacción registrada.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        // ✅ BLOQUEAR SCROLL DEL BODY
+        document.body.style.overflow = 'hidden';
+        // Lógica para cerrar
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = ''; // Restaurar scroll
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = ''; // Restaurar scroll
+            }
+        });
+    };
+    /* =====================================================
+        SCRIPT MEJORADO: CREAR IMÁGENES Y ASIGNAR EVENTO CLICK
+        ===================================================== */
+
+    document.querySelectorAll('.area-section').forEach(area => {
+        const grid = area.querySelector('.image-grid');
+        const img = grid.querySelector('img');
+        const cantidad = parseInt(area.dataset.cantidad);
+        // Obtener el nombre del área de manera limpia (Ej: "Pacha", "Lounge")
+        const areaName = area.querySelector("h2").textContent.replace("Área ", "").trim();
+
+        grid.innerHTML = '';
+
+        for (let i = 1; i <= cantidad; i++) {
+            const clone = img.cloneNode(true);
+
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('img-wrapper', 'mesa-link'); // Agregamos una clase para estilo/click
+
+            // --- VERIFICAR SI LA MESA ESTÁ OCUPADA ---
+            const datosMesa = mesaData[areaName][i];
+            let ocupada = false;
+
+            if (datosMesa) {
+                const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+                const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+                if (monto1 > 0 || monto2 > 0) {
+                    ocupada = true;
+                }
+            }
+
+            if (ocupada) {
+                const ribbon = document.createElement("div");
+                ribbon.classList.add("vendido-ribbon");
+                ribbon.textContent = "VENDIDO";
+                wrapper.appendChild(ribbon);
+            }
+
+
+            // Establecer el ID de la mesa para el evento de click
+            wrapper.dataset.area = areaName;
+            wrapper.dataset.mesa = i;
+
+            wrapper.appendChild(clone);
+
+            const numberBadge = document.createElement('div');
+            numberBadge.classList.add('img-number');
+            numberBadge.textContent = i;
+            wrapper.appendChild(numberBadge);
+
+            // 5. Añadir el evento click
+            wrapper.addEventListener('click', function() {
+                const selectedArea = this.dataset.area;
+                const selectedMesa = parseInt(this.dataset.mesa);
+                mostrarComprobante(selectedArea, selectedMesa);
+            });
+
+            grid.appendChild(wrapper);
+        }
+    });
+
+}); // Fin de DOMContentLoaded
