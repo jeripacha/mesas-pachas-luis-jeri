@@ -1,100 +1,96 @@
-/* =====================================================
-    DATOS COMPLETOS DE TODAS LAS ÁREAS Y MESAS
-    ===================================================== */
 
 const mesaData = {
     "Pacha": {
-        1:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,parrales"], combo:"cascabel", fechas:["10-12-25", ""], horas:["18:02", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,fernet bhuero"], combo:"cumpleañero", fechas:["12-12-25", ""], horas:["17:25", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales,parrales"], combo:"cascabel", fechas:["12-12-25", ""], horas:["16:02", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["09-12-25", ""], horas:["22:43", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["15-12-25", ""], horas:["14:20", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["09:35", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["12:9", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["780", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["76", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["67", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["600", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["54", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
     },
 
     "Lounge": {
-        1:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["12-12-25", ""], horas:["11:48", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["11-12-25", ""], horas:["10:59", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["13-12-25", ""], horas:["09:37", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
-        11:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"pachamama", fechas:["11-12-25", ""], horas:["09:41", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]}
     },
 
     "Cholet": {
-        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["7-12-25", ""], horas:["20:54", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,1825 VODKA"], combo:"cumpleañero", fechas:["12-25", ""], horas:["20:39", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["650", ""], tragos:["parrales"], combo:"banx", fechas:["11-12-25", ""], horas:["12:48", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
-        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
-        12:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["22", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["87", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["750", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["76", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["78", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+        12:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["22", ""], cuentas:["20151595559307", ""]}
     },
 
     "Parrales": {
-        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["11-12-25", ""], horas:["16:16", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,fernet bhuero"], combo:"cumpleañero", fechas:["09-12-25", ""], horas:["17:08", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["13-12-25", ""], horas:["13:04", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["13-12-25", ""], horas:["13:12", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["12-12-25", ""], horas:["15:58", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["1000", ""], tragos:["parrales"], combo:"pachamama", fechas:["13-12-25", ""], horas:["09:29", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["11-12-25", ""], horas:["12:45", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["13-12-25", ""], horas:["07:20", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["12-12-25", ""], horas:["18:37", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
-        11:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["12-12-25", ""], horas:["14:44", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
-        12:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["11-12-25", ""], horas:["10:18", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]},
-        13:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["08-12-25", ""], horas:["17:51", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
-        14:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["10-12-25", ""], horas:["17:01", ""], operaciones:["14", ""], cuentas:["20151595559307", ""]},
-        15:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["11-12-25", ""], horas:["10:33", ""], operaciones:["15", ""], cuentas:["20151595559307", ""]},
-        16:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"pachamama", fechas:["09-12-25", ""], horas:["10:56", ""], operaciones:["16", ""], cuentas:["20151595559307", ""]},
-        17:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["10-12-25", ""], horas:["22:41", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
-        18:{nombres:["pacha sunset", ""], montos:["600", ""], tragos:["Jägermeister"], combo:"Jäger", fechas:["13-12-25", ""], horas:["12:20", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["jager"], combo:"jager", fechas:["20-12-25", ""], horas:["22:42", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["20-12-25", ""], horas:["09:53", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["17-12-25", ""], horas:["10:52", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["12:09", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["16-12-25", ""], horas:["17:10", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["19-12-25", ""], horas:["21:45", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["15:30", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["00:13", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales.FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["19:34", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["18-12-25", ""], horas:["13:45", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+        12:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["09:35", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]},
+        13:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["18-12-25", ""], horas:["18:15", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
+        14:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["09-12-25", ""], horas:["14:29", ""], operaciones:["14", ""], cuentas:["20151595559307", ""]},
+        15:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"pachamama", fechas:["19-12-25", ""], horas:["15:28", ""], operaciones:["15", ""], cuentas:["20151595559307", ""]},
+        16:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["18-12-25", ""], horas:["13:45", ""], operaciones:["16", ""], cuentas:["20151595559307", ""]},
+        17:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"", fechas:["12-25", ""], horas:["13:2", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
+        18:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["13:2", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
     },
 
     "VIP": {
-        1:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["09-12-25", ""], horas:["17:08", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["600", ""], tragos:["Jägermeister"], combo:"Jäger", fechas:["12-12-25", ""], horas:["17:20", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales,parrales"], combo:"cumpleañero", fechas:["13-12-25", ""], horas:["15:33", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,parrales"], combo:"cascabel", fechas:["13-12-25", ""], horas:["19:07", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]}
     },
 
     "Extra": {
-        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:[""], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
     },
 
     "Camel": {
-        1:{nombres:["pacha sunset", ""], montos:["650", ""], tragos:["Jägermeister"], combo:"Jäger", fechas:["11-12-25", ""], horas:["12:48", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["12-12-25", ""], horas:["07:25", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["12-12-25", ""], horas:["13:26", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["11:21", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["7", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["19-12-25", ""], horas:["11:48", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]}
     }
 };
-
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Tu código existente para el sidebar) ...
     const sidebar = document.getElementById('sidebar');
@@ -261,8 +257,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarModalOcupacion(resumen);
         });
     }
-    
-   
+
+
     /* =====================================================
       FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
       ===================================================== */
@@ -503,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const montoIndividualSin = Math.trunc(parseFloat(t.monto)).toLocaleString('es-BO');
                 return `
                     <li class="tx-item">
-                        <span class="tx-mesa">[${t.area} ${t.mesa}]</span>
+                        <span class="tx-mesa">[${t.area} M-${t.mesa}]</span>
                         <span class="tx-monto">Bs. ${montoIndividualSin}</span>
                     </li>
                 `;
@@ -534,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const listaMama = resumen.mamaDetalle.map(d => `
                 <li class="resumen-transaccion" style="display:flex; justify-content:space-between; padding:4px 8px; border-bottom:1px solid #ccc;">
-                    <span>[${d.area} ${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
+                    <span>[${d.area} M-${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
                     <span style="color:#000; font-weight:600;">Bs. ${Math.trunc(d.transferencia)}</span>
                 </li>
             `).join('');
@@ -558,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const listaPacha = resumen.pachaDetalle.map(d => `
                 <li class="resumen-transaccion" style="display:flex; justify-content:space-between; padding:4px 8px; border-bottom:1px solid #ccc;">
-                    <span>[${d.area} ${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
+                    <span>[${d.area} M-${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
                     <span style="color:#000; font-weight:600;">Bs. ${Math.trunc(d.transferencia)}</span>
                 </li>
             `).join('');
@@ -576,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        
+
         /* =====================================================
            BLOQUE DE SALDO NETO DE PACHA SUNSET (DETALLADO)
         ===================================================== */
@@ -651,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <p><strong>Banco:</strong> BCP</p>
                     <p><strong>Número de cuenta:</strong>
-                        <span style="color:blue;">20151595559307</span>
+                        <span style="color:blue;">123456</span>
                     </p>
                     <p><strong>Referencia:</strong> Ventas de mesas</p>
 
@@ -781,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
 
-    
+
     const determinarColorOcupacion = (porcentaje) => {
         const p = parseFloat(porcentaje);
         if (p === 0) {
@@ -966,9 +962,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 }); 
-
-
-
 // ===================================
 // ACCORDION
 // ===================================
@@ -994,17 +987,27 @@ function setupAccordionLogic() {
     });
 }
 
-// ===================================
-// RENDER DE UN REPORTE COMPLETO
-// ===================================
 function renderReporte(data, rIndex) {
 
     const mainContentId = `main-report-content-${rIndex}`;
+    const reportContainerId = `reporte-container-${rIndex}`; 
+
+    // --- Preparación de datos (Robusto contra valores nulos/faltantes) ---
+    const s = data.saldoFinal;
+
+    // Aseguramos que los valores sean números, por si faltan en el JSON, evitar NaN.
+    const ingresado = s.ingresado || 0;
+    const transferenciasEnviadas = s.transferenciasEnviadas || 0;
+    const transferenciasRecibidas = s.transferenciasRecibidas || 0;
+
+    // Generamos la fórmula usando los valores limpios
+    const formula = `${ingresado.toLocaleString('es-BO')} - ${transferenciasEnviadas.toLocaleString('es-BO')} + ${transferenciasRecibidas.toLocaleString('es-BO')}`;
 
     let html = `
-        <h2>${data.resumen.titulo}</h2>
+        <div id="${reportContainerId}" class="reporte-printable-area"> 
+            <h2>${data.resumen.titulo}</h2>
 
-        <div class="ticket-section accordion-item main-report-accordion">
+            <div class="ticket-section accordion-item main-report-accordion">
             <h3 class="accordion-header main-header" data-target="${mainContentId}">
                 Reporte ${data.fecha}
                 <span class="toggle-icon">+</span>
@@ -1012,110 +1015,117 @@ function renderReporte(data, rIndex) {
 
             <div id="${mainContentId}" class="accordion-content">
     `;
-
     // ================= CUENTAS =================
-    data.cuentas.forEach((cuenta, cIndex) => {
+    data.cuentas
+      .filter(cuenta => cuenta.transacciones > 0 && cuenta.total > 0)
+      .forEach((cuenta, cIndex) => {
+
         const contentId = `details-${rIndex}-${cIndex}`;
 
         html += `
-            <div class="inner-accordion-item">
-                <h4 class="accordion-header inner-header" data-target="${contentId}">
-                    Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
-                    <span class="toggle-icon">+</span>
-                </h4>
+          <div class="inner-accordion-item">
+            <h4 class="accordion-header inner-header" data-target="${contentId}">
+              Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
+              <span class="toggle-icon">+</span>
+            </h4>
 
-                <div id="${contentId}" class="accordion-content">
-                    <p><strong>Total: Bs. ${cuenta.total}</strong></p>
+            <div id="${contentId}" class="accordion-content">
+              <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
 
-                    <ul class="ticket-grid-list">
-                        ${cuenta.detalles.map(d =>
-                            `<li>[${d.mesa}] Bs. ${d.monto}</li>`
-                        ).join('')}
-                    </ul>
-                </div>
+              <ul class="ticket-grid-list">
+                ${cuenta.detalles.map(d =>
+                  `<li>[${d.mesa}] Bs. ${d.monto.toLocaleString('es-BO')}</li>`
+                ).join('')}
+              </ul>
             </div>
+          </div>
         `;
     });
 
-    // ================= TRANSFERENCIAS =================
-    ['mama', 'pacha'].forEach(tipo => {
-        if (data.transferencias?.[tipo]?.detalles?.length) {
 
-            const transferId = `transfer-${tipo}-${rIndex}`;
-            const total = data.transferencias[tipo].totalTransferido;
+    // ================= TRANSFERENCIAS (Robusto: solo muestra si hay datos) =================
 
-            html += `
-                <div class="ticket-section transfer inner-section accordion-item">
-                    <h4 class="accordion-header inner-header" data-target="${transferId}">
-                        ${data.transferencias[tipo].descripcion || `Transferencias a ${tipo.toUpperCase()}`}
-                        <span class="toggle-icon">+</span>
-                    </h4>
+    // Verificamos que el objeto de transferencias exista
+    if (data.transferencias) {
+        ['mama', 'pacha'].forEach(tipo => {
 
-                    <div id="${transferId}" class="accordion-content">
-                        <p class="total-transfer">
-                            Total a transferir:
-                            <strong>Bs. ${total.toLocaleString('es-BO')}</strong>
-                        </p>
+            const transferenciaData = data.transferencias[tipo];
 
-                      <ul class="ticket-simple-list">
-                      ${data.transferencias[tipo].detalles.map(t => {
-                                                      // 💡 NUEVO TEXTO DETALLADO
-                                                      const detalleTexto = `(${t.porcentaje}% de Bs. ${t.montoOriginal})`;
+            // Verificamos si hay detalles Y si el total transferido es mayor que cero
+            if (transferenciaData?.detalles?.length && transferenciaData.totalTransferido > 0) {
 
-                                                      return `<li>
-                      <span style="color:#ddd;">[${t.mesa}] ${detalleTexto}</span>
-                      <span>
-                      Transferir:
-                      <strong>Bs. ${t.transferencia}</strong>
-                      </span>
-                      </li>`;
-                      }).join('')}
-                      </ul>
+                const transferId = `transfer-${tipo}-${rIndex}`;
+                const total = transferenciaData.totalTransferido;
+
+                html += `
+                    <div class="ticket-section transfer inner-section accordion-item">
+                        <h4 class="accordion-header inner-header" data-target="${transferId}">
+                            ${transferenciaData.descripcion || `Transferencias a ${tipo.toUpperCase()}`}
+                            <span class="toggle-icon">+</span>
+                        </h4>
+
+                        <div id="${transferId}" class="accordion-content">
+                            <p class="total-transfer">
+                                Total a transferir:
+                                <strong>Bs. ${total.toLocaleString('es-BO')}</strong>
+                            </p>
+
+                          <ul class="ticket-simple-list">
+                          ${transferenciaData.detalles.map(t => {
+                                const detalleTexto = `(${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')})`;
+
+                                return `<li>
+                                    <span style="color:#ddd;">[${t.mesa}] ${detalleTexto}</span>
+                                    <span>
+                                    Transferir:
+                                    <strong>Bs. ${t.transferencia.toLocaleString('es-BO')}</strong>
+                                    </span>
+                                    </li>`;
+                            }).join('')}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            `;
-        }
-    });
+                `;
+            }
+        });
+    }
 
-    // ================= SALDO FINAL =================
+    // ================= SALDO FINAL (CON FÓRMULA) =================
     const finalId = `final-saldo-${rIndex}`;
-    const s = data.saldoFinal;
 
     html += `
         <div class="ticket-section final inner-section accordion-item">
-            <h4 class="accordion-header inner-header" data-target="${finalId}">
-                ${s.descripcion || 'Cierre de Caja / Saldo Final'}
-                <span class="toggle-icon">+</span>
-            </h4>
+        <h4 class="accordion-header inner-header" data-target="${finalId}">
+        ${s.descripcion || 'Cierre de Caja / Saldo Final'}
+        <span class="toggle-icon">+</span>
+        </h4>
 
-            <div id="${finalId}" class="accordion-content saldo-final">
-
-                <p><strong>${s.labelIngresado}:</strong> <span class="amount">Bs. ${Number(s.ingresado).toLocaleString('es-BO')}</span></p>
-
-                <p><strong>${s.labelTransferenciasEnviadas}:</strong> <span class="amount">Bs. ${Number(s.transferenciasEnviadas).toLocaleString('es-BO')}</span></p>
-
-                <p><strong>${s.labelTransferenciasRecibidas}:</strong> <span class="amount">Bs. ${Number(s.transferenciasRecibidas).toLocaleString('es-BO')}</span></p>
-
-                <p class="formula">Fórmula: ${s.formula}</p>
-
-                <hr>
-
-                <p><strong>SALDO ACTUAL EN BANCO:</strong> <span class="amount">Bs. ${Number(s.saldo).toLocaleString('es-BO')}</span></p>
-
-                <p>Banco: ${s.banco}</p>
-                <p>N° Cuenta: ${s.cuenta}</p>
-                <p>Referencia: ${s.referencia}</p>
-                <p style="opacity:.6">${s.nota || ''}</p>
-
-            </div>
+        <div id="${finalId}" class="accordion-content">
+                                <p>Total ingresado por ventas de mesas: <strong>Bs. ${ingresado.toLocaleString('es-BO')}</strong></p>
+        <p>(−) Transferencias realizadas: Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</p>
+        <p>(+) Transferencias recibidas: Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</p>
+                                <hr>
+                                <p><strong>Cálculo: ${formula}</strong></p>
+        <hr>
+        <p><strong>SALDO ACTUAL EN BANCO</strong></p>
+        <p><strong>Bs. ${s.saldo.toLocaleString('es-BO')}</strong></p>
+        <p>Banco: ${s.banco}</p>
+        <p>N° Cuenta: ${s.cuenta}</p>
+        <p>Referencia: ${s.referencia}</p>
+        <p style="opacity:.6">${s.nota || ''}</p>
         </div>
-    `;
+        </div>
+
+        </div>
+        </div>
+        `;
 
     return html;
 }
+
 function renderReportes(data) {
     // 💡 CORRECCIÓN PRINCIPAL: Usar .flat() para manejar el array anidado en el JSON
-    const reportesAplanados = data.reportes.flat(); 
+    const reportesAplanados = data.reportes.flat(); 
 
     let html = '';
 
@@ -1129,7 +1139,7 @@ function renderReportes(data) {
         // 🔒 Filtro adicional: No mostrar si el total de todas las cuentas es 0
         const tieneIngresos = reporte.cuentas.some(c => c.total > 0);
         if (!tieneIngresos) {
-             return;
+            return;
         }
 
         html += renderReporte(reporte, index);
@@ -1137,7 +1147,6 @@ function renderReportes(data) {
 
     // Si no hay ningún reporte con datos (después del filtrado)
     if (!html) {
-        // ... (Tu código de 'no hay reportes')
         contenidoReportes.innerHTML = `
             <p style="padding:20px; text-align:center; color:#aaa;">
                 No hay reportes con datos todavía
@@ -1150,6 +1159,7 @@ function renderReportes(data) {
     setupAccordionLogic();
 }
 
+// ❌ ELIMINADA: La función imprimirReporte ya no es necesaria.
 
 // ===================================
 // MODAL + FETCH
