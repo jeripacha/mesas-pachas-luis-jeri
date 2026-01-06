@@ -1,12 +1,12 @@
 
 const mesaData = {
     "Pacha": {
-        1:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["15-12-25", ""], horas:["14:20", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["09:35", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["12:9", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["780", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["76", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["67", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["600", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["54", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
         7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
         8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
         9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
@@ -28,13 +28,13 @@ const mesaData = {
     },
 
     "Cholet": {
-        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["87", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        1:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["03-01-26", ""], horas:["17:05", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales,parrales"], combo:"cascabel", fechas:["03-01-26", ""], horas:["14;51", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["750", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
         4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
         5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["750", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["76", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["78", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
         8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
         9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
         10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
@@ -43,28 +43,28 @@ const mesaData = {
     },
 
     "Parrales": {
-        1:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["jager"], combo:"jager", fechas:["20-12-25", ""], horas:["22:42", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["20-12-25", ""], horas:["09:53", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
-        4:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["17-12-25", ""], horas:["10:52", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["12:09", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
-        6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["16-12-25", ""], horas:["17:10", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
-        7:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["19-12-25", ""], horas:["21:45", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
-        8:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["15:30", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
-        9:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["00:13", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
-        10:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales.FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["19:34", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
-        11:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["18-12-25", ""], horas:["13:45", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
-        12:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["17-12-25", ""], horas:["09:35", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]},
-        13:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["18-12-25", ""], horas:["18:15", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
-        14:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["09-12-25", ""], horas:["14:29", ""], operaciones:["14", ""], cuentas:["20151595559307", ""]},
-        15:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"pachamama", fechas:["19-12-25", ""], horas:["15:28", ""], operaciones:["15", ""], cuentas:["20151595559307", ""]},
-        16:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["18-12-25", ""], horas:["13:45", ""], operaciones:["16", ""], cuentas:["20151595559307", ""]},
-        17:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"", fechas:["12-25", ""], horas:["13:2", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
-        18:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["13:2", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["31-12-25", ""], horas:["18:52", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales,fernet buhero"], combo:"cumpleañero", fechas:["01-01-26", ""], horas:["14:02", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["jager"], combo:"jager", fechas:["03-01-26", ""], horas:["00:44", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+        4:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-01-26", ""], horas:["02:14", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-01-26", ""], horas:["15:12", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumplañero", fechas:["02-01-26", ""], horas:["22:17", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+        7:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-01-26", ""], horas:["19:48", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+        8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+        9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+        10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+        11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+        12:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]},
+        13:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
+        14:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["14", ""], cuentas:["20151595559307", ""]},
+        15:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["15", ""], cuentas:["20151595559307", ""]},
+        16:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["16", ""], cuentas:["20151595559307", ""]},
+        17:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
+        18:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
     },
 
     "VIP": {
-        1:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        1:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["01-01-26", ""], horas:["13:58", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
         2:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
         3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
         4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
@@ -86,11 +86,20 @@ const mesaData = {
     },
 
     "Camel": {
-        1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["18-12-25", ""], horas:["11:21", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
-        2:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"", fechas:["12-25", ""], horas:["7", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
-        3:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["19-12-25", ""], horas:["11:48", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]}
+        1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["30-12-25", ""], horas:["07:43", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+        2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-01-26", ""], horas:["17:34", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+        3:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["02-01-26", ""], horas:["18:10", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]}
     }
 };
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Tu código existente para el sidebar) ...
     const sidebar = document.getElementById('sidebar');
@@ -499,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const montoIndividualSin = Math.trunc(parseFloat(t.monto)).toLocaleString('es-BO');
                 return `
                     <li class="tx-item">
-                        <span class="tx-mesa">[${t.area} M-${t.mesa}]</span>
+                        <span class="tx-mesa">[${t.area} -${t.mesa}]</span>
                         <span class="tx-monto">Bs. ${montoIndividualSin}</span>
                     </li>
                 `;
@@ -1126,10 +1135,24 @@ function renderReporte(data, rIndex) {
 function renderReportes(data) {
     // 💡 CORRECCIÓN PRINCIPAL: Usar .flat() para manejar el array anidado en el JSON
     const reportesAplanados = data.reportes.flat(); 
-
     let html = '';
+    let ultimoAnio = null;
 
     reportesAplanados.forEach((reporte, index) => {
+
+        const anioActual = reporte.fecha.split('-')[2]; // "25", "26"
+
+        // Si el año cambia, insertamos un separador visual
+        if (ultimoAnio !== null && anioActual !== ultimoAnio) {
+            html += `
+                <div class="separador-anio">
+                    <span>AÑO 20${anioActual}</span>
+                </div>
+            `;
+        }
+
+        ultimoAnio = anioActual;
+
 
         // 🔒 Filtro para no mostrar si el array de cuentas no existe o está vacío
         if (!reporte.cuentas || reporte.cuentas.length === 0) {
