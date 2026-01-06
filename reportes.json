@@ -10,36 +10,27 @@
           "total": 21670,
           "detalles": [
             { "mesa": "Cholet 5", "monto": 1300 },
-            { "mesa": "Cholet M-6", "monto": 1300 },
-            { "mesa": "Cholet M-7", "monto": 650 },
-            { "mesa": "Parrales M-1", "monto": 1300 },
-            { "mesa": "Parrales M-2", "monto": 780 },
-            { "mesa": "Parrales M-2", "monto": 100 },
-            { "mesa": "Parrales M-3", "monto": 980 },
-            { "mesa": "Parrales M-5", "monto": 880 },
-            { "mesa": "Parrales M-6", "monto": 100 },
-            { "mesa": "Parrales M-6", "monto": 700 },
-            { "mesa": "Parrales M-7", "monto": 750 },
-            { "mesa": "Parrales M-9", "monto": 100 },
-            { "mesa": "Parrales M-9", "monto": 880 },
-            { "mesa": "Parrales M-10", "monto": 800 },
-            { "mesa": "Parrales M-11", "monto": 980 },
-            { "mesa": "Parrales M-12", "monto": 100 },
-            { "mesa": "Parrales M-12", "monto": 880 },
-            { "mesa": "Parrales M-13", "monto": 1300 },
-            { "mesa": "Parrales M-14", "monto": 600 },
-            { "mesa": "Parrales M-14", "monto": 700 },
-            { "mesa": "Parrales M-15", "monto": 200 },
-            { "mesa": "Parrales M-15", "monto": 1100 },
-            { "mesa": "Parrales M-16", "monto": 100 },
-            { "mesa": "Parrales M-16", "monto": 880 },
-            { "mesa": "Parrales M-17", "monto": 980 },
-            { "mesa": "Parrales M-18", "monto": 800 },
-            { "mesa": "Camel M-1", "monto": 700 },
-            { "mesa": "Camel M-1", "monto": 280 },
-            { "mesa": "Camel M-2", "monto": 700 },
-            { "mesa": "Camel M-3", "monto": 700 },
-            { "mesa": "Camel M-3", "monto": 50 }
+            { "mesa": "Cholet 6", "monto": 1300 },
+            { "mesa": "Cholet 7", "monto": 650 },
+            { "mesa": "Parrales 1", "monto": 1300 },
+            { "mesa": "Parrales 2", "monto": 880 },
+            { "mesa": "Parrales 3", "monto": 980 },
+            { "mesa": "Parrales 5", "monto": 880 },
+            { "mesa": "Parrales 6", "monto": 800 },
+            { "mesa": "Parrales 7", "monto": 750 },
+            { "mesa": "Parrales 9", "monto": 980 },
+            { "mesa": "Parrales 10", "monto": 800 },
+            { "mesa": "Parrales 11", "monto": 980 },
+            { "mesa": "Parrales 12", "monto": 980 },
+            { "mesa": "Parrales 13", "monto": 1300 },
+            { "mesa": "Parrales 14", "monto": 1300 },
+            { "mesa": "Parrales 15", "monto": 1300 },
+            { "mesa": "Parrales 16", "monto": 980 },
+            { "mesa": "Parrales 17", "monto": 980 },
+            { "mesa": "Parrales 18", "monto": 800 },
+            { "mesa": "Camel 1", "monto": 980 },
+            { "mesa": "Camel 2", "monto": 700 },
+            { "mesa": "Camel 3", "monto": 750 }
           ]
         },
         {
@@ -47,8 +38,8 @@
           "transacciones": 2,
           "total": 2400,
           "detalles": [
-            { "mesa": "Parrales M-4", "monto": 1400 },
-            { "mesa": "Parrales M-8", "monto": 1000 }
+            { "mesa": "Parrales 4", "monto": 1400 },
+            { "mesa": "Parrales 8", "monto": 1000 }
           ]
         }
       ],
@@ -58,20 +49,20 @@
           "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
           "totalTransferido": 3900,
           "detalles": [
-            { "mesa": "Cholet M-5", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
-            { "mesa": "Cholet M-6", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
-            { "mesa": "Parrales M-1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
-            { "mesa": "Parrales M-13", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
-            { "mesa": "Parrales M-14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
-            { "mesa": "Parrales M-15", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+            { "mesa": "Cholet 5", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Cholet 6", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 13", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 15", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
           ]
         },
         "pacha": {
           "descripcion": "Transferencias a PACHA SUNSET (50% del combo Pachamama)",
           "totalTransferido": 1200,
           "detalles": [
-            { "mesa": "Parrales M-4", "montoOriginal": 1400, "porcentaje": 50, "transferencia": 700 },
-            { "mesa": "Parrales M-8", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+            { "mesa": "Parrales 4", "montoOriginal": 1400, "porcentaje": 50, "transferencia": 700 },
+            { "mesa": "Parrales 8", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
           ]
         }
       },
@@ -98,19 +89,43 @@
       "cuentas": [
         {
           "nombre": "PACHA SUNSET",
-          "transacciones": 0,
-          "total": 0,
+          "transacciones": 35,
+          "total": 31100,
           "detalles": [
-            { "mesa": "Cholet M-1", "monto": 0 },
-            { "mesa": "Cholet M-2", "monto": 0 },
-            { "mesa": "Parrales M-3", "monto": 0 },
-            { "mesa": "Parrales M-4", "monto": 0 },
-            { "mesa": "Parrales M-5", "monto": 0 },
-            { "mesa": "Parrales M-6", "monto": 0 },
-            { "mesa": "Parrales M-7", "monto": 0 },
-            { "mesa": "Parrales M-8", "monto": 0 },
-            { "mesa": "Camel M-1", "monto": 0 },
-            { "mesa": "Camel M-2", "monto": 0 }
+            { "mesa": "Pacha 1", "monto": 800 },
+            { "mesa": "Pacha 2", "monto": 880 },
+            { "mesa": "Pacha 3", "monto": 700 },
+            { "mesa": "Lounge 1", "monto": 1300 },
+            { "mesa": "Lounge 2", "monto": 980 },
+            { "mesa": "Lounge 10", "monto": 930 },
+            { "mesa": "Lounge 11", "monto": 1200 },
+            { "mesa": "Cholet 4", "monto": 1300 },
+            { "mesa": "Cholet 6", "monto": 980 },
+            { "mesa": "Cholet 7", "monto": 650 },
+            { "mesa": "Parrales 2", "monto": 880 },
+            { "mesa": "Parrales 3", "monto": 880 },
+            { "mesa": "Parrales 4", "monto": 500 },
+            { "mesa": "Parrales 5", "monto": 1300 },
+            { "mesa": "Parrales 6", "monto": 980 },
+            { "mesa": "Parrales 7", "monto": 1000 },
+            { "mesa": "Parrales 8", "monto": 500 },
+            { "mesa": "Parrales 9", "monto": 500 },
+            { "mesa": "Parrales 10", "monto": 880 },
+            { "mesa": "Parrales 11", "monto": 980 },
+            { "mesa": "Parrales 12", "monto": 980 },
+            { "mesa": "Parrales 13", "monto": 980 },
+            { "mesa": "Parrales 14", "monto": 1300 },
+            { "mesa": "Parrales 15", "monto": 500 },
+            { "mesa": "Parrales 16", "monto": 1200 },
+            { "mesa": "Parrales 17", "monto": 980 },
+            { "mesa": "Parrales 18", "monto": 600 },
+            { "mesa": "Camel 1", "monto": 650 },
+            { "mesa": "Camel 2", "monto": 980 },
+            { "mesa": "Camel 3", "monto": 800 },
+            { "mesa": "Vip 1", "monto": 880 },
+            { "mesa": "Vip 2", "monto": 600 },
+            { "mesa": "Vip 4", "monto": 930 },
+            { "mesa": "Vip 5", "monto": 800 }
           ]
         },
         {
@@ -118,9 +133,9 @@
           "transacciones": 0,
           "total": 0,
           "detalles": [
-            { "mesa": "Parrales M-9", "monto": 0 },
-            { "mesa": "Parrales M-10", "monto": 0 },
-            { "mesa": "Parrales M-11", "monto": 0 }
+            { "mesa": "Parrales 9", "monto": 0 },
+            { "mesa": "Parrales 10", "monto": 0 },
+            { "mesa": "Parrales 11", "monto": 0 }
           ]
         }
       ],
@@ -128,32 +143,35 @@
       "transferencias": {
         "mama": {
           "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
-          "totalTransferido": 0,
+          "totalTransferido": 4300,
           "detalles": [
-            { "mesa": "Cholet M-1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
-            { "mesa": "Cholet M-2", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
-            { "mesa": "Parrales M-4", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
-            { "mesa": "Parrales M-8", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+            { "mesa": "Lounge 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Lounge 11", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 },
+            { "mesa": "Cholet 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 5", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 7", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+            { "mesa": "Parrales 14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+            { "mesa": "Parrales 16", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 }  
           ]
         },
         "pacha": {
           "descripcion": "Transferencias a PACHA SUNSET (50% del combo Pachamama)",
           "totalTransferido": 0,
           "detalles": [
-            { "mesa": "Parrales M-9", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
-            { "mesa": "Parrales M-10", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+            { "mesa": "Parrales 9", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
+            { "mesa": "Parrales 10", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
           ]
         }
       },
       "saldoFinal": {
         "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
-        "ingresado": 0,
-        "transferenciasEnviadas": 0,
+        "ingresado": 31100,
+        "transferenciasEnviadas": 4300,
         "transferenciasRecibidas": 0,
-        "formula": "0 - 0 + 0",
-        "saldo": 0,
+        "formula": "31100 - 4300 + 0",
+        "saldo": 26800,
         "banco": "BCP",
-        "cuenta": "123456",
+        "cuenta": " 20151595559307",
         "referencia": "Ventas de mesas",
         "nota": "Datos generados automáticamente"
       }
@@ -165,11 +183,38 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 29,
+            "total": 26000,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 },
-              { "mesa": "Mesa 2", "monto": 0 }
+              { "mesa": "Pacha 1", "monto": 930 },
+              { "mesa": "Pacha 2", "monto": 980 },
+              { "mesa": "Pacha 3", "monto": 700 },
+              { "mesa": "Pacha 4", "monto": 780 },
+              { "mesa": "Pacha 5", "monto": 500 },
+              { "mesa": "Pacha 6", "monto": 600 },
+              { "mesa": "Cholet 2", "monto": 800 },
+              { "mesa": "Cholet 6", "monto": 750 },
+              { "mesa": "Cholet 7", "monto": 980 },
+              { "mesa": "Parrales 1", "monto": 700 },
+              { "mesa": "Parrales 2", "monto": 980 },
+              { "mesa": "Parrales 4", "monto": 1300 },
+              { "mesa": "Parrales 5", "monto": 980 },
+              { "mesa": "Parrales 6", "monto": 980 },
+              { "mesa": "Parrales 7", "monto": 700 },
+              { "mesa": "Parrales 8", "monto": 980 },
+              { "mesa": "Parrales 9", "monto": 980 },
+              { "mesa": "Parrales 10", "monto": 980 },
+              { "mesa": "Parrales 11", "monto": 1300 },
+              { "mesa": "Parrales 12", "monto": 980 },
+              { "mesa": "Parrales 13", "monto": 800 },
+              { "mesa": "Parrales 14", "monto": 980 },
+              { "mesa": "Parrales 15", "monto": 980 },
+              { "mesa": "Parrales 16", "monto": 500 },
+              { "mesa": "Parrales 17", "monto": 980 },
+              { "mesa": "Parrales 18", "monto": 800 },
+              { "mesa": "Camel 1", "monto": 980 },
+              { "mesa": "Camel 2", "monto": 800 },
+              { "mesa": "Camel 3", "monto": 1300 }
             ]
           },
           {
@@ -184,10 +229,14 @@
         "totales": { "ingresado": 0 },
         "transferencias": {
           "mama": {
-            "descripcion": "Transferencias a MAMA",
-            "totalTransferido": 0,
+            "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+            "totalTransferido": 2440,
             "detalles": [
-              { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+              { "mesa": "parrales 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+              { "mesa": "parrales 11", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+              { "mesa": "parrales 15", "montoOriginal": 980, "porcentaje": 50, "transferencia": 490 },
+              { "mesa": "camel 3", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+              
             ]
           },
           "pacha": {
@@ -200,13 +249,13 @@
         },
         "saldoFinal": {
           "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
-          "ingresado": 0,
-          "transferenciasEnviadas": 0,
+          "ingresado": 26000,
+          "transferenciasEnviadas": 2440,
           "transferenciasRecibidas": 0,
-          "formula": "0 - 0 + 0",
-          "saldo": 0,
+          "formula": "26000 - 2440 + 0",
+          "saldo": 23560,
           "banco": "BCP",
-          "cuenta": "123456",
+          "cuenta": "20151595559307",
           "referencia": "Ventas de mesas",
           "nota": "Datos generados automáticamente"
         }
