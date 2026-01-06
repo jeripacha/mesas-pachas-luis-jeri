@@ -1508,3 +1508,12 @@ white-space: nowrap; /* Evita que salte de línea */
     font-weight: 600; /* opcional, para resaltar el monto */
 }
 
+.separador-anio {
+    text-align: center;
+    margin: 25px 0 10px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #4caf50;
+    border-top: 2px solid #4caf50;
+    padding-top: 10px;
+}
