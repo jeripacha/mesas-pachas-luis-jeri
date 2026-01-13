@@ -271,41 +271,53 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =====================================================
       FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
       ===================================================== */
-    const calcularResumenInventario = (data) => {
-        const resumen = {
-            tragos: {},
-            combos: {}
-        };
+   const calcularResumenInventario = (data) => {
+    const resumen = {
+        tragos: {},
+        combos: {}
+    };
 
-        // 1. Recorrer todas las áreas (Pacha, Lounge, etc.)
-        for (const area in data) {
-            // 2. Recorrer todas las mesas dentro del área
-            for (const mesa in data[area]) {
-                const datosMesa = data[area][mesa];
+    for (const area in data) {
+        for (const mesa in data[area]) {
+            const datosMesa = data[area][mesa];
 
-                // A) Procesar Tragos (solo se encuentran en el índice 0)
-                const tragosStr = datosMesa.tragos[0];
-                if (tragosStr) {
-                    // Dividir la cadena de tragos (ej: "parrales,ron")
-                    const tragosArray = tragosStr.split(',').map(t => t.trim().toUpperCase()).filter(t => t);
-                    tragosArray.forEach(trago => {
-                        resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
-                    });
-                }
+            // ===== VALIDACIONES =====
+            const monto = datosMesa.montos?.[0];
+            const fecha = datosMesa.fechas?.[0];
 
-                // B) Procesar Combo (solo se encuentra en la propiedad combo)
-                const comboStr = datosMesa.combo;
-                if (comboStr) {
-                    const comboKey = comboStr.trim().toUpperCase();
-                    if (comboKey) {
-                        resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
-                    }
+            const montoValido = monto !== "" && !isNaN(monto) && Number(monto) > 0;
+            const fechaValida = fecha !== "" && fecha !== "12-25"; // ajusta si deseas otro filtro
+
+            // ❌ Si no hay venta real, NO contar inventario
+            if (!montoValido || !fechaValida) continue;
+
+            // ===== TRAGOS =====
+            const tragosStr = datosMesa.tragos?.[0];
+            if (tragosStr) {
+                const tragosArray = tragosStr
+                    .split(',')
+                    .map(t => t.trim().toUpperCase())
+                    .filter(Boolean);
+
+                tragosArray.forEach(trago => {
+                    resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
+                });
+            }
+
+            // ===== COMBOS =====
+            const comboStr = datosMesa.combo;
+            if (comboStr) {
+                const comboKey = comboStr.trim().toUpperCase();
+                if (comboKey) {
+                    resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
                 }
             }
         }
+    }
 
-        return resumen;
-    };
+    return resumen;
+};
+
     /* =====================================================
       FUNCIÓN PARA MOSTRAR EL MODAL DE INVENTARIO
       ===================================================== */
