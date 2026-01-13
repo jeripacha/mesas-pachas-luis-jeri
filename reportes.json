@@ -343,11 +343,22 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 13,
+            "total": 11750,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 },
-              { "mesa": "Mesa 2", "monto": 0 }
+              { "mesa": "Cholet 1", "monto": 880 },
+              { "mesa": "Cholet 3", "monto": 750 },
+              { "mesa": "Parrales 1", "monto": 980 },
+              { "mesa": "Parrales 2", "monto": 880 },
+              { "mesa": "Parrales 3", "monto": 700 },
+              { "mesa": "Parrales 4", "monto": 980 },
+              { "mesa": "Parrales 5", "monto": 980 },
+              { "mesa": "Parrales 6", "monto": 980 },
+              { "mesa": "Parrales 7", "monto": 980 },
+              { "mesa": "Vip 1", "monto": 700 },
+              { "mesa": "Camel 1", "monto": 980 },
+              { "mesa": "Camel 2", "monto": 980 },
+              { "mesa": "Camel 3", "monto": 980 }
             ]
           },
           {
@@ -378,13 +389,13 @@
         },
         "saldoFinal": {
           "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
-          "ingresado": 0,
+          "ingresado": 11750,
           "transferenciasEnviadas": 0,
           "transferenciasRecibidas": 0,
-          "formula": "0 - 0 + 0",
-          "saldo": 0,
+          "formula": "11750 - 0 + 0",
+          "saldo": 11750,
           "banco": "BCP",
-          "cuenta": "123456",
+          "cuenta": "20151595559307",
           "referencia": "Ventas de mesas",
           "nota": "Datos generados automáticamente"
         }
