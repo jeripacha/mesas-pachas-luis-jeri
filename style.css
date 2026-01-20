@@ -1214,11 +1214,7 @@ white-space: nowrap; /* Evita que salte de línea */
     border-color: #03a9f4;
 }
 
-.ticket-section.final {
-    border-color: #4caf50;
-    background: #2e7d32; 
-    padding: 20px;
-}
+
 
 /* TOTAL POR CUENTA */
 .ticket-section p strong {
@@ -1311,77 +1307,93 @@ white-space: nowrap; /* Evita que salte de línea */
         transparent
     );
 }
-/* SALDO FINAL DETALLES */
-.ticket-section.final p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 2px 0;       /* menos separación */
-    line-height: 1.2;
+/* 1. Contenedor principal con padding izquierdo reducido */
+.ticket-section.final {
+    background: #1a1c1e !important;
+    border-top: 4px solid #00ff88;
+    /* Reducimos el 4to valor (izquierda) a 5px para pegar todo al borde */
+    padding: 15px 15px 15px 5px !important; 
+    border-radius: 12px;
+    margin: 10px 0;
 }
 
-.ticket-section.final p strong {
-    color: #e4e2e2;
-    font-size: 16px;
-    flex-shrink: 0;
-    white-space: nowrap;  /* evita que el texto se rompa */
+/* 2. Fila Única: Todo pegado a la izquierda */
+.fila-saldo {
+    display: flex !important;
+    flex-direction: row !important; /* Siempre en una línea */
+    justify-content: flex-start !important; /* Pegado al inicio izquierdo */
+    align-items: center !important;
+    gap: 8px; /* Espacio pequeño entre nombre y monto */
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.ticket-section.final .amount {
-    font-size: 16px;
-    flex-shrink: 0;
+/* 3. Nombre */
+.label-text {
+    color: #b0b0b0; 
+    font-size: 14px;
+    text-align: left !important;
     white-space: nowrap;
+    text-transform: none; /* Quitamos mayúsculas para que quepa mejor */
 }
 
-.ticket-section.final .formula {
-    color: white;       /* azul para resaltar */
+/* 4. Monto (Pegado al texto) */
+.ticket-section.final .amount {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #ffffff;
     font-size: 16px;
-    margin: 2px 0 2px auto;
-    opacity: 0.9;
-    display: block;
+    text-align: left !important;
+    display: inline-block !important;
+    width: auto !important; /* Evita que ocupe toda la línea */
 }
 
-/* ================== Ajustes solo para celulares ================== */
-@media (max-width: 480px) {
+/* --- ESTILOS DE APOYO (Fórmula y Banco) --- */
 
-    /* Cada línea de saldo final */
-    .ticket-section.final p {
-        display: flex;
-        flex-wrap: wrap;          /* permite que el título baje si no cabe */
-        align-items: center;
-        margin: 2px 0;
-        line-height: 1.2;
-    }
-
-    /* Títulos fuertes */
-    .ticket-section.final p strong {
-        flex-shrink: 0;           /* no se achica el texto */
-        font-size: 14px;
-        color: #e4e2e2;
-    }
-
-    /* Montos ahora a la izquierda */
-    .ticket-section.final .amount {
-        margin-left: 0;        /* quitar separación automática */
-        margin-right: 5px;     /* un pequeño espacio antes del título */
-        flex-shrink: 0;
-        white-space: nowrap;   /* número siempre en una línea */
-        font-size: 14px;
-        font-weight: 700;      /* números en negrita */
-    }
-
-    /* Fórmula */
-    .ticket-section.final .formula {
-        font-size: 16px;
-        color: #000000;
-        opacity: 0.9;
-        margin: 2px 0;
-        font-weight: 700;      /* números en negrita */
-    }
-
+.formula-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
 }
 
+.formula {
+    color: #00d4ff;
+    font-weight: bold;
+}
 
+.saldo-destacado {
+    background: #ffffff;
+    color: #000;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.monto-final {
+    font-size: 22px !important;
+    font-weight: 900;
+    color: #11783e !important;
+}
+
+.banco-detalles {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 10px;
+    font-size: 12px;
+    color: #e0e0e0;
+}
+
+.banco-detalles p {
+    margin: 4px 0 !important;
+}
+
+.ticket-section.final hr {
+    border: 0;
+    border-top: 1px dashed rgba(255,255,255,0.2);
+    margin: 10px 0;
+}
 @media (max-width: 600px) {
 
     /* --- 1. MODAL (Aprovechar el espacio vertical) --- */
@@ -1516,4 +1528,92 @@ white-space: nowrap; /* Evita que salte de línea */
     color: #4caf50;
     border-top: 2px solid #4caf50;
     padding-top: 10px;
+}
+@media (max-width: 768px) {
+    .ticket-grid-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .ticket-grid-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        background-color: #1e1e1e;
+        color: #fff;
+    }
+
+    .ticket-grid-list .mesa {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 70%;
+    }
+
+    .ticket-grid-list .monto {
+        font-weight: bold;
+        white-space: nowrap;
+         color: #ffffff !important;
+    }
+    }
+    /* ================= FORZAR TEXTO BLANCO EN MESAS Y MONTOS (TODAS LAS PANTALLAS) ================= */
+    .ticket-grid-list li,
+    .ticket-grid-list .mesa,
+    .ticket-grid-list .monto {
+    color: #ffffff !important;
+    }
+/* Contenedor de la lista */
+.ticket-simple-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+/* Fila de transferencia */
+.transfer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil blanca */
+    gap: 10px; /* Espacio mínimo entre texto y monto */
+}
+
+/* Lado izquierdo (Mesa y detalle) */
+.transfer-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ocupa el espacio sobrante */
+}
+
+.transfer-mesa {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #FFFFFF; /* Letras blancas */
+}
+
+.transfer-detalle {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6); /* Blanco semi-transparente para que sea legible pero discreto */
+    margin-top: 2px;
+}
+
+/* Lado derecho (El monto de dinero) */
+.transfer-right {
+    text-align: right;
+    min-width: fit-content;
+}
+
+.transfer-monto {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #FFFFFF; /* Letras blancas */
+    white-space: nowrap; /* Evita que el monto se parta en dos líneas */
+    background: rgba(255, 255, 255, 0.1); /* Un pequeño fondo para resaltar el dinero */
+    padding: 4px 8px;
+    border-radius: 4px;
 }
