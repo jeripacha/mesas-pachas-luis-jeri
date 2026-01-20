@@ -92,6 +92,18 @@ const mesaData = {
     }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Tu código existente para el sidebar) ...
     const sidebar = document.getElementById('sidebar');
@@ -263,52 +275,52 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =====================================================
       FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
       ===================================================== */
-   const calcularResumenInventario = (data) => {
-    const resumen = {
-        tragos: {},
-        combos: {}
-    };
+    const calcularResumenInventario = (data) => {
+        const resumen = {
+            tragos: {},
+            combos: {}
+        };
 
-    for (const area in data) {
-        for (const mesa in data[area]) {
-            const datosMesa = data[area][mesa];
+        for (const area in data) {
+            for (const mesa in data[area]) {
+                const datosMesa = data[area][mesa];
 
-            // ===== VALIDACIONES =====
-            const monto = datosMesa.montos?.[0];
-            const fecha = datosMesa.fechas?.[0];
+                // ===== VALIDACIONES =====
+                const monto = datosMesa.montos?.[0];
+                const fecha = datosMesa.fechas?.[0];
 
-            const montoValido = monto !== "" && !isNaN(monto) && Number(monto) > 0;
-            const fechaValida = fecha !== "" && fecha !== "12-25"; // ajusta si deseas otro filtro
+                const montoValido = monto !== "" && !isNaN(monto) && Number(monto) > 0;
+                const fechaValida = fecha !== "" && fecha !== "12-25"; // ajusta si deseas otro filtro
 
-            // ❌ Si no hay venta real, NO contar inventario
-            if (!montoValido || !fechaValida) continue;
+                // ❌ Si no hay venta real, NO contar inventario
+                if (!montoValido || !fechaValida) continue;
 
-            // ===== TRAGOS =====
-            const tragosStr = datosMesa.tragos?.[0];
-            if (tragosStr) {
-                const tragosArray = tragosStr
-                    .split(',')
-                    .map(t => t.trim().toUpperCase())
-                    .filter(Boolean);
+                // ===== TRAGOS =====
+                const tragosStr = datosMesa.tragos?.[0];
+                if (tragosStr) {
+                    const tragosArray = tragosStr
+                        .split(',')
+                        .map(t => t.trim().toUpperCase())
+                        .filter(Boolean);
 
-                tragosArray.forEach(trago => {
-                    resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
-                });
-            }
+                    tragosArray.forEach(trago => {
+                        resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
+                    });
+                }
 
-            // ===== COMBOS =====
-            const comboStr = datosMesa.combo;
-            if (comboStr) {
-                const comboKey = comboStr.trim().toUpperCase();
-                if (comboKey) {
-                    resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
+                // ===== COMBOS =====
+                const comboStr = datosMesa.combo;
+                if (comboStr) {
+                    const comboKey = comboStr.trim().toUpperCase();
+                    if (comboKey) {
+                        resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
+                    }
                 }
             }
         }
-    }
 
-    return resumen;
-};
+        return resumen;
+    };
 
     /* =====================================================
       FUNCIÓN PARA MOSTRAR EL MODAL DE INVENTARIO
@@ -543,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const listaMama = resumen.mamaDetalle.map(d => `
                 <li class="resumen-transaccion" style="display:flex; justify-content:space-between; padding:4px 8px; border-bottom:1px solid #ccc;">
-                    <span>[${d.area} M-${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
+                    <span>${d.area} ${d.mesa} (50% de ${d.montoOriginal}) Bs</span>
                     <span style="color:#000; font-weight:600;">Bs. ${Math.trunc(d.transferencia)}</span>
                 </li>
             `).join('');
@@ -1046,9 +1058,12 @@ function renderReporte(data, rIndex) {
               <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
 
               <ul class="ticket-grid-list">
-                ${cuenta.detalles.map(d =>
-                  `<li>[${d.mesa}] Bs. ${d.monto.toLocaleString('es-BO')}</li>`
-                ).join('')}
+                ${cuenta.detalles.map(d => `
+                  <li>
+                    <span class="mesa">${d.mesa}</span>
+                    <span class="monto">Bs. ${d.monto.toLocaleString('es-BO')}</span>
+                  </li>
+                `).join('')}
               </ul>
             </div>
           </div>
@@ -1086,14 +1101,19 @@ function renderReporte(data, rIndex) {
                           <ul class="ticket-simple-list">
                           ${transferenciaData.detalles.map(t => {
                                 const detalleTexto = `(${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')})`;
-
-                                return `<li>
-                                    <span style="color:#ddd;">[${t.mesa}] ${detalleTexto}</span>
-                                    <span>
-                                    Transferir:
-                                    <strong>Bs. ${t.transferencia.toLocaleString('es-BO')}</strong>
-                                    </span>
-                                    </li>`;
+                                // Dentro de tu renderReporte, en la parte de transferencias:
+                                return `
+                                <li class="transfer-item">
+                                    <div class="transfer-left">
+                                        <span class="transfer-mesa">${t.mesa}</span>
+                                        <span class="transfer-detalle">${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')}</span>
+                                    </div>
+                                    <div class="transfer-right">
+                                        <span class="transfer-label">Transferir:</span>
+                                        <span class="transfer-monto">Bs. ${t.transferencia.toLocaleString('es-BO')}</span>
+                                    </div>
+                                </li>
+                                `;
                             }).join('')}
                             </ul>
                         </div>
@@ -1108,30 +1128,45 @@ function renderReporte(data, rIndex) {
 
     html += `
         <div class="ticket-section final inner-section accordion-item">
-        <h4 class="accordion-header inner-header" data-target="${finalId}">
-        ${s.descripcion || 'Cierre de Caja / Saldo Final'}
-        <span class="toggle-icon">+</span>
-        </h4>
+            <h4 class="accordion-header inner-header" data-target="${finalId}">
+                ${s.descripcion || 'Cierre de Caja / Saldo Final'}
+                <span class="toggle-icon">+</span>
+            </h4>
 
-        <div id="${finalId}" class="accordion-content">
-                                <p>Total ingresado por ventas de mesas: <strong>Bs. ${ingresado.toLocaleString('es-BO')}</strong></p>
-        <p>(−) Transferencias realizadas: Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</p>
-        <p>(+) Transferencias recibidas: Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</p>
-                                <hr>
-                                <p><strong>Cálculo: ${formula}</strong></p>
-        <hr>
-        <p><strong>SALDO ACTUAL EN BANCO</strong></p>
-        <p><strong>Bs. ${s.saldo.toLocaleString('es-BO')}</strong></p>
-        <p>Banco: ${s.banco}</p>
-        <p>N° Cuenta: ${s.cuenta}</p>
-        <p>Referencia: ${s.referencia}</p>
-        <p style="opacity:.6">${s.nota || ''}</p>
-        </div>
-        </div>
+            <div id="${finalId}" class="accordion-content">
+                <div class="fila-saldo">
+                    <span class="label-text">Total Ingresado:</span>
+                    <strong class="amount">Bs. ${ingresado.toLocaleString('es-BO')}</strong>
+                </div>
+                <div class="fila-saldo">
+                    <span class="label-text">Trans. realizadas a Mama:</span>
+                    <span class="amount">Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</span>
+                </div>
+                <div class="fila-saldo">
+                    <span class="label-text">Trans. recibidas de Mama:</span>
+                    <span class="amount">Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</span>
+                </div>
 
+                <hr>
+                <p class="formula-container"><strong>Cálculo:</strong> <span class="formula">${formula}</span></p>
+                <hr>
+
+                <div class="saldo-destacado">
+                    <p><strong>SALDO ACTUAL EN BANCO</strong></p>
+                    <p class="monto-final">Bs. ${s.saldo.toLocaleString('es-BO')}</p>
+                </div>
+
+                <div class="banco-detalles">
+                    <p>Banco: <span>${s.banco}</span></p>
+                    <p>N° Cuenta: <span>${s.cuenta}</span></p>
+                    <p>Referencia: <span>${s.referencia}</span></p>
+                    <p class="nota-final">${s.nota || ''}</p>
+                </div>
+            </div>
         </div>
-        </div>
-        `;
+    </div> 
+</div>
+    `;
 
     return html;
 }
