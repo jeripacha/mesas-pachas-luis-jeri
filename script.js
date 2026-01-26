@@ -5,7 +5,7 @@ const mesaData = {
         2:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales,FD5"], combo:"cumpleañero", fechas:["20-01-2026", ""], horas:["12:05", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
         3:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"pachamama", fechas:["22-01-2026", ""], horas:["15:00", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
         4:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["Jager"], combo:"Jager", fechas:["23-01-2026", ""], horas:["12:00", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
-        5:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["Jager"], combo:"Jager", fechas:["24-01-2026", ""], horas:["17:33", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+        5:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["24-01-2026", ""], horas:["17:33", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
         6:{nombres:["pacha sunset", ""], montos:["750", ""], tragos:["parrales,FD5"], combo:"cascabel", fechas:["22-01-2026", ""], horas:["19:28", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
         7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["01-2026", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
         8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["01-2026", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
