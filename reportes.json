@@ -5,7 +5,7 @@
       "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
       "cuentas": [
         {
-          "nombre": "PACHA Sopa",
+          "nombre": "PACHA SUNSET",
           "transacciones": 31,
           "total": 21670,
           "detalles": [
@@ -590,48 +590,72 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 21,
+            "total": 17770,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 },
-              { "mesa": "Mesa 2", "monto": 0 }
+              { "mesa": "Pacha 1", "monto": 980 },
+              { "mesa": "Pacha 2", "monto": 930 },
+              { "mesa": "Pacha 3", "monto": 1200 },
+              { "mesa": "Pacha 4", "monto": 700 },
+              { "mesa": "Pacha 5", "monto": 700 },
+              { "mesa": "Pacha 6", "monto": 750 },
+
+              { "mesa": "Cholet 1", "monto": 980 },
+              { "mesa": "Cholet 2", "monto": 700 },
+
+              { "mesa": "Parrales 1", "monto": 500 },
+              { "mesa": "Parrales 2", "monto": 880 },
+              { "mesa": "Parrales 3", "monto": 500 },
+              { "mesa": "Parrales 4", "monto": 980 },
+              { "mesa": "Parrales 5", "monto": 980 },
+              { "mesa": "Parrales 6", "monto": 500 },
+              { "mesa": "Parrales 7", "monto": 1300 },
+              { "mesa": "Parrales 8", "monto": 500 },
+              { "mesa": "Parrales 9", "monto": 500 },
+              { "mesa": "Parrales 10", "monto": 980 },
+              { "mesa": "Parrales 11", "monto": 980 },
+              { "mesa": "Parrales 12", "monto": 1300 },
+              { "mesa": "Parrales 14", "monto": 930 }
             ]
           },
           {
             "nombre": "MAMA",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 1,
+            "total": 900,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 }
+              { "mesa": "Parrales 13", "monto": 900 }
             ]
           }
         ],
         "totales": { "ingresado": 0 },
         "transferencias": {
           "mama": {
-            "descripcion": "Transferencias a MAMA",
-            "totalTransferido": 0,
+             "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+            "totalTransferido": 1900,
             "detalles": [
-              { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+              { "mesa": "Pacha 3", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 },
+              { "mesa": "Parrales 7", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+              { "mesa": "Parrales 12", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+              
             ]
           },
           "pacha": {
             "descripcion": "Transferencias a PACHA SUNSET",
             "totalTransferido": 0,
             "detalles": [
-              { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+              { "mesa": "Parrales 13", "montoOriginal": 900, "porcentaje": 50, "transferencia": 450 }
             ]
           }
         },
         "saldoFinal": {
           "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
-          "ingresado": 0,
-          "transferenciasEnviadas": 0,
-          "transferenciasRecibidas": 0,
-          "formula": "0 - 0 + 0",
-          "saldo": 0,
+          "ingresado": 17770,
+          "transferenciasEnviadas": 1900,
+          "transferenciasRecibidas": 450,
+          "formula": "17770 - 1900 + 450",
+          "saldo": 16320,
           "banco": "BCP",
-          "cuenta": "123456",
+          "cuenta": "20151595559307",
           "referencia": "Ventas de mesas",
           "nota": "Datos generados automáticamente"
         }
@@ -642,11 +666,11 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 23340,
+            "total": 2340,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 },
-              { "mesa": "Mesa 2", "monto": 0 }
+              { "mesa": "Mesa 1", "monto": 50 },
+              { "mesa": "Mesa 2", "monto": 40 }
             ]
           },
           {
