@@ -999,217 +999,222 @@ function setupAccordionLogic() {
         });
     });
 }
+        function renderReporte(data, rIndex) {
 
-function renderReporte(data, rIndex) {
+            const mainContentId = `main-report-content-${rIndex}`;
+            const reportContainerId = `reporte-container-${rIndex}`; 
 
-    const mainContentId = `main-report-content-${rIndex}`;
-    const reportContainerId = `reporte-container-${rIndex}`; 
+            const s = data.saldoFinal || {};
 
-    // --- Preparación de datos (Robusto contra valores nulos/faltantes) ---
-    const s = data.saldoFinal;
+            const ingresado = s.ingresado || 0;
+            const transferenciasEnviadas = s.transferenciasEnviadas || 0;
+            const transferenciasRecibidas = s.transferenciasRecibidas || 0;
 
-    // Aseguramos que los valores sean números, por si faltan en el JSON, evitar NaN.
-    const ingresado = s.ingresado || 0;
-    const transferenciasEnviadas = s.transferenciasEnviadas || 0;
-    const transferenciasRecibidas = s.transferenciasRecibidas || 0;
+            const formula = `${ingresado.toLocaleString('es-BO')} - ${transferenciasEnviadas.toLocaleString('es-BO')} + ${transferenciasRecibidas.toLocaleString('es-BO')}`;
 
-    // Generamos la fórmula usando los valores limpios
-    const formula = `${ingresado.toLocaleString('es-BO')} - ${transferenciasEnviadas.toLocaleString('es-BO')} + ${transferenciasRecibidas.toLocaleString('es-BO')}`;
-
-    let html = `
-        <div id="${reportContainerId}" class="reporte-printable-area"> 
-            <h2>${data.resumen.titulo}</h2>
-
-            <div class="ticket-section accordion-item main-report-accordion">
-            <h3 class="accordion-header main-header" data-target="${mainContentId}">
-                Reporte ${data.fecha}
-                <span class="toggle-icon">+</span>
-            </h3>
-
-            <div id="${mainContentId}" class="accordion-content">
-    `;
-    // ================= CUENTAS =================
-    data.cuentas
-      .filter(cuenta => cuenta.transacciones > 0 && cuenta.total > 0)
-      .forEach((cuenta, cIndex) => {
-
-        const contentId = `details-${rIndex}-${cIndex}`;
-
-        html += `
-          <div class="inner-accordion-item">
-            <h4 class="accordion-header inner-header" data-target="${contentId}">
-              Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
-              <span class="toggle-icon">+</span>
-            </h4>
-
-            <div id="${contentId}" class="accordion-content">
-              <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
-
-              <ul class="ticket-grid-list">
-                ${cuenta.detalles.map(d => `
-                  <li>
-                    <span class="mesa">${d.mesa}</span>
-                    <span class="monto">Bs. ${d.monto.toLocaleString('es-BO')}</span>
-                  </li>
-                `).join('')}
-              </ul>
-            </div>
-          </div>
-        `;
-    });
+            let html = `
+            <div id="${reportContainerId}" class="reporte-printable-area">
 
 
-    // ================= TRANSFERENCIAS (Robusto: solo muestra si hay datos) =================
+                <div class="ticket-section accordion-item main-report-accordion">
+                    <h3 class="accordion-header main-header" data-target="${mainContentId}">
+                        Reporte ${data.fecha}
+                        <span class="toggle-icon">+</span>
+                    </h3>
 
-    // Verificamos que el objeto de transferencias exista
-    if (data.transferencias) {
-        ['mama', 'pacha'].forEach(tipo => {
+                    <div id="${mainContentId}" class="accordion-content">
+            `;
 
-            const transferenciaData = data.transferencias[tipo];
+            // ================= CUENTAS =================
+            data.cuentas
+                .filter(cuenta => cuenta.transacciones > 0 && cuenta.total > 0)
+                .forEach((cuenta, cIndex) => {
 
-            // Verificamos si hay detalles Y si el total transferido es mayor que cero
-            if (transferenciaData?.detalles?.length && transferenciaData.totalTransferido > 0) {
+                    const contentId = `details-${rIndex}-${cIndex}`;
 
-                const transferId = `transfer-${tipo}-${rIndex}`;
-                const total = transferenciaData.totalTransferido;
-
-                html += `
-                    <div class="ticket-section transfer inner-section accordion-item">
-                        <h4 class="accordion-header inner-header" data-target="${transferId}">
-                            ${transferenciaData.descripcion || `Transferencias a ${tipo.toUpperCase()}`}
+                    html += `
+                    <div class="inner-accordion-item">
+                        <h4 class="accordion-header inner-header" data-target="${contentId}">
+                            Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
                             <span class="toggle-icon">+</span>
                         </h4>
 
-                        <div id="${transferId}" class="accordion-content">
-                            <p class="total-transfer">
-                                Total a transferir:
-                                <strong>Bs. ${total.toLocaleString('es-BO')}</strong>
-                            </p>
+                        <div id="${contentId}" class="accordion-content">
+                            <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
 
-                          <ul class="ticket-simple-list">
-                          ${transferenciaData.detalles.map(t => {
-                                const detalleTexto = `(${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')})`;
-                                // Dentro de tu renderReporte, en la parte de transferencias:
-                                return `
-                                <li class="transfer-item">
-                                    <div class="transfer-left">
-                                        <span class="transfer-mesa">${t.mesa}</span>
-                                        <span class="transfer-detalle">${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')}</span>
-                                    </div>
-                                    <div class="transfer-right">
-                                        <span class="transfer-label">Transferir:</span>
-                                        <span class="transfer-monto">Bs. ${t.transferencia.toLocaleString('es-BO')}</span>
-                                    </div>
-                                </li>
-                                `;
-                            }).join('')}
+                            <ul class="ticket-grid-list">
+                                ${cuenta.detalles.map(d => `
+                                    <li>
+                                        <span class="mesa">${d.mesa}</span>
+                                        <span class="monto">Bs. ${d.monto.toLocaleString('es-BO')}</span>
+                                    </li>
+                                `).join('')}
                             </ul>
                         </div>
                     </div>
-                `;
+                    `;
+                });
+
+            // ================= TRANSFERENCIAS =================
+            if (data.transferencias) {
+                ['mama', 'pacha'].forEach(tipo => {
+
+                    const tData = data.transferencias[tipo];
+
+                    if (tData?.detalles?.length && tData.totalTransferido > 0) {
+
+                        const transferId = `transfer-${tipo}-${rIndex}`;
+
+                        html += `
+                        <div class="ticket-section transfer inner-section accordion-item">
+                            <h4 class="accordion-header inner-header" data-target="${transferId}">
+                                ${tData.descripcion || `Transferencias a ${tipo.toUpperCase()}`}
+                                <span class="toggle-icon">+</span>
+                            </h4>
+
+                            <div id="${transferId}" class="accordion-content">
+                                <p class="total-transfer">
+                                    Total a transferir:
+                                    <strong>Bs. ${tData.totalTransferido.toLocaleString('es-BO')}</strong>
+                                </p>
+
+                                <ul class="ticket-simple-list">
+                                    ${tData.detalles.map(t => `
+                                        <li class="transfer-item">
+                                            <div class="transfer-left">
+                                                <span class="transfer-mesa">${t.mesa}</span>
+                                                <span class="transfer-detalle">
+                                                    ${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')}
+                                                </span>
+                                            </div>
+                                            <div class="transfer-right">
+                                                <span class="transfer-label">Transferir:</span>
+                                                <span class="transfer-monto">
+                                                    Bs. ${t.transferencia.toLocaleString('es-BO')}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        `;
+                    }
+                });
             }
-        });
-    }
 
-    // ================= SALDO FINAL (CON FÓRMULA) =================
-    const finalId = `final-saldo-${rIndex}`;
+            // ================= SALDO FINAL =================
+            const finalId = `final-saldo-${rIndex}`;
 
-    html += `
-        <div class="ticket-section final inner-section accordion-item">
-            <h4 class="accordion-header inner-header" data-target="${finalId}">
-                ${s.descripcion || 'Cierre de Caja / Saldo Final'}
-                <span class="toggle-icon">+</span>
-            </h4>
-
-            <div id="${finalId}" class="accordion-content">
-                <div class="fila-saldo">
-                    <span class="label-text">Total Ingresado:</span>
-                    <strong class="amount">Bs. ${ingresado.toLocaleString('es-BO')}</strong>
-                </div>
-                <div class="fila-saldo">
-                    <span class="label-text">Trans. realizadas a Mama:</span>
-                    <span class="amount">Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</span>
-                </div>
-                <div class="fila-saldo">
-                    <span class="label-text">Trans. recibidas de Mama:</span>
-                    <span class="amount">Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</span>
-                </div>
-
-                <hr>
-                <p class="formula-container"><strong>Cálculo:</strong> <span class="formula">${formula}</span></p>
-                <hr>
-
-                <div class="saldo-destacado">
-                    <p><strong>SALDO ACTUAL EN BANCO</strong></p>
-                    <p class="monto-final">Bs. ${s.saldo.toLocaleString('es-BO')}</p>
-                </div>
-
-                <div class="banco-detalles">
-                    <p>Banco: <span>${s.banco}</span></p>
-                    <p>N° Cuenta: <span>${s.cuenta}</span></p>
-                    <p>Referencia: <span>${s.referencia}</span></p>
-                    <p class="nota-final">${s.nota || ''}</p>
-                </div>
-            </div>
-        </div>
-    </div> 
-</div>
-    `;
-
-    return html;
-}
-
-function renderReportes(data) {
-    // 💡 CORRECCIÓN PRINCIPAL: Usar .flat() para manejar el array anidado en el JSON
-    const reportesAplanados = data.reportes.flat(); 
-    let html = '';
-    let ultimoAnio = null;
-
-    reportesAplanados.forEach((reporte, index) => {
-
-        const anioActual = reporte.fecha.split('-')[2]; // "25", "26"
-
-        // Si el año cambia, insertamos un separador visual
-        if (ultimoAnio !== null && anioActual !== ultimoAnio) {
             html += `
-                <div class="separador-anio">
-                    <span>AÑO 20${anioActual}</span>
+                <div class="ticket-section final inner-section accordion-item">
+                    <h4 class="accordion-header inner-header" data-target="${finalId}">
+                        ${s.descripcion || 'Cierre de Caja / Saldo Final'}
+                        <span class="toggle-icon">+</span>
+                    </h4>
+
+                    <div id="${finalId}" class="accordion-content">
+                        <div class="fila-saldo">
+                            <span>Total Ingresado:</span>
+                            <strong>Bs. ${ingresado.toLocaleString('es-BO')}</strong>
+                        </div>
+
+                        <div class="fila-saldo">
+                            <span>Trans. realizadas a Mama:</span>
+                            <span>Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</span>
+                        </div>
+
+                        <div class="fila-saldo">
+                            <span>Trans. recibidas de Mama:</span>
+                            <span>Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</span>
+                        </div>
+
+                        <hr>
+                        <p><strong>Cálculo:</strong> ${formula}</p>
+                        <hr>
+
+                        <div class="saldo-destacado">
+                            <p><strong>SALDO ACTUAL EN BANCO</strong></p>
+                            <p class="monto-final">Bs. ${s.saldo.toLocaleString('es-BO')}</p>
+                        </div>
+                    </div>
                 </div>
+
+                </div> <!-- FIN accordion-content principal -->
+                </div> <!-- FIN main-report-accordion -->
+            </div> <!-- FIN reporte-printable-area -->
             `;
+
+            return html;
         }
 
-        ultimoAnio = anioActual;
+        function obtenerMesAnio(fecha) {
+            const [dia, mes, anioCorto] = fecha.split('-');
+            const anio = `20${anioCorto}`;
 
+            const meses = [
+                "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+            ];
 
-        // 🔒 Filtro para no mostrar si el array de cuentas no existe o está vacío
-        if (!reporte.cuentas || reporte.cuentas.length === 0) {
-            return;
+            const nombreMes = meses[parseInt(mes, 10) - 1];
+            return `${nombreMes} ${anio}`;
         }
 
-        // 🔒 Filtro adicional: No mostrar si el total de todas las cuentas es 0
-        const tieneIngresos = reporte.cuentas.some(c => c.total > 0);
-        if (!tieneIngresos) {
-            return;
-        }
+           function renderReportes(data) {
+               const reportesAplanados = data.reportes.flat();
+               let html = '';
+               let ultimoMesAnio = null;
 
-        html += renderReporte(reporte, index);
-    });
+               reportesAplanados.forEach((reporte, index) => {
 
-    // Si no hay ningún reporte con datos (después del filtrado)
-    if (!html) {
-        contenidoReportes.innerHTML = `
-            <p style="padding:20px; text-align:center; color:#aaa;">
-                No hay reportes con datos todavía
-            </p>
-        `;
-        return;
-    }
+                   const mesAnioActual = obtenerMesAnio(reporte.fecha);
 
-    contenidoReportes.innerHTML = html;
-    setupAccordionLogic();
-}
+                   // 👉 Si cambia el mes, cerramos el anterior y abrimos uno nuevo
+                   if (ultimoMesAnio !== mesAnioActual) {
 
-// ❌ ELIMINADA: La función imprimirReporte ya no es necesaria.
+                       if (ultimoMesAnio !== null) {
+                           html += `</div></div>`; // cerrar mes anterior
+                       }
+
+                       html += `
+                           <div class="mes-acordeon">
+                               <div class="separador-mes" data-mes>
+                                   <span>${mesAnioActual}</span>
+                               </div>
+                               <div class="mes-contenido">
+                       `;
+
+                       ultimoMesAnio = mesAnioActual;
+                   }
+
+                   // 🔒 filtros
+                   if (!reporte.cuentas || reporte.cuentas.length === 0) return;
+
+                   const tieneIngresos = reporte.cuentas.some(c => c.total > 0);
+                   if (!tieneIngresos) return;
+
+                   html += renderReporte(reporte, index);
+               });
+
+               // cerrar último mes
+               if (ultimoMesAnio !== null) {
+                   html += `</div></div>`;
+               }
+
+               contenidoReportes.innerHTML = html;
+               activarAcordionMeses();
+               setupAccordionLogic();
+           }
+           function activarAcordionMeses() {
+               document.querySelectorAll('[data-mes]').forEach(header => {
+                   header.addEventListener('click', () => {
+                       const contenido = header.nextElementSibling;
+                       header.classList.toggle('abierto');
+                       contenido.classList.toggle('abierto');
+                   });
+               });
+           }
 
 // ===================================
 // MODAL + FETCH
