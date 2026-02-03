@@ -104,13 +104,24 @@
             </div>
         </div>
     </main>
-    <!-- MODAL REPORTES -->
     <div id="modal-reportes" class="modal">
       <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div id="contenido-reportes"></div>
+
+          <div class="modal-header">
+              <div class="modal-title-group">
+                  <h2>Reportes por Mes</h2>
+                  <p class="modal-hint">Presiona un mes para ver los reportes por fecha</p>
+              </div>
+
+              <span class="close-modal">&times;</span>
+          </div>
+
+          <!-- 🔴 ESTO FALTABA -->
+          <div id="contenido-reportes" class="modal-body"></div>
+
       </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>
