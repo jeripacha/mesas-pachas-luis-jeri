@@ -641,7 +641,7 @@
           },
           "pacha": {
             "descripcion": "Transferencias a PACHA SUNSET",
-            "totalTransferido": 0,
+            "totalTransferido": 450,
             "detalles": [
               { "mesa": "Parrales 13", "montoOriginal": 900, "porcentaje": 50, "transferencia": 450 }
             ]
