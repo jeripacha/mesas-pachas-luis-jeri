@@ -666,11 +666,11 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 23340,
-            "total": 2340,
+            "transacciones": 0,
+            "total": 0,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 50 },
-              { "mesa": "Mesa 2", "monto": 40 }
+              { "mesa": "Mesa 1", "monto": 0 },
+              { "mesa": "Mesa 2", "monto": 0 }
             ]
           },
           {
