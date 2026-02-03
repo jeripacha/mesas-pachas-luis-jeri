@@ -49,6 +49,103 @@ body {
     top: 60%;
     transform: translateY(-50%);
 }
+.mes-acordeon {
+    margin-bottom: 36px;
+}
+
+/* =========================
+   HEADER DEL MES
+   ========================= */
+.separador-mes {
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    margin: 50px 0 28px;
+}
+
+.separador-mes span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 42px;
+
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 18px;
+
+    color: #0b1c26; /* negro suave */
+
+    background: linear-gradient(
+        135deg,
+        #dff3ff,
+        #b8e7ff,
+        #8fd3ff
+    );
+
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.6);
+
+    box-shadow:
+        0 10px 28px rgba(143,211,255,0.45),
+        0 4px 10px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+.separador-mes:hover span {
+    transform: translateY(-2px);
+    background: linear-gradient(
+        135deg,
+        #e9f8ff,
+        #c7eeff,
+        #9ad9ff
+    );
+    box-shadow:
+        0 14px 34px rgba(143,211,255,0.6),
+        0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   ESTADO ABIERTO
+   ========================= */
+.separador-mes.abierto span {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #dff3ff,
+        #b8e7ff
+    );
+    color: #000;
+
+    box-shadow:
+        0 16px 40px rgba(143,211,255,0.7),
+        0 8px 18px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   CONTENIDO DEL MES
+   ========================= */
+.mes-contenido {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+
+    transition:
+        max-height 0.5s ease,
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.mes-contenido.abierto {
+    max-height: 6000px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 20px;
+}
+
 
 /* ===== Ajustes para pantallas pequeñas ===== */
 @media (max-width: 600px) {
@@ -1182,7 +1279,7 @@ white-space: nowrap; /* Evita que salte de línea */
     font-size: 24px;
     margin-bottom: 20px;
     letter-spacing: 1px;
-    color: #ff5722;
+    color: #90dfcf;
     border-bottom: 2px dashed #333;
     padding-bottom: 12px;
 }
@@ -1200,6 +1297,18 @@ white-space: nowrap; /* Evita que salte de línea */
 #modal-reportes .close-modal:hover {
     color: #ff5252;
 }
+.modal-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-title-group {
+    text-align: center;
+}
+
 
 /* --- SECCIONES DE TICKET --- */
 .ticket-section {
@@ -1234,20 +1343,20 @@ white-space: nowrap; /* Evita que salte de línea */
     align-items: center;
     padding: 10px 0;
     font-size: 16px;
-    color: #ffeb3b; 
+    color: #ffffff; 
     border-bottom: 1px solid #555;
     margin-bottom: 0; 
 }
 
 .accordion-header:hover {
-    color: #fff;
+    color: #adcde6;
 }
 
 /* Ícono +/- */
 .toggle-icon {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ffeb3b;
+    color: #ff3d3d;
     transition: transform 0.3s;
 }
 
@@ -1446,7 +1555,7 @@ white-space: nowrap; /* Evita que salte de línea */
 /* Acordeón Principal (El contenedor de "Reporte 12-12-25") */
 .main-report-accordion {
     background: #333;
-    border: 2px solid #ff5722;
+    border: 2px solid #24ff78;
     padding: 5px;
     /* AÑADIDO: Centra el contenido del acordeón en móviles */
     text-align: center; 
@@ -1470,7 +1579,7 @@ white-space: nowrap; /* Evita que salte de línea */
     /* Ajusta el tamaño para que sea más grande */
     font-size: 2em; /* Incrementado de 1.5em a 2em */
     font-weight: bold;
-    color: #ffeb3b;
+    color: #95cfdb;
     transition: transform 0.3s;
     line-height: 1; /* Esto ayuda a alinear verticalmente el ícono */
 }
