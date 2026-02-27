@@ -937,11 +937,15 @@
         "cuentas": [
           {
             "nombre": "PACHA SUNSET",
-            "transacciones": 0,
-            "total": 0,
+            "transacciones": 6,
+            "total": 4430,
             "detalles": [
-              { "mesa": "Mesa 1", "monto": 0 },
-              { "mesa": "Mesa 2", "monto": 0 }
+              { "mesa": "Parrales 1", "monto": 1000 },
+              { "mesa": "Parrales 2", "monto": 800 },
+              { "mesa": "Parrales 3", "monto": 700 },
+              { "mesa": "Parrales 4", "monto": 980 },
+              { "mesa": "Parrales 5", "monto": 450 },
+              { "mesa": "Parrales 6", "monto": 500 }
             ]
           },
           {
@@ -956,10 +960,10 @@
         "totales": { "ingresado": 0 },
         "transferencias": {
           "mama": {
-            "descripcion": "Transferencias a MAMA",
+             "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
             "totalTransferido": 0,
             "detalles": [
-              { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+              { "mesa": "Parrales 1", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
             ]
           },
           "pacha": {
@@ -972,19 +976,19 @@
         },
         "saldoFinal": {
           "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
-          "ingresado": 0,
+          "ingresado": 4430,
           "transferenciasEnviadas": 0,
           "transferenciasRecibidas": 0,
-          "formula": "0 - 0 + 0",
-          "saldo": 0,
+          "formula": "4430 - 500 + 0",
+          "saldo": 3930,
           "banco": "BCP",
-          "cuenta": "123456",
+          "cuenta": "20151595559307",
           "referencia": "Ventas de mesas",
           "nota": "Datos generados automáticamente"
         }
       },
       {
-        "fecha": "28-02-26",
+        "fecha": "21-02-26",
         "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
         "cuentas": [
           {
