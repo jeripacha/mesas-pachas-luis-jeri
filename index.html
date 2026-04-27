@@ -5,7 +5,1750 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MESAS PACHA</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+/* ===== ESTILOS GENERALES Y ESTRUCTURA (SIN CAMBIOS) ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at center, #2b2b2b 0%, #000000 100%);
+    color: #fff;
+}
+
+/* Contenedor relativo para posicionar la imagen */
+.custom-header-container {
+    position: relative;
+    height: 60px; /* altura más delgada para desktop */
+}
+
+/* Header fijo, distinto al original */
+.custom-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px; /* header más delgado */
+    background-color: rgba(51, 59, 71, 0.8); /* azul semitransparente */
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+}
+
+/* Imagen encima del header */
+.top-image {
+    position: absolute;
+    top: -20px; /* sobresale menos con header más delgado */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* más pequeña para celulares */
+    height: auto;
+    z-index: 30; /* encima del header */
+}
+
+/* Ícono del menú */
+.menu-icon {
+    width: 55px; /* más pequeño */
+    height: 55px;
+    cursor: pointer;
+    position: absolute; 
+    left: 15px;
+    top: 60%;
+    transform: translateY(-50%);
+}
+.mes-acordeon {
+    margin-bottom: 36px;
+}
+
+/* =========================
+   HEADER DEL MES
+   ========================= */
+.separador-mes {
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    margin: 50px 0 28px;
+}
+
+.separador-mes span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 42px;
+
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 18px;
+
+    color: #0b1c26; /* negro suave */
+
+    background: linear-gradient(
+        135deg,
+        #dff3ff,
+        #b8e7ff,
+        #8fd3ff
+    );
+
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.6);
+
+    box-shadow:
+        0 10px 28px rgba(143,211,255,0.45),
+        0 4px 10px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+.separador-mes:hover span {
+    transform: translateY(-2px);
+    background: linear-gradient(
+        135deg,
+        #e9f8ff,
+        #c7eeff,
+        #9ad9ff
+    );
+    box-shadow:
+        0 14px 34px rgba(143,211,255,0.6),
+        0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   ESTADO ABIERTO
+   ========================= */
+.separador-mes.abierto span {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #dff3ff,
+        #b8e7ff
+    );
+    color: #000;
+
+    box-shadow:
+        0 16px 40px rgba(143,211,255,0.7),
+        0 8px 18px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   CONTENIDO DEL MES
+   ========================= */
+.mes-contenido {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+
+    transition:
+        max-height 0.5s ease,
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.mes-contenido.abierto {
+    max-height: 6000px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 20px;
+}
+
+
+/* ===== Ajustes para pantallas pequeñas ===== */
+@media (max-width: 600px) {
+    .custom-header-container {
+        height: 50px;
+    }
+
+    .custom-header {
+        height: 60px;
+        padding: 0 10px;
+    }
+
+    .top-image {
+        width: 100px;
+        top: -20px;
+    }
+
+    .menu-icon {
+        width: 45px;
+        height: 45px;
+        left: 10px;
+    }
+}
+
+
+/* ✅ Ajuste para el ícono */
+.menu-icon {
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    /* ✅ Nuevo: Mover el ícono a la izquierda (o donde se requiera) */
+    margin-right: auto; 
+    /* ✅ Nuevo: Ajustar su posición vertical si es necesario */
+    position: absolute; 
+    left: 20px; /* Distancia del borde izquierdo */
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+
+
+main { padding-top: 60px; }
+.contenido { padding: 20px; }
+
+/* ===== ESTILOS DE GRID (SIN CAMBIOS) ===== */
+.areas-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.area-section {
+    margin-bottom: 50px;
+}
+.area-section h2 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.image-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.img-wrapper {
+    position: relative;
+}
+.img-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    border: 2px solid #303030;
+    padding: 3px 6px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.area-divider {
+    position: relative;
+    margin-top: 20px;
+    height: 3px;
+    background: #555;
+}
+
+.area-divider::before {
+    content: "";
+    position: absolute;
+    top: -42px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+}
+
+/* ==========================================================
+    ✅ RESPONSIVIDAD (Ajustes para el ícono de menú)
+    ========================================================== */
+
+/* Pantallas medianas */
+@media (max-width: 768px) {
+    header { height: 70px; padding: 0 15px; }
+    .top-image { width: 110px; top: -18px; }
+
+    /* ✅ Ajuste del tamaño del ícono */
+    .menu-icon { 
+        width: 60px; 
+        height: 60px; 
+        left: 15px; /* Ajustar posición lateral */
+    }
+
+    .areas-container { grid-template-columns: 1fr; gap: 25px; } 
+    .image-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; } 
+    main { padding-top: 140px; }
+}
+
+
+/* Pantallas pequeñas (celulares) */
+@media (max-width: 480px) {
+    header { height: 60px; padding: 0 10px; }
+    .top-image { width: 90px; top: -12px; }
+
+    /* ✅ Ajuste CLAVE para el ícono en móviles */
+    .menu-icon { 
+        width: 50px; 
+        height: 50px; 
+        left: 10px; /* Más cerca de la esquina */
+    }
+
+    .areas-container { grid-template-columns: 1fr; gap: 25px; }
+    .image-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 4px;
+    } 
+
+    main { padding-top: 20px; }
+
+    .img-number {
+        font-size: 0.7em;
+        padding: 1px 3px;
+        border: 1px solid #303030;
+        border-radius: 3px;
+    }
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px; /* Definimos el ancho visible fijo */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+
+    /* 🌟 CLAVE 1: TRASLADAR FUERA DE LA VISTA 🌟 */
+    transform: translateX(-100%); /* Desplaza el menú 100% de su ancho hacia la izquierda (oculto) */
+
+    /* 🌟 CLAVE 2: TRANSICIÓN PARA EL EFECTO DE DESLIZAMIENTO 🌟 */
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transición con efecto elástico para entrada y salida */
+}
+
+/* Estilos BASE de los enlaces */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+
+    /* 1. Establecer la transición para el giro */
+    transition: 0.3s ease-in-out; 
+
+    /* 2. Establecer el punto de origen del giro (opcional, para que gire desde el centro) */
+    transform-origin: center left; /* Gira sobre el punto inicial izquierdo */
+}
+
+/* 🌟 EFECTO HOVER CON GIRO 🌟 */
+.sidebar a:hover {
+    color: #f1f1f1; /* Cambio de color más brillante */
+
+    /* Gira el texto 2 grados. Puedes cambiar el valor (ej: 5deg) */
+    transform: rotate(2deg) scale(1.05); /* Ligeramente rotado y agrandado */
+}
+/* Botón de cerrar (x) (Mantener) */
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Título del menú (Mantener) */
+.sidebar .menu-title {
+    color: white;
+    padding: 8px 8px 20px 32px;
+     font-family: 'Walter Turncoat', cursive;
+    font-size: 25px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para mostrar el sidebar */
+.sidebar.open {
+    /* 🌟 CLAVE 3: REGRESAR A LA POSICIÓN ORIGINAL 🌟 */
+    transform: translateX(0); /* Lo devuelve a su posición visible (0) */
+}
+/* Añade o modifica este bloque en tu archivo style.css */
+
+.sidebar a i {
+    /* Dar un margen derecho al ícono para separarlo del texto */
+    margin-right: 10px; 
+
+    /* 🌟 CLAVE: ASIGNAR UN COLOR VIBRANTE SOLO AL ÍCONO 🌟 */
+    color: #d2d7cc; /* Color cian vibrante. ¡Cámbialo al que más te guste! */
+
+    /* Aseguramos que el color del ícono no cambie en el hover (opcional) */
+    transition: none; 
+}
+
+
+
+/* Estilos para el overlay (el fondo oscuro) */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    z-index: 999; 
+    /* Cambiamos display:none por opacity y visibility para que la transición funcione */
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s; /* La visibilidad cambia al terminar la opacidad */
+}
+
+#overlay.active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Sin retraso al activarse */
+}
+
+/* Asegurar que el icono del menú sea visible y clicable (Mantener) */
+header {
+    z-index: 1001;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+/* --- Estilos base del Modal --- */
+.comprobante-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Oscuro para destacar el comprobante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+/* Nuevo CSS para el contenedor del cuerpo */
+.comprobante-body {
+    display: flex;
+    gap: 20px; /* Espacio entre los dos bloques de transacción */
+    flex-wrap: nowrap; /* Permite que los bloques se envuelvan en pantallas pequeñas */
+}
+.nota {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.comprobante-content {
+    background: radial-gradient(circle at center, #2b2b2b 0%, #000000 100%);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 750px;
+    width: 90%;
+    max-height: 75vh;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif; /* Fuente limpia */
+}
+
+/* --- Estilos del Encabezado --- */
+.comprobante-header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 2px solid #4CAF50; /* Línea verde de confirmación */
+    padding-bottom: 15px;
+}
+
+.comprobante-header h2 {
+    color: #ffffff; /* Verde de éxito */
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.comprobante-header p {
+    color: #ebebeb;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* Botón de cerrar */
+.close-comprobante {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #ffffff;
+}
+.close-comprobante:hover {
+    color: #ff0000; /* cambiar color al pasar el mouse */
+}
+/* Cuando hay solo una transacción, el bloque será más estrecho */
+.single-transaction {
+    max-width: 420px;      /* Ajusta a tu gusto (350–450px recomendable) */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- Estilos del Cuerpo (Detalle de Transacciones) --- */
+.transaction-block {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    flex: 1 1 5%; /* Crece, se encoge, y base de 45% del ancho */
+        min-width: 300px; /* Asegura que no se hagan demasiado pequeños en dispositivos grandes */
+    }
+/* ✅ NUEVO ESTILO: Bloque de Consumo (Tragos/Combo) */
+.consumption-block {
+    /* Toma todas las propiedades de .transaction-block, solo necesita cambiar el orden */
+    order: -1; 
+}
+.transaction-block h4 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.1em;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.detail-row span:first-child {
+    font-weight: 500;
+}
+
+.detail-row .value {
+    font-weight: 600;
+    text-align: right;
+}
+
+.detail-row .monto {
+    color: #007bff; /* Azul para el monto */
+    font-size: 1.05em;
+}
+
+.transaction-block p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+}
+
+.nota {
+    text-align: center;
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+/* --- Ajustes completos para CELULARES --- */
+@media (max-width: 600px) {
+
+    /* Transacciones una debajo de otra */
+    .comprobante-body {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 15px;
+    }
+
+    .transaction-block {
+        min-width: 90%;
+        flex: 1 1 100%;
+    }
+
+    /* Modal más angosto */
+    .comprobante-content {
+        max-width: 350px;
+        width: 95%;
+        padding: 20px;
+        margin-top: 20px; /* Ajuste fino */
+    }
+
+    /* Baja el modal un poco */
+    .comprobante-modal {
+        align-items: flex-start;
+        padding-top: 60px;
+    }
+}
+/* =====================================================
+   AJUSTES CSS PARA HACER EL TOTAL ESTRECHO Y CENTRADO
+   ===================================================== */
+
+.total-container {
+    margin-top: 20px;
+    padding: 10px 15px; 
+    border: 2px solid #570000; 
+    border-radius: 8px;
+    background-color: #e8f5e9; 
+
+    /* CAMBIOS CLAVE: */
+    width: fit-content; /* El ancho se ajusta al contenido (navegadores modernos) */
+    max-width: 90%; /* Asegura que no se salga en pantallas muy pequeñas */
+    margin-left: auto; /* Centrado horizontal (funciona con margin-right: auto) */
+    margin-right: auto;
+    /* FIN DE CAMBIOS CLAVE */
+}
+
+.total-row {
+    /* Manteniendo los tamaños compactos que ya definimos */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em; 
+    font-weight: 600; 
+    color: #333;
+    /* Quitamos el espacio para que los elementos estén juntos en la etiqueta estrecha */
+    gap: 10px; 
+}
+
+.total-row span:first-child {
+    color: #000000; 
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+}
+
+.total-value {
+    font-size: 1.3em; 
+    font-weight: 700;
+     color: #007bff; /* Azul para el monto */
+    /* Eliminamos el margin-left que ya no es necesario por el 'gap' */
+    margin-left: 0; 
+}
+
+/* 1. Fondo del Modal (oscuro y semitransparente) */
+.resumen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro más intenso */
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 2. Contenido Principal del Modal */
+.resumen-content {
+    /* Usaremos un fondo degradado similar a tu body para mantener la estética oscura */
+    background: radial-gradient(circle at center, #1c1e21 0%, #000000 100%);
+    color: #f0f2f5; /* Texto principal claro */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #333;
+}
+
+/* 3. Encabezado */
+.resumen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #38ff4f; /* Línea azul de acento */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.resumen-header h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #3a8dff; /* Azul elegante */
+    margin: 0;
+}
+
+.close-resumen {
+    background: none;
+    border: none;
+    color: #f0f2f5;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-resumen:hover {
+    color: #ff6b6b; /* Rojo suave al pasar el ratón */
+}
+
+/* 4. Barra del Total Global (¡El más importante!) */
+.resumen-total-bar {
+background-color: #ffffff;
+color: black;
+padding: 8px 20px; 
+border-radius: 8px;
+margin-bottom: 25px;
+max-width: 400px; /* Mantenemos el ancho estrecho */
+margin-left: auto;
+margin-right: auto;
+display: flex;
+justify-content: space-between;
+font-weight: bold;
+font-size: 1.3em; 
+transition: transform 0.3s;
+}
+.resumen-total-bar:hover {
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+}
+
+.resumen-total-bar .total-final {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    /* 🛠️ CAMBIO CLAVE: Color azul para el monto */
+    color: #3a8dff; /* Azul que combina con el encabezado */
+
+    /* Si quieres que el monto sea un poco más grueso para destacar */
+    font-weight: 900;
+}
+
+/* 5. Detalle de Ingresos por Cuenta */
+.resumen-body h3 {
+    color: #f0f2f5;
+    margin-top: 0;
+    border-left: 4px solid #45ff38; /* Línea azul */
+    padding-left: 10px;
+}
+
+.resumen-bloque-cuenta {
+background-color: #ffffff; /* Fondo de tarjeta más claro que el fondo */
+padding: 15px;
+border-radius: 8px;
+margin-bottom: 15px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+/* Propiedades de ancho y centrado (¡Alineadas y limpias!) */
+max-width: 90%;
+width: 600px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.resumen-cuenta-header {
+display: flex;
+justify-content: space-between;
+/* border-bottom: 1px dashed #555; <--- ¡Eliminada! */
+padding-bottom: 5px;
+margin-bottom: 10px;
+}
+
+.resumen-cuenta-header h4 {
+    color: #000000; /* Azul para el nombre de la cuenta */
+    margin: 0;
+    font-size: 1em;
+}
+
+.monto-total-cuenta {
+    font-weight: bold;
+    color: #000000;
+    font-size: 1.1em;
+}
+
+.resumen-lista-tx {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resumen-transaccion {
+    display: flex;
+    justify-content: space-between; /* Mantiene la separación entre ubicación y monto */
+    padding: 5px 0;
+    font-size: 0.9em;
+}
+
+.resumen-transaccion span:first-child {
+color: #08454a;
+font-style: italic;
+/* 🛠️ CAMBIO CLAVE: Hace la letra más gruesa */
+font-weight: bold; 
+    /* También puedes usar un número: font-weight: 700; */
+
+flex-basis: 80%; /* Puedes jugar con este valor (ej: 50%) */
+white-space: nowrap; /* Evita que salte de línea */
+}
+
+.resumen-transaccion .monto-tx {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #3a8dff; /* Verde para los montos individuales */
+}
+
+.nota {
+    text-align: center;
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #333;
+}
+/* ==========================================================
+   AJUSTES RESPONSIVOS PARA EL MODAL DE RESUMEN (< 600px)
+   ========================================================== */
+@media (max-width: 600px) {
+
+    /* 1. Contenido Principal del Modal */
+    .resumen-content {
+        padding: 20px 15px; /* Reducir el relleno interno */
+        width: 95%; /* Asegurar que ocupe casi todo el ancho disponible */
+        max-width: none; /* Ignorar el límite de 800px para maximizar el uso */
+    }
+
+    /* 2. Total Global */
+    .resumen-total-bar {
+        padding: 6px 15px; /* Reducir el relleno para hacerlo más delgado aún */
+        max-width: 90%; /* Ajustar el máximo para que encaje bien */
+        font-size: 1.1em; /* Reducir el tamaño de la fuente principal */
+    }
+
+    .resumen-total-bar .total-final {
+        font-size: 1em; /* Reducir el tamaño del monto final */
+        font-weight: 700; /* Asegurar que siga siendo visible */
+    }
+
+    /* 3. Bloques de Cuenta (Tarjetas de Transacciones) */
+    .resumen-bloque-cuenta {
+        /* Permitir que ocupe todo el ancho del contenedor */
+        max-width: 100%; 
+        width: auto; /* Dejar que el ancho sea determinado por max-width/padding */
+        margin-left: 0; 
+        margin-right: 0; 
+        padding: 10px; /* Reducir el relleno de la tarjeta */
+    }
+
+    /* 4. Encabezado de la Cuenta (Título y Total de la Cuenta) */
+    .resumen-cuenta-header {
+        /* Puede ser útil apilarlos si el nombre de la cuenta es muy largo */
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .resumen-cuenta-header h4 {
+        /* Asegurar que el nombre de la cuenta tenga espacio */
+        margin-bottom: 5px; 
+    }
+
+    /* 5. Transacciones Individuales */
+    .resumen-transaccion {
+        /* Permitir que los elementos se envuelvan si es necesario, pero mantendremos el espacio */
+        flex-wrap: nowrap;
+        padding: 5px 0;
+        font-size: 0.85em; /* Reducir ligeramente la fuente de la lista */
+    }
+
+    /* 6. Ajuste de ancho de la Ubicación [Area M-Mesa] */
+    .resumen-transaccion span:first-child {
+        /* Damos menos espacio al texto de ubicación para que el monto quepa */
+        flex-basis: 60%; 
+        font-weight: 600;
+    }
+
+    .resumen-transaccion .monto-tx {
+        /* Asegurar que el monto se mantenga grande para destacar */
+        font-size: 1.1em; 
+    }
+}
+/* --- Estilos Específicos para el Modal de Ocupación (Dashboard) --- */
+
+/* ----------------- Resumen Global (3 Columnas) ----------------- */
+.global-summary-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.summary-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #444;
+}
+
+.summary-label {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Colores de estado base (en caso de que los uses fuera de los gauges) */
+.occupied-color { color: #dc3545; /* Rojo */ }
+.libre-color { color: #28a745; /* Verde */ }
+/* Añadir el nuevo color */
+.low-occupation-color { color: #17a2b8; /* Cian/Azul */ }
+.medium-occupation-color { color: #ffc107; /* Naranja/Amarillo */ }
+
+/* ----------------- Grilla de Detalles por Área ----------------- */
+.ocupacion-grid {
+    /* Muestra los medidores en una cuadrícula flexible (responsivo) */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.area-gauge-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+
+    /* CAMBIOS AQUÍ */
+    background-color: #222; /* Fondo oscuro */
+    color: white; /* Texto blanco por defecto */
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra más oscura */
+    transition: transform 0.2s;
+}
+
+.area-gauge-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.area-gauge-block h4 {
+    margin: 0 0 10px 0;
+    color: white; /* Aseguramos que el título sea blanco */
+    font-size: 1.1em;
+}
+
+.gauge-info {
+    margin: 2px 0;
+    font-size: 0.85em;
+    color: #ccc; /* Texto de la información en gris claro */
+    text-align: center;
+}
+
+/* ----------------- Estilo del Medidor Circular (Gauge) ----------------- */
+
+.area-gauge, .total-mesas-gauge {
+    /* Define el tamaño y la forma del medidor */
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+
+    /* CAMBIO CLAVE: Círculo interior blanco (70%) cambia a color oscuro (#333) */
+    background: 
+        radial-gradient(closest-side, #333 70%, transparent 80% 100%), /* Círculo interior oscuro */
+        conic-gradient(var(--c) calc(var(--p) * 1%), #444 0); /* Fondo de progreso restante un poco más oscuro */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* El valor del porcentaje ya usa el color dinámico (var(--c)), así que estará bien */
+/* .gauge-percent-value { color: var(--c); } */
+
+
+/* Estilo para el Medidor Global (más grande) */
+.total-mesas-gauge {
+    width: 140px;
+    height: 140px;
+
+    /* CAMBIO CLAVE: Círculo interior blanco (65%) cambia a color oscuro (#333) */
+    background: 
+        radial-gradient(closest-side, #333 65%, transparent 75% 100%), /* Círculo interior oscuro */
+        conic-gradient(var(--c) calc(var(--p) * 1%), #444 0);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gauge-center-percent {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--c);
+}
+
+.gauge-center-label {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: #ccc; /* Etiqueta global en gris claro */
+    margin-top: -5px;
+}
+/* --- POSICIONAMIENTO ESPECÍFICO PARA EL MODAL DE PORCENTAJES --- */
+
+.ocupacion-modal {
+    display: flex;
+    align-items: flex-start; /* Alineamos al inicio (arriba) */
+    justify-content: center;
+    padding-top: 100px;       /* Margen superior general */
+}
+
+.ocupacion-modal .resumen-content {
+    position: relative;      /* Necesario para usar top */
+    max-width: 600px;
+    max-height: 90vh;
+    top: -80px;              /* Subirlo un poco hacia arriba */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 480px) {
+    .ocupacion-modal .resumen-content {
+        max-width: 90%;
+        max-height: 85vh;
+        top: -100px;           /* Subirlo un poco hacia arriba */
+        transform: translateY(0);
+    }
+}
+
+
+
+/* --- Definición de la Animación de Carga del Porcentaje --- */
+@keyframes fill-gauge {
+    from {
+        /* Empezar la animación de progreso en 0% */
+        --p: 0;
+    }
+}
+
+/* --- Aplicar la Animación a los Medidores --- */
+.area-gauge, .total-mesas-gauge {
+    /* ... (otras propiedades de tamaño y fondo) ... */
+
+    /* MODIFICACIÓN CLAVE: Aumentamos la duración a 5s para hacerlo lento */
+    animation: fill-gauge 5s ease-out forwards; 
+}
+/* =====================================================
+   ESTILOS TIPO COMANDA PARA EL MODAL DE INVENTARIO
+   ===================================================== */
+
+/* 1. Contenedor Principal */
+.inventario-content {
+    /* Mantenemos altura, pero le damos un ancho más estrecho para simular un ticket */
+    max-width: 500px; 
+    max-height: 75vh;
+    margin-top: 20px;
+    padding: 20px 30px; /* Padding ajustado */
+
+    /* Fondo más uniforme para simular papel oscuro */
+    background: #121212; 
+    border: 1px dashed #444; /* Borde discontinuo para el efecto de rasgado */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+/* 2. Encabezado */
+.resumen-header h2 {
+    /* Podemos darle una fuente que se asemeje a una impresión */
+    font-family: 'Press Start 2P', monospace; 
+    font-size: 1.1em;
+    color: #45ff38; /* Verde neón para el título de la comanda */
+}
+
+/* 3. Títulos de Sección (Tragos y Combos) */
+.inventario-titulo {
+    color: #f0f2f5; 
+    font-size: 1.1em;
+    font-weight: 400; /* No muy grueso */
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    /* Usaremos separadores manuales en el HTML, quitamos los bordes CSS */
+    border-bottom: none; 
+    border-left: none; 
+    padding-left: 0; 
+    text-align: center; /* Centramos el título */
+}
+
+/* 4. Lista de Inventario (CON CENTRADO DEL BLOQUE) */
+.inventario-lista {
+    list-style: none;
+    padding: 0;
+
+    /* 🔑 CLAVE 1: Ancho fijo (suma de ancho de nombre + espacio + ancho de cantidad) */
+    width: 380px; 
+
+    /* 🔑 CLAVE 2: Centra el BLOQUE de 380px horizontalmente */
+    margin: 10px auto 30px auto; 
+
+    font-family: monospace; 
+    font-size: 1.4em;
+    max-width: 95%; /* Asegura que en pantallas pequeñas se ajuste */
+
+    /* Desactivamos text-align: center para que no interfiera con el flexbox */
+    text-align: right; 
+}
+/* 5. Cada Ítem (Línea de la Comanda - CON FLEXBOX) */
+.inventario-item {
+    display: flex; 
+    /* Asegura que los elementos se peguen al lado izquierdo del bloque de 380px */
+    justify-content: flex-start; 
+
+    padding: 3px 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-bottom: none; 
+}
+
+/* 6. Estilo del Nombre (Columna Derecha Alineada) */
+.inventario-item .item-nombre {
+    font-weight: normal;
+    color: #a0a0a0;
+    font-size: 1em;
+
+    /* 🔑 CLAVE 3: Ancho fijo para columna de nombres */
+    width: 140px; 
+
+    /* 🔑 CLAVE 4: Alinea el texto a la derecha del bloque de 260px */
+    text-align: right; 
+
+    flex-shrink: 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    padding-right: 20px; /* Espacio fijo entre columnas */
+}
+
+/* 7. Estilo de la Cantidad (Columna Izquierda Alineada) */
+.inventario-item .item-cantidad {
+    font-weight: bold;
+    color: #3a8dff; 
+    font-size: 1em;
+
+    /* Alinea el texto a la izquierda del bloque de 100px */
+    text-align: left; 
+    width: 100px; /* Ancho fijo para columna de cantidades */
+
+    flex-shrink: 0; 
+    white-space: nowrap; 
+}
+/* Estilo del Separador de Comanda */
+.comanda-separator {
+    font-family: monospace;
+    color: #6f2525; /* Gris oscuro para las líneas */
+    text-align: center;
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+.vendido-ribbon {
+    position: absolute;
+    bottom: 5px;       /* en la parte inferior */
+    left: 50%;          /* centrado horizontalmente */
+    transform: translateX(-50%);  /* centrado exacto */
+    background: linear-gradient(45deg, #695e1b, #c59a16); /* dorado brillante */
+    color: #c7c7c7;
+    font-size: 10px;    /* pequeña */
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    z-index: 20;
+    text-align: center;
+}
+
+.img-wrapper {
+    position: relative; /* necesario para que la cinta quede sobre la imagen */
+}
+.mesa-libre {
+    font-size: 3em;
+    text-align: center;
+    margin: 50px 0;
+    color: #ff0000;
+}
+.comprobante-modal .comprobante-content {
+    width: 90%;
+    max-width: 800px; /* ancho normal para 2 o más transacciones */
+    margin: 50px auto;
+}
+
+.comprobante-modal .comprobante-content.single-transaction-modal {
+    max-width: 400px; /* ancho más corto si es 1 transacción */
+}
+/* Modal normal */
+.comprobante-modal .comprobante-content {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+/* Modal estrecho si 1 transacción */
+.comprobante-modal .comprobante-content.single-transaction-modal {
+    max-width: 400px;
+}
+
+/* Mesa libre centrado grande */
+.comprobante-modal .comprobante-content.mesa-libre {
+    max-width: 300px;
+    text-align: center;
+    font-size: 2em;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+/* Pachamama */
+.pachamama-section {
+    border: 2px solid #FFA500;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: #FFF7E0;
+    color: #333;
+}
+
+.pachamama-section h3 { color: #FF6600; margin-bottom: 10px; }
+.pachamama-section ul { list-style: none; padding: 0; margin: 0; }
+.pachamama-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed #FFA500; }
+.pachamama-item:last-child { border-bottom: none; }
+
+.detalle { color: #333; }
+.monto { font-weight: bold; color: #D84315; }
+.total-pachamama { margin-top: 10px; font-weight: bold; font-size: 16px; color: #D84315; }
+
+
+/* --- MODAL BASE --- */
+#modal-reportes {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+}
+
+#modal-reportes .modal-content {
+    background: #1c1c1e;
+    color: #f0f0f0;
+    width: 95%;
+    max-width: 600px; 
+    margin: 4vh auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 88vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.75);
+    font-family: 'Courier New', monospace; 
+    border: 1px solid #333;
+}
+
+#modal-reportes h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #90dfcf;
+    border-bottom: 2px dashed #333;
+    padding-bottom: 12px;
+}
+
+#modal-reportes .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#modal-reportes .close-modal:hover {
+    color: #ff5252;
+}
+.modal-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-title-group {
+    text-align: center;
+}
+
+
+/* --- SECCIONES DE TICKET --- */
+.ticket-section {
+    background: #252527;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.ticket-section.transfer {
+    border-color: #03a9f4;
+}
+
+
+
+/* TOTAL POR CUENTA */
+.ticket-section p strong {
+    color: #8bc34a;
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;
+}
+
+/* --- ESTILOS DE ACORDEÓN --- */
+
+/* Encabezados */
+.accordion-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #ffffff; 
+    border-bottom: 1px solid #555;
+    margin-bottom: 0; 
+}
+
+.accordion-header:hover {
+    color: #adcde6;
+}
+
+/* Ícono +/- */
+.toggle-icon {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff3d3d;
+    transition: transform 0.3s;
+}
+
+/* Contenido Colapsable (AQUÍ ESTÁ LA CLAVE DEL ESPACIADO) */
+.accordion-content {
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding-top: 5px;
+    /* AÑADIDO PARA LA SEPARACIÓN VERTICAL */
+    margin-bottom: 20px; 
+}
+
+/* Lista de Transacciones (Grid de 2 columnas) */
+.ticket-grid-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+}
+
+.ticket-grid-list li {
+    background: #333;
+    padding: 6px; 
+    border-radius: 4px;
+    font-size: 12px; 
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Lista para Transferencias (Formato simple, no grid) */
+.ticket-simple-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ticket-simple-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dashed #555;
+    font-size: 14px;
+}
+
+/* DIVISORES */
+#modal-reportes hr {
+    margin: 20px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+}
+/* 1. Contenedor principal con padding izquierdo reducido */
+.ticket-section.final {
+    background: #1a1c1e !important;
+    border-top: 4px solid #00ff88;
+    /* Reducimos el 4to valor (izquierda) a 5px para pegar todo al borde */
+    padding: 15px 15px 15px 5px !important; 
+    border-radius: 12px;
+    margin: 10px 0;
+}
+
+/* 2. Fila Única: Todo pegado a la izquierda */
+.fila-saldo {
+    display: flex !important;
+    flex-direction: row !important; /* Siempre en una línea */
+    justify-content: flex-start !important; /* Pegado al inicio izquierdo */
+    align-items: center !important;
+    gap: 8px; /* Espacio pequeño entre nombre y monto */
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 3. Nombre */
+.label-text {
+    color: #b0b0b0; 
+    font-size: 14px;
+    text-align: left !important;
+    white-space: nowrap;
+    text-transform: none; /* Quitamos mayúsculas para que quepa mejor */
+}
+
+/* 4. Monto (Pegado al texto) */
+.ticket-section.final .amount {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: left !important;
+    display: inline-block !important;
+    width: auto !important; /* Evita que ocupe toda la línea */
+}
+
+/* --- ESTILOS DE APOYO (Fórmula y Banco) --- */
+
+.formula-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.formula {
+    color: #00d4ff;
+    font-weight: bold;
+}
+
+.saldo-destacado {
+    background: #ffffff;
+    color: #000;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.monto-final {
+    font-size: 22px !important;
+    font-weight: 900;
+    color: #11783e !important;
+}
+
+.banco-detalles {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 10px;
+    font-size: 12px;
+    color: #e0e0e0;
+}
+
+.banco-detalles p {
+    margin: 4px 0 !important;
+}
+
+.ticket-section.final hr {
+    border: 0;
+    border-top: 1px dashed rgba(255,255,255,0.2);
+    margin: 10px 0;
+}
+@media (max-width: 600px) {
+
+    /* --- 1. MODAL (Aprovechar el espacio vertical) --- */
+    #modal-reportes .modal-content {
+        /* Permite que el modal ocupe casi todo el ancho */
+        width: 98%; 
+        max-width: 90%;
+        /* Permite que el modal ocupe más altura vertical */
+        margin: 1vh auto; 
+        max-height: 87vh;
+        padding: 10px; /* Reducir padding en pantallas pequeñas */
+    }
+
+    /* --- 2. ENCABEZADOS Y TEXTO (Mejor legibilidad) --- */
+    #modal-reportes h2 {
+        font-size: 20px; /* Reducir tamaño de título principal */
+    }
+
+    .accordion-header {
+        font-size: 14px; /* Reducir tamaño de encabezados de cuenta */
+    }
+
+    /* --- 3. DETALLES DE CUENTA (Convertir a 1 columna) --- */
+    .ticket-grid-list {
+        /* Forzar la lista de detalles de mesas a 1 columna */
+        grid-template-columns: 1fr; 
+        gap: 5px; /* Reducir el espacio entre filas */
+    }
+
+    .ticket-grid-list li {
+        font-size: 13px; /* Aumentar ligeramente el tamaño del texto para que sea legible en móviles */
+        padding: 8px 10px;
+        /* Asegurar que se muestre el contenido en una sola línea por la reducción de columnas */
+        justify-content: space-between; 
+        flex-direction: row; 
+    }
+
+    /* --- 4. LISTA DE TRANSFERENCIAS (Ajuste de formato) --- */
+    .ticket-simple-list li {
+        /* Aseguramos que la información se distribuya correctamente */
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    /* Asegurar que la referencia de la mesa y el monto original no se corten */
+    .ticket-simple-list li span:first-child {
+        word-break: break-all;
+    }
+}
+/* Acordeón Principal (El contenedor de "Reporte 12-12-25") */
+.main-report-accordion {
+    background: #333;
+    border: 2px solid #24ff78;
+    padding: 5px;
+    /* AÑADIDO: Centra el contenido del acordeón en móviles */
+    text-align: center; 
+}
+
+/* Encabezado Principal ("Reporte 12-12-25") */
+/* Debes agregar un nuevo estilo para el h3 principal que centre el texto */
+.main-report-accordion .accordion-header {
+    text-align: center; /* Centrar el texto 'Reporte 12-12-25' */
+    justify-content: center; /* Centrar los elementos internos (texto y +) */
+    gap: 15px; /* Añadir espacio entre el texto y el '+' */
+    padding: 10px 0; /* Asegurar padding uniforme */
+}
+
+/* Encabezados internos (Cuentas, Transferencias, etc.) deben mantener su justify-content: space-between */
+.inner-header {
+    justify-content: space-between; /* Mantiene el nombre a la izquierda y el + a la derecha */
+    padding: 10px 0;
+}
+.toggle-icon {
+    /* Ajusta el tamaño para que sea más grande */
+    font-size: 2em; /* Incrementado de 1.5em a 2em */
+    font-weight: bold;
+    color: #95cfdb;
+    transition: transform 0.3s;
+    line-height: 1; /* Esto ayuda a alinear verticalmente el ícono */
+}
+/* FIX VISUAL PARA CUENTAS (mantiene diseño antiguo) */
+.ticket-grid-list li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 8px;
+}
+.ticket-grid-list li {
+    border: 1px solid #555;
+    background: #2f2f2f;
+}
+.resumen-lista-tx.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* separación entre columnas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+/* Para pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+    .resumen-lista-tx.grid-3 {
+        grid-template-columns: repeat(2, 1fr); /* ahora 2 columnas */
+    }
+}
+
+.tx-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(95, 12, 12, 0.05); /* Fondo muy sutil */
+    padding: 8px 12px;
+    border-radius: 8px;
+    /* Opción más limpia con HEX (es el mismo color) */
+    border: 1px solid #05704c;
+    transition: all 0.3s ease;
+}
+
+.tx-item:hover {
+    /* Mantiene el amarillo pero se ilumina un poco */
+    background: linear-gradient(135deg, #7eceb6 0%, #7eceb6 0%);
+    /* TU BORDE VERDE NEÓN */
+    border-color: #39ff14; 
+    border-width: 2px; /* Un poco más grueso al pasar el mouse */
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.4); /* Resplandor verde */
+    transform: translateY(-2px);
+}
+.tx-item .tx-mesa {
+    color: #000000; /* Gris elegante */
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tx-item .tx-monto {
+    color: #000000;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 700;
+}
+.separador-anio {
+    text-align: center;
+    margin: 25px 0 10px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #4caf50;
+    border-top: 2px solid #4caf50;
+    padding-top: 10px;
+}
+@media (max-width: 768px) {
+    .ticket-grid-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .ticket-grid-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        background-color: #1e1e1e;
+        color: #fff;
+    }
+
+    .ticket-grid-list .mesa {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 70%;
+    }
+
+    .ticket-grid-list .monto {
+        font-weight: bold;
+        white-space: nowrap;
+         color: #ffffff !important;
+    }
+    }
+    /* ================= FORZAR TEXTO BLANCO EN MESAS Y MONTOS (TODAS LAS PANTALLAS) ================= */
+    .ticket-grid-list li,
+    .ticket-grid-list .mesa,
+    .ticket-grid-list .monto {
+    color: #ffffff !important;
+    }
+/* Contenedor de la lista */
+.ticket-simple-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+/* Fila de transferencia */
+.transfer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil blanca */
+    gap: 10px; /* Espacio mínimo entre texto y monto */
+}
+
+/* Lado izquierdo (Mesa y detalle) */
+.transfer-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ocupa el espacio sobrante */
+}
+
+.transfer-mesa {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #FFFFFF; /* Letras blancas */
+}
+
+.transfer-detalle {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6); /* Blanco semi-transparente para que sea legible pero discreto */
+    margin-top: 2px;
+}
+
+/* Lado derecho (El monto de dinero) */
+.transfer-right {
+    text-align: right;
+    min-width: fit-content;
+}
+
+.transfer-monto {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #FFFFFF; /* Letras blancas */
+    white-space: nowrap; /* Evita que el monto se parta en dos líneas */
+    background: rgba(255, 255, 255, 0.1); /* Un pequeño fondo para resaltar el dinero */
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+</style>
     <link
         href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&family=Raleway:wght@600&family=Press+Start+2P&family=Walter+Turncoat&family=Lobster&family=Poppins:wght@600&display=swap"
         rel="stylesheet">
@@ -15,7 +1758,7 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-    <a href="#" class="close-btn">&times;</a> <h3 class="menu-title">Menú</h3>
+    <a href="#" class="close-btn">&times;</a> <h3 class="menu-title">Menú de Áreas</h3>
 
         <a href="#" id="mostrar-resumen"><i class="fas fa-calculator"></i> Cuentas</a>
 
@@ -104,26 +1847,3083 @@
             </div>
         </div>
     </main>
+    <!-- MODAL REPORTES -->
     <div id="modal-reportes" class="modal">
       <div class="modal-content">
-
-          <div class="modal-header">
-              <div class="modal-title-group">
-                  <h2>Reportes por Mes</h2>
-                  <p class="modal-hint">Presiona un mes para ver los reportes por fecha</p>
-              </div>
-
-              <span class="close-modal">&times;</span>
-          </div>
-
-          <!-- 🔴 ESTO FALTABA -->
-          <div id="contenido-reportes" class="modal-body"></div>
-
+        <span class="close-modal">&times;</span>
+        <div id="contenido-reportes"></div>
       </div>
     </div>
 
+    <script>
+const REPORTES_DATA = {
+  "reportes": [
+    {
+        "fecha": "06-12-25",
+              "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+              "cuentas": [
+                {
+                  "nombre": "PACHA SUNSET",
+                  "transacciones": 31,
+                  "total": 21670,
+                  "detalles": [
+                    { "mesa": "Cholet 5", "monto": 1300 },
+                    { "mesa": "Cholet 6", "monto": 1300 },
+                    { "mesa": "Cholet 7", "monto": 650 },
+                    { "mesa": "Parrales 1", "monto": 1300 },
+                    { "mesa": "Parrales 2", "monto": 880 },
+                    { "mesa": "Parrales 3", "monto": 980 },
+                    { "mesa": "Parrales 5", "monto": 880 },
+                    { "mesa": "Parrales 6", "monto": 800 },
+                    { "mesa": "Parrales 7", "monto": 750 },
+                    { "mesa": "Parrales 9", "monto": 980 },
+                    { "mesa": "Parrales 10", "monto": 800 },
+                    { "mesa": "Parrales 11", "monto": 980 },
+                    { "mesa": "Parrales 12", "monto": 980 },
+                    { "mesa": "Parrales 13", "monto": 1300 },
+                    { "mesa": "Parrales 14", "monto": 1300 },
+                    { "mesa": "Parrales 15", "monto": 1300 },
+                    { "mesa": "Parrales 16", "monto": 980 },
+                    { "mesa": "Parrales 17", "monto": 980 },
+                    { "mesa": "Parrales 18", "monto": 800 },
+                    { "mesa": "Camel 1", "monto": 980 },
+                    { "mesa": "Camel 2", "monto": 700 },
+                    { "mesa": "Camel 3", "monto": 750 }
+                  ]
+                },
+                {
+                  "nombre": "MAMA",
+                  "transacciones": 2,
+                  "total": 2400,
+                  "detalles": [
+                    { "mesa": "Parrales 4", "monto": 1400 },
+                    { "mesa": "Parrales 8", "monto": 1000 }
+                  ]
+                }
+              ],
+              "totales": { "ingresado": 24070 },
+              "transferencias": {
+                "mama": {
+                  "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                  "totalTransferido": 3900,
+                  "detalles": [
+                    { "mesa": "Cholet 5", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Cholet 6", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 13", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 15", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+                  ]
+                },
+                "pacha": {
+                  "descripcion": "Transferencias a PACHA SUNSET (50% del combo Pachamama)",
+                  "totalTransferido": 1200,
+                  "detalles": [
+                    { "mesa": "Parrales 4", "montoOriginal": 1400, "porcentaje": 50, "transferencia": 700 },
+                    { "mesa": "Parrales 8", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+                  ]
+                }
+              },
+              "saldoFinal": {
+                "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                "ingresado": 21670,
+                "labelIngresado": "Total ingresado por ventas de mesas",
+                "transferenciasEnviadas": 3900,
+                "labelTransferenciasEnviadas": "Transferencias realizadas a MAMA",
+                "transferenciasRecibidas": 1200,
+                "labelTransferenciasRecibidas": "Transferencias recibidas desde MAMA",
+                "formula": "21670 - 3900 + 1200",
+                "saldo": 18970,
+                "banco": "BCP",
+                "cuenta": "20151595559307",
+                "referencia": "Ventas de mesas",
+                "nota": "Datos generados automáticamente"
+              }
 
-    <script src="script.js"></script>
+            },
+            {
+              "fecha": "13-12-25",
+              "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+              "cuentas": [
+                {
+                  "nombre": "PACHA SUNSET",
+                  "transacciones": 35,
+                  "total": 31100,
+                  "detalles": [
+                    { "mesa": "Pacha 1", "monto": 800 },
+                    { "mesa": "Pacha 2", "monto": 880 },
+                    { "mesa": "Pacha 3", "monto": 700 },
+                    { "mesa": "Lounge 1", "monto": 1300 },
+                    { "mesa": "Lounge 2", "monto": 980 },
+                    { "mesa": "Lounge 10", "monto": 930 },
+                    { "mesa": "Lounge 11", "monto": 1200 },
+                    { "mesa": "Cholet 4", "monto": 1300 },
+                    { "mesa": "Cholet 6", "monto": 980 },
+                    { "mesa": "Cholet 7", "monto": 650 },
+                    { "mesa": "Parrales 2", "monto": 880 },
+                    { "mesa": "Parrales 3", "monto": 880 },
+                    { "mesa": "Parrales 4", "monto": 500 },
+                    { "mesa": "Parrales 5", "monto": 1300 },
+                    { "mesa": "Parrales 6", "monto": 980 },
+                    { "mesa": "Parrales 7", "monto": 1000 },
+                    { "mesa": "Parrales 8", "monto": 500 },
+                    { "mesa": "Parrales 9", "monto": 500 },
+                    { "mesa": "Parrales 10", "monto": 880 },
+                    { "mesa": "Parrales 11", "monto": 980 },
+                    { "mesa": "Parrales 12", "monto": 980 },
+                    { "mesa": "Parrales 13", "monto": 980 },
+                    { "mesa": "Parrales 14", "monto": 1300 },
+                    { "mesa": "Parrales 15", "monto": 500 },
+                    { "mesa": "Parrales 16", "monto": 1200 },
+                    { "mesa": "Parrales 17", "monto": 980 },
+                    { "mesa": "Parrales 18", "monto": 600 },
+                    { "mesa": "Camel 1", "monto": 650 },
+                    { "mesa": "Camel 2", "monto": 980 },
+                    { "mesa": "Camel 3", "monto": 800 },
+                    { "mesa": "Vip 1", "monto": 880 },
+                    { "mesa": "Vip 2", "monto": 600 },
+                    { "mesa": "Vip 4", "monto": 930 },
+                    { "mesa": "Vip 5", "monto": 800 }
+                  ]
+                },
+                {
+                  "nombre": "MAMA",
+                  "transacciones": 0,
+                  "total": 0,
+                  "detalles": [
+                    { "mesa": "Parrales 9", "monto": 0 },
+                    { "mesa": "Parrales 10", "monto": 0 },
+                    { "mesa": "Parrales 11", "monto": 0 }
+                  ]
+                }
+              ],
+              "totales": { "ingresado": 0 },
+              "transferencias": {
+                "mama": {
+                  "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                  "totalTransferido": 4300,
+                  "detalles": [
+                    { "mesa": "Lounge 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Lounge 11", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 },
+                    { "mesa": "Cholet 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 5", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 7", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                    { "mesa": "Parrales 14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                    { "mesa": "Parrales 16", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 }  
+                  ]
+                },
+                "pacha": {
+                  "descripcion": "Transferencias a PACHA SUNSET (50% del combo Pachamama)",
+                  "totalTransferido": 0,
+                  "detalles": [
+                    { "mesa": "Parrales 9", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 },
+                    { "mesa": "Parrales 10", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                  ]
+                }
+              },
+              "saldoFinal": {
+                "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                "ingresado": 31100,
+                "transferenciasEnviadas": 4300,
+                "transferenciasRecibidas": 0,
+                "formula": "31100 - 4300 + 0",
+                "saldo": 26800,
+                "banco": "BCP",
+                "cuenta": " 20151595559307",
+                "referencia": "Ventas de mesas",
+                "nota": "Datos generados automáticamente"
+              }
+            },
+            [
+              {
+                "fecha": "20-12-25",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 29,
+                    "total": 26000,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 930 },
+                      { "mesa": "Pacha 2", "monto": 980 },
+                      { "mesa": "Pacha 3", "monto": 700 },
+                      { "mesa": "Pacha 4", "monto": 780 },
+                      { "mesa": "Pacha 5", "monto": 500 },
+                      { "mesa": "Pacha 6", "monto": 600 },
+                      { "mesa": "Cholet 2", "monto": 800 },
+                      { "mesa": "Cholet 6", "monto": 750 },
+                      { "mesa": "Cholet 7", "monto": 980 },
+                      { "mesa": "Parrales 1", "monto": 700 },
+                      { "mesa": "Parrales 2", "monto": 980 },
+                      { "mesa": "Parrales 4", "monto": 1300 },
+                      { "mesa": "Parrales 5", "monto": 980 },
+                      { "mesa": "Parrales 6", "monto": 980 },
+                      { "mesa": "Parrales 7", "monto": 700 },
+                      { "mesa": "Parrales 8", "monto": 980 },
+                      { "mesa": "Parrales 9", "monto": 980 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 1300 },
+                      { "mesa": "Parrales 12", "monto": 980 },
+                      { "mesa": "Parrales 13", "monto": 800 },
+                      { "mesa": "Parrales 14", "monto": 980 },
+                      { "mesa": "Parrales 15", "monto": 980 },
+                      { "mesa": "Parrales 16", "monto": 500 },
+                      { "mesa": "Parrales 17", "monto": 980 },
+                      { "mesa": "Parrales 18", "monto": 800 },
+                      { "mesa": "Camel 1", "monto": 980 },
+                      { "mesa": "Camel 2", "monto": 800 },
+                      { "mesa": "Camel 3", "monto": 1300 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 2440,
+                    "detalles": [
+                      { "mesa": "parrales 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "parrales 11", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "parrales 15", "montoOriginal": 980, "porcentaje": 50, "transferencia": 490 },
+                      { "mesa": "camel 3", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 26000,
+                  "transferenciasEnviadas": 2440,
+                  "transferenciasRecibidas": 0,
+                  "formula": "26000 - 2440 + 0",
+                  "saldo": 23560,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "27-12-25",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 24,
+                    "total": 20770,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 450 },
+                      { "mesa": "Pacha 2", "monto": 700 },
+                      { "mesa": "lounge 1", "monto": 1300 },
+                      { "mesa": "lounge 2", "monto": 1300 },
+                      { "mesa": "lounge 3", "monto": 700 },
+                      { "mesa": "cholet 1", "monto": 800 },
+                      { "mesa": "cholet 2", "monto": 650 },
+                      { "mesa": "cholet 3", "monto": 700 },
+                      { "mesa": "Parrales 1", "monto": 1000 },
+                      { "mesa": "Parrales 2", "monto": 750 },
+                      { "mesa": "Parrales 3", "monto": 800 },
+                      { "mesa": "Parrales 4", "monto": 500 },
+                      { "mesa": "Parrales 5", "monto": 980 },
+                      { "mesa": "Parrales 6", "monto": 1000 },
+                      { "mesa": "Parrales 7", "monto": 980 },
+                      { "mesa": "Parrales 8", "monto": 800 },
+                      { "mesa": "Parrales 9", "monto": 500 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 980 },
+                      { "mesa": "Parrales 12", "monto": 980 },
+                      { "mesa": "Parrales 14", "monto": 980 },
+                      { "mesa": "Parrales 15", "monto": 980 },
+                      { "mesa": "Parrales 16", "monto": 980 },
+                      { "mesa": "Parrales 17", "monto": 980 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 2300,
+                    "detalles": [
+                      { "mesa": "lounge 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "lounge 2", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Parrales 1", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Parrales 6", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 20770,
+                  "transferenciasEnviadas": 2300,
+                  "transferenciasRecibidas": 0,
+                  "formula": "20770 - 2300 + 0",
+                  "saldo": 18470,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "03-01-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 13,
+                    "total": 11750,
+                    "detalles": [
+                      { "mesa": "Cholet 1", "monto": 880 },
+                      { "mesa": "Cholet 3", "monto": 750 },
+                      { "mesa": "Parrales 1", "monto": 980 },
+                      { "mesa": "Parrales 2", "monto": 880 },
+                      { "mesa": "Parrales 3", "monto": 700 },
+                      { "mesa": "Parrales 4", "monto": 980 },
+                      { "mesa": "Parrales 5", "monto": 980 },
+                      { "mesa": "Parrales 6", "monto": 980 },
+                      { "mesa": "Parrales 7", "monto": 980 },
+                      { "mesa": "Vip 1", "monto": 700 },
+                      { "mesa": "Camel 1", "monto": 980 },
+                      { "mesa": "Camel 2", "monto": 980 },
+                      { "mesa": "Camel 3", "monto": 980 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 11750,
+                  "transferenciasEnviadas": 0,
+                  "transferenciasRecibidas": 0,
+                  "formula": "11750 - 0 + 0",
+                  "saldo": 11750,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "10-01-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 40,
+                    "total": 33110,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 1300 },
+                      { "mesa": "Pacha 2", "monto": 980 },
+                      { "mesa": "Pacha 4", "monto": 980 },
+                      { "mesa": "Pacha 5", "monto": 800 },
+                      { "mesa": "Pacha 6", "monto": 980 },
+                      { "mesa": "Pacha 8", "monto": 930 },
+                      { "mesa": "Pacha 9", "monto": 500 },
+                      { "mesa": "Pacha 10", "monto": 930 },
+                      { "mesa": "Lounge 1", "monto": 800 },
+                      { "mesa": "Lounge 2", "monto": 1300 },
+                      { "mesa": "Lounge 3", "monto": 980 },
+                      { "mesa": "Lounge 4", "monto": 980 },
+                      { "mesa": "Lounge 5", "monto": 500 },
+                      { "mesa": "Lounge 8", "monto": 500 },
+                      { "mesa": "Lounge 9", "monto": 1300 },
+                      { "mesa": "Cholet 1", "monto": 700 },
+                      { "mesa": "Cholet 2", "monto": 700 },
+                      { "mesa": "Cholet 3", "monto": 800 },
+                      { "mesa": "Cholet 4", "monto": 800 },
+                      { "mesa": "Cholet 5", "monto": 700 },
+                      { "mesa": "Parrales 1", "monto": 980 },
+                      { "mesa": "Parrales 2", "monto": 980 },
+                      { "mesa": "Parrales 3", "monto": 500 },
+                      { "mesa": "Parrales 4", "monto": 880 },
+                      { "mesa": "Parrales 5", "monto": 880 },
+                      { "mesa": "Parrales 6", "monto": 750 },
+                      { "mesa": "Parrales 7", "monto": 980 },
+                      { "mesa": "Parrales 8", "monto": 500 },
+                      { "mesa": "Parrales 9", "monto": 700 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 980 },
+                      { "mesa": "Parrales 12", "monto": 500 },
+                      { "mesa": "Parrales 13", "monto": 800 },
+                      { "mesa": "Parrales 15", "monto": 980 },
+                      { "mesa": "Parrales 16", "monto": 500 },
+                      { "mesa": "Parrales 17", "monto": 980 },
+                      { "mesa": "Parrales 18", "monto": 500 },
+                      { "mesa": "Camel 1", "monto": 980 },
+                      { "mesa": "Camel 2", "monto": 500 },
+                      { "mesa": "Camel 3", "monto": 800 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 1950,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Lounge 2", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Lounge 9", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 33110,
+                  "transferenciasEnviadas": 1950,
+                  "transferenciasRecibidas": 0,
+                  "formula": "33110 - 1950 + 0",
+                  "saldo": 31160,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "17-01-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 34,
+                    "total": 31120,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 980 },
+                      { "mesa": "Pacha 2", "monto": 880 },
+                      { "mesa": "Pacha 3", "monto": 1100 },
+                      { "mesa": "Lounge 1", "monto": 980 },
+                      { "mesa": "Lounge 2", "monto": 980 },
+                      { "mesa": "Lounge 3", "monto": 700 },
+                      { "mesa": "Lounge 4", "monto": 1300 },
+                      { "mesa": "Lounge 5", "monto": 1000 },
+                      { "mesa": "Cholet 2", "monto": 980 },
+                      { "mesa": "Cholet 3", "monto": 1300 },
+                      { "mesa": "Parrales 1", "monto": 750 },
+                      { "mesa": "Parrales 2", "monto": 700 },
+                      { "mesa": "Parrales 3", "monto": 980 },
+                      { "mesa": "Parrales 4", "monto": 880 },
+                      { "mesa": "Parrales 5", "monto": 980 },
+                      { "mesa": "Parrales 6", "monto": 800 },
+                      { "mesa": "Parrales 7", "monto": 700 },
+                      { "mesa": "Parrales 8", "monto": 500 },
+                      { "mesa": "Parrales 9", "monto": 980 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 980 },
+                      { "mesa": "Parrales 12", "monto": 930 },
+                      { "mesa": "Parrales 13", "monto": 500 },
+                      { "mesa": "Parrales 14", "monto": 1300 },
+                      { "mesa": "Parrales 15", "monto": 880 },
+                      { "mesa": "Parrales 16", "monto": 880 },
+                      { "mesa": "Parrales 17", "monto": 1000 },
+                      { "mesa": "Parrales 18", "monto": 500 },
+                      { "mesa": "VIP 1", "monto": 600 },
+                      { "mesa": "Extra 1", "monto": 700 },
+                      { "mesa": "Extra 2", "monto": 1300 },
+                      { "mesa": "Extra 3", "monto": 1000 },
+                      { "mesa": "Extra 4", "monto": 1300 },
+                      { "mesa": "Camel 1", "monto": 800 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                     "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 4750,
+                    "detalles": [
+                      { "mesa": "Lounge 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Lounge 5", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Cholet 3", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Parrales 14", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Parrales 17", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Extra 2", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Extra 3", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Extra 4", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Lounge 4", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 31120,
+                  "transferenciasEnviadas": 4750,
+                  "transferenciasRecibidas": 0,
+                  "formula": "31120 - 4750 + 0",
+                  "saldo": 26370,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "24-01-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 21,
+                    "total": 17770,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 980 },
+                      { "mesa": "Pacha 2", "monto": 930 },
+                      { "mesa": "Pacha 3", "monto": 1200 },
+                      { "mesa": "Pacha 4", "monto": 700 },
+                      { "mesa": "Pacha 5", "monto": 700 },
+                      { "mesa": "Pacha 6", "monto": 750 },
+
+                      { "mesa": "Cholet 1", "monto": 980 },
+                      { "mesa": "Cholet 2", "monto": 700 },
+
+                      { "mesa": "Parrales 1", "monto": 500 },
+                      { "mesa": "Parrales 2", "monto": 880 },
+                      { "mesa": "Parrales 3", "monto": 500 },
+                      { "mesa": "Parrales 4", "monto": 980 },
+                      { "mesa": "Parrales 5", "monto": 980 },
+                      { "mesa": "Parrales 6", "monto": 500 },
+                      { "mesa": "Parrales 7", "monto": 1300 },
+                      { "mesa": "Parrales 8", "monto": 500 },
+                      { "mesa": "Parrales 9", "monto": 500 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 980 },
+                      { "mesa": "Parrales 12", "monto": 1300 },
+                      { "mesa": "Parrales 14", "monto": 930 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 1,
+                    "total": 900,
+                    "detalles": [
+                      { "mesa": "Parrales 13", "monto": 900 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                     "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 1900,
+                    "detalles": [
+                      { "mesa": "Pacha 3", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 },
+                      { "mesa": "Parrales 7", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Parrales 12", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 450,
+                    "detalles": [
+                      { "mesa": "Parrales 13", "montoOriginal": 900, "porcentaje": 50, "transferencia": 450 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 17770,
+                  "transferenciasEnviadas": 1900,
+                  "transferenciasRecibidas": 450,
+                  "formula": "17770 - 1900 + 450",
+                  "saldo": 16320,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "31-01-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 36,
+                    "total": 29680,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 650 },
+                      { "mesa": "Pacha 2", "monto": 880 },
+                      { "mesa": "Pacha 4", "monto": 980 },
+                      { "mesa": "Pacha 5", "monto": 980 },
+                      { "mesa": "Pacha 6", "monto": 980 },
+
+                      { "mesa": "Cholet 1", "monto": 800 },
+                      { "mesa": "Cholet 2", "monto": 980 },
+                      { "mesa": "Cholet 3", "monto": 800 },
+                      { "mesa": "Cholet 4", "monto": 980 },
+                      { "mesa": "Cholet 5", "monto": 980 },
+
+                      { "mesa": "Parrales 1", "monto": 1200 },
+                      { "mesa": "Parrales 2", "monto": 880 },
+                      { "mesa": "Parrales 3", "monto": 980 },
+                      { "mesa": "Parrales 4", "monto": 650 },
+                      { "mesa": "Parrales 5", "monto": 500 },
+                      { "mesa": "Parrales 6", "monto": 500 },
+                      { "mesa": "Parrales 7", "monto": 1300 },
+                      { "mesa": "Parrales 8", "monto": 450 },
+                      { "mesa": "Parrales 9", "monto": 500 },
+                      { "mesa": "Parrales 10", "monto": 650 },
+                      { "mesa": "Parrales 11", "monto": 800 },
+                      { "mesa": "Parrales 12", "monto": 980 },
+                      { "mesa": "Parrales 13", "monto": 500 },
+                      { "mesa": "Parrales 14", "monto": 980 },
+                      { "mesa": "Parrales 15", "monto": 980 },
+                      { "mesa": "Parrales 16", "monto": 1300 },
+                      { "mesa": "Parrales 17", "monto": 700 },
+                      { "mesa": "Parrales 18", "monto": 500 },
+
+                      { "mesa": "VIP 2", "monto": 600 },
+                      { "mesa": "VIP 3", "monto": 980 },
+                      { "mesa": "VIP 4", "monto": 500 },
+
+                      { "mesa": "Extra 1", "monto": 980 },
+                      { "mesa": "Extra 2", "monto": 980 },
+                      { "mesa": "Extra 3", "monto": 500 },
+
+                      { "mesa": "Camel 1", "monto": 800 },
+                      { "mesa": "Camel 3", "monto": 980 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                     "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "pacha 1", "montoOriginal": 650, "porcentaje": 50, "transferencia": 325 },
+                      { "mesa": "Parrales 1", "montoOriginal": 1200, "porcentaje": 50, "transferencia": 600 },
+                      { "mesa": "Parrales 4", "montoOriginal": 650, "porcentaje": 50, "transferencia": 325 },
+                      { "mesa": "Parrales 7", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Parrales 10", "montoOriginal": 650, "porcentaje": 50, "transferencia": 325 },
+                      { "mesa": "Parrales 16", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 29680,
+                  "transferenciasEnviadas": 2875,
+                  "transferenciasRecibidas": 0,
+                  "formula": "29680 - 2875 + 0",
+                  "saldo": 26805,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "07-02-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 24,
+                    "total": 17580,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 880 },
+                      { "mesa": "Pacha 2", "monto": 1000 },
+                      { "mesa": "Pacha 3", "monto": 1040 },
+                      { "mesa": "Pacha 4", "monto": 980 },
+                      { "mesa": "Pacha 5", "monto": 980 },
+
+                      { "mesa": "Lounge 11", "monto": 980 },
+
+                      { "mesa": "Parrales 1", "monto": 500 },
+                      { "mesa": "Parrales 2", "monto": 700 },
+                      { "mesa": "Parrales 3", "monto": 500 },
+                      { "mesa": "Parrales 4", "monto": 500 },
+                      { "mesa": "Parrales 5", "monto": 500 },
+                      { "mesa": "Parrales 6", "monto": 500 },
+                      { "mesa": "Parrales 7", "monto": 980 },
+                      { "mesa": "Parrales 8", "monto": 500 },
+                      { "mesa": "Parrales 9", "monto": 500 },
+                      { "mesa": "Parrales 10", "monto": 500 },
+                      { "mesa": "Parrales 11", "monto": 900 },
+                      { "mesa": "Parrales 12", "monto": 700 },
+                      { "mesa": "Parrales 13", "monto": 500 },
+                      { "mesa": "Parrales 14", "monto": 500 },
+
+                      { "mesa": "VIP 1", "monto": 500 },
+
+                      { "mesa": "Camel 1", "monto": 980 },
+                      { "mesa": "Camel 2", "monto": 980 },
+                      { "mesa": "Camel 3", "monto": 980 }
+                    ]
+
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 500,
+                    "detalles": [
+                      { "mesa": "Pcha 2", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 17580,
+                  "transferenciasEnviadas": 500,
+                  "transferenciasRecibidas": 0,
+                  "formula": "17580 - 500 + 0",
+                  "saldo": 17080,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "14-02-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 36,
+                    "total": 28680,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 1300 },
+                      { "mesa": "Pacha 2", "monto": 800 },
+                      { "mesa": "Pacha 3", "monto": 1300 },
+                      { "mesa": "Pacha 4", "monto": 1000 },
+                      { "mesa": "Pacha 5", "monto": 100 },
+                      { "mesa": "Pacha 6", "monto": 900 },
+                      { "mesa": "Pacha 8", "monto": 700 },
+                      { "mesa": "Pacha 9", "monto": 1300 },
+
+                      { "mesa": "Lounge 1", "monto": 500 },
+                      { "mesa": "Lounge 5", "monto": 450 },
+                      { "mesa": "Lounge 6", "monto": 500 },
+                      { "mesa": "Lounge 8", "monto": 900 },
+                      { "mesa": "Lounge 10", "monto": 500 },
+
+                      { "mesa": "Parrales 1", "monto": 880 },
+                      { "mesa": "Parrales 2", "monto": 880 },
+                      { "mesa": "Parrales 3", "monto": 980 },
+                      { "mesa": "Parrales 4", "monto": 980 },
+                      { "mesa": "Parrales 5", "monto": 700 },
+                      { "mesa": "Parrales 6", "monto": 980 },
+                      { "mesa": "Parrales 7", "monto": 800 },
+                      { "mesa": "Parrales 8", "monto": 500 },
+                      { "mesa": "Parrales 9", "monto": 930 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 500 },
+                      { "mesa": "Parrales 12", "monto": 700 },
+                      { "mesa": "Parrales 13", "monto": 980 },
+                      { "mesa": "Parrales 14", "monto": 1000 },
+                      { "mesa": "Parrales 15", "monto": 500 },
+                      { "mesa": "Parrales 16", "monto": 980 },
+                      { "mesa": "Parrales 17", "monto": 500 },
+                      { "mesa": "Parrales 18", "monto": 500 },
+
+                      { "mesa": "VIP 1", "monto": 500 },
+                      { "mesa": "VIP 2", "monto": 980 },
+
+                      { "mesa": "Extra 1", "monto": 980 },
+                      { "mesa": "Extra 2", "monto": 1000 },
+                      { "mesa": "Extra 3", "monto": 700 }
+                    ]
+                  },
+                  {
+                    "nombre": "TAVEL ESPINOZA FABIO RONALD",
+                    "transacciones": 1,
+                    "total": 100,
+                    "detalles": [
+                      { "mesa": "Pacha 7", "monto": 100 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 3700,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Pacha 3", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Pacha 4", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Pacha 6", "montoOriginal": 900, "porcentaje": 50, "transferencia": 450 },
+                      { "mesa": "Lounge 8", "montoOriginal": 900, "porcentaje": 50, "transferencia": 450 },
+                      { "mesa": "Parrales 14", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 },
+                      { "mesa": "Extra 2", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 28680,
+                  "transferenciasEnviadas": 3700,
+                  "transferenciasRecibidas": 0,
+                  "formula": "28680 - 3700 + 0",
+                  "saldo": 24980,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "16-02-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 6,
+                    "total": 4430,
+                    "detalles": [
+                      { "mesa": "Parrales 1", "monto": 1000 },
+                      { "mesa": "Parrales 2", "monto": 800 },
+                      { "mesa": "Parrales 3", "monto": 700 },
+                      { "mesa": "Parrales 4", "monto": 980 },
+                      { "mesa": "Parrales 5", "monto": 450 },
+                      { "mesa": "Parrales 6", "monto": 500 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+                "totales": { "ingresado": 0 },
+                "transferencias": {
+                  "mama": {
+                     "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Parrales 1", "montoOriginal": 1000, "porcentaje": 50, "transferencia": 500 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 4430,
+                  "transferenciasEnviadas": 0,
+                  "transferenciasRecibidas": 0,
+                  "formula": "4430 - 500 + 0",
+                  "saldo": 3930,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              },
+              {
+                "fecha": "18-04-26",
+                "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                "cuentas": [
+                  {
+                    "nombre": "PACHA SUNSET",
+                    "transacciones": 42,
+                    "total": 40420,
+                    "detalles": [
+                      { "mesa": "Pacha 1", "monto": 1300 },
+                      { "mesa": "Pacha 2", "monto": 980 },
+                      { "mesa": "Pacha 3", "monto": 1300 },
+                      { "mesa": "Pacha 4", "monto": 980 },
+                      { "mesa": "Pacha 5", "monto": 1300 },
+                      { "mesa": "Pacha 6", "monto": 980 },
+                      { "mesa": "Pacha 7", "monto": 700 },
+                      { "mesa": "Pacha 8", "monto": 1300 },
+                      { "mesa": "Lounge 1", "monto": 980 },
+                      { "mesa": "Lounge 2", "monto": 700 },
+                      { "mesa": "Lounge 3", "monto": 700 },
+                      { "mesa": "Lounge 4", "monto": 980 },
+                      { "mesa": "Lounge 5", "monto": 700 },
+                      { "mesa": "Lounge 6", "monto": 700 },
+                      { "mesa": "Lounge 7", "monto": 700 },
+                      { "mesa": "Lounge 8", "monto": 700 },
+                      { "mesa": "Lounge 9", "monto": 980 },
+                      { "mesa": "Parrales 1", "monto": 700 },
+                      { "mesa": "Parrales 2", "monto": 700 },
+                      { "mesa": "Parrales 3", "monto": 880 },
+                      { "mesa": "Parrales 4", "monto": 880 },
+                      { "mesa": "Parrales 5", "monto": 600 },
+                      { "mesa": "Parrales 6", "monto": 600 },
+                      { "mesa": "Parrales 7", "monto": 980 },
+                      { "mesa": "Parrales 8", "monto": 980 },
+                      { "mesa": "Parrales 9", "monto": 1300 },
+                      { "mesa": "Parrales 10", "monto": 980 },
+                      { "mesa": "Parrales 11", "monto": 980 },
+                      { "mesa": "Parrales 12", "monto": 1300 },
+                      { "mesa": "Parrales 13", "monto": 800 },
+                      { "mesa": "Parrales 14", "monto": 1160 },
+                      { "mesa": "Parrales 15", "monto": 800 },
+                      { "mesa": "Parrales 16", "monto": 700 },
+                      { "mesa": "Parrales 17", "monto": 700 },
+                      { "mesa": "Parrales 18", "monto": 890 },
+                      { "mesa": "VIP 1", "monto": 1300 },
+                      { "mesa": "VIP 2", "monto": 800 },
+                      { "mesa": "VIP 3", "monto": 930 },
+                      { "mesa": "VIP 4", "monto": 800 },
+                      { "mesa": "Extra 1", "monto": 980 },
+                      { "mesa": "Extra 2", "monto": 700 },
+                      { "mesa": "Extra 3", "monto": 3000 }
+                    ]
+                  },
+                  {
+                    "nombre": "MAMA",
+                    "transacciones": 0,
+                    "total": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "monto": 0 }
+                    ]
+                  }
+                ],
+               "totales": { "ingresado": 40420 },
+                "transferencias": {
+                  "mama": {
+                    "descripcion": "Transferencias a MAMA (50% del combo Pachamama)",
+                    "totalTransferido": 4450,
+                    "detalles": [
+                      { "mesa": "Pacha 7", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Pacha 8", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 },
+                      { "mesa": "Lounge 2", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Lounge 3", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Lounge 5", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Lounge 6", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Parrales 1", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Parrales 2", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Parrales 16", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "Parrales 17", "montoOriginal": 700, "porcentaje": 50, "transferencia": 350 },
+                      { "mesa": "VIP 1", "montoOriginal": 1300, "porcentaje": 50, "transferencia": 650 }
+                    ]
+                  },
+                  "pacha": {
+                    "descripcion": "Transferencias a PACHA SUNSET",
+                    "totalTransferido": 0,
+                    "detalles": [
+                      { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 50, "transferencia": 0 }
+                    ]
+                  }
+                },
+                 "saldoFinal": {
+                  "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                  "ingresado": 40420,
+                  "transferenciasEnviadas": 4450,
+                  "transferenciasRecibidas": 0,
+                  "formula": "40420 - 4450 + 0",
+                  "saldo": 35970,
+                  "banco": "BCP",
+                  "cuenta": "20151595559307",
+                  "referencia": "Ventas de mesas",
+                  "nota": "Datos generados automáticamente"
+                }
+              }
+            ],
+            [
+              {
+                  "fecha": "21-02-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "28-02-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "07-03-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "14-03-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "21-03-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "28-03-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "04-04-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "11-04-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                },
+              {
+                  "fecha": "25-04-26",
+                  "resumen": { "titulo": "Detalle de Ingresos por Cuenta Destino" },
+                  "cuentas": [
+                    {
+                      "nombre": "PACHA SUNSET",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 },
+                        { "mesa": "Mesa 2", "monto": 0 }
+                      ]
+                    },
+                    {
+                      "nombre": "MAMA",
+                      "transacciones": 0,
+                      "total": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "monto": 0 }
+                      ]
+                    }
+                  ],
+                  "totales": { "ingresado": 0 },
+                  "transferencias": {
+                    "mama": {
+                      "descripcion": "Transferencias a MAMA",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    },
+                    "pacha": {
+                      "descripcion": "Transferencias a PACHA SUNSET",
+                      "totalTransferido": 0,
+                      "detalles": [
+                        { "mesa": "Mesa 1", "montoOriginal": 0, "porcentaje": 0, "transferencia": 0 }
+                      ]
+                    }
+                  },
+                  "saldoFinal": {
+                    "descripcion": "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                    "ingresado": 0,
+                    "transferenciasEnviadas": 0,
+                    "transferenciasRecibidas": 0,
+                    "formula": "0 - 0 + 0",
+                    "saldo": 0,
+                    "banco": "BCP",
+                    "cuenta": "20151595559307",
+                    "referencia": "Ventas de mesas",
+                    "nota": "Datos generados automáticamente"
+                  }
+                }
+            ]
+          ]
+};
+
+
+
+
+        const mesaData = {
+            "Pacha": {
+                1:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["08:32", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["21:55", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"jager", fechas:["24-04-2026", ""], horas:["19:24", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["600", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["19:33", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["25-04-2026", ""], horas:["12:00", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+                7:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["23-04-2026", ""], horas:["18:47", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+                8:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["19:50", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+                9:{nombres:["pacha sunset", ""], montos:["930", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["22-04-2026", ""], horas:["16:37", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+                10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "Lounge": {
+                1:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["19:04", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["18:04", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["900", ""], tragos:["parrales"], combo:"pachamama", fechas:["25-04-2026", ""], horas:["09:19", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["20:24", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["23-04-2026", ""], horas:["12:00", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["21:41", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+                7:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["12:00", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+                8:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["23-04-2026", ""], horas:["14:25", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+                9:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["23-04-2026", ""], horas:["13:47", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+                10:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["11-04-2026", ""], horas:["12:00", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+                11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "Cholet": {
+                1:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["23-04-2026", ""], horas:["12:10", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["22-04-2026", ""], horas:["20:20", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["10:16", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+                7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+                8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+                9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+                10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+                11:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+                12:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["22", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "Parrales": {
+                1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["23-04-2026", ""], horas:["12:00", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["06:26", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["19-04-2026", ""], horas:["21:54", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["900", ""], tragos:["parrales"], combo:"pachamama", fechas:["23-04-2026", ""], horas:["18:20", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["900", ""], tragos:["parrales"], combo:"pachamama", fechas:["21-04-2026", ""], horas:["12:56", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["1200", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["07:20", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+                7:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["19:12", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+                8:{nombres:["pacha sunset", ""], montos:["900", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["13:18", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+                9:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["20-04-2026", ""], horas:["14:22", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+                10:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumplrañero", fechas:["24-04-2026", ""], horas:["19:36", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]},
+                11:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["17:58", ""], operaciones:["11", ""], cuentas:["20151595559307", ""]},
+                12:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["19:22", ""], operaciones:["12", ""], cuentas:["20151595559307", ""]},
+                13:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"cascabel", fechas:["25-04-2026", ""], horas:["14:18", ""], operaciones:["13", ""], cuentas:["20151595559307", ""]},
+                14:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["13:45", ""], operaciones:["14", ""], cuentas:["20151595559307", ""]},
+                15:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["23-04-2026", ""], horas:["12:04", ""], operaciones:["15", ""], cuentas:["20151595559307", ""]},
+                16:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["19:51", ""], operaciones:["16", ""], cuentas:["20151595559307", ""]},
+                17:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["18:42", ""], operaciones:["17", ""], cuentas:["20151595559307", ""]},
+                18:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["20:33", ""], operaciones:["18", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "VIP": {
+                1:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["08:54", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["1000", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["13:03", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["18:09", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["800", ""], tragos:["parrales"], combo:"cascabel", fechas:["25-04-2026", ""], horas:["12:08", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["1000", ""], tragos:["parrales"], combo:"pachamama", fechas:["23-04-2026", ""], horas:["18:09", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["1000", ""], tragos:["parrales"], combo:"pachamama", fechas:["23-04-2026", ""], horas:["18:10", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "Extra": {
+                1:{nombres:["pacha sunset", ""], montos:["1300", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["19:12", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["23-04-2026", ""], horas:["10:56", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["jager"], combo:"jager", fechas:["23-04-2026", ""], horas:["19:49", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]},
+                4:{nombres:["pacha sunset", ""], montos:["700", ""], tragos:["parrales"], combo:"cascabel", fechas:["24-04-2026", ""], horas:["19:56", ""], operaciones:["4", ""], cuentas:["20151595559307", ""]},
+                5:{nombres:["pacha sunset", ""], montos:["880", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["25-04-2026", ""], horas:["12:55", ""], operaciones:["5", ""], cuentas:["20151595559307", ""]},
+                6:{nombres:["pacha sunset", ""], montos:["900", ""], tragos:["parrales"], combo:"pachamama", fechas:["24-04-2026", ""], horas:["10:13", ""], operaciones:["6", ""], cuentas:["20151595559307", ""]},
+                7:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["7", ""], cuentas:["20151595559307", ""]},
+                8:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["8", ""], cuentas:["20151595559307", ""]},
+                9:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["9", ""], cuentas:["20151595559307", ""]},
+                10:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["10", ""], cuentas:["20151595559307", ""]}
+            },
+
+            "Camel": {
+                1:{nombres:["pacha sunset", ""], montos:["500", ""], tragos:["parrales"], combo:"banx", fechas:["24-04-2026", ""], horas:["16:38", ""], operaciones:["1", ""], cuentas:["20151595559307", ""]},
+                2:{nombres:["pacha sunset", ""], montos:["980", ""], tragos:["parrales"], combo:"cumpleañero", fechas:["24-04-2026", ""], horas:["20:04", ""], operaciones:["2", ""], cuentas:["20151595559307", ""]},
+                3:{nombres:["pacha sunset", ""], montos:["", ""], tragos:["parrales"], combo:"", fechas:["04-2026", ""], horas:["", ""], operaciones:["3", ""], cuentas:["20151595559307", ""]}
+            }
+        };
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Tu código existente para el sidebar) ...
+    const sidebar = document.getElementById('sidebar');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeBtn = document.querySelector('.sidebar .close-btn');
+    const overlay = document.getElementById('overlay');
+
+    const mostrarComprobante = (areaName, mesaNumber) => {
+        const datosMesa = mesaData[areaName][mesaNumber];
+        if (!datosMesa) return;
+
+        // Verificar si la mesa está libre: NO hay hora registrada
+        const transaccionesConHora = datosMesa.horas.filter(h => h && h.trim() !== '').length;
+        const mesaLibre = transaccionesConHora === 0;
+
+
+        // Crear modal
+        const modal = document.createElement('div');
+        modal.classList.add('comprobante-modal');
+
+        if (mesaLibre) {
+            // Mesa Libre
+            modal.innerHTML = `
+                <div class="comprobante-content mesa-libre">
+                    <h2>${areaName} ${mesaNumber} LIBRE</h2>
+                </div>
+            `;
+        } else {
+            // Cálculo del total
+            const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+            const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+            const totalMesa = (monto1 + monto2).toFixed(2);
+
+            const buildTransactionDetail = (index) => {
+                const nombre = datosMesa.nombres[index];
+                const monto = datosMesa.montos[index];
+                const fecha = datosMesa.fechas[index];
+                const hora = datosMesa.horas[index];
+                const operacion = datosMesa.operaciones[index];
+                const cuenta = datosMesa.cuentas[index];
+
+                if (!nombre && !monto && !fecha && !hora && !operacion && !cuenta) return '';
+
+                const tragoComboHTML = index === 0 ? `
+                    <div class="detail-row">
+                        <span>Trago:</span>
+                        <span class="value">${datosMesa.tragos.join(', ') || 'N/A'}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Combo:</span>
+                        <span class="value">${datosMesa.combo || 'N/A'}</span>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="transaction-block">
+                        <h4>Transacción #${index + 1}</h4>
+                        <div class="detail-row"><span>Cuenta Destino:</span><span class="value">${nombre || 'N/A'}</span></div>
+                        <div class="detail-row"><span>Monto:</span><span class="value monto">${monto ? 'Bs. ' + monto : 'N/A'}</span></div>
+                        <div class="detail-row"><span>Fecha y Hora:</span><span class="value">${fecha || 'N/A'} ${hora || 'N/A'}</span></div>
+                        <div class="detail-row"><span>N° de Operación:</span><span class="value">${operacion || 'N/A'}</span></div>
+                        <div class="detail-row"><span>N° de Cuenta:</span><span class="value">${cuenta || 'N/A'}</span></div>
+                        ${tragoComboHTML}
+                        <div class="divider"></div>
+                    </div>
+                `;
+            };
+
+            modal.innerHTML = `
+                <div class="comprobante-content">
+                    <div class="comprobante-header">
+                        <h2>Comprobante de Ingreso</h2>
+                        <p><strong>Área:</strong> ${areaName} | <strong>Mesa:</strong> ${mesaNumber}</p>
+                        <button class="close-comprobante">&times;</button>
+                    </div>
+
+                    <div class="comprobante-body">
+                        ${buildTransactionDetail(0)}
+                        ${buildTransactionDetail(1)}
+                    </div>
+
+                    <div class="total-container">
+                        <div class="total-row">
+                            <span>TOTAL FACTURADO:</span>
+                            <span class="total-value">Bs. ${totalMesa}</span>
+                        </div>
+                    </div>
+
+                    <p class="nota">Estos datos son referenciales a las transacciones registradas en la mesa.</p>
+                </div>
+            `;
+
+            // Si solo hay 1 transacción con hora, hacer modal más estrecho
+            if (transaccionesConHora === 1) {
+                modal.querySelector('.comprobante-content').classList.add('single-transaction-modal');
+            }
+
+        }
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+
+        // Cerrar con botón
+        const closeBtn = modal.querySelector('.close-comprobante');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.remove();
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Cerrar clic fuera
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+                document.body.style.overflow = '';
+            }
+        });
+    };
+
+
+    const openMenu = () => {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    if (menuIcon) {
+        menuIcon.addEventListener('click', openMenu);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+    document.querySelectorAll('.sidebar a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    const btnInventarios = document.querySelector('a[href="#area-cholet"]');
+
+    if (btnInventarios) {
+        btnInventarios.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu(); // Cierra el menú lateral
+            const resumen = calcularResumenInventario(mesaData); // Llama a la nueva función
+            mostrarModalInventario(resumen); // Muestra el nuevo modal
+        });
+    }
+    const btnPorcentajes = document.querySelector('a[href="#area-lounge"]');
+
+    if (btnPorcentajes) {
+        btnPorcentajes.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu(); // Cierra el menú lateral
+            const resumen = calcularResumenOcupacion(mesaData);
+            mostrarModalOcupacion(resumen);
+        });
+    }
+
+
+    /* =====================================================
+      FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
+      ===================================================== */
+    const calcularResumenInventario = (data) => {
+        const resumen = {
+            tragos: {},
+            combos: {}
+        };
+
+        for (const area in data) {
+            for (const mesa in data[area]) {
+                const datosMesa = data[area][mesa];
+
+                // ===== VALIDACIONES =====
+                const monto = datosMesa.montos?.[0];
+                const fecha = datosMesa.fechas?.[0];
+
+                const montoValido = monto !== "" && !isNaN(monto) && Number(monto) > 0;
+                const fechaValida = fecha !== "" && fecha !== "12-25"; // ajusta si deseas otro filtro
+
+                // ❌ Si no hay venta real, NO contar inventario
+                if (!montoValido || !fechaValida) continue;
+
+                // ===== TRAGOS =====
+                const tragosStr = datosMesa.tragos?.[0];
+                if (tragosStr) {
+                    const tragosArray = tragosStr
+                        .split(',')
+                        .map(t => t.trim().toUpperCase())
+                        .filter(Boolean);
+
+                    tragosArray.forEach(trago => {
+                        resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
+                    });
+                }
+
+                // ===== COMBOS =====
+                const comboStr = datosMesa.combo;
+                if (comboStr) {
+                    const comboKey = comboStr.trim().toUpperCase();
+                    if (comboKey) {
+                        resumen.combos[comboKey] = (resumen.combos[comboKey] || 0) + 1;
+                    }
+                }
+            }
+        }
+
+        return resumen;
+    };
+
+    /* =====================================================
+      FUNCIÓN PARA MOSTRAR EL MODAL DE INVENTARIO
+      ===================================================== */
+    const mostrarModalInventario = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal'); // Reutilizamos la clase principal del modal
+
+        // --- Generar HTML de Tragos ---
+        let tragosHTML = '';
+        const tragosOrdenados = Object.entries(resumen.tragos).sort(([, a], [, b]) => b - a);
+        const separador = '<div class="comanda-separator">-----------------------------------------</div>';
+        if (tragosOrdenados.length > 0) {
+            tragosHTML = tragosOrdenados.map(([nombre, cantidad]) => `
+                <li class="inventario-item">
+                    <span class="item-nombre">${nombre}</span>
+                    <span class="item-cantidad">${cantidad} unidades</span>
+                </li>
+            `).join('');
+        } else {
+            tragosHTML = '<p class="sin-registros">No se registraron tragos.</p>';
+        }
+
+        // --- Generar HTML de Combos ---
+        let combosHTML = '';
+        const combosOrdenados = Object.entries(resumen.combos).sort(([, a], [, b]) => b - a);
+
+        if (combosOrdenados.length > 0) {
+            combosHTML = combosOrdenados.map(([nombre, cantidad]) => `
+                <li class="inventario-item">
+                    <span class="item-nombre">${nombre}</span>
+                    <span class="item-cantidad">${cantidad} veces</span>
+                </li>
+            `).join('');
+        } else {
+            combosHTML = '<p class="sin-registros">No se registraron combos.</p>';
+        }
+
+        // --- Estructura Final del Modal ---
+        modal.innerHTML = `
+            <div class="resumen-content inventario-content">
+                <div class="resumen-header">
+                    <h2>📋 Inventario</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+
+                    <h3 class="inventario-titulo">*** TRAGOS POR UNIDAD ***</h3>
+                    ${separador}
+                    <ul class="inventario-lista">
+                        ${tragosHTML}
+                    </ul>
+                    ${separador}
+
+                    <h3 class="inventario-titulo">*** COMBOS VENDIDOS ***</h3>
+                    ${separador}
+                    <ul class="inventario-lista">
+                        ${combosHTML}
+                    </ul>
+                    ${separador}
+
+                </div>
+
+                <p class="nota">Conteo de insumos basado en mesas.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+
+        // Lógica para cerrar
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+            }
+        });
+    };
+    /* =====================================================
+        FUNCIÓN PRINCIPAL: GENERAR RESUMEN GENERAL
+        (CON TRANSFERENCIAS 50% PARA COMBO "PACHAMAMA")
+    ===================================================== */
+    const generarResumenGeneral = (data) => {
+        let totalGlobal = 0;
+
+        // Acumular ingresos por nombre
+        const resumenPorNombre = {};
+
+        // Acumuladores especiales para transferencias
+        let totalTransferenciasMama = 0; // PACHA → MAMA
+        let totalTransferenciasPacha = 0; // MAMA → PACHA
+        const detalleTransferenciasMama = [];
+        const detalleTransferenciasPacha = [];
+
+        for (const area in data) {
+            for (const mesa in data[area]) {
+                const datosMesa = data[area][mesa];
+
+                // Revisar si la mesa tiene combo PACHAMAMA
+                const combo = datosMesa.combo ? datosMesa.combo.toLowerCase() : "";
+
+                for (let i = 0; i < 2; i++) {
+                    const nombre = datosMesa.nombres[i].trim().toUpperCase();
+                    const montoStr = datosMesa.montos[i];
+                    const monto = parseFloat(montoStr) || 0;
+
+                    if (monto > 0) {
+                        // Suma al total global
+                        totalGlobal += monto;
+
+                        // Registrar por cuenta destino
+                        const clave = nombre || "SIN NOMBRE ASIGNADO";
+
+                        if (resumenPorNombre[clave]) {
+                            resumenPorNombre[clave].monto += monto;
+                            resumenPorNombre[clave].transacciones.push({
+                                area: area,
+                                mesa: mesa,
+                                monto: monto.toFixed(2),
+                                fecha: datosMesa.fechas[i],
+                                operacion: datosMesa.operaciones[i]
+                            });
+                        } else {
+                            resumenPorNombre[clave] = {
+                                monto: monto,
+                                transacciones: [{
+                                    area: area,
+                                    mesa: mesa,
+                                    monto: monto.toFixed(2),
+                                    fecha: datosMesa.fechas[i],
+                                    operacion: datosMesa.operaciones[i]
+                                }]
+                            };
+                        }
+
+                        // =====================================================
+                        // TRANSFERENCIA DEL 50% PARA COMBO PACHAMAMA
+                        // =====================================================
+                        if (combo === "pachamama") {
+                            if (nombre === "PACHA SUNSET") {
+                                const porcentaje = monto * 0.50;
+                                totalTransferenciasMama += porcentaje;
+                                detalleTransferenciasMama.push({
+                                    area: area,
+                                    mesa: mesa,
+                                    montoOriginal: monto,
+                                    transferencia: porcentaje
+                                });
+                            } else if (nombre === "MAMA") {
+                                const porcentaje = monto * 0.50;
+                                totalTransferenciasPacha += porcentaje;
+                                detalleTransferenciasPacha.push({
+                                    area: area,
+                                    mesa: mesa,
+                                    montoOriginal: monto,
+                                    transferencia: porcentaje
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return {
+            totalGlobal: totalGlobal.toFixed(2),
+            porNombre: resumenPorNombre,
+            mamaTransferencia: totalTransferenciasMama,
+            mamaDetalle: detalleTransferenciasMama,
+            pachaTransferencia: totalTransferenciasPacha,
+            pachaDetalle: detalleTransferenciasPacha
+        };
+    };
+
+    /* =====================================================
+        MOSTRAR EL MODAL COMPLETO CON RESUMEN + TRANSFERENCIAS + SALDO NETO PACHA
+    ===================================================== */
+    const mostrarModalResumen = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal');
+
+        // Total global sin decimales
+        const totalGlobalSinDecimales = Math.trunc(parseFloat(resumen.totalGlobal)).toLocaleString('es-BO');
+
+        // Ordenar cuentas por monto
+        let detalleHTML = '';
+        const nombresOrdenados = Object.keys(resumen.porNombre)
+            .map(nombre => ({ nombre, datos: resumen.porNombre[nombre] }))
+            .sort((a, b) => b.datos.monto - a.datos.monto);
+
+        nombresOrdenados.forEach(item => {
+            const { nombre, datos } = item;
+
+            let transaccionesDetalle = datos.transacciones.map(t => {
+                const montoIndividualSin = Math.trunc(parseFloat(t.monto)).toLocaleString('es-BO');
+                return `
+                    <li class="tx-item">
+                        <span class="tx-mesa">${t.area} ${t.mesa}</span>
+                        <span class="tx-monto">Bs. ${montoIndividualSin}</span>
+                    </li>
+                `;
+            }).join('');
+
+
+
+            detalleHTML += `
+                <div class="resumen-bloque-cuenta">
+                    <div class="resumen-cuenta-header">
+                        <h4>Cuenta: ${nombre} (${datos.transacciones.length} transacciones)</h4>
+                        <span class="monto-total-cuenta">Total: Bs. ${datos.monto.toFixed(2)}</span>
+                    </div>
+                   <ul class="resumen-lista-tx grid-3">
+                       ${transaccionesDetalle}
+                   </ul>
+
+                </div>
+            `;
+        });
+
+        /* =====================================================
+           BLOQUE DE TRANSFERENCIAS DETALLADAS
+        ===================================================== */
+        let mamaHTML = "";
+        if (resumen.mamaTransferencia > 0) {
+            const totalMamaRedondeado = Math.trunc(resumen.mamaTransferencia).toLocaleString('es-BO');
+
+            const listaMama = resumen.mamaDetalle.map(d => `
+                <li class="resumen-transaccion" style="display:flex; justify-content:space-between; padding:4px 8px; border-bottom:1px solid #ccc;">
+                    <span>${d.area} ${d.mesa} (50% de ${d.montoOriginal}) Bs</span>
+                    <span style="color:#000; font-weight:600;">Bs. ${Math.trunc(d.transferencia)}</span>
+                </li>
+            `).join('');
+
+            mamaHTML = `
+                <div class="resumen-bloque-cuenta" style="border-top:2px solid #c0392b; margin-top:15px;">
+                    <div class="resumen-cuenta-header">
+                        <h4>Transferencias a MAMA (50% del combo Pachamama)</h4>
+                        <span class="monto-total-cuenta">Total a transferir: Bs. ${totalMamaRedondeado}</span>
+                    </div>
+                    <ul class="resumen-lista-tx">
+                        ${listaMama}
+                    </ul>
+                </div>
+            `;
+        }
+
+        let pachaHTML = "";
+        if (resumen.pachaTransferencia > 0) {
+            const totalPachaRedondeado = Math.trunc(resumen.pachaTransferencia).toLocaleString('es-BO');
+
+            const listaPacha = resumen.pachaDetalle.map(d => `
+                <li class="resumen-transaccion" style="display:flex; justify-content:space-between; padding:4px 8px; border-bottom:1px solid #ccc;">
+                    <span>[${d.area} M-${d.mesa}] 50% de ${d.montoOriginal} Bs</span>
+                    <span style="color:#000; font-weight:600;">Bs. ${Math.trunc(d.transferencia)}</span>
+                </li>
+            `).join('');
+
+            pachaHTML = `
+                <div class="resumen-bloque-cuenta" style="border-top:2px solid #2980b9; margin-top:15px;">
+                    <div class="resumen-cuenta-header">
+                        <h4>Transferencias a PACHA SUNSET (50% del combo Pachamama)</h4>
+                        <span class="monto-total-cuenta">Total a transferir: Bs. ${totalPachaRedondeado}</span>
+                    </div>
+                    <ul class="resumen-lista-tx">
+                        ${listaPacha}
+                    </ul>
+                </div>
+            `;
+        }
+
+
+        /* =====================================================
+           BLOQUE DE SALDO NETO DE PACHA SUNSET (DETALLADO)
+        ===================================================== */
+        let saldoHTML = '';
+
+        const totalPachaIngresado = resumen.porNombre["PACHA SUNSET"]
+            ? resumen.porNombre["PACHA SUNSET"].monto
+            : 0;
+
+        // Transferencias del combo Pachamama
+        const transferenciasPachaAMama = resumen.mamaTransferencia || 0;   // PACHA → MAMA
+        const transferenciasMamaAPacha = resumen.pachaTransferencia || 0;  // MAMA → PACHA
+
+        // Cálculo del saldo REAL
+        const saldoPacha =
+            totalPachaIngresado
+            - transferenciasPachaAMama
+            + transferenciasMamaAPacha;
+
+        if (totalPachaIngresado > 0) {
+
+            saldoHTML += `
+                <!-- Línea divisoria -->
+                <hr style="border:2px solid #39ff14; margin-top:20px; margin-bottom:10px;">
+
+                <h3 style="text-align:center; color:#c7c7c7; margin-bottom:10px;">
+                    Cuenta PACHA SUNSET — Detalle del saldo actual
+                </h3>
+
+                <div class="resumen-bloque-cuenta" style="
+                    width:320px;
+                    margin:0 auto 20px auto;
+                    padding:15px;
+                    background:#fff;
+                    color:#000;
+                    font-family:monospace;
+                    border-radius:8px;
+                    box-shadow:0 0 5px rgba(0,0,0,0.2);
+                ">
+
+                    <p><strong>Total ingresado por ventas de mesas:</strong><br>
+                        Bs. ${Math.trunc(totalPachaIngresado)}
+                    </p>
+
+                    <p><strong>(−) Transferencias realizadas a MAMA:</strong><br>
+                        Bs. ${Math.trunc(transferenciasPachaAMama)}
+                    </p>
+
+                    <p><strong>(+) Transferencias recibidas desde MAMA:</strong><br>
+                        Bs. ${Math.trunc(transferenciasMamaAPacha)}
+                    </p>
+
+                    <hr style="border:1px dashed #000; margin:12px 0;">
+
+                    <p style="font-size:14px;">
+                        <strong>Cálculo:</strong><br>
+                        ${Math.trunc(totalPachaIngresado)}
+                        − ${Math.trunc(transferenciasPachaAMama)}
+                        + ${Math.trunc(transferenciasMamaAPacha)}
+                    </p>
+
+                    <hr style="border:1px solid #000; margin:12px 0;">
+
+                    <p style="text-align:center;">
+                        <strong>SALDO ACTUAL REAL:</strong><br>
+                        <span style="color:blue; font-size:18px;">
+                            Bs. ${Math.trunc(saldoPacha)}
+                        </span>
+                    </p>
+
+                    <hr style="border:1px dashed #000; margin:15px 0;">
+
+                    <p><strong>Banco:</strong> BCP</p>
+                    <p><strong>Número de cuenta:</strong>
+                        <span style="color:blue;">20151595559307</span>
+                    </p>
+                    <p><strong>Referencia:</strong> Ventas de mesas</p>
+
+                </div>
+            `;
+        }
+
+
+
+        // Modal final
+        modal.innerHTML = `
+            <div class="resumen-content">
+                <div class="resumen-header">
+                    <h2>Resumen Global de Ingresos</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+                    <h3>Detalle de Ingresos por Cuenta Destino:</h3>
+                    ${detalleHTML}
+                </div>
+
+                <div class="resumen-total-bar">
+                    <span>TOTAL INGRESADO:</span>
+                    <span class="total-final">Bs. ${totalGlobalSinDecimales}</span>
+                </div>
+
+                <!-- Línea divisoria verde neón -->
+                <hr style="border:2px solid #39ff14; margin-top:20px; margin-bottom:10px;">
+
+                <!-- Título centrado -->
+                <h3 style="text-align:center; color:#f0f2f5; margin-bottom:15px;">Transferencias 50% de combos Pachamama</h3>
+
+                <!-- Bloques de transferencias -->
+                ${mamaHTML}
+                ${pachaHTML}
+
+                <!-- Bloque de saldo neto PACHA -->
+                ${saldoHTML}
+
+                <p class="nota">Datos generados automáticamente.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }
+        });
+    };
+
+
+
+
+    // ----------------------------------------------------
+    // Añadir el listener al final de tu DOMContentLoaded
+    // ----------------------------------------------------
+    const btnResumen = document.getElementById('mostrar-resumen');
+
+    if (btnResumen) {
+    btnResumen.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita que la página salte al inicio
+    closeMenu();      // Cierra el menú lateral
+    const resumen = generarResumenGeneral(mesaData);
+    mostrarModalResumen(resumen);
+    });
+    }
+        /* =====================================================
+        FUNCIÓN PARA CALCULAR EL RESUMEN DE OCUPACIÓN
+        ===================================================== */
+
+        const calcularResumenOcupacion = (data) => {
+            let totalMesas = 0;
+            let mesasOcupadas = 0;
+            const resumenPorArea = {};
+
+            // 1. Recorrer todas las áreas en los datos de las mesas
+            for (const area in data) {
+                let mesasArea = 0;
+                let ocupadasArea = 0;
+
+                // 2. Contar mesas y ocupadas por cada área
+                for (const mesa in data[area]) {
+                    mesasArea++;
+                    const datosMesa = data[area][mesa];
+
+                    // Consideramos la mesa "ocupada" si al menos una transacción tiene un monto > 0
+                    const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+                    const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+
+                    if (monto1 > 0 || monto2 > 0) {
+                        ocupadasArea++;
+                    }
+                }
+
+                // Acumular al total global
+                totalMesas += mesasArea;
+                mesasOcupadas += ocupadasArea;
+
+                // Guardar el resumen por área
+                resumenPorArea[area] = {
+                    total: mesasArea,
+                    ocupadas: ocupadasArea,
+                    porcentaje: (mesasArea > 0) ? ((ocupadasArea / mesasArea) * 100).toFixed(1) : 0
+                };
+            }
+
+            // Calcular el total general
+            const porcentajeGlobal = (totalMesas > 0) ? ((mesasOcupadas / totalMesas) * 100).toFixed(1) : 0;
+
+            return {
+                totalMesas: totalMesas,
+                mesasOcupadas: mesasOcupadas,
+                mesasDisponibles: totalMesas - mesasOcupadas,
+                porcentajeGlobal: porcentajeGlobal,
+                porArea: resumenPorArea
+            };
+        };
+
+
+
+    const determinarColorOcupacion = (porcentaje) => {
+        const p = parseFloat(porcentaje);
+        if (p === 0) {
+            return '#28a745';      // Verde: 0% (Disponible)
+        } else if (p > 0 && p <= 50) {
+            return '#17a2b8';      // Azul/Cian: 1% a 50% (Ocupación Baja)
+        } else if (p > 50 && p < 100) {
+            return '#ffc107';      // Naranja/Amarillo: 51% a 99% (Ocupación Media/Alta)
+        } else if (p === 100) {
+            return '#dc3545';      // Rojo: 100% (Lleno Total)
+        }
+        return '#555';             // Color por defecto
+    };
+    const mostrarModalOcupacion = (resumen) => {
+        const modal = document.createElement('div');
+        modal.classList.add('resumen-modal', 'ocupacion-modal');
+
+
+
+        const totalMesasDisponibles = resumen.totalMesas - resumen.mesasOcupadas;
+        const colorGlobal = determinarColorOcupacion(resumen.porcentajeGlobal); // <--- CAMBIO CLAVE AQUÍ
+        // ----------------------------------------------------
+        // CONSTRUCCIÓN DEL ENCABEZADO GLOBAL (Bloque central grande)
+        // ----------------------------------------------------
+        const headerHTML = `
+            <div class="global-summary-block">
+
+                <div class="summary-item">
+                    <span class="summary-value occupied-color">${resumen.mesasOcupadas}</span>
+                    <span class="summary-label">Mesas Ocupadas</span>
+                </div>
+
+                <div class="summary-item total-mesas-gauge" 
+                     data-percent="${resumen.porcentajeGlobal}" 
+                     style="--p:${resumen.porcentajeGlobal}; --c:${colorGlobal};">
+                    <span class="gauge-center-percent">${resumen.porcentajeGlobal}%</span>
+                    <span class="gauge-center-label">Ocupación Total</span>
+                </div>
+
+                <div class="summary-item">
+                    <span class="summary-value libre-color">${totalMesasDisponibles}</span>
+                    <span class="summary-label">Mesas Libres</span>
+                </div>
+
+            </div>
+            <h3>Detalle de Ocupación por Área:</h3>
+            <div class="ocupacion-grid">
+        `;
+
+        // ----------------------------------------------------
+        // CONSTRUCCIÓN DEL DETALLE POR ÁREA (Medidores pequeños)
+        // ----------------------------------------------------
+        let detalleHTML = '';
+
+        // Ordenar las áreas por porcentaje de ocupación (de mayor a menor)
+        const areasOrdenadas = Object.keys(resumen.porArea)
+            .map(nombre => ({ area: nombre, datos: resumen.porArea[nombre] }))
+            .sort((a, b) => parseFloat(b.datos.porcentaje) - parseFloat(a.datos.porcentaje));
+
+        areasOrdenadas.forEach(item => {
+            const { area, datos } = item;
+            // Colores para cada medidor: Rojo (lleno), Naranja (parcial), Verde (vacío)
+            const color = determinarColorOcupacion(datos.porcentaje); // <--- CAMBIO CLAVE AQUÍ
+            const mesasDisponiblesArea = datos.total - datos.ocupadas;
+
+            detalleHTML += `
+                <div class="area-gauge-block">
+                    <h4>${area}</h4>
+                    <div class="area-gauge" 
+                         data-percent="${datos.porcentaje}" 
+                         style="--p:${datos.porcentaje}; --c:${color};">
+                        <span class="gauge-percent-value">${datos.porcentaje}%</span>
+                    </div>
+                    <p class="gauge-info occupied-color">
+                        Ocupadas: <strong>${datos.ocupadas}</strong>
+                    </p>
+                    <p class="gauge-info libre-color">
+                        Libres: <strong>${mesasDisponiblesArea}</strong>
+                    </p>
+                    <p class="gauge-info">
+                        Total: <strong>${datos.total}</strong>
+                    </p>
+                </div>
+            `;
+        });
+
+        // Cierre del grid
+        detalleHTML += '</div>';
+
+        // Estructura final del Modal
+        modal.innerHTML = `
+            <div class="resumen-content">
+                <div class="resumen-header">
+                    <h2>📈 Porcentaje de Ocupación</h2>
+                    <button class="close-resumen">&times;</button>
+                </div>
+
+                <div class="resumen-body">
+                    ${headerHTML}
+                    ${detalleHTML}
+                </div>
+
+                <p class="nota">Basado en mesas con al menos una transacción registrada.</p>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+        // ✅ BLOQUEAR SCROLL DEL BODY
+        document.body.style.overflow = 'hidden';
+        // Lógica para cerrar
+        modal.querySelector('.close-resumen').addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.style.overflow = ''; // Restaurar scroll
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.body.style.overflow = ''; // Restaurar scroll
+            }
+        });
+    };
+    /* =====================================================
+        SCRIPT MEJORADO: CREAR IMÁGENES Y ASIGNAR EVENTO CLICK
+        ===================================================== */
+
+    document.querySelectorAll('.area-section').forEach(area => {
+        const grid = area.querySelector('.image-grid');
+        const img = grid.querySelector('img');
+        const cantidad = parseInt(area.dataset.cantidad);
+        // Obtener el nombre del área de manera limpia (Ej: "Pacha", "Lounge")
+        const areaName = area.querySelector("h2").textContent.replace("Área ", "").trim();
+
+        grid.innerHTML = '';
+
+        for (let i = 1; i <= cantidad; i++) {
+            const clone = img.cloneNode(true);
+
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('img-wrapper', 'mesa-link'); // Agregamos una clase para estilo/click
+
+            // --- VERIFICAR SI LA MESA ESTÁ OCUPADA ---
+            const datosMesa = mesaData[areaName][i];
+            let ocupada = false;
+
+            if (datosMesa) {
+                const monto1 = parseFloat(datosMesa.montos[0]) || 0;
+                const monto2 = parseFloat(datosMesa.montos[1]) || 0;
+                if (monto1 > 0 || monto2 > 0) {
+                    ocupada = true;
+                }
+            }
+
+            if (ocupada) {
+                const ribbon = document.createElement("div");
+                ribbon.classList.add("vendido-ribbon");
+                ribbon.textContent = "VENDIDO";
+                wrapper.appendChild(ribbon);
+            }
+
+
+            // Establecer el ID de la mesa para el evento de click
+            wrapper.dataset.area = areaName;
+            wrapper.dataset.mesa = i;
+
+            wrapper.appendChild(clone);
+
+            const numberBadge = document.createElement('div');
+            numberBadge.classList.add('img-number');
+            numberBadge.textContent = i;
+            wrapper.appendChild(numberBadge);
+
+            // 5. Añadir el evento click
+            wrapper.addEventListener('click', function() {
+                const selectedArea = this.dataset.area;
+                const selectedMesa = parseInt(this.dataset.mesa);
+                mostrarComprobante(selectedArea, selectedMesa);
+            });
+
+            grid.appendChild(wrapper);
+        }
+    });
+
+    /* =====================================================
+        GENERAR JSON DEL REPORTE DEL DÍA (a partir de mesaData)
+        Se imprime automáticamente en la consola del navegador
+        para copiar y pegar dentro del array REPORTES_DATA.reportes
+       ===================================================== */
+    const generarReporteJSON = (data) => {
+        // 1) Buscar fecha del reporte (la primera fecha válida encontrada)
+        let fechaReporte = "";
+        outer: for (const area in data) {
+            for (const mesa in data[area]) {
+                for (const f of data[area][mesa].fechas) {
+                    if (f && /^\d{2}-\d{2}-\d{2,4}$/.test(f.trim())) {
+                        const partes = f.trim().split("-");
+                        // Convertir aaaa -> aa si viene en 4 dígitos
+                        if (partes[2].length === 4) partes[2] = partes[2].slice(2);
+                        fechaReporte = partes.join("-");
+                        break outer;
+                    }
+                }
+            }
+        }
+        if (!fechaReporte) {
+            const hoy = new Date();
+            const dd = String(hoy.getDate()).padStart(2, "0");
+            const mm = String(hoy.getMonth() + 1).padStart(2, "0");
+            const aa = String(hoy.getFullYear()).slice(2);
+            fechaReporte = `${dd}-${mm}-${aa}`;
+        }
+
+        // 2) Acumular cuentas y transferencias
+        const cuentasPorNombre = {};
+        const transfMama = [];   // PACHA SUNSET con combo pachamama -> 50% a MAMA
+        const transfPacha = [];  // MAMA con combo pachamama -> 50% a PACHA
+
+        for (const area in data) {
+            for (const mesa in data[area]) {
+                const dm = data[area][mesa];
+                const combo = (dm.combo || "").toLowerCase();
+                const mesaLabel = `${area} ${mesa}`;
+
+                for (let i = 0; i < 2; i++) {
+                    const nombre = (dm.nombres[i] || "").trim().toUpperCase();
+                    const monto = parseFloat(dm.montos[i]) || 0;
+                    if (!nombre || monto <= 0) continue;
+
+                    if (!cuentasPorNombre[nombre]) {
+                        cuentasPorNombre[nombre] = { transacciones: 0, total: 0, detalles: [] };
+                    }
+                    cuentasPorNombre[nombre].transacciones += 1;
+                    cuentasPorNombre[nombre].total += monto;
+                    cuentasPorNombre[nombre].detalles.push({ mesa: mesaLabel, monto: monto });
+
+                    if (combo === "pachamama") {
+                        const transferencia = monto * 0.5;
+                        if (nombre === "PACHA SUNSET") {
+                            transfMama.push({ mesa: mesaLabel, montoOriginal: monto, porcentaje: 50, transferencia });
+                        } else if (nombre === "MAMA") {
+                            transfPacha.push({ mesa: mesaLabel, montoOriginal: monto, porcentaje: 50, transferencia });
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3) Construir array "cuentas" — SIEMPRE incluir PACHA SUNSET y MAMA aunque estén vacías
+        const orden = ["PACHA SUNSET", "MAMA"];
+        const otros = Object.keys(cuentasPorNombre).filter(n => !orden.includes(n));
+        const ordenFinal = [...orden, ...otros];
+
+        const cuentas = ordenFinal.map(nombre => {
+            const datos = cuentasPorNombre[nombre];
+            if (datos) {
+                return {
+                    nombre,
+                    transacciones: datos.transacciones,
+                    total: datos.total,
+                    detalles: datos.detalles
+                };
+            }
+            // Cuenta vacía con placeholder
+            return {
+                nombre,
+                transacciones: 0,
+                total: 0,
+                detalles: [{ mesa: "Mesa 1", monto: 0 }]
+            };
+        });
+
+        // 4) Totales y saldo final de PACHA SUNSET
+        const totalIngresado = cuentas.reduce((s, c) => s + c.total, 0);
+        const totalTransfMama = transfMama.reduce((s, t) => s + t.transferencia, 0);
+        const totalTransfPacha = transfPacha.reduce((s, t) => s + t.transferencia, 0);
+        const ingresadoPacha = (cuentasPorNombre["PACHA SUNSET"]?.total) || 0;
+        const saldoPacha = ingresadoPacha - totalTransfMama + totalTransfPacha;
+
+        // Si los detalles de transferencias están vacíos, usar placeholder
+        const detallesMamaFinal = transfMama.length > 0
+            ? transfMama
+            : [{ mesa: "Mesa 1", montoOriginal: 0, porcentaje: 50, transferencia: 0 }];
+        const detallesPachaFinal = transfPacha.length > 0
+            ? transfPacha
+            : [{ mesa: "Mesa 1", montoOriginal: 0, porcentaje: 50, transferencia: 0 }];
+
+        return {
+            fecha: fechaReporte,
+            resumen: { titulo: "Detalle de Ingresos por Cuenta Destino" },
+            cuentas,
+            totales: { ingresado: totalIngresado },
+            transferencias: {
+                mama: {
+                    descripcion: "Transferencias a MAMA (50% del combo Pachamama)",
+                    totalTransferido: totalTransfMama,
+                    detalles: detallesMamaFinal
+                },
+                pacha: {
+                    descripcion: "Transferencias a PACHA SUNSET",
+                    totalTransferido: totalTransfPacha,
+                    detalles: detallesPachaFinal
+                }
+            },
+            saldoFinal: {
+                descripcion: "Cuenta PACHA SUNSET — Detalle del saldo actual",
+                ingresado: ingresadoPacha,
+                transferenciasEnviadas: totalTransfMama,
+                transferenciasRecibidas: totalTransfPacha,
+                formula: `${ingresadoPacha} - ${totalTransfMama} + ${totalTransfPacha}`,
+                saldo: saldoPacha,
+                banco: "BCP",
+                cuenta: "20151595559307",
+                referencia: "Ventas de mesas",
+                nota: "Datos generados automáticamente"
+            }
+        };
+    };
+
+    // Formateador personalizado: igual al estilo de los reportes originales
+    // (objetos pequeños en una sola línea, ej: { "mesa": "Pacha 1", "monto": 800 })
+    const formatReporte = (r) => {
+        const j = JSON.stringify;
+        const detalleCuenta  = (d) => `      { "mesa": ${j(d.mesa)}, "monto": ${d.monto} }`;
+        const detalleTransf  = (d) => `      { "mesa": ${j(d.mesa)}, "montoOriginal": ${d.montoOriginal}, "porcentaje": ${d.porcentaje}, "transferencia": ${d.transferencia} }`;
+
+        const cuentaBlock = (c) => {
+            const det = c.detalles.map(detalleCuenta).join(",\n");
+            return [
+                `  {`,
+                `    "nombre": ${j(c.nombre)},`,
+                `    "transacciones": ${c.transacciones},`,
+                `    "total": ${c.total},`,
+                `    "detalles": [`,
+                det,
+                `    ]`,
+                `  }`
+            ].join("\n");
+        };
+
+        const transfBlock = (key, t) => {
+            const det = t.detalles.map(detalleTransf).join(",\n");
+            return [
+                `    ${j(key)}: {`,
+                `      "descripcion": ${j(t.descripcion)},`,
+                `      "totalTransferido": ${t.totalTransferido},`,
+                `      "detalles": [`,
+                det,
+                `      ]`,
+                `    }`
+            ].join("\n");
+        };
+
+        const sf = r.saldoFinal;
+        const saldoBlock = [
+            `  "saldoFinal": {`,
+            `    "descripcion": ${j(sf.descripcion)},`,
+            `    "ingresado": ${sf.ingresado},`,
+            `    "transferenciasEnviadas": ${sf.transferenciasEnviadas},`,
+            `    "transferenciasRecibidas": ${sf.transferenciasRecibidas},`,
+            `    "formula": ${j(sf.formula)},`,
+            `    "saldo": ${sf.saldo},`,
+            `    "banco": ${j(sf.banco)},`,
+            `    "cuenta": ${j(sf.cuenta)},`,
+            `    "referencia": ${j(sf.referencia)},`,
+            `    "nota": ${j(sf.nota)}`,
+            `  }`
+        ].join("\n");
+
+        return [
+            `{`,
+            `  "fecha": ${j(r.fecha)},`,
+            `  "resumen": { "titulo": ${j(r.resumen.titulo)} },`,
+            `  "cuentas": [`,
+            r.cuentas.map(cuentaBlock).join(",\n"),
+            `  ],`,
+            `  "totales": { "ingresado": ${r.totales.ingresado} },`,
+            `  "transferencias": {`,
+            transfBlock("mama",  r.transferencias.mama)  + ",",
+            transfBlock("pacha", r.transferencias.pacha),
+            `  },`,
+            saldoBlock,
+            `}`
+        ].join("\n");
+    };
+
+    // Generar y mostrar en consola al cargar la página
+    const reporteDelDia = generarReporteJSON(mesaData);
+    const reporteJSONString = formatReporte(reporteDelDia);
+
+    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
+    console.log("%c  📋 REPORTE DEL DÍA (" + reporteDelDia.fecha + ") — listo para copiar", "color:#00ff88;font-weight:bold;font-size:14px");
+    console.log("%c  Pégalo dentro del array REPORTES_DATA.reportes", "color:#00ff88");
+    console.log("%c  Atajo: ejecuta  copiarReporte()  para copiarlo al portapapeles", "color:#ffcc00");
+    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
+    console.log(reporteJSONString);
+    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
+
+    // Exponer helpers globales para usar desde la consola
+    window.reporteDelDia = reporteDelDia;
+    window.copiarReporte = async () => {
+        try {
+            await navigator.clipboard.writeText(reporteJSONString);
+            console.log("%c✅ Reporte copiado al portapapeles", "color:#00ff88;font-weight:bold");
+        } catch (err) {
+            console.warn("No se pudo copiar automáticamente. Selecciona el JSON de arriba y cópialo manualmente.", err);
+        }
+    };
+    window.descargarReporte = () => {
+        const blob = new Blob([reporteJSONString], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `reporte-${reporteDelDia.fecha}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
+}); 
+// ===================================
+// ACCORDION
+// ===================================
+function setupAccordionLogic() {
+    const headers = document.querySelectorAll('.accordion-header');
+
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const targetId = header.getAttribute('data-target');
+            const content = document.getElementById(targetId);
+            const icon = header.querySelector('.toggle-icon');
+
+            if (!content) return;
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                if (icon) icon.textContent = '+';
+            } else {
+                content.style.maxHeight = "3000px";
+                if (icon) icon.textContent = '–';
+            }
+        });
+    });
+}
+        function renderReporte(data, rIndex) {
+
+            const mainContentId = `main-report-content-${rIndex}`;
+            const reportContainerId = `reporte-container-${rIndex}`; 
+
+            const s = data.saldoFinal || {};
+
+            const ingresado = s.ingresado || 0;
+            const transferenciasEnviadas = s.transferenciasEnviadas || 0;
+            const transferenciasRecibidas = s.transferenciasRecibidas || 0;
+
+            const formula = `${ingresado.toLocaleString('es-BO')} - ${transferenciasEnviadas.toLocaleString('es-BO')} + ${transferenciasRecibidas.toLocaleString('es-BO')}`;
+
+            let html = `
+            <div id="${reportContainerId}" class="reporte-printable-area">
+
+
+                <div class="ticket-section accordion-item main-report-accordion">
+                    <h3 class="accordion-header main-header" data-target="${mainContentId}">
+                        Reporte ${data.fecha}
+                        <span class="toggle-icon">+</span>
+                    </h3>
+
+                    <div id="${mainContentId}" class="accordion-content">
+            `;
+
+            // ================= CUENTAS =================
+            data.cuentas
+                .filter(cuenta => cuenta.transacciones > 0 && cuenta.total > 0)
+                .forEach((cuenta, cIndex) => {
+
+                    const contentId = `details-${rIndex}-${cIndex}`;
+
+                    html += `
+                    <div class="inner-accordion-item">
+                        <h4 class="accordion-header inner-header" data-target="${contentId}">
+                            Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
+                            <span class="toggle-icon">+</span>
+                        </h4>
+
+                        <div id="${contentId}" class="accordion-content">
+                            <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
+
+                            <ul class="ticket-grid-list">
+                                ${cuenta.detalles.map(d => `
+                                    <li>
+                                        <span class="mesa">${d.mesa}</span>
+                                        <span class="monto">Bs. ${d.monto.toLocaleString('es-BO')}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    `;
+                });
+
+            // ================= TRANSFERENCIAS =================
+            if (data.transferencias) {
+                ['mama', 'pacha'].forEach(tipo => {
+
+                    const tData = data.transferencias[tipo];
+
+                    if (tData?.detalles?.length && tData.totalTransferido > 0) {
+
+                        const transferId = `transfer-${tipo}-${rIndex}`;
+
+                        html += `
+                        <div class="ticket-section transfer inner-section accordion-item">
+                            <h4 class="accordion-header inner-header" data-target="${transferId}">
+                                ${tData.descripcion || `Transferencias a ${tipo.toUpperCase()}`}
+                                <span class="toggle-icon">+</span>
+                            </h4>
+
+                            <div id="${transferId}" class="accordion-content">
+                                <p class="total-transfer">
+                                    Total a transferir:
+                                    <strong>Bs. ${tData.totalTransferido.toLocaleString('es-BO')}</strong>
+                                </p>
+
+                                <ul class="ticket-simple-list">
+                                    ${tData.detalles.map(t => `
+                                        <li class="transfer-item">
+                                            <div class="transfer-left">
+                                                <span class="transfer-mesa">${t.mesa}</span>
+                                                <span class="transfer-detalle">
+                                                    ${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')}
+                                                </span>
+                                            </div>
+                                            <div class="transfer-right">
+                                                <span class="transfer-label">Transferir:</span>
+                                                <span class="transfer-monto">
+                                                    Bs. ${t.transferencia.toLocaleString('es-BO')}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        `;
+                    }
+                });
+            }
+
+            // ================= SALDO FINAL =================
+            const finalId = `final-saldo-${rIndex}`;
+
+            html += `
+                <div class="ticket-section final inner-section accordion-item">
+                    <h4 class="accordion-header inner-header" data-target="${finalId}">
+                        ${s.descripcion || 'Cierre de Caja / Saldo Final'}
+                        <span class="toggle-icon">+</span>
+                    </h4>
+
+                    <div id="${finalId}" class="accordion-content">
+                        <div class="fila-saldo">
+                            <span>Total Ingresado:</span>
+                            <strong>Bs. ${ingresado.toLocaleString('es-BO')}</strong>
+                        </div>
+
+                        <div class="fila-saldo">
+                            <span>Trans. realizadas a Mama:</span>
+                            <span>Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</span>
+                        </div>
+
+                        <div class="fila-saldo">
+                            <span>Trans. recibidas de Mama:</span>
+                            <span>Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</span>
+                        </div>
+
+                        <hr>
+                        <p><strong>Cálculo:</strong> ${formula}</p>
+                        <hr>
+
+                        <div class="saldo-destacado">
+                            <p><strong>SALDO ACTUAL EN BANCO</strong></p>
+                            <p class="monto-final">Bs. ${s.saldo.toLocaleString('es-BO')}</p>
+                        </div>
+                    </div>
+                </div>
+
+                </div> <!-- FIN accordion-content principal -->
+                </div> <!-- FIN main-report-accordion -->
+            </div> <!-- FIN reporte-printable-area -->
+            `;
+
+            return html;
+        }
+
+        function obtenerMesAnio(fecha) {
+            const [dia, mes, anioCorto] = fecha.split('-');
+            const anio = `20${anioCorto}`;
+
+            const meses = [
+                "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+            ];
+
+            const nombreMes = meses[parseInt(mes, 10) - 1];
+            return `${nombreMes} ${anio}`;
+        }
+
+           function renderReportes(data) {
+               const reportesAplanados = data.reportes.flat();
+               let html = '';
+               let ultimoMesAnio = null;
+
+               reportesAplanados.forEach((reporte, index) => {
+
+                   const mesAnioActual = obtenerMesAnio(reporte.fecha);
+
+                   // 👉 Si cambia el mes, cerramos el anterior y abrimos uno nuevo
+                   if (ultimoMesAnio !== mesAnioActual) {
+
+                       if (ultimoMesAnio !== null) {
+                           html += `</div></div>`; // cerrar mes anterior
+                       }
+
+                       html += `
+                           <div class="mes-acordeon">
+                               <div class="separador-mes" data-mes>
+                                   <span>${mesAnioActual}</span>
+                               </div>
+                               <div class="mes-contenido">
+                       `;
+
+                       ultimoMesAnio = mesAnioActual;
+                   }
+
+                   // 🔒 filtros
+                   if (!reporte.cuentas || reporte.cuentas.length === 0) return;
+
+                   const tieneIngresos = reporte.cuentas.some(c => c.total > 0);
+                   if (!tieneIngresos) return;
+
+                   html += renderReporte(reporte, index);
+               });
+
+               // cerrar último mes
+               if (ultimoMesAnio !== null) {
+                   html += `</div></div>`;
+               }
+
+               contenidoReportes.innerHTML = html;
+               activarAcordionMeses();
+               setupAccordionLogic();
+           }
+           function activarAcordionMeses() {
+               document.querySelectorAll('[data-mes]').forEach(header => {
+                   header.addEventListener('click', () => {
+                       const contenido = header.nextElementSibling;
+                       header.classList.toggle('abierto');
+                       contenido.classList.toggle('abierto');
+                   });
+               });
+           }
+
+// ===================================
+// MODAL + FETCH
+// ===================================
+const btnReportes = document.getElementById("btn-reportes");
+const modalReportes = document.getElementById("modal-reportes");
+const contenidoReportes = document.getElementById("contenido-reportes");
+const cerrarModalReportes = document.querySelector(".close-modal");
+
+btnReportes.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    modalReportes.style.display = "block";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    try {
+          renderReportes(REPORTES_DATA);
+      } catch (error) {
+          contenidoReportes.innerHTML = `
+              <p style="color:red; padding:20px;">
+                  Error cargando reportes: ${error.message}
+              </p>`;
+      }
+});
+
+cerrarModalReportes.addEventListener("click", () => {
+    modalReportes.style.display = "none";
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+});
+
+modalReportes.addEventListener("click", (e) => {
+    if (e.target === modalReportes) {
+        modalReportes.style.display = "none";
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+    }
+});
+
+</script>
 </body>
 
 </html>
