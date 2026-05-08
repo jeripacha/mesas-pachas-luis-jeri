@@ -1998,6 +1998,137 @@ header {
     padding: 4px 8px;
     border-radius: 4px;
 }
+
+/* ===== CUMPLE MODAL — REDISEÑO MINIMALISTA ===== */
+#modal-cumpleanos {
+    display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(8px);
+    overflow-y: auto;
+}
+#modal-cumpleanos .modal-content {
+    background: #0a0a10;
+    color: #fff;
+    margin: 20px auto 48px;
+    padding: 0;
+    max-width: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255,215,0,0.12);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+}
+/* Header */
+.c-modal-head {
+    padding: 28px 20px 22px;
+    text-align: center;
+    background: linear-gradient(170deg, #14100a 0%, #0a0a10 55%);
+    border-bottom: 1px solid rgba(255,215,0,0.08);
+    position: relative;
+}
+.c-modal-head::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,215,0,0.09), transparent 70%);
+    pointer-events: none;
+}
+.c-modal-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
+.c-modal-title {
+    margin: 0 0 4px;
+    font-size: 1.25rem; font-weight: 800;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: #ffd700;
+}
+.c-modal-sub {
+    margin: 0;
+    font-size: 0.68rem; color: rgba(255,255,255,0.35);
+    letter-spacing: 2px; text-transform: uppercase;
+}
+.c-close {
+    position: absolute; top: 12px; right: 14px;
+    background: rgba(255,255,255,0.05); border: none;
+    border-radius: 50%; width: 30px; height: 30px;
+    font-size: 1.1rem; color: rgba(255,255,255,0.35);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+}
+.c-close:hover { background: rgba(255,215,0,0.12); color: #ffd700; }
+/* Body */
+.c-body { padding: 18px 16px 24px; display: flex; flex-direction: column; gap: 10px; }
+/* Card por mes */
+.c-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,215,0,0.09);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+.c-card:hover { border-color: rgba(255,215,0,0.22); }
+.c-card-main {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 18px;
+}
+/* Anillo SVG */
+.c-ring-wrap { flex-shrink: 0; }
+.c-ring-track { stroke: rgba(255,215,0,0.1); }
+.c-ring-fill {
+    stroke: #ffd700;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.6s ease;
+}
+.c-ring-pct {
+    font-size: 11px; font-weight: 900; fill: #ffd700;
+    font-family: Arial, sans-serif;
+}
+/* Info */
+.c-info { flex: 1; min-width: 0; }
+.c-mes-nombre {
+    font-size: 1rem; font-weight: 800;
+    color: #fff; letter-spacing: 0.3px;
+    margin-bottom: 2px;
+}
+.c-total {
+    font-size: 0.7rem; color: rgba(255,255,255,0.38);
+    font-weight: 600; letter-spacing: 0.5px; margin-bottom: 8px;
+}
+.c-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.c-pill {
+    font-size: 0.68rem; font-weight: 800;
+    padding: 3px 9px; border-radius: 8px;
+    letter-spacing: 0.3px;
+}
+.c-p980 { background: rgba(240,171,252,0.1); color: #f0abfc; border: 1px solid rgba(240,171,252,0.18); }
+.c-p880 { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.18); }
+.c-p850 { background: rgba(110,231,183,0.1); color: #6ee7b7; border: 1px solid rgba(110,231,183,0.18); }
+/* Chips de mesas */
+.c-chips {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    padding: 0 18px 14px;
+}
+.c-chip {
+    font-size: 0.68rem; font-weight: 700;
+    padding: 4px 9px; border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.6);
+}
+.c-chip.c980 { border-color: rgba(240,171,252,0.15); color: rgba(240,171,252,0.8); }
+.c-chip.c880 { border-color: rgba(251,191,36,0.15); color: rgba(251,191,36,0.8); }
+.c-chip.c850 { border-color: rgba(110,231,183,0.15); color: rgba(110,231,183,0.8); }
+/* Total global */
+.c-total-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, rgba(255,215,0,0.07), transparent);
+    border: 1px solid rgba(255,215,0,0.15);
+    border-radius: 14px;
+    margin-top: 4px;
+}
+.c-total-label { font-size: 0.68rem; color: rgba(255,215,0,0.6); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.c-total-num { font-size: 1.6rem; font-weight: 900; color: #ffd700; letter-spacing: -0.5px; }
+.c-total-sub { font-size: 0.6rem; color: rgba(255,215,0,0.4); margin-top: 1px; }
+.cumple-empty { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.25); font-size: 0.8rem; letter-spacing: 1px; }
 </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@700&family=Raleway:wght@600&family=Press+Start+2P&family=Walter+Turncoat&family=Lobster&family=Poppins:wght@600&display=swap"
@@ -2019,6 +2150,10 @@ header {
 
         <a href="#" id="btn-reportes">
             <i class="fas fa-file-invoice"></i> Reportes
+        </a>
+
+        <a href="#" id="btn-cumpleanos">
+            <i class="fas fa-birthday-cake"></i> Cumple
         </a>
         </div>
     <!-- Nuevo contenedor para header + imagen -->
@@ -2102,6 +2237,13 @@ header {
       <div class="modal-content">
         <span class="close-modal">&times;</span>
         <div id="contenido-reportes"></div>
+      </div>
+    </div>
+
+    <div id="modal-cumpleanos" class="modal">
+      <div class="modal-content">
+        <span class="close-modal-cumple">&times;</span>
+        <div id="contenido-cumpleanos"></div>
       </div>
     </div>
 
@@ -5439,18 +5581,10 @@ function setupAccordionLogic() {
                // 1) Aplanar todos los reportes (la data tiene arrays anidados)
                const reportesAplanados = data.reportes.flat(Infinity);
 
-               // 2) Filtrar: mostrar reportes con ingresos > 0 O que sean del mes actual en adelante
-               const hoy = new Date();
-               const mesActual = hoy.getFullYear() * 100 + (hoy.getMonth() + 1); // ej: 202605
-
+               // 2) Filtrar: solo mostrar reportes que tengan al menos una cuenta con datos reales
                const reportesConIngresos = reportesAplanados.filter(reporte => {
                    if (!reporte || !reporte.cuentas || reporte.cuentas.length === 0) return false;
-                   const tieneIngresos = reporte.cuentas.some(c => Number(c.total) > 0);
-                   if (tieneIngresos) return true;
-                   // Mostrar también fechas vacías del mes actual en adelante
-                   const [d, m, y] = reporte.fecha.split('-').map(Number);
-                   const mesFecha = (2000 + y) * 100 + m;
-                   return mesFecha >= mesActual;
+                   return reporte.cuentas.some(c => Number(c.total) > 0);
                });
 
                // 3) Ordenar cronológicamente por fecha (formato dd-mm-aa)
@@ -5541,6 +5675,141 @@ modalReportes.addEventListener("click", (e) => {
         document.documentElement.style.overflow = "";
         document.body.style.overflow = "";
     }
+});
+
+// ===================================
+// CUMPLEAÑEROS
+// ===================================
+const CUMPLE_MONTOS = [980, 880, 850];
+const MESES_NOMBRES = { '02': 'Febrero', '03': 'Marzo', '04': 'Abril', '05': 'Mayo' };
+
+function getCumpleanerosDatos() {
+    const resultado = {};
+    const reportes = REPORTES_DATA.reportes.flat(Infinity);
+    reportes.forEach(r => {
+        if (!r || !r.fecha) return;
+        const partes = r.fecha.split('-');
+        const mes = partes[1];
+        if (!['02','03','04','05'].includes(mes)) return;
+        const mesas = [];
+        (r.cuentas || []).forEach(c => {
+            (c.detalles || []).forEach(d => {
+                if (CUMPLE_MONTOS.includes(d.monto)) {
+                    mesas.push({ mesa: d.mesa, monto: d.monto });
+                }
+            });
+        });
+        if (mesas.length === 0) return;
+        if (!resultado[mes]) resultado[mes] = [];
+        resultado[mes].push({ fecha: r.fecha, mesas });
+    });
+    return resultado;
+}
+
+function renderCumpleanos() {
+    const datos = getCumpleanerosDatos();
+    const meses = Object.keys(datos).sort();
+    if (meses.length === 0) return '<div class="cumple-empty">Sin datos de cumple aún.</div>';
+
+    // Calcular totales por mes y global
+    let totalGlobal = 0;
+    const mesData = meses.map(mes => {
+        const fechas = datos[mes];
+        let total980 = 0, total880 = 0, total850 = 0, totalMes = 0;
+        fechas.forEach(f => f.mesas.forEach(m => {
+            totalMes++;
+            totalGlobal++;
+            if (m.monto === 980) total980++;
+            else if (m.monto === 880) total880++;
+            else total850++;
+        }));
+        return { mes, fechas, total980, total880, total850, totalMes };
+    });
+
+    // SVG ring helper
+    const R = 26, CIRC = +(2 * Math.PI * R).toFixed(1);
+    function ring(pct) {
+        const fill = +((pct / 100) * CIRC).toFixed(1);
+        const gap = +(CIRC - fill).toFixed(1);
+        return `<svg viewBox="0 0 64 64" width="64" height="64" style="display:block">
+            <circle cx="32" cy="32" r="${R}" fill="none" stroke="rgba(255,215,0,.1)" stroke-width="5"/>
+            <circle cx="32" cy="32" r="${R}" fill="none" stroke="#ffd700" stroke-width="5"
+                stroke-dasharray="${fill} ${gap}" stroke-linecap="round"
+                transform="rotate(-90 32 32)"/>
+            <text x="32" y="36.5" text-anchor="middle" font-size="10.5" font-weight="900"
+                fill="#ffd700" font-family="Arial,sans-serif">${pct}%</text>
+        </svg>`;
+    }
+
+    const cards = mesData.map(({ mes, fechas, total980, total880, total850, totalMes }) => {
+        const pct = totalGlobal > 0 ? Math.round(totalMes / totalGlobal * 100) : 0;
+        const pills = [
+            total980 > 0 ? `<span class="c-pill c-p980">Bs 980 · ${total980}</span>` : '',
+            total880 > 0 ? `<span class="c-pill c-p880">Bs 880 · ${total880}</span>` : '',
+            total850 > 0 ? `<span class="c-pill c-p850">Bs 850 · ${total850}</span>` : '',
+        ].join('');
+        // Chips planos de mesas individuales agrupados por fecha
+        const chips = fechas.flatMap(f => f.mesas.map(m => {
+            const cls = m.monto === 980 ? 'c980' : m.monto === 880 ? 'c880' : 'c850';
+            return `<div class="c-chip ${cls}" title="Bs ${m.monto}">${m.mesa}</div>`;
+        })).join('');
+        return `
+        <div class="c-card">
+            <div class="c-card-main">
+                <div class="c-ring-wrap">${ring(pct)}</div>
+                <div class="c-info">
+                    <div class="c-mes-nombre">${MESES_NOMBRES[mes] || mes} 2026</div>
+                    <div class="c-total">${totalMes} combo${totalMes !== 1 ? 's' : ''} cumpleaños</div>
+                    <div class="c-pills">${pills}</div>
+                </div>
+            </div>
+            ${chips ? `<div class="c-chips">${chips}</div>` : ''}
+        </div>`;
+    }).join('');
+
+    return cards + `
+    <div class="c-total-row">
+        <div>
+            <div class="c-total-label">Total Feb – May 2026</div>
+            <div class="c-total-sub">combos cumpleaños registrados</div>
+        </div>
+        <span class="c-total-num">${totalGlobal}</span>
+    </div>`;
+}
+
+function abrirModalCumpleanos() {
+    const modal = document.getElementById('modal-cumpleanos');
+    const contenido = document.getElementById('contenido-cumpleanos');
+    modal.style.display = 'block';
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    contenido.innerHTML = `
+        <div class="c-modal-head">
+            <button class="c-close" id="cerrar-cumple">&times;</button>
+            <span class="c-modal-icon">🎂</span>
+            <h2 class="c-modal-title">Cumple</h2>
+            <p class="c-modal-sub">Combos cumpleaños · Feb – May 2026</p>
+        </div>
+        <div class="c-body">${renderCumpleanos()}</div>
+    `;
+    document.getElementById('cerrar-cumple').addEventListener('click', cerrarCumple);
+}
+
+function cerrarCumple() {
+    const modal = document.getElementById('modal-cumpleanos');
+    modal.style.display = 'none';
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+}
+
+document.getElementById('btn-cumpleanos').addEventListener('click', (e) => {
+    e.preventDefault();
+    abrirModalCumpleanos();
+});
+
+document.getElementById('modal-cumpleanos').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modal-cumpleanos')) cerrarCumple();
 });
 
 </script>
