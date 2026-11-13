@@ -530,11 +530,6 @@ header {
     flex: 1 1 5%; /* Crece, se encoge, y base de 45% del ancho */
         min-width: 300px; /* Asegura que no se hagan demasiado pequeños en dispositivos grandes */
     }
-/* ✅ NUEVO ESTILO: Bloque de Consumo (Tragos/Combo) */
-.consumption-block {
-    /* Toma todas las propiedades de .transaction-block, solo necesita cambiar el orden */
-    order: -1; 
-}
 .transaction-block h4 {
     margin-top: 0;
     color: #e8eef5;
@@ -1168,7 +1163,7 @@ header {
     color: #c9a84c;
 }
 
-/* 3. Títulos de Sección (Tragos y Combos) */
+/* 3. Título de sección de combos */
 .inventario-titulo {
     color: #f0f2f5; 
     font-size: 1.1em;
@@ -2185,7 +2180,7 @@ header {
 
         <a href="#area-lounge"><i class="fas fa-chart-pie"></i> Porcentajes</a>
 
-        <a href="#area-cholet"><i class="fas fa-clipboard-list"></i> Inventarios</a>
+        <a href="#area-cholet"><i class="fas fa-clipboard-list"></i> Inventario de combos</a>
 
 
         <a href="#" id="btn-reportes">
@@ -4640,7 +4635,7 @@ const REPORTES_DATA = {
     }
   ]
 };
-     const mesaData = {
+      const mesaData = {
         "Pacha": {
           1:{nombres:["Pacha sunset",""],montos:["1300",""],tragos:["sin"],combo:"pachamama",operaciones:["1",""],cuentas:["20151595559307",""]},
           2:{nombres:["pacha sunset",""],montos:["700",""],tragos:["jager"],combo:"jager",operaciones:["2",""],cuentas:["20151595559307",""]},
@@ -4732,6 +4727,7 @@ const REPORTES_DATA = {
           3:{nombres:["parthium",""],montos:["980",""],tragos:["sin-ron"],combo:"cumpleañero",operaciones:["3",""],cuentas:["20151595559306",""]}
         }
       };
+
 document.addEventListener('DOMContentLoaded', () => {
     // ... (Tu código existente para el sidebar) ...
     const sidebar = document.getElementById('sidebar');
@@ -4743,9 +4739,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const datosMesa = mesaData[areaName][mesaNumber];
         if (!datosMesa) return;
 
-        // Verificar si la mesa está libre: NO hay hora registrada
-        const transaccionesConHora = datosMesa.horas.filter(h => h && h.trim() !== '').length;
-        const mesaLibre = transaccionesConHora === 0;
+        // Verificar si la mesa está libre: no hay transacciones registradas
+        const transaccionesRegistradas = datosMesa.montos.filter(m => m && m.trim() !== '').length;
+        const mesaLibre = transaccionesRegistradas === 0;
 
 
         // Crear modal
@@ -4768,18 +4764,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const buildTransactionDetail = (index) => {
                 const nombre = datosMesa.nombres[index];
                 const monto = datosMesa.montos[index];
-                const fecha = datosMesa.fechas[index];
-                const hora = datosMesa.horas[index];
                 const operacion = datosMesa.operaciones[index];
                 const cuenta = datosMesa.cuentas[index];
 
-                if (!nombre && !monto && !fecha && !hora && !operacion && !cuenta) return '';
+                if (!nombre && !monto && !operacion && !cuenta) return '';
 
-                const tragoComboHTML = index === 0 ? `
-                    <div class="detail-row">
-                        <span>Trago:</span>
-                        <span class="value">${datosMesa.tragos.join(', ') || 'N/A'}</span>
-                    </div>
+            const comboHTML = index === 0 ? `
                     <div class="detail-row">
                         <span>Combo:</span>
                         <span class="value">${datosMesa.combo || 'N/A'}</span>
@@ -4791,10 +4781,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4>Transacción #${index + 1}</h4>
                         <div class="detail-row"><span>Cuenta Destino:</span><span class="value">${nombre || 'N/A'}</span></div>
                         <div class="detail-row"><span>Monto:</span><span class="value monto">${monto ? 'Bs. ' + monto : 'N/A'}</span></div>
-                        <div class="detail-row"><span>Fecha y Hora:</span><span class="value">${fecha || 'N/A'} ${hora || 'N/A'}</span></div>
                         <div class="detail-row"><span>N° de Operación:</span><span class="value">${operacion || 'N/A'}</span></div>
                         <div class="detail-row"><span>N° de Cuenta:</span><span class="value">${cuenta || 'N/A'}</span></div>
-                        ${tragoComboHTML}
+                        ${comboHTML}
                         <div class="divider"></div>
                     </div>
                 `;
@@ -4824,8 +4813,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Si solo hay 1 transacción con hora, hacer modal más estrecho
-            if (transaccionesConHora === 1) {
+            // Si solo hay 1 transacción, hacer modal más estrecho
+            if (transaccionesRegistradas === 1) {
                 modal.querySelector('.comprobante-content').classList.add('single-transaction-modal');
             }
 
@@ -4878,14 +4867,14 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMenu);
     });
 
-    const btnInventarios = document.querySelector('a[href="#area-cholet"]');
+    const btnInventarioCombos = document.querySelector('a[href="#area-cholet"]');
 
-    if (btnInventarios) {
-        btnInventarios.addEventListener('click', (e) => {
+    if (btnInventarioCombos) {
+        btnInventarioCombos.addEventListener('click', (e) => {
             e.preventDefault();
             closeMenu(); // Cierra el menú lateral
-            const resumen = calcularResumenInventario(mesaData); // Llama a la nueva función
-            mostrarModalInventario(resumen); // Muestra el nuevo modal
+            const resumen = calcularResumenCombos(mesaData);
+            mostrarModalCombos(resumen);
         });
     }
     const btnPorcentajes = document.querySelector('a[href="#area-lounge"]');
@@ -4901,13 +4890,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =====================================================
-      FUNCIÓN PARA CALCULAR EL RESUMEN DE INVENTARIO (TRAGOS/COMBOS)
+      FUNCIÓN PARA CALCULAR EL RESUMEN DE COMBOS VENDIDOS
       ===================================================== */
-    const calcularResumenInventario = (data) => {
-        const resumen = {
-            tragos: {},
-            combos: {}
-        };
+    const calcularResumenCombos = (data) => {
+        const resumen = { combos: {} };
 
         for (const area in data) {
             for (const mesa in data[area]) {
@@ -4915,26 +4901,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // ===== VALIDACIONES =====
                 const monto = datosMesa.montos?.[0];
-                const fecha = datosMesa.fechas?.[0];
 
                 const montoValido = monto !== "" && !isNaN(monto) && Number(monto) > 0;
-                const fechaValida = fecha !== "" && fecha !== "12-25"; // ajusta si deseas otro filtro
 
                 // ❌ Si no hay venta real, NO contar inventario
-                if (!montoValido || !fechaValida) continue;
-
-                // ===== TRAGOS =====
-                const tragosStr = datosMesa.tragos?.[0];
-                if (tragosStr) {
-                    const tragosArray = tragosStr
-                        .split(',')
-                        .map(t => t.trim().toUpperCase())
-                        .filter(Boolean);
-
-                    tragosArray.forEach(trago => {
-                        resumen.tragos[trago] = (resumen.tragos[trago] || 0) + 1;
-                    });
-                }
+                if (!montoValido) continue;
 
                 // ===== COMBOS =====
                 const comboStr = datosMesa.combo;
@@ -4951,28 +4922,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* =====================================================
-      FUNCIÓN PARA MOSTRAR EL MODAL DE INVENTARIO
+      FUNCIÓN PARA MOSTRAR EL MODAL DE COMBOS
       ===================================================== */
-    const mostrarModalInventario = (resumen) => {
+    const mostrarModalCombos = (resumen) => {
         const modal = document.createElement('div');
         modal.classList.add('resumen-modal'); // Reutilizamos la clase principal del modal
 
-        // --- Generar HTML de Tragos ---
-        let tragosHTML = '';
-        const tragosOrdenados = Object.entries(resumen.tragos).sort(([, a], [, b]) => b - a);
         const separador = '<div class="comanda-separator">-----------------------------------------</div>';
-        if (tragosOrdenados.length > 0) {
-            tragosHTML = tragosOrdenados.map(([nombre, cantidad]) => `
-                <li class="inventario-item">
-                    <span class="item-nombre">${nombre}</span>
-                    <span class="item-cantidad">${cantidad} unidades</span>
-                </li>
-            `).join('');
-        } else {
-            tragosHTML = '<p class="sin-registros">No se registraron tragos.</p>';
-        }
 
-        // --- Generar HTML de Combos ---
         let combosHTML = '';
         const combosOrdenados = Object.entries(resumen.combos).sort(([, a], [, b]) => b - a);
 
@@ -4991,18 +4948,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.innerHTML = `
             <div class="resumen-content inventario-content">
                 <div class="resumen-header">
-                    <h2>📋 Inventario</h2>
+                    <h2>📋 Inventario de combos</h2>
                     <button class="close-resumen">&times;</button>
                 </div>
 
                 <div class="resumen-body">
-
-                    <h3 class="inventario-titulo">*** TRAGOS POR UNIDAD ***</h3>
-                    ${separador}
-                    <ul class="inventario-lista">
-                        ${tragosHTML}
-                    </ul>
-                    ${separador}
 
                     <h3 class="inventario-titulo">*** COMBOS VENDIDOS ***</h3>
                     ${separador}
@@ -5013,7 +4963,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 </div>
 
-                <p class="nota">Conteo de insumos basado en mesas.</p>
+                <p class="nota">Conteo de combos basado en mesas con montos registrados.</p>
             </div>
         `;
 
@@ -5045,9 +4995,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Acumuladores especiales para transferencias
         let totalTransferenciasMama = 0; // PACHA → MAMA
-        let totalTransferenciasPacha = 0; // MAMA → PACHA
+        let totalTransferenciasPacha = 0; // Otras cuentas → PACHA
         const detalleTransferenciasMama = [];
         const detalleTransferenciasPacha = [];
+        const transferenciasRecibidasPorOrigen = {};
 
         for (const area in data) {
             for (const mesa in data[area]) {
@@ -5057,7 +5008,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const combo = datosMesa.combo ? datosMesa.combo.toLowerCase() : "";
 
                 for (let i = 0; i < 2; i++) {
-                    const nombre = datosMesa.nombres[i].trim().toUpperCase();
+                    const nombreOriginal = (datosMesa.nombres[i] || "").trim();
+                    const nombre = nombreOriginal.toUpperCase();
                     const montoStr = datosMesa.montos[i];
                     const monto = parseFloat(montoStr) || 0;
 
@@ -5074,7 +5026,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 area: area,
                                 mesa: mesa,
                                 monto: monto.toFixed(2),
-                                fecha: datosMesa.fechas[i],
                                 operacion: datosMesa.operaciones[i]
                             });
                         } else {
@@ -5084,7 +5035,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     area: area,
                                     mesa: mesa,
                                     monto: monto.toFixed(2),
-                                    fecha: datosMesa.fechas[i],
                                     operacion: datosMesa.operaciones[i]
                                 }]
                             };
@@ -5103,12 +5053,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                     montoOriginal: monto,
                                     transferencia: porcentaje
                                 });
-                            } else if (nombre === "MAMA") {
+                            } else if (nombre) {
                                 const porcentaje = monto * 0.50;
                                 totalTransferenciasPacha += porcentaje;
+                                transferenciasRecibidasPorOrigen[nombre] =
+                                    (transferenciasRecibidasPorOrigen[nombre] || 0) + porcentaje;
                                 detalleTransferenciasPacha.push({
                                     area: area,
                                     mesa: mesa,
+                                    origen: nombreOriginal,
                                     montoOriginal: monto,
                                     transferencia: porcentaje
                                 });
@@ -5125,7 +5078,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mamaTransferencia: totalTransferenciasMama,
             mamaDetalle: detalleTransferenciasMama,
             pachaTransferencia: totalTransferenciasPacha,
-            pachaDetalle: detalleTransferenciasPacha
+            pachaDetalle: detalleTransferenciasPacha,
+            transferenciasRecibidasPorOrigen
         };
     };
 
@@ -5237,7 +5191,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Transferencias del combo Pachamama
         const transferenciasPachaAMama = resumen.mamaTransferencia || 0;   // PACHA → MAMA
-        const transferenciasMamaAPacha = resumen.pachaTransferencia || 0;  // MAMA → PACHA
+        const transferenciasMamaAPacha = resumen.pachaTransferencia || 0;  // Otras cuentas → PACHA
+        const nombresTransferenciasRecibidas = Object.keys(resumen.transferenciasRecibidasPorOrigen || {})
+            .map(nombre => nombre.toLowerCase().replace(/(^|\s)\S/g, letra => letra.toUpperCase()))
+            .join(', ');
 
         // Cálculo del saldo REAL
         const saldoPacha =
@@ -5277,21 +5234,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="bank-movement-amount"><span class="sign">+</span>Bs. ${Math.trunc(totalPachaIngresado).toLocaleString('es-BO')}</span>
                         </div>
 
-                        <div class="bank-movement-row">
+                        ${transferenciasPachaAMama > 0 ? `<div class="bank-movement-row">
                             <div class="bank-movement-left">
                                 <div class="bank-movement-icon out">−</div>
                                 <span class="bank-movement-text">Transf. enviadas a MAMA</span>
                             </div>
                             <span class="bank-movement-amount"><span class="sign">−</span>Bs. ${Math.trunc(transferenciasPachaAMama).toLocaleString('es-BO')}</span>
-                        </div>
+                        </div>` : ''}
 
-                        <div class="bank-movement-row">
+                        ${transferenciasMamaAPacha > 0 ? `<div class="bank-movement-row">
                             <div class="bank-movement-left">
                                 <div class="bank-movement-icon in">+</div>
-                                <span class="bank-movement-text">Transf. recibidas de MAMA</span>
+                                <span class="bank-movement-text">Transf. recibidas de ${nombresTransferenciasRecibidas}</span>
                             </div>
                             <span class="bank-movement-amount"><span class="sign">+</span>Bs. ${Math.trunc(transferenciasMamaAPacha).toLocaleString('es-BO')}</span>
-                        </div>
+                        </div>` : ''}
                     </div>
 
                     <div class="bank-divider"></div>
@@ -5534,75 +5491,53 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2>📈 Porcentaje de Ocupación</h2>
                     <button class="close-resumen">&times;</button>
                 </div>
-
                 <div class="resumen-body">
                     ${headerHTML}
                     ${detalleHTML}
                 </div>
-
                 <p class="nota">Basado en mesas con al menos una transacción registrada.</p>
             </div>
         `;
 
         document.body.appendChild(modal);
-        // ✅ BLOQUEAR SCROLL DEL BODY
         document.body.style.overflow = 'hidden';
-        // Lógica para cerrar
         modal.querySelector('.close-resumen').addEventListener('click', () => {
             document.body.removeChild(modal);
-            document.body.style.overflow = ''; // Restaurar scroll
+            document.body.style.overflow = '';
         });
-
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 document.body.removeChild(modal);
-                document.body.style.overflow = ''; // Restaurar scroll
+                document.body.style.overflow = '';
             }
         });
     };
-    /* =====================================================
-        SCRIPT MEJORADO: CREAR IMÁGENES Y ASIGNAR EVENTO CLICK
-        ===================================================== */
 
+    // Crear las tarjetas de todas las mesas y conectar sus comprobantes.
     document.querySelectorAll('.area-section').forEach(area => {
         const grid = area.querySelector('.image-grid');
-        const img = grid.querySelector('img');
-        const cantidad = parseInt(area.dataset.cantidad);
-        // Obtener el nombre del área de manera limpia (Ej: "Pacha", "Lounge")
-        const areaName = area.querySelector("h2").textContent.replace("Área ", "").trim();
+        const img = grid?.querySelector('img');
+        const cantidad = parseInt(area.dataset.cantidad, 10);
+        const areaName = area.querySelector('h2').textContent.replace('Área ', '').trim();
+        if (!grid || !img || !Number.isFinite(cantidad) || !mesaData[areaName]) return;
 
         grid.innerHTML = '';
-
         for (let i = 1; i <= cantidad; i++) {
             const clone = img.cloneNode(true);
-
             const wrapper = document.createElement('div');
-            wrapper.classList.add('img-wrapper', 'mesa-link'); // Agregamos una clase para estilo/click
+            wrapper.classList.add('img-wrapper', 'mesa-link');
 
-            // --- VERIFICAR SI LA MESA ESTÁ OCUPADA ---
             const datosMesa = mesaData[areaName][i];
-            let ocupada = false;
-
-            if (datosMesa) {
-                const monto1 = parseFloat(datosMesa.montos[0]) || 0;
-                const monto2 = parseFloat(datosMesa.montos[1]) || 0;
-                if (monto1 > 0 || monto2 > 0) {
-                    ocupada = true;
-                }
-            }
-
+            const ocupada = datosMesa && datosMesa.montos.some(m => (parseFloat(m) || 0) > 0);
             if (ocupada) {
-                const ribbon = document.createElement("div");
-                ribbon.classList.add("vendido-ribbon");
-                ribbon.textContent = "VENDIDO";
+                const ribbon = document.createElement('div');
+                ribbon.classList.add('vendido-ribbon');
+                ribbon.textContent = 'VENDIDO';
                 wrapper.appendChild(ribbon);
             }
 
-
-            // Establecer el ID de la mesa para el evento de click
             wrapper.dataset.area = areaName;
             wrapper.dataset.mesa = i;
-
             wrapper.appendChild(clone);
 
             const numberBadge = document.createElement('div');
@@ -5610,900 +5545,34 @@ document.addEventListener('DOMContentLoaded', () => {
             numberBadge.textContent = i;
             wrapper.appendChild(numberBadge);
 
-            // 5. Añadir el evento click
             wrapper.addEventListener('click', function() {
-                const selectedArea = this.dataset.area;
-                const selectedMesa = parseInt(this.dataset.mesa);
-                mostrarComprobante(selectedArea, selectedMesa);
+                mostrarComprobante(this.dataset.area, parseInt(this.dataset.mesa, 10));
             });
-
             grid.appendChild(wrapper);
         }
     });
 
-    /* =====================================================
-        GENERAR JSON DEL REPORTE DEL DÍA (a partir de mesaData)
-        Se imprime automáticamente en la consola del navegador
-        para copiar y pegar dentro del array REPORTES_DATA.reportes
-       ===================================================== */
-    const generarReporteJSON = (data) => {
-        // 1) Buscar fecha del reporte (la primera fecha válida encontrada)
-        let fechaReporte = "";
-        outer: for (const area in data) {
-            for (const mesa in data[area]) {
-                for (const f of data[area][mesa].fechas) {
-                    if (f && /^\d{2}-\d{2}-\d{2,4}$/.test(f.trim())) {
-                        const partes = f.trim().split("-");
-                        // Convertir aaaa -> aa si viene en 4 dígitos
-                        if (partes[2].length === 4) partes[2] = partes[2].slice(2);
-                        fechaReporte = partes.join("-");
-                        break outer;
-                    }
-                }
-            }
-        }
-        if (!fechaReporte) {
-            const hoy = new Date();
-            const dd = String(hoy.getDate()).padStart(2, "0");
-            const mm = String(hoy.getMonth() + 1).padStart(2, "0");
-            const aa = String(hoy.getFullYear()).slice(2);
-            fechaReporte = `${dd}-${mm}-${aa}`;
-        }
-
-        // 2) Acumular cuentas y transferencias
-        const cuentasPorNombre = {};
-        const transfMama = [];   // PACHA SUNSET con combo pachamama -> 50% a MAMA
-        const transfPacha = [];  // MAMA con combo pachamama -> 50% a PACHA
-
-        for (const area in data) {
-            for (const mesa in data[area]) {
-                const dm = data[area][mesa];
-                const combo = (dm.combo || "").toLowerCase();
-                const mesaLabel = `${area} ${mesa}`;
-
-                for (let i = 0; i < 2; i++) {
-                    const nombre = (dm.nombres[i] || "").trim().toUpperCase();
-                    const monto = parseFloat(dm.montos[i]) || 0;
-                    if (!nombre || monto <= 0) continue;
-
-                    if (!cuentasPorNombre[nombre]) {
-                        cuentasPorNombre[nombre] = { transacciones: 0, total: 0, detalles: [] };
-                    }
-                    cuentasPorNombre[nombre].transacciones += 1;
-                    cuentasPorNombre[nombre].total += monto;
-                    cuentasPorNombre[nombre].detalles.push({ mesa: mesaLabel, monto: monto });
-
-                    if (combo === "pachamama") {
-                        const transferencia = monto * 0.5;
-                        if (nombre === "PACHA SUNSET") {
-                            transfMama.push({ mesa: mesaLabel, montoOriginal: monto, porcentaje: 50, transferencia });
-                        } else if (nombre === "MAMA") {
-                            transfPacha.push({ mesa: mesaLabel, montoOriginal: monto, porcentaje: 50, transferencia });
-                        }
-                    }
-                }
-            }
-        }
-
-        // 3) Construir array "cuentas" — SIEMPRE incluir PACHA SUNSET y MAMA aunque estén vacías
-        const orden = ["PACHA SUNSET", "MAMA"];
-        const otros = Object.keys(cuentasPorNombre).filter(n => !orden.includes(n));
-        const ordenFinal = [...orden, ...otros];
-
-        const cuentas = ordenFinal.map(nombre => {
-            const datos = cuentasPorNombre[nombre];
-            if (datos) {
-                return {
-                    nombre,
-                    transacciones: datos.transacciones,
-                    total: datos.total,
-                    detalles: datos.detalles
-                };
-            }
-            // Cuenta vacía con placeholder
-            return {
-                nombre,
-                transacciones: 0,
-                total: 0,
-                detalles: [{ mesa: "Mesa 1", monto: 0 }]
-            };
-        });
-
-        // 4) Totales y saldo final de PACHA SUNSET
-        const totalIngresado = cuentas.reduce((s, c) => s + c.total, 0);
-        const totalTransfMama = transfMama.reduce((s, t) => s + t.transferencia, 0);
-        const totalTransfPacha = transfPacha.reduce((s, t) => s + t.transferencia, 0);
-        const ingresadoPacha = (cuentasPorNombre["PACHA SUNSET"]?.total) || 0;
-        const saldoPacha = ingresadoPacha - totalTransfMama + totalTransfPacha;
-
-        // Si los detalles de transferencias están vacíos, usar placeholder
-        const detallesMamaFinal = transfMama.length > 0
-            ? transfMama
-            : [{ mesa: "Mesa 1", montoOriginal: 0, porcentaje: 50, transferencia: 0 }];
-        const detallesPachaFinal = transfPacha.length > 0
-            ? transfPacha
-            : [{ mesa: "Mesa 1", montoOriginal: 0, porcentaje: 50, transferencia: 0 }];
-
-        return {
-            fecha: fechaReporte,
-            resumen: { titulo: "Detalle de Ingresos por Cuenta Destino" },
-            cuentas,
-            totales: { ingresado: totalIngresado },
-            transferencias: {
-                mama: {
-                    descripcion: "Transferencias a MAMA (50% del combo Pachamama)",
-                    totalTransferido: totalTransfMama,
-                    detalles: detallesMamaFinal
-                },
-                pacha: {
-                    descripcion: "Transferencias a PACHA SUNSET",
-                    totalTransferido: totalTransfPacha,
-                    detalles: detallesPachaFinal
-                }
-            },
-            saldoFinal: {
-                descripcion: "Cuenta PACHA SUNSET — Detalle del saldo actual",
-                ingresado: ingresadoPacha,
-                transferenciasEnviadas: totalTransfMama,
-                transferenciasRecibidas: totalTransfPacha,
-                formula: `${ingresadoPacha} - ${totalTransfMama} + ${totalTransfPacha}`,
-                saldo: saldoPacha,
-                banco: "BCP",
-                cuenta: "20151595559307",
-                referencia: "Ventas de mesas",
-                nota: "Datos generados automáticamente"
-            }
-        };
-    };
-
-    // Formateador personalizado: igual al estilo de los reportes originales
-    // (objetos pequeños en una sola línea, ej: { "mesa": "Pacha 1", "monto": 800 })
-    const formatReporte = (r) => {
-        const j = JSON.stringify;
-        const detalleCuenta  = (d) => `      { "mesa": ${j(d.mesa)}, "monto": ${d.monto} }`;
-        const detalleTransf  = (d) => `      { "mesa": ${j(d.mesa)}, "montoOriginal": ${d.montoOriginal}, "porcentaje": ${d.porcentaje}, "transferencia": ${d.transferencia} }`;
-
-        const cuentaBlock = (c) => {
-            const det = c.detalles.map(detalleCuenta).join(",\n");
-            return [
-                `  {`,
-                `    "nombre": ${j(c.nombre)},`,
-                `    "transacciones": ${c.transacciones},`,
-                `    "total": ${c.total},`,
-                `    "detalles": [`,
-                det,
-                `    ]`,
-                `  }`
-            ].join("\n");
-        };
-
-        const transfBlock = (key, t) => {
-            const det = t.detalles.map(detalleTransf).join(",\n");
-            return [
-                `    ${j(key)}: {`,
-                `      "descripcion": ${j(t.descripcion)},`,
-                `      "totalTransferido": ${t.totalTransferido},`,
-                `      "detalles": [`,
-                det,
-                `      ]`,
-                `    }`
-            ].join("\n");
-        };
-
-        const sf = r.saldoFinal;
-        const saldoBlock = [
-            `  "saldoFinal": {`,
-            `    "descripcion": ${j(sf.descripcion)},`,
-            `    "ingresado": ${sf.ingresado},`,
-            `    "transferenciasEnviadas": ${sf.transferenciasEnviadas},`,
-            `    "transferenciasRecibidas": ${sf.transferenciasRecibidas},`,
-            `    "formula": ${j(sf.formula)},`,
-            `    "saldo": ${sf.saldo},`,
-            `    "banco": ${j(sf.banco)},`,
-            `    "cuenta": ${j(sf.cuenta)},`,
-            `    "referencia": ${j(sf.referencia)},`,
-            `    "nota": ${j(sf.nota)}`,
-            `  }`
-        ].join("\n");
-
-        return [
-            `{`,
-            `  "fecha": ${j(r.fecha)},`,
-            `  "resumen": { "titulo": ${j(r.resumen.titulo)} },`,
-            `  "cuentas": [`,
-            r.cuentas.map(cuentaBlock).join(",\n"),
-            `  ],`,
-            `  "totales": { "ingresado": ${r.totales.ingresado} },`,
-            `  "transferencias": {`,
-            transfBlock("mama",  r.transferencias.mama)  + ",",
-            transfBlock("pacha", r.transferencias.pacha),
-            `  },`,
-            saldoBlock,
-            `}`
-        ].join("\n");
-    };
-
-    // Generar y mostrar en consola al cargar la página
-    const reporteDelDia = generarReporteJSON(mesaData);
-    const reporteJSONString = formatReporte(reporteDelDia);
-
-    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
-    console.log("%c  📋 REPORTE DEL DÍA (" + reporteDelDia.fecha + ") — listo para copiar", "color:#00ff88;font-weight:bold;font-size:14px");
-    console.log("%c  Pégalo dentro del array REPORTES_DATA.reportes", "color:#00ff88");
-    console.log("%c  Atajo: ejecuta  copiarReporte()  para copiarlo al portapapeles", "color:#ffcc00");
-    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
-    console.log(reporteJSONString);
-    console.log("%c═══════════════════════════════════════════════════════", "color:#00ff88;font-weight:bold");
-
-    // Exponer helpers globales para usar desde la consola
-    window.reporteDelDia = reporteDelDia;
-    window.copiarReporte = async () => {
-        try {
-            await navigator.clipboard.writeText(reporteJSONString);
-            console.log("%c✅ Reporte copiado al portapapeles", "color:#00ff88;font-weight:bold");
-        } catch (err) {
-            console.warn("No se pudo copiar automáticamente. Selecciona el JSON de arriba y cópialo manualmente.", err);
-        }
-    };
-    window.descargarReporte = () => {
-        const blob = new Blob([reporteJSONString], { type: "application/json" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `reporte-${reporteDelDia.fecha}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    };
-
-}); 
-// ===================================
-// ACCORDION
-// ===================================
-function setupAccordionLogic() {
-    const headers = document.querySelectorAll('.accordion-header');
-
-    headers.forEach(header => {
-        header.addEventListener('click', () => {
-            const targetId = header.getAttribute('data-target');
-            const content = document.getElementById(targetId);
-            const icon = header.querySelector('.toggle-icon');
-
-            if (!content) return;
-
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                if (icon) icon.textContent = '+';
-            } else {
-                content.style.maxHeight = "3000px";
-                if (icon) icon.textContent = '–';
-            }
-        });
-    });
-}
-        function renderReporte(data, rIndex) {
-
-            const mainContentId = `main-report-content-${rIndex}`;
-            const reportContainerId = `reporte-container-${rIndex}`; 
-
-            const s = data.saldoFinal || {};
-
-            const ingresado = s.ingresado || 0;
-            const transferenciasEnviadas = s.transferenciasEnviadas || 0;
-            const transferenciasRecibidas = s.transferenciasRecibidas || 0;
-
-            const formula = `${ingresado.toLocaleString('es-BO')} - ${transferenciasEnviadas.toLocaleString('es-BO')} + ${transferenciasRecibidas.toLocaleString('es-BO')}`;
-
-            let html = `
-            <div id="${reportContainerId}" class="reporte-printable-area">
-
-
-                <div class="ticket-section accordion-item main-report-accordion">
-                    <h3 class="accordion-header main-header" data-target="${mainContentId}">
-                        Reporte ${data.fecha}
-                        <span class="toggle-icon">+</span>
-                    </h3>
-
-                    <div id="${mainContentId}" class="accordion-content">
-            `;
-
-            // ================= CUENTAS =================
-            data.cuentas
-                .filter(cuenta => cuenta.transacciones > 0 && cuenta.total > 0)
-                .forEach((cuenta, cIndex) => {
-
-                    const contentId = `details-${rIndex}-${cIndex}`;
-
-                    html += `
-                    <div class="inner-accordion-item">
-                        <h4 class="accordion-header inner-header" data-target="${contentId}">
-                            Cuenta: ${cuenta.nombre} (${cuenta.transacciones} transacciones)
-                            <span class="toggle-icon">+</span>
-                        </h4>
-
-                        <div id="${contentId}" class="accordion-content">
-                            <p><strong>Total: Bs. ${cuenta.total.toLocaleString('es-BO')}</strong></p>
-
-                            <ul class="ticket-grid-list">
-                                ${cuenta.detalles.map(d => `
-                                    <li>
-                                        <span class="mesa">${d.mesa}</span>
-                                        <span class="monto">Bs. ${d.monto.toLocaleString('es-BO')}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                    `;
-                });
-
-            // ================= TRANSFERENCIAS =================
-            if (data.transferencias) {
-                ['mama', 'pacha'].forEach(tipo => {
-
-                    const tData = data.transferencias[tipo];
-
-                    if (tData?.detalles?.length && tData.totalTransferido > 0) {
-
-                        const transferId = `transfer-${tipo}-${rIndex}`;
-
-                        html += `
-                        <div class="ticket-section transfer inner-section accordion-item">
-                            <h4 class="accordion-header inner-header" data-target="${transferId}">
-                                ${tData.descripcion || `Transferencias a ${tipo.toUpperCase()}`}
-                                <span class="toggle-icon">+</span>
-                            </h4>
-
-                            <div id="${transferId}" class="accordion-content">
-                                <p class="total-transfer">
-                                    Total a transferir:
-                                    <strong>Bs. ${tData.totalTransferido.toLocaleString('es-BO')}</strong>
-                                </p>
-
-                                <ul class="ticket-simple-list">
-                                    ${tData.detalles.map(t => `
-                                        <li class="transfer-item">
-                                            <div class="transfer-left">
-                                                <span class="transfer-mesa">${t.mesa}</span>
-                                                <span class="transfer-detalle">
-                                                    ${t.porcentaje}% de Bs. ${t.montoOriginal.toLocaleString('es-BO')}
-                                                </span>
-                                            </div>
-                                            <div class="transfer-right">
-                                                <span class="transfer-label">Transferir:</span>
-                                                <span class="transfer-monto">
-                                                    Bs. ${t.transferencia.toLocaleString('es-BO')}
-                                                </span>
-                                            </div>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                        `;
-                    }
-                });
-            }
-
-            // ================= SALDO FINAL (estilo app bancaria) =================
-            const finalId = `final-saldo-${rIndex}`;
-            const banco = (s.banco || 'BCP').toString().toUpperCase();
-            const cuentaLimpia = String(s.cuenta || '').replace(/\s+/g, '');
-            const cuentaFormateada = cuentaLimpia.replace(/(.{4})/g, '$1 ').trim();
-            const referencia = s.referencia || 'Ventas de mesas';
-
-            html += `
-                <div class="ticket-section final inner-section accordion-item">
-                    <h4 class="accordion-header inner-header" data-target="${finalId}">
-                        ${s.descripcion || 'Cierre de Caja / Saldo Final'}
-                        <span class="toggle-icon">+</span>
-                    </h4>
-
-                    <div id="${finalId}" class="accordion-content">
-                        <div class="bank-card">
-                            <div class="bank-header">
-                                <div class="bank-logo">
-                                    <div class="bank-logo-circle">${banco.slice(0,3)}</div>
-                                    <div class="bank-name">Banco ${banco}</div>
-                                </div>
-                                <div class="bank-chip"></div>
-                            </div>
-
-                            <div class="bank-section-label">Movimientos del día</div>
-                            <div class="bank-movements">
-                                <div class="bank-movement-row">
-                                    <div class="bank-movement-left">
-                                        <div class="bank-movement-icon in">+</div>
-                                        <span class="bank-movement-text">Ingresos por ventas</span>
-                                    </div>
-                                    <span class="bank-movement-amount"><span class="sign">+</span>Bs. ${ingresado.toLocaleString('es-BO')}</span>
-                                </div>
-
-                                <div class="bank-movement-row">
-                                    <div class="bank-movement-left">
-                                        <div class="bank-movement-icon out">−</div>
-                                        <span class="bank-movement-text">Transf. enviadas a MAMA</span>
-                                    </div>
-                                    <span class="bank-movement-amount"><span class="sign">−</span>Bs. ${transferenciasEnviadas.toLocaleString('es-BO')}</span>
-                                </div>
-
-                                <div class="bank-movement-row">
-                                    <div class="bank-movement-left">
-                                        <div class="bank-movement-icon in">+</div>
-                                        <span class="bank-movement-text">Transf. recibidas de MAMA</span>
-                                    </div>
-                                    <span class="bank-movement-amount"><span class="sign">+</span>Bs. ${transferenciasRecibidas.toLocaleString('es-BO')}</span>
-                                </div>
-                            </div>
-
-                            <div class="bank-divider"></div>
-
-                            <div class="bank-balance-block">
-                                <div class="bank-balance-label">Saldo disponible</div>
-                                <div class="bank-balance-amount">
-                                    <span class="currency">Bs.</span>${(s.saldo || 0).toLocaleString('es-BO')}
-                                </div>
-                            </div>
-
-                            <div class="bank-account-block">
-                                <div class="bank-account-label">Cuenta · ${referencia}</div>
-                                <div class="bank-account-number">${cuentaFormateada || '— — — —'}</div>
-                            </div>
-
-                            <button class="bank-download-btn" onclick="descargarBankCard(this)">
-                                <i class="fas fa-download"></i> Descargar como imagen
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                </div> <!-- FIN accordion-content principal -->
-                </div> <!-- FIN main-report-accordion -->
-            </div> <!-- FIN reporte-printable-area -->
-            `;
-
-            return html;
-        }
-
-        function obtenerMesAnio(fecha) {
-            const [dia, mes, anioCorto] = fecha.split('-');
-            const anio = `20${anioCorto}`;
-
-            const meses = [
-                "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
-                "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
-            ];
-
-            const nombreMes = meses[parseInt(mes, 10) - 1];
-            return `${nombreMes} ${anio}`;
-        }
-
-           function renderReportes(data) {
-               // 1) Aplanar todos los reportes (la data tiene arrays anidados)
-               const reportesAplanados = data.reportes.flat(Infinity);
-
-               // 2) Filtrar: solo mostrar reportes que tengan al menos una cuenta con datos reales
-               const reportesConIngresos = reportesAplanados.filter(reporte => {
-                   if (!reporte || !reporte.cuentas || reporte.cuentas.length === 0) return false;
-                   return reporte.cuentas.some(c => Number(c.total) > 0);
-               });
-
-               // 3) Ordenar cronológicamente por fecha (formato dd-mm-aa)
-               reportesConIngresos.sort((a, b) => {
-                   const [da, ma, ya] = a.fecha.split('-').map(Number);
-                   const [db, mb, yb] = b.fecha.split('-').map(Number);
-                   const fechaA = new Date(2000 + ya, ma - 1, da).getTime();
-                   const fechaB = new Date(2000 + yb, mb - 1, db).getTime();
-                   return fechaA - fechaB;
-               });
-
-               // 4) Agrupar por mes-año (ahora sí, sin duplicados porque está ordenado)
-               let html = '';
-               let ultimoMesAnio = null;
-
-               reportesConIngresos.forEach((reporte, index) => {
-                   const mesAnioActual = obtenerMesAnio(reporte.fecha);
-
-                   if (ultimoMesAnio !== mesAnioActual) {
-                       if (ultimoMesAnio !== null) {
-                           html += `</div></div>`;
-                       }
-                       html += `
-                           <div class="mes-acordeon">
-                               <div class="separador-mes" data-mes>
-                                   <span>${mesAnioActual}</span>
-                               </div>
-                               <div class="mes-contenido">
-                       `;
-                       ultimoMesAnio = mesAnioActual;
-                   }
-
-                   html += renderReporte(reporte, index);
-               });
-
-               if (ultimoMesAnio !== null) {
-                   html += `</div></div>`;
-               }
-
-               contenidoReportes.innerHTML = html;
-               activarAcordionMeses();
-               setupAccordionLogic();
-           }
-           function activarAcordionMeses() {
-               document.querySelectorAll('[data-mes]').forEach(header => {
-                   header.addEventListener('click', () => {
-                       const contenido = header.nextElementSibling;
-                       header.classList.toggle('abierto');
-                       contenido.classList.toggle('abierto');
-                   });
-               });
-           }
-
-// ===================================
-// MODAL + FETCH
-// ===================================
-const btnReportes = document.getElementById("btn-reportes");
-const modalReportes = document.getElementById("modal-reportes");
-const contenidoReportes = document.getElementById("contenido-reportes");
-const cerrarModalReportes = document.querySelector(".close-modal");
-
-btnReportes.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    modalReportes.style.display = "block";
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-
-    try {
-          renderReportes(REPORTES_DATA);
-      } catch (error) {
-          contenidoReportes.innerHTML = `
-              <p style="color:red; padding:20px;">
-                  Error cargando reportes: ${error.message}
-              </p>`;
-      }
-});
-
-cerrarModalReportes.addEventListener("click", () => {
-    modalReportes.style.display = "none";
-    document.documentElement.style.overflow = "";
-    document.body.style.overflow = "";
-});
-
-modalReportes.addEventListener("click", (e) => {
-    if (e.target === modalReportes) {
-        modalReportes.style.display = "none";
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-    }
-});
-
-// ===================================
-// CUMPLEAÑEROS
-// ===================================
-const CUMPLE_MONTOS = [980, 930, 880, 850, 1300, 1280];
-const MESES_NOMBRES = { '02': 'Febrero', '03': 'Marzo', '04': 'Abril', '05': 'Mayo', '06': 'Junio' };
-
-function getCumpleanerosDatos() {
-    const resultado = {};
-    const reportes = REPORTES_DATA.reportes.flat(Infinity);
-    reportes.forEach(r => {
-        if (!r || !r.fecha) return;
-        const partes = r.fecha.split('-');
-        const mes = partes[1];
-        if (!['02','03','04','05','06'].includes(mes)) return;
-        const mesas = [];
-        (r.cuentas || []).forEach(c => {
-            (c.detalles || []).forEach(d => {
-                if (CUMPLE_MONTOS.includes(d.monto)) {
-                    mesas.push({ mesa: d.mesa, monto: d.monto });
-                }
+    // Generar un resumen diario simple desde los datos vigentes de las mesas.
+    const resumenDia = { transacciones: 0, ingresado: 0, cuentas: {} };
+    for (const [area, mesas] of Object.entries(mesaData)) {
+        for (const [numero, mesa] of Object.entries(mesas)) {
+            mesa.montos.forEach((valor, index) => {
+                const monto = parseFloat(valor) || 0;
+                const nombre = (mesa.nombres[index] || '').trim();
+                if (monto <= 0 || !nombre) return;
+                resumenDia.transacciones++;
+                resumenDia.ingresado += monto;
+                const key = nombre.toUpperCase();
+                resumenDia.cuentas[key] ??= { transacciones: 0, total: 0, mesas: [] };
+                resumenDia.cuentas[key].transacciones++;
+                resumenDia.cuentas[key].total += monto;
+                resumenDia.cuentas[key].mesas.push(`${area} ${numero}`);
             });
-        });
-        if (mesas.length === 0) return;
-        if (!resultado[mes]) resultado[mes] = [];
-        resultado[mes].push({ fecha: r.fecha, mesas });
-    });
-    return resultado;
-}
-
-function renderCumpleanos() {
-    const datos = getCumpleanerosDatos();
-    const meses = Object.keys(datos).sort();
-    if (meses.length === 0) return '<div class="cumple-empty">Sin datos de cumple aún.</div>';
-
-    // Total mesas vendidas por mes (todas, monto > 0)
-    const totalMesasPorMes = {};
-    REPORTES_DATA.reportes.flat(Infinity).forEach(r => {
-        if (!r || !r.fecha) return;
-        const mes = r.fecha.split('-')[1];
-        if (!totalMesasPorMes[mes]) totalMesasPorMes[mes] = 0;
-        (r.cuentas || []).forEach(c => {
-            (c.detalles || []).forEach(d => {
-                if (d.monto > 0) totalMesasPorMes[mes]++;
-            });
-        });
-    });
-
-    // Calcular combos por mes
-    const mesData = meses.map(mes => {
-        const fechas = datos[mes];
-        const counts = {};
-        let totalMes = 0;
-        fechas.forEach(f => f.mesas.forEach(m => {
-            totalMes++;
-            counts[m.monto] = (counts[m.monto] || 0) + 1;
-        }));
-        return { mes, fechas, counts, totalMes };
-    });
-
-    // SVG ring helper
-    const R = 26, CIRC = +(2 * Math.PI * R).toFixed(1);
-    function ring(pct) {
-        const fill = +((pct / 100) * CIRC).toFixed(1);
-        const gap = +(CIRC - fill).toFixed(1);
-        return `<svg viewBox="0 0 64 64" width="64" height="64" style="display:block">
-            <circle cx="32" cy="32" r="${R}" fill="none" stroke="rgba(255,215,0,.1)" stroke-width="5"/>
-            <circle cx="32" cy="32" r="${R}" fill="none" stroke="#ffd700" stroke-width="5"
-                stroke-dasharray="${fill} ${gap}" stroke-linecap="round"
-                transform="rotate(-90 32 32)"/>
-            <text x="32" y="36.5" text-anchor="middle" font-size="10.5" font-weight="900"
-                fill="#ffd700" font-family="Arial,sans-serif">${pct}%</text>
-        </svg>`;
+        }
     }
-
-    // Orden y colores para cada monto
-    const MONTO_CFG = [
-        { monto: 1300, cls: 'c1300' },
-        { monto: 1280, cls: 'c1280' },
-        { monto: 980,  cls: 'c980'  },
-        { monto: 930,  cls: 'c930'  },
-        { monto: 880,  cls: 'c880'  },
-        { monto: 850,  cls: 'c850'  },
-    ];
-
-    const cards = mesData.map(({ mes, fechas, counts, totalMes }) => {
-        const pct = Math.min(Math.round(totalMes / 80 * 100), 100);
-        const pills = MONTO_CFG
-            .filter(({ monto }) => counts[monto] > 0)
-            .map(({ monto, cls }) =>
-                `<span class="c-pill c-p${monto}">Bs ${monto} · ${counts[monto]}</span>`)
-            .join('');
-        // Chips planos de mesas individuales
-        const chips = fechas.flatMap(f => f.mesas.map(m => {
-            const cfg = MONTO_CFG.find(c => c.monto === m.monto) || { cls: '' };
-            return `<div class="c-chip ${cfg.cls}" title="Bs ${m.monto}">${m.mesa}</div>`;
-        })).join('');
-        return `
-        <div class="c-card">
-            <div class="c-card-main">
-                <div class="c-ring-wrap">${ring(pct)}</div>
-                <div class="c-info">
-                    <div class="c-mes-nombre">${MESES_NOMBRES[mes] || mes} 2026</div>
-                    <div class="c-total">${totalMes} combo${totalMes !== 1 ? 's' : ''} cumpleaños</div>
-                    <div class="c-pills">${pills}</div>
-                </div>
-            </div>
-            ${chips ? `<div class="c-chips">${chips}</div>` : ''}
-        </div>`;
-    }).join('');
-
-    return cards + `
-    <div class="c-total-row">
-        <div>
-            <div class="c-total-label">Total Feb – Jun 2026</div>
-            <div class="c-total-sub">combos cumpleaños registrados</div>
-        </div>
-        <span class="c-total-num">${mesData.reduce((s, m) => s + m.totalMes, 0)}</span>
-    </div>`;
-}
-
-function abrirModalCumpleanos() {
-    const modal = document.getElementById('modal-cumpleanos');
-    const contenido = document.getElementById('contenido-cumpleanos');
-    modal.style.display = 'block';
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-
-    contenido.innerHTML = `
-        <div class="c-modal-head">
-            <button class="c-close" id="cerrar-cumple">&times;</button>
-            <span class="c-modal-icon">🎂</span>
-            <h2 class="c-modal-title">Cumple</h2>
-            <p class="c-modal-sub">Combos cumpleaños · Feb – May 2026</p>
-        </div>
-        <div class="c-body">${renderCumpleanos()}</div>
-    `;
-    document.getElementById('cerrar-cumple').addEventListener('click', cerrarCumple);
-}
-
-function cerrarCumple() {
-    const modal = document.getElementById('modal-cumpleanos');
-    modal.style.display = 'none';
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-}
-
-document.getElementById('btn-cumpleanos').addEventListener('click', (e) => {
-    e.preventDefault();
-    abrirModalCumpleanos();
+    window.reporteDelDia = resumenDia;
+    console.info('Resumen diario de mesas:', resumenDia);
 });
-
-document.getElementById('modal-cumpleanos').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('modal-cumpleanos')) cerrarCumple();
-});
-
-// =====================================================
-// DESCARGAR BANK-CARD COMO IMAGEN — Canvas 2D nativo, instantáneo
-// =====================================================
-window.descargarBankCard = function(btnEl) {
-    const card = btnEl.closest('.bank-card');
-    if (!card) return;
-
-    // Leer datos del DOM
-    const bankInitials = (card.querySelector('.bank-logo-circle')?.textContent || 'BCP').trim();
-    const bankName     = (card.querySelector('.bank-name')?.textContent || 'Banco BCP').trim();
-    const movements    = [];
-    card.querySelectorAll('.bank-movement-row').forEach(row => {
-        movements.push({
-            out:    row.querySelector('.bank-movement-icon.out') !== null,
-            label:  (row.querySelector('.bank-movement-text')?.textContent || '').trim(),
-            amount: (row.querySelector('.bank-movement-amount')?.textContent || '').trim()
-        });
-    });
-    const balanceTxt = (card.querySelector('.bank-balance-amount')?.textContent || '').trim();
-    const acctLabel  = (card.querySelector('.bank-account-label')?.textContent || '').trim();
-    const acctNumber = (card.querySelector('.bank-account-number')?.textContent || '').trim();
-
-    // Dimensiones: alto dinámico según cantidad de movimientos
-    const S = 3;
-    const CW = 460;
-    const movH = movements.length * 52;
-    const CH = 22 + 56 + 22 + movH + 4 + 18 + 18 + 50 + 14 + 16 + 28 + 24;
-    const canvas = document.createElement('canvas');
-    canvas.width  = CW * S;
-    canvas.height = CH * S;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(S, S);
-
-    const R = (r,g,b,a=1) => `rgba(${r},${g},${b},${a})`;
-
-    // Fondo gradiente
-    const bg = ctx.createLinearGradient(0, 0, CW, CH);
-    bg.addColorStop(0,    '#0a3d62');
-    bg.addColorStop(0.45, '#0c5078');
-    bg.addColorStop(1,    '#0a8b8b');
-    ctx.fillStyle = bg;
-    _rrect(ctx, 0, 0, CW, CH, 18); ctx.fill();
-
-    // Círculo decorativo
-    ctx.save(); ctx.globalAlpha = 0.10;
-    const cg1 = ctx.createRadialGradient(CW+30,-30,0,CW+30,-30,200);
-    cg1.addColorStop(0,'#ffffff'); cg1.addColorStop(1,'transparent');
-    ctx.fillStyle = cg1;
-    ctx.beginPath(); ctx.arc(CW+30,-30,200,0,Math.PI*2); ctx.fill();
-    ctx.restore();
-
-    let y = 22;
-
-    // Logo circle
-    ctx.fillStyle = R(255,255,255,0.15);
-    _rrect(ctx,22,y,38,38,10); ctx.fill();
-    ctx.strokeStyle = R(255,255,255,0.25); ctx.lineWidth = 1;
-    _rrect(ctx,22,y,38,38,10); ctx.stroke();
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 13px "Poppins",sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(bankInitials.slice(0,3), 41, y+19);
-
-    // Nombre banco
-    ctx.font = '600 12px "Poppins",sans-serif';
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.fillStyle = R(255,255,255,0.95);
-    ctx.fillText(bankName.toUpperCase(), 68, y+19);
-
-    // Chip dorado
-    const chipGrad = ctx.createLinearGradient(CW-58,y+6,CW-22,y+32);
-    chipGrad.addColorStop(0,'#f5d36b'); chipGrad.addColorStop(1,'#b8862c');
-    ctx.fillStyle = chipGrad;
-    _rrect(ctx,CW-58,y+6,36,26,5); ctx.fill();
-    y += 56;
-
-    // Label sección
-    ctx.font = '500 10px "Poppins",sans-serif';
-    ctx.fillStyle = R(255,255,255,0.72);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText('MOVIMIENTOS DEL DÍA', 22, y);
-    y += 22;
-
-    // Filas movimientos
-    movements.forEach(m => {
-        ctx.fillStyle = R(255,255,255,0.08);
-        _rrect(ctx,22,y,CW-44,44,12); ctx.fill();
-        ctx.strokeStyle = R(255,255,255,0.06); ctx.lineWidth = 1;
-        _rrect(ctx,22,y,CW-44,44,12); ctx.stroke();
-
-        ctx.fillStyle = m.out ? R(0,0,0,0.30) : R(255,255,255,0.18);
-        ctx.beginPath(); ctx.arc(49,y+22,14,0,Math.PI*2); ctx.fill();
-        ctx.font = 'bold 17px "Poppins",sans-serif';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillStyle = m.out ? '#ffd9c2' : '#ffffff';
-        ctx.fillText(m.out ? '−' : '+', 49, y+22);
-
-        ctx.font = '500 12px "Poppins",sans-serif';
-        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#e8eef5';
-        ctx.fillText(m.label, 70, y+22);
-
-        ctx.font = 'bold 13px "Poppins",sans-serif';
-        ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.fillText(m.amount, CW-30, y+22);
-        y += 52;
-    });
-    y += 4;
-
-    // Divisor
-    const div = ctx.createLinearGradient(22,y,CW-22,y);
-    div.addColorStop(0,'transparent'); div.addColorStop(0.5,R(255,255,255,0.28)); div.addColorStop(1,'transparent');
-    ctx.strokeStyle = div; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(22,y); ctx.lineTo(CW-22,y); ctx.stroke();
-    y += 18;
-
-    // Saldo label
-    ctx.font = '500 10px "Poppins",sans-serif';
-    ctx.fillStyle = R(255,255,255,0.78);
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.fillText('SALDO DISPONIBLE', CW/2, y);
-    y += 18;
-
-    // Saldo monto
-    ctx.font = 'bold 36px "Poppins",sans-serif';
-    ctx.fillStyle = '#ffffff';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.fillText(balanceTxt, CW/2, y);
-    y += 50;
-
-    // Línea punteada cuenta
-    ctx.setLineDash([4,4]);
-    ctx.strokeStyle = R(255,255,255,0.18); ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(22,y); ctx.lineTo(CW-22,y); ctx.stroke();
-    ctx.setLineDash([]);
-    y += 14;
-
-    ctx.font = '500 10px "Poppins",sans-serif';
-    ctx.fillStyle = R(255,255,255,0.68);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText(acctLabel.toUpperCase(), 22, y);
-    y += 16;
-
-    ctx.font = 'bold 16px "Courier New",monospace';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(acctNumber, 22, y);
-
-    // Descarga directa (sin nueva ventana)
-    canvas.toBlob(blob => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'saldo-pacha-sunset.png';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(() => URL.revokeObjectURL(url), 4000);
-    }, 'image/png');
-};
-
-function _rrect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x+r, y);
-    ctx.lineTo(x+w-r, y); ctx.arcTo(x+w,y, x+w,y+r, r);
-    ctx.lineTo(x+w, y+h-r); ctx.arcTo(x+w,y+h, x+w-r,y+h, r);
-    ctx.lineTo(x+r, y+h); ctx.arcTo(x,y+h, x,y+h-r, r);
-    ctx.lineTo(x, y+r); ctx.arcTo(x,y, x+r,y, r);
-    ctx.closePath();
-}
 
 </script>
 </body>
